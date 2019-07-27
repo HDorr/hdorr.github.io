@@ -243,6 +243,18 @@
     
         
     
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
     
         
@@ -266,26 +278,28 @@
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">cms-前端cms管理项目搭建</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-ssi%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8C%85%E5%90%AB/">cms-SSI服务端包含</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p>创建目录结构 base：存放基础组件
-base/api：基础api接口
-base/component：基础组件，被各各模块都使用的组件
-base/router：总的路由配置，加载各模块的路由配置文件
-common：工具类 mock：存放前端单元测试方法
-module：存放各业务模块的页面和api方法。 下级目录以模块名命名，
-下边以cms举例：  ​ cms/api：cms模块的api接口
-​ cms/component：cms模块的组件
- cms/page： cms模块的页面 cms/router：cms模块的路由配置  statics：存放第三方组件的静态资源
-vuex：存放vuex文件，本项目不使用
-static：与src的平级目录，此目录存放静态资源
-启动** 导包之后
-启动文件：
-1、进入 webpacktest02目录，执行npm run dev
-2、使用webstorm，右键package.json文件，选择“Show npm Scripts”
-打开窗口: <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
+            <p>SSI服务端包含技术 本节分析首页的管理方案。
+1、页面内容多如何管理？
+将页面拆分成一个一个的小页面，通过cms去管理这些小页面，当要更改部分页面内容时只需要更改具体某个小页
+面即可。
+2、页面拆出来怎么样通过web服务浏览呢？
+使用web服务(例如nginx)的SSI技术，将多个子页面合并渲染输出。
+3、SSI是什么？
+ssi包含类似于jsp页面中的incluce指令，ssi是在web服务端将include指定 的页面包含在网页中，渲染html网页响
+应给客户端 。nginx、apache等多数web容器都支持SSI指令。
+ssi指令如下：
+&lt;!‐‐#include virtual=&quot;/../....html&quot;‐‐&gt;  4、将首页拆分成
+index.html：首页主体内容 include/header.html：头部区域 include/index_banner.html：轮播图 include/index_category.html：左侧列表导航 include/footer.html：页尾  5、在nginx虚拟主机中开通SSI
+server{ listen 80; server_name www.xuecheng.com; ssi on; ssi_silent_errors on; ......  ssi的配置参数如下： ssi on： 开启ssi支持 ssi_silent_errors on：默认为offff，设置为on则在处理SSI文件出错时不
+输出错误信息 ssi_types：默认为 ssi_types text/html，如果需要支持shtml（服务器执行脚本，类似于jsp）则需
+要设置为ssi_types text/shtml
+6、测试
+去掉某个#include查看页面效果。
+类似JSP中的include,把原来的页面拆分为多个小模块,目的就是更方便CMS管理这些小页面,修改起来更方便 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-ssi%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8C%85%E5%90%AB/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -318,15 +332,22 @@ static：与src的平级目录，此目录存放静态资源
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms01-前端-page_List页面编写与整合后端运行</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-swagger%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">cms-Swagger接口测试</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p>在module中创建CMS页面原型 定义cms目录,创建相应接口
-在page目录中创建page_list页面
-在router页面中创建index.js路由组件
-import Home from '@/module/home/page/home.vue'; import page_list from &quot;../page/page_list&quot;; export default [{ path: '/', component: Home, name: 'CMS', hidden: false, children:[ {path: '/cms/page/list',name:'页面列表',component: page_list } ] } ]  仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
-import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from '@/module/home/router' import CmsRouter from '@/module/cms/router' // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+            <p>Swagger Swagger介绍 OpenAPI规范（OpenAPI Specifification 简称OAS）是Linux基金会的一个项目，试图通过定义一种用来描述API格
+式或API定义的语言，来规范RESTful服务开发过程，目前版本是V3.0，并且已经发布并开源在github上。
+（https://github.com/OAI/OpenAPI-Specifification）
+Swagger是全球最大的OpenAPI规范（OAS）API开发工具框架，支持从设计和文档到测试和部署的整个API生命周
+期的开发。 (https://swagger.io/)
+Spring Boot 可以集成Swagger，生成Swagger接口，Spring Boot是Java领域的神器，它是Spring项目下快速构建
+项目的框架。
+可以在代码中加上注解注释,生成一份接口文档,并且可以在线测试接口
+Swagger常用注解 在Java类中添加Swagger的注解即可生成Swagger接口，常用Swagger注解如下： @Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口 @ApiParam：单个参数描述 @ApiModel：用对象来接收参数 @ApiModelProperty：用对象接收参数时，描述对 象的一个字段 @ApiResponse：HTTP响应其中1个描述 @ApiResponses：HTTP响应整体描述 @ApiIgnore：使用 该注解忽略这个API @ApiError ：发生错误返回的信息 @ApiImplicitParam：一个请求参数 @ApiImplicitParams：多个请求参数 @ApiImplicitParam属性：
+Swagger接口定义 修改接口工程中页面查询接口，添加Swagger注解。
+@Api(value=&quot;cms页面管理接口&quot;,description = &quot;cms页面管理接口，提供页面的增、删、改、查&quot;) public interface CmsPageControllerApi { @ApiOperation(&quot;分页查询页面列表&quot;) @ApiImplicitParams({ @ApiImplicitParam(name=&quot;page&quot;,value = &quot;页 码&quot;,required=true,paramType=&quot;path&quot;,dataType=&quot;int&quot;), @ApiImplicitParam(name=&quot;size&quot;,value = &quot;每页记录 数&quot;,required=true,paramType=&quot;path&quot;,dataType=&quot;int&quot;) }) public QueryResponseResult findList(int page, int size, QueryPageRequest queryPageRequest) ; }  在QueryPageRequest类中使用注解 ApiModelProperty 对属性注释：
+@Data public class QueryPageRequest extends RequestData { //站点id @ApiModelProperty(&quot;站点id&quot;) private String siteId; //页面ID @ApiModelProperty(&quot;页面ID&quot;) private String pageId; //页面名称 @ApiModelProperty(&quot;页面名称&quot;) private String pageName; //页面别名 @ApiModelProperty(&quot;页面别名&quot;) private String pageAliase; //模版id @ApiModelProperty(&quot;模版id&quot;) private String templateId; }  Swagger接口测试 Swagger接口生成工作原理： 1、系统启动，扫描到api工程中的Swagger2Confifiguration类 2、在此类中指定了包路径com. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-swagger%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -348,6 +369,313 @@ import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定�
         on
             
                 <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">cms-前端cms管理项目搭建</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>创建目录结构 base：存放基础组件
+base/api：基础api接口
+base/component：基础组件，被各各模块都使用的组件
+base/router：总的路由配置，加载各模块的路由配置文件
+common：工具类 mock：存放前端单元测试方法
+module：存放各业务模块的页面和api方法。 下级目录以模块名命名，
+下边以cms举例：  ​ cms/api：cms模块的api接口
+​ cms/component：cms模块的组件
+ cms/page： cms模块的页面 cms/router：cms模块的路由配置  statics：存放第三方组件的静态资源
+vuex：存放vuex文件，本项目不使用
+static：与src的平级目录，此目录存放静态资源
+启动** 导包之后
+启动文件：
+1、进入 webpacktest02目录，执行npm run dev
+2、使用webstorm，右键package.json文件，选择“Show npm Scripts”
+打开窗口: 双击 dev。
+注意：dev就是在package.json中配置的webpack dev server命令。
+发现启动成功自动打开浏览器。
+修改src中的任意文件内容，自动加载并刷新浏览器。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">cms-后端-cms介绍及nginx后端门户静态搭建</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>CMS 什么是CMS 1、CMS是什么 ？
+CMS （Content Management System）即内容管理系统，不同的项目对CMS的定位不同，比如：一个在线教育网
+站，有些公司认为CMS系统是对所有的课程资源进行管理，而在早期网站刚开始盛行时很多公司的业务是网站制
+作，当时对CMS的定位是创建网站，即对网站的页面、图片等静态资源进行管理。
+2、CMS有哪些类型？
+上边也谈到每个公司对每个项目的CMS定位不同，CMS基本上分为：针对后台数据内容的管理、针对前端页面的
+管理、针对样式风格的管理等 。比如：一个给企业做网站的公司，其CMS系统主要是网站页面管理及样式风格的
+管理。
+3、本项目CMS的定位是什么？
+本项目作为一个大型的在线教育平台，对CMS系统的定位是对各各网站（子站点）页面的管理，主要管理由于运营
+需要而经常变动的页面，从而实现根据运营需要快速进行页面开发、上线的需求。
+静态工程搭建 1、安装Nginx
+下载nginx：http://nginx.org/en/download.html
+本教程下载nginx-1.14.0.zip(http://nginx.org/download/nginx-1.14.0.zip)
+解压nginx-1.14.0.zip到自己的计算机，双击nginx.exe即可运行。
+访问 ：http://localhost
+2、导入门户工程
+将课程资料中的门户工程拷贝到代码目录。
+使用WebStorm打开门户工程目录，目录的结构如下，后期会根据开发的推进进行扩充。
+配置虚拟主机 server{ listen 80; server_name www.xuecheng.com; //要映射的域名 ssi on; ssi_silent_errors on; location / { alias F:/teach/xcEdu/xcEduUI/xc‐ui‐pc‐static‐portal/; //自己的静态工程目录 index index.html; } }  F:/teach/xcEdu/xcEduUI/xc-ui-pc-static-portal/ 本目录即为门户的主目录。
+5、配置hosts文件
+本教程的开发环境使用Windows 7，修改C:\Windows\System32\drivers\etc\hosts文件
+127.0.0.1 www.xuecheng.com
+进入浏览器，输入http://www.xuecheng.com
+CMS页面管理需求 1、这些页面的管理流程是什么？
+1）创建站点：
+一个网站有很多子站点，比如：学成在线有主门户、学习中心、问答系统等子站点。具体的哪个页面是归属于具体
+的站点，所以要管理页面，先要管理页面所属的站点。
+2）创建模板：
+页面如何创建呢？比如电商网站的商品详情页面，每个页面的内容布局、板式是相同的，不同的只是内容，这个页
+面的布局、板式就是页面模板，模板+数据就组成一个完整的页面，最终要创建一个页面文件需要先定义此页面的
+模板，最终拿到页面的数据再结合模板就拼装成一个完整的页面。
+3）创建页面：
+创建页面是指填写页面的基本信息，如：页面的名称、页面的url地址等。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">cms-开发准备</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>1.CMS概述 学成在线借鉴了MOOC（大型开放式网络课程，即MOOC（massive open online courses））的设计思想，是一个提供IT职业课程在线学习的平台
+当前市场的在线教育模式多种多样，包括：B2C、C2C、B2B2C等业务模式，学成在线采用B2B2C业务模式，即向 企业或个人提供在线教育平台提供教学服务，老师和学生通过平台完成整个教学和学习的过程，市场上类似的平台 有：网易云课堂、腾讯课堂等，学成在线的特点是IT职业课程在线教学。
+功能模块 学成在线包括门户、学习中心、教学管理中、社交系统、系统管理等功能模块。
+技术架构 技术栈 开发步骤 项目是基于前后端分离的架构进行开发，前后端分离架构总体上包括前端和服务端，通常是多人协作并行开发，开
+发步骤如下：
+1、需求分析
+梳理用户的需求，分析业务流程
+2、接口定义
+根据需求分析定义接口
+3、服务端和前端并行开发
+依据接口进行服务端接口开发。
+前端开发用户操作界面，并请求服务端接口完成业务处理。
+4、前后端集成测试
+最终前端调用服务端接口完成业务。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">cms-接口请求规范</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p> Api请求及响应规范 为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。
+1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。
+2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded）和Json数据（Content
+Type=application/json），文件等多部件类型（multipart/form-data）三种数据格式，SpringMVC接收Json数据
+使用@RequestBody注解解析请求的json数据。
+4、响应结果统一信息为：是否成功、操作代码、提示信息及自定义数据。
+​ 本项目,统一采用成功信息,相应代码,相应结果组成,并且最终返回结果为QueryResponseResult类型
+5、响应结果统一格式为json。
+Api定义约束 Api定义使用SpringMVC来完成，由于此接口后期将作为微服务远程调用使用，在定义接口时有如下限制：
+1、@PathVariable 统一指定参数名称，如：@PathVariable(&ldquo;id&rdquo;)
+​ 方法内参数要使用@PathVariable来映射路径上的参数
+2、@RequestParam统一指定参数名称，如： @RequestParam（&rdquo;id&rdquo;）
+public String getDetails( @RequestParam(value=&quot;param1&quot;, required=true) String param1, @RequestParam(value=&quot;param2&quot;, required=false) String param2){ ... }   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms01-前端-page_List页面编写与整合后端运行</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>在module中创建CMS页面原型 定义cms目录,创建相应接口
+在page目录中创建page_list页面
+在router页面中创建index.js路由组件
+import Home from '@/module/home/page/home.vue'; import page_list from &quot;../page/page_list&quot;; export default [{ path: '/', component: Home, name: 'CMS', hidden: false, children:[ {path: '/cms/page/list',name:'页面列表',component: page_list } ] } ]  这样在home组件中,就可以获取到路与信息,并渲染成树状列表显示
+仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
+import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from '@/module/home/router' import CmsRouter from '@/module/cms/router' // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/cms-%E5%89%8D%E7%AB%AF/">#cms-前端</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">cms01-后端-网站页面查询接口</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>aaaa <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">

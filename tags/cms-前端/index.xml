@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cms-前端 on I am thinking ...</title>
+    <link>https://hdorr.github.io/tags/cms-%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in cms-前端 on I am thinking ...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>All rights reserved - 2018</copyright>
+    <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://hdorr.github.io/tags/cms-%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cms01-前端-page_List页面编写与整合后端运行</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <description>在module中创建CMS页面原型 定义cms目录,创建相应接口
+在page目录中创建page_list页面
+在router页面中创建index.js路由组件
+import Home from &#39;@/module/home/page/home.vue&#39;; import page_list from &amp;quot;../page/page_list&amp;quot;; export default [{ path: &#39;/&#39;, component: Home, name: &#39;CMS&#39;, hidden: false, children:[ {path: &#39;/cms/page/list&#39;,name:&#39;页面列表&#39;,component: page_list } ] } ]  这样在home组件中,就可以获取到路与信息,并渲染成树状列表显示
+仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
+import Vue from &#39;vue&#39;; import Router from &#39;vue-router&#39;; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&amp;gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from &#39;@/module/home/router&#39; import CmsRouter from &#39;@/module/cms/router&#39; // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list.</description>
+    </item>
+    
+  </channel>
+</rss>

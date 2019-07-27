@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="cms-后端-cms介绍及nginx后端门户静态搭建"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="cms-后端-cms介绍及nginx后端门户静态搭建 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    
+
+    <title>cms-后端-cms介绍及nginx后端门户静态搭建 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="CMS 什么是CMS 1、CMS是什么 ？
+CMS （Content Management System）即内容管理系统，不同的项目对CMS的定位不同，比如：一个在线教育网
+站，有些公司认为CMS系统是对所有的课程资源进行管理，而在早期网站刚开始盛行时很多公司的业务是网站制
+作，当时对CMS的定位是创建网站，即对网站的" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "cms-后端-cms介绍及nginx后端门户静态搭建",
+    "name": "cms-后端-cms介绍及nginx后端门户静态搭建",
+    "wordCount":  82 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">cms-后端-cms介绍及nginx后端门户静态搭建</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="cms">CMS</h1>
+
+<h2 id="什么是cms">什么是CMS</h2>
+
+<p>1、CMS是什么 ？</p>
+
+<p>CMS （Content Management System）即内容管理系统，<strong>不同的项目对CMS的定位不同，比如：一个在线教育网</strong></p>
+
+<p><strong>站，有些公司认为CMS系统是对所有的课程资源进行管理，而在早期网站刚开始盛行时很多公司的业务是网站制</strong></p>
+
+<p><strong>作，当时对CMS的定位是创建网站，即对网站的页面、图片等静态资源进行管理。</strong></p>
+
+<p>2、CMS有哪些类型？</p>
+
+<p>上边也谈到每个公司对每个项目的CMS定位不同，CMS基本上分为：<strong>针对后台数据内容的管理、针对前端页面的</strong></p>
+
+<p><strong>管理、针对样式风格的管理等 。</strong>比如：一个给企业做网站的公司，其CMS系统主要是网站页面管理及样式风格的</p>
+
+<p>管理。</p>
+
+<p>3、本项目CMS的定位是什么？</p>
+
+<p>本项目作为一个大型的在线教育平台，对<strong>CMS系统的定位是对各各网站（子站点）页面的管理</strong>，主要管理由于运营</p>
+
+<p>需要而经常变动的页面，从而实现根据运营需要快速进行页面开发、上线的需求。</p>
+
+<h2 id="静态工程搭建">静态工程搭建</h2>
+
+<p><strong>1、安装Nginx</strong></p>
+
+<p>下载nginx：<a href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a></p>
+
+<p>本教程下载nginx-1.14.0.zip(<a href="http://nginx.org/download/nginx-1.14.0.zip">http://nginx.org/download/nginx-1.14.0.zip</a>)</p>
+
+<p>解压nginx-1.14.0.zip到自己的计算机，双击nginx.exe即可运行。</p>
+
+<p>访问 ：<a href="http://localhost">http://localhost</a></p>
+
+<p><strong>2、导入门户工程</strong></p>
+
+<p>将课程资料中的门户工程拷贝到代码目录。</p>
+
+<p>使用WebStorm打开门户工程目录，目录的结构如下，后期会根据开发的推进进行扩充。</p>
+
+<p><img src="\images\1564239245847.png" alt="1564239245847" /></p>
+
+<h2 id="配置虚拟主机">配置虚拟主机</h2>
+
+<pre><code class="language-java">server{
+listen 80;
+server_name www.xuecheng.com; //要映射的域名
+ssi on;
+ssi_silent_errors on;
+location / {
+alias F:/teach/xcEdu/xcEduUI/xc‐ui‐pc‐static‐portal/; //自己的静态工程目录
+index index.html;
+}
+}
+</code></pre>
+
+<p>F:/teach/xcEdu/xcEduUI/xc-ui-pc-static-portal/ 本目录即为门户的主目录。</p>
+
+<p>5、配置hosts文件</p>
+
+<p>本教程的开发环境使用Windows 7，修改C:\Windows\System32\drivers\etc\hosts文件</p>
+
+<p><code>127.0.0.1 www.xuecheng.com</code></p>
+
+<p>进入浏览器，输入<a href="http://www.xuecheng.com">http://www.xuecheng.com</a></p>
+
+<h2 id="cms-页面管理需求"><strong>CMS</strong>页面管理需求</h2>
+
+<p>1、这些页面的管理流程是什么？</p>
+
+<p>1）创建站点：</p>
+
+<p>一个网站有很多子站点，比如：学成在线有主门户、学习中心、问答系统等子站点。具体的哪个页面是归属于具体</p>
+
+<p>的站点，所以要管理页面，先要管理页面所属的站点。</p>
+
+<p>2）创建模板：</p>
+
+<p>页面如何创建呢？比如电商网站的商品详情页面，每个页面的内容布局、板式是相同的，不同的只是内容，这个页</p>
+
+<p>面的布局、板式就是页面模板，模板+数据就组成一个完整的页面，最终要创建一个页面文件需要先定义此页面的</p>
+
+<p>模板，最终拿到页面的数据再结合模板就拼装成一个完整的页面。</p>
+
+<p>3）创建页面：</p>
+
+<p>创建页面是指填写页面的基本信息，如：页面的名称、页面的url地址等。</p>
+
+<p>4）页面预览：</p>
+
+<p>页面预览是页面发布前的一项工作，页面预览使用静态化技术根据页面模板和数据生成页面内容，并通过浏览器预</p>
+
+<p>览页面。页面发布前进行页面预览的目是为了保证页面发布后的正确性。</p>
+
+<p>5）页面发布：</p>
+
+<p>使用计算机技术将页面发送到页面所在站点的服务器，页面发布成功就可以通过浏览器来访问了。</p>
+
+<p>2、本项目要实现什么样的功能？</p>
+
+<p>1）页面管理</p>
+
+<p>管理员在后台添加、修改、删除页面信息</p>
+
+<p>2）页面预览</p>
+
+<p>管理员通过页面预览功能预览页面发布后的效果。</p>
+
+<p>3）页面发布</p>
+
+<p>管理员通过页面发布功能将页面发布到远程门户服务器。</p>
+
+<p>页面发布成功，用户即可在浏览器浏览到最新发布的页面，整个页面添加、发布的过程由于软件自动执行，无需人</p>
+
+<p>工登录服务器操作。</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=cms-%e5%90%8e%e7%ab%af-cms%e4%bb%8b%e7%bb%8d%e5%8f%8anginx%e5%90%8e%e7%ab%af%e9%97%a8%e6%88%b7%e9%9d%99%e6%80%81%e6%90%ad%e5%bb%ba&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E5%2590%258E%25E7%25AB%25AF-cms%25E4%25BB%258B%25E7%25BB%258D%25E5%258F%258Anginx%25E5%2590%258E%25E7%25AB%25AF%25E9%2597%25A8%25E6%2588%25B7%25E9%259D%2599%25E6%2580%2581%25E7%25BD%2591%25E7%25AB%2599%25E6%2590%25AD%25E5%25BB%25BA%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E5%2590%258E%25E7%25AB%25AF-cms%25E4%25BB%258B%25E7%25BB%258D%25E5%258F%258Anginx%25E5%2590%258E%25E7%25AB%25AF%25E9%2597%25A8%25E6%2588%25B7%25E9%259D%2599%25E6%2580%2581%25E7%25BD%2591%25E7%25AB%2599%25E6%2590%25AD%25E5%25BB%25BA%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E5%2590%258E%25E7%25AB%25AF-cms%25E4%25BB%258B%25E7%25BB%258D%25E5%258F%258Anginx%25E5%2590%258E%25E7%25AB%25AF%25E9%2597%25A8%25E6%2588%25B7%25E9%259D%2599%25E6%2580%2581%25E7%25BD%2591%25E7%25AB%2599%25E6%2590%25AD%25E5%25BB%25BA%2f&amp;description=cms-%e5%90%8e%e7%ab%af-cms%e4%bb%8b%e7%bb%8d%e5%8f%8anginx%e5%90%8e%e7%ab%af%e9%97%a8%e6%88%b7%e9%9d%99%e6%80%81%e6%90%ad%e5%bb%ba"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E5%2590%258E%25E7%25AB%25AF-cms%25E4%25BB%258B%25E7%25BB%258D%25E5%258F%258Anginx%25E5%2590%258E%25E7%25AB%25AF%25E9%2597%25A8%25E6%2588%25B7%25E9%259D%2599%25E6%2580%2581%25E7%25BD%2591%25E7%25AB%2599%25E6%2590%25AD%25E5%25BB%25BA%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">
+          <section class="post">
+              <h2>cms-前端cms管理项目搭建</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">
+          <section class="post">
+              <h2>cms-开发准备</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
