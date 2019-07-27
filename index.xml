@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>I am thinking ...</title>
+    <link>https://hdorr.github.io/</link>
+    <description>Recent content on I am thinking ...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>All rights reserved - 2018</copyright>
+    <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://hdorr.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test</title>
+      <link>https://hdorr.github.io/2019/07/27/test/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/2019/07/27/test/</guid>
+      <description>哈哈哈哈</description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>https://hdorr.github.io/2019/07/27/test/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/2019/07/27/test/</guid>
+      <description>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</description>
+    </item>
+    
+  </channel>
+</rss>
