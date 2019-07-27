@@ -217,6 +217,99 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">cms-前端cms管理项目搭建</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>创建目录结构 base：存放基础组件
+base/api：基础api接口
+base/component：基础组件，被各各模块都使用的组件
+base/router：总的路由配置，加载各模块的路由配置文件
+common：工具类 mock：存放前端单元测试方法
+module：存放各业务模块的页面和api方法。 下级目录以模块名命名，
+下边以cms举例：  ​ cms/api：cms模块的api接口
+​ cms/component：cms模块的组件
+ cms/page： cms模块的页面 cms/router：cms模块的路由配置  statics：存放第三方组件的静态资源
+vuex：存放vuex文件，本项目不使用
+static：与src的平级目录，此目录存放静态资源
+启动** 导包之后
+启动文件：
+1、进入 webpacktest02目录，执行npm run dev
+2、使用webstorm，右键package.json文件，选择“Show npm Scripts”
+打开窗口: http://{hdorr.github.io/}/image.png <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms01-前端-page_List页面编写与整合后端运行</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>在module中创建CMS页面原型 定义cms目录,创建相应接口
+在page目录中创建page_list页面
+在router页面中创建index.js路由组件
+import Home from '@/module/home/page/home.vue'; import page_list from &quot;../page/page_list&quot;; export default [{ path: '/', component: Home, name: 'CMS', hidden: false, children:[ {path: '/cms/page/list',name:'页面列表',component: page_list } ] } ]  仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
+import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from '@/module/home/router' import CmsRouter from '@/module/cms/router' // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">博客书写说明</a></h2>
     </header>
     <section class="post-excerpt">

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on I am thinking ...</title>
-    <link>https://hdorr.github.io/post/</link>
-    <description>Recent content in Posts on I am thinking ...</description>
+    <title>xm on I am thinking ...</title>
+    <link>https://hdorr.github.io/tags/xm/</link>
+    <description>Recent content in xm on I am thinking ...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>All rights reserved - 2018</copyright>
     <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
     
-	<atom:link href="https://hdorr.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://hdorr.github.io/tags/xm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -47,21 +47,6 @@ static：与src的平级目录，此目录存放静态资源
 在router页面中创建index.js路由组件
 import Home from &#39;@/module/home/page/home.vue&#39;; import page_list from &amp;quot;../page/page_list&amp;quot;; export default [{ path: &#39;/&#39;, component: Home, name: &#39;CMS&#39;, hidden: false, children:[ {path: &#39;/cms/page/list&#39;,name:&#39;页面列表&#39;,component: page_list } ] } ]  仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
 import Vue from &#39;vue&#39;; import Router from &#39;vue-router&#39;; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&amp;gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from &#39;@/module/home/router&#39; import CmsRouter from &#39;@/module/cms/router&#39; // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list.</description>
-    </item>
-    
-    <item>
-      <title>博客书写说明</title>
-      <link>https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
-      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
-      
-      <guid>https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
-      <description>配置文件
-[[menu.main]] name = &amp;ldquo;说明&amp;rdquo; weight = -1 identifier = &amp;ldquo;sm&amp;rdquo; url = &amp;ldquo;/tags/sm&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;主页&amp;rdquo; weight = -2 identifier = &amp;ldquo;blog&amp;rdquo; url = &amp;ldquo;/&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;前端&amp;rdquo; weight = -3 identifier = &amp;ldquo;qd&amp;rdquo; url = &amp;ldquo;/tags/qd&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;vue&amp;rdquo; weight = -4 identifier = &amp;ldquo;vue&amp;rdquo; url = &amp;ldquo;/tags/vue&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;Java基础&amp;rdquo; weight = -5 identifier = &amp;ldquo;jc&amp;rdquo; url = &amp;ldquo;/tags/jc&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;后端&amp;rdquo; weight = -6 identifier = &amp;ldquo;hd&amp;rdquo; url = &amp;ldquo;/tags/hd&amp;rdquo;</description>
     </item>
     
   </channel>

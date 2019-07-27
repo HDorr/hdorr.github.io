@@ -13,6 +13,43 @@
     
     
     <item>
+      <title>cms-前端cms管理项目搭建</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/</guid>
+      <description>创建目录结构 base：存放基础组件
+base/api：基础api接口
+base/component：基础组件，被各各模块都使用的组件
+base/router：总的路由配置，加载各模块的路由配置文件
+common：工具类 mock：存放前端单元测试方法
+module：存放各业务模块的页面和api方法。 下级目录以模块名命名，
+下边以cms举例：  ​ cms/api：cms模块的api接口
+​ cms/component：cms模块的组件
+ cms/page： cms模块的页面 cms/router：cms模块的路由配置  statics：存放第三方组件的静态资源
+vuex：存放vuex文件，本项目不使用
+static：与src的平级目录，此目录存放静态资源
+启动** 导包之后
+启动文件：
+1、进入 webpacktest02目录，执行npm run dev
+2、使用webstorm，右键package.json文件，选择“Show npm Scripts”
+打开窗口: http://{hdorr.github.io/}/image.png</description>
+    </item>
+    
+    <item>
+      <title>cms01-前端-page_List页面编写与整合后端运行</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <description>在module中创建CMS页面原型 定义cms目录,创建相应接口
+在page目录中创建page_list页面
+在router页面中创建index.js路由组件
+import Home from &#39;@/module/home/page/home.vue&#39;; import page_list from &amp;quot;../page/page_list&amp;quot;; export default [{ path: &#39;/&#39;, component: Home, name: &#39;CMS&#39;, hidden: false, children:[ {path: &#39;/cms/page/list&#39;,name:&#39;页面列表&#39;,component: page_list } ] } ]  仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
+import Vue from &#39;vue&#39;; import Router from &#39;vue-router&#39;; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&amp;gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from &#39;@/module/home/router&#39; import CmsRouter from &#39;@/module/cms/router&#39; // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list.</description>
+    </item>
+    
+    <item>
       <title>博客书写说明</title>
       <link>https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
