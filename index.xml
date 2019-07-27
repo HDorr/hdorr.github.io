@@ -13,21 +13,18 @@
     
     
     <item>
-      <title>Test</title>
-      <link>https://hdorr.github.io/2019/07/27/test/</link>
+      <title>博客书写说明</title>
+      <link>https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/2019/07/27/test/</guid>
-      <description>哈哈哈哈</description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://hdorr.github.io/2019/07/27/test/</link>
-      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
-      
-      <guid>https://hdorr.github.io/2019/07/27/test/</guid>
-      <description>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</description>
+      <guid>https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <description>配置文件
+[[menu.main]] name = &amp;ldquo;说明&amp;rdquo; weight = -1 identifier = &amp;ldquo;sm&amp;rdquo; url = &amp;ldquo;/tags/sm&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;主页&amp;rdquo; weight = -2 identifier = &amp;ldquo;blog&amp;rdquo; url = &amp;ldquo;/&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;前端&amp;rdquo; weight = -3 identifier = &amp;ldquo;qd&amp;rdquo; url = &amp;ldquo;/tags/qd&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;vue&amp;rdquo; weight = -4 identifier = &amp;ldquo;vue&amp;rdquo; url = &amp;ldquo;/tags/vue&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;Java基础&amp;rdquo; weight = -5 identifier = &amp;ldquo;jc&amp;rdquo; url = &amp;ldquo;/tags/jc&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;后端&amp;rdquo; weight = -6 identifier = &amp;ldquo;hd&amp;rdquo; url = &amp;ldquo;/tags/hd&amp;rdquo;</description>
     </item>
     
   </channel>
