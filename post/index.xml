@@ -33,7 +33,7 @@ static：与src的平级目录，此目录存放静态资源
 启动文件：
 1、进入 webpacktest02目录，执行npm run dev
 2、使用webstorm，右键package.json文件，选择“Show npm Scripts”
-打开窗口: http://{hdorr.github.io/}/image.png</description>
+打开窗口:</description>
     </item>
     
     <item>
