@@ -255,6 +255,8 @@
     
         
     
+        
+    
 
     
         
@@ -648,11 +650,70 @@ import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定�
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">cms01-后端-网站页面查询接口</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">cms01-后端-网站管理页面查询接口</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p>aaaa <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+            <p>页面查询接口定义 定义模型 需求分析
+在梳理完用户需求后就要去定义前后端的接口，接口定义后前端和后端就可以依据接口去开发功能了。
+本次定义页面查询接口，本接口供前端请求查询页面列表，支持分页及自定义条件查询方式。
+具体需求如下：
+1、分页查询CmsPage 集合下的数据
+2、根据站点Id、模板Id、页面别名查询页面信息
+3、接口基于Http Get请求，响应Json
+模型类介绍
+接口的定义离不开数据模型，根据前边对需求的分析，整个页面管理模块的数据模型如下：
+CmsSite：站点模型
+CmsTemplate：页面模板
+CmsPage：页面信息
+@Data @ToString @Document(collection = &quot;cms_page&quot;) public class CmsPage { /** * 页面名称、别名、访问地址、类型（静态/动态）、页面模版、状态 */ //站点ID private String siteId; //页面ID @Id private String pageId; //页面名称 private String pageName; //别名 private String pageAliase; //访问地址 private String pageWebPath; //参数 private String pageParameter; //物理路径 private String pagePhysicalPath; //类型（静态/动态） private String pageType; //页面模版 private String pageTemplate; //页面静态化内容 private String pageHtml; //状态 private String pageStatus; //创建时间 private Date pageCreateTime; //模版id private String templateId; //参数列表，暂不用 private List&lt;CmsPageParam&gt; pageParams; //模版文件Id // private String templateFileId; //静态文件Id private String htmlFileId; //数据Url private String dataUrl; }  属性说明： <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">cms01-后端-网站管理页面查询接口</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>页面条件查询接口 需求分析 在页面输入查询条件，查询符合条件的页面信息。
+查询条件如下：
+站点Id：精确匹配
+模板Id：精确匹配
+页面别名：模糊匹配
+服务端 Dao 使用 CmsPageRepository中的findAll(Example&lt;S&gt; var1, Pageable var2)方法实现，无需定义。  下边测试fifindAll方法实现自定义条件查询：
+//页面条件查询测试dao @Test public void testFindAllByExample() { Pageable pageable = PageRequest.of(0, 10); //创建条件匹配器,注意匹配器每返回一个引用,在创建就是一个新对象了 //可以链式调用实现多条件 ExampleMatcher exampleMatcher = ExampleMatcher.matching() //要匹配的字段,和查询方式 //contains:模糊匹配 startWith:开头匹配 等等 .withMatcher(&quot;pageAliase&quot;, ExampleMatcher.GenericPropertyMatchers.contains()); // .withMatcher(&quot;pageAliase&quot;, ExampleMatcher.GenericPropertyMatchers.startsWith()); CmsPage cmsPage = new CmsPage(); cmsPage.setPageAliase(&quot;分类导航&quot;); Example&lt;CmsPage&gt; example = Example.of(cmsPage,exampleMatcher); Page&lt;CmsPage&gt; all = cmsPageRepository.findAll(example, pageable); System.out.println(all); }  Service 由于前面编写了普通查询,也将封装的条件查询类QueryPageRequest也传入参数中
+​ 因此,对之前的进行改造:
+ 定义条件查询对象Example,在定义条件值类型对象,cmsPage 由于只有页面别名为条件匹配,其他为精确匹配,因此定义ExampleMacher条件匹配器,传入匹配字段,和查询方式 使用lang3工具类公的isNotEmpty方法判断三个查询参数,存在就设置进去 在findAll方法中将example对象传入,测试 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
