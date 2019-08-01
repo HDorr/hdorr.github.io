@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="cms02-前端-page_add开发与调试 "/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="cms02-前端-page_add开发与调试  &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="cms-前端" />
+    
+    
+
+    <title>cms02-前端-page_add开发与调试  &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="创建组件 页面效果 ​ 创建page_add.vue页面 配置路由 在cms模块的路由文件中配置“添加页面”的路由：
+{path:&#39;/cms/page/add&#39;,name:&#39;新增页面&#39;,component: page_add,hidden:true}  注意：由于“添加页面”不需要显示为一个菜单，这里hidden设置为" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "cms02-前端-page_add开发与调试 ",
+    "name": "cms02-前端-page_add开发与调试 ",
+    "wordCount":  440 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, cms-前端",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">cms02-前端-page_add开发与调试 </h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/cms-%E5%89%8D%E7%AB%AF/">#cms-前端</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="创建组件">创建组件</h1>
+
+<h2 id="页面效果">页面效果</h2>
+
+<p>​   <img src="G:java项目及架构笔记项目笔记微服务教育网assert1564578338775.png" alt="1564578338775" /></p>
+
+<h2 id="创建page-add-vue页面">创建page_add.vue页面</h2>
+
+<h2 id="配置路由">配置路由</h2>
+
+<p>在cms模块的路由文件中配置“添加页面”的路由：</p>
+
+<pre><code class="language-java">{path:'/cms/page/add',name:'新增页面',component: page_add,hidden:true}
+</code></pre>
+
+<p>注意：由于“添加页面”不需要显示为一个菜单，这里hidden设置为true隐藏菜单。
+测试，在浏览器地址栏输入<a href="http://localhost:11000/#/cms/page/add">http://localhost:11000/#/cms/page/add</a></p>
+
+<h2 id="在页面列表添加-添加页面-的按钮">在页面列表添加“添加页面”的按钮</h2>
+
+<p>实际情况是用户进入页面查询列表，点击“新增页面”按钮进入新增页面窗口。
+在查询按钮的旁边添加：</p>
+
+<pre><code class="language-java">&lt;router-link :to=&quot;{path:'/cms/page/add'}&quot; &gt;
+        &lt;el-button type=&quot;primary&quot;  size=&quot;small&quot;&gt;新增页面&lt;/el-button&gt;
+      &lt;/router-link&gt;
+</code></pre>
+
+<p>:to为点击后跳转到相应路由</p>
+
+<p>说明：router-link是vue提供的路由功能，用于在页面生成路由链接，最终在html渲染后就是标签。</p>
+
+<h2 id="page-add页面">page_add页面</h2>
+
+<pre><code class="language-java">&lt;!--    pageForm就是page绑定的数据对象的名称--&gt;
+    &lt;el-form :model=&quot;pageForm&quot;  label-width=&quot;80px&quot; &gt;
+      &lt;el-form-item label=&quot;所属站点&quot; prop=&quot;siteId&quot;&gt;
+        &lt;el-select v-model=&quot;pageForm.siteId&quot; placeholder=&quot;请选择站点&quot;&gt;
+          &lt;el-option
+            v-for=&quot;item in siteList&quot;
+            :key=&quot;item.siteId&quot;
+            :label=&quot;item.siteName&quot;
+            :value=&quot;item.siteId&quot;&gt;
+          &lt;/el-option&gt;
+        &lt;/el-select&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;选择模板&quot; prop=&quot;templateId&quot;&gt;
+        &lt;el-select v-model=&quot;pageForm.templateId&quot; placeholder=&quot;请选择模板&quot;&gt;
+          &lt;el-option
+            v-for=&quot;item in templateList&quot;
+            :key=&quot;item.templateId&quot;
+            :label=&quot;item.templateName&quot;
+            :value=&quot;item.templateId&quot;&gt;
+          &lt;/el-option&gt;
+        &lt;/el-select&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;页面名称&quot; prop=&quot;pageName&quot;&gt;
+        &lt;el-input v-model=&quot;pageForm.pageName&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;别名&quot; prop=&quot;pageAliase&quot;&gt;
+      &lt;el-input v-model=&quot;pageForm.pageAliase&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;访问路径&quot; prop=&quot;pageWebPath&quot;&gt;
+      &lt;el-input v-model=&quot;pageForm.pageWebPath&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;物理路径&quot; prop=&quot;pagePhysicalPath&quot;&gt;
+      &lt;el-input v-model=&quot;pageForm.pagePhysicalPath&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;类型&quot;&gt;
+      &lt;el-radio-group v-model=&quot;pageForm.pageType&quot;&gt;
+      &lt;el-radio class=&quot;radio&quot; label=&quot;0&quot;&gt;静态&lt;/el-radio&gt;
+      &lt;el-radio class=&quot;radio&quot; label=&quot;1&quot;&gt;动态&lt;/el-radio&gt;
+      &lt;/el-radio-group&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;创建时间&quot;&gt;
+      &lt;el-date-picker type=&quot;datetime&quot; placeholder=&quot;创建时间&quot; v-model=&quot;pageForm.pageCreateTime&quot;&gt;
+      &lt;/el-date-picker&gt;
+      &lt;/el-form-item&gt;
+    &lt;/el-form&gt;
+    &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;
+      &lt;el-button type=&quot;primary&quot; @click=&quot;addSubmit&quot;&gt;提交&lt;/el-button&gt;
+&lt;!--      作用是不想添加的话,返回到之间的列表页,而不是默认返回到page列表的第一页--&gt;
+&lt;!--      总的说,就是返回之后列表页面的信息还在,选择过的东西,所处的页数等等--&gt;
+      &lt;el-button type=&quot;primary&quot; @click=&quot;go_back&quot;&gt;返回&lt;/el-button&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<h3 id="数据对象">数据对象</h3>
+
+<pre><code class="language-java">data() {
+      return {
+        siteTotal: 0,
+        templateTotal:0,
+        pageForm: {
+          siteId: '',
+          templateId: '',
+          pageName: '',
+          pageAliase: '',
+          pageWebPath: '',
+          pageParameter: '',
+          pagePhysicalPath: '',
+          pageType: '',
+          pageCreateTime: new Date()
+        },
+        siteList: [],
+        templateList: {
+          templateId: '',
+          templateName: ''
+        },
+        params:{
+          page: 1,
+          size: 10
+        }
+        }
+    },
+</code></pre>
+
+<h3 id="methods方法">methods方法</h3>
+
+<pre><code class="language-java"> methods:{
+      addSubmit(){
+        alert(&quot;提交&quot;)
+      },
+      //查询站点列表
+      querySite:function () {
+        //调用Api接口
+        cmsApi.page_site(this.params.page, this.params.size).then((res)=&gt;{
+          //将结果数据给数据模型对象
+          this.siteTotal=res.queryResult.total;
+          this.siteList=res.queryResult.list;
+        });
+      },
+      //查询模板列表
+      queryTemplate:function () {
+        //调用Api接口
+        cmsApi.page_template(this.params.page, this.params.size).then((res)=&gt;{
+          //将结果数据给数据模型对象
+          this.templateTotal=res.queryResult.total;
+          this.templateList=res.queryResult.list;
+        });
+      },
+      go_back:function () {
+        this.$router.push({
+          path:'/cms/page/list/',
+          query:{
+            page:this.$route.query.page,
+            siteId:this.$route.query.siteId,
+          }
+        })
+      }
+    },
+</code></pre>
+
+<p>querySite:查询站点列表          queryTemplate:查询模板列表</p>
+
+<p>go_back:返回page列表页面</p>
+
+<h3 id="钩子函数内容">钩子函数内容</h3>
+
+<pre><code class="language-java">  created() {
+//站点列表
+      this.querySite();
+//模板列表
+      this.queryTemplate();
+    }
+</code></pre>
+
+<p>在未渲染时就调用上述方法.</p>
+
+<h2 id="完善页面">完善页面</h2>
+
+<pre><code class="language-java">&lt;router-link :to=&quot;{path:'/cms/page/add',query:{
+        page:this.params.page,
+        siteId:this.params.siteId,
+        }}&quot; &gt;
+        &lt;el-button type=&quot;primary&quot;  size=&quot;small&quot;&gt;新增页面&lt;/el-button&gt;
+      &lt;/router-link&gt;
+</code></pre>
+
+<p>说明：query表示在路由url上带上参数</p>
+
+<pre><code class="language-java">go_back:function () {
+        this.$router.push({
+          path:'/cms/page/list/',
+          query:{
+            page:this.$route.query.page,
+            siteId:this.$route.query.siteId,
+          }
+        })
+      }
+</code></pre>
+
+<p>返回之前路由</p>
+
+<p><strong>注意</strong>:  上述两个代码段,router-link在page_list页面,作用为跳转到相应路由界面,query表示在url上带上相应的参数,</p>
+
+<p>page_add中的go_back方法中.也加入query属性,表示获取到路由上的参数并且再返回时赋值到page_list页面</p>
+
+<p><strong>说明：</strong>this.$route.query 表示取出路由上的参数列表，有两个取路由参数的方法：</p>
+
+<pre><code class="language-txt">a、通过在路由上添加key/value串使用this.$route.query来取参数，例如：/router1?id=123 ,/router1?id=456可以通过this.$route.query.id获取参数id的值。
+b、通过将参数作为路由一部分进行传参数使用this.$route.params来获取，例如：定义的路由为/router1/:id ，请求/router1/123时可以通过this.$route.params.id来获取，此种情况用this.$route.query.id是拿不到的。
+</code></pre>
+
+<h3 id="查询列表支持回显">查询列表支持回显</h3>
+
+<pre><code class="language-java">created() {
+//从路由上获取参数
+this.params.page = Number.parseInt(this.$route.query.page||1);
+this.params.siteId = this.$route.query.siteId||'';
+.....
+</code></pre>
+
+<p><strong>小技巧:</strong></p>
+
+<p>||表示取第一个为真的值,前面为真就赋值,否则,去后面的1</p>
+
+<h2 id="表单校验">表单校验</h2>
+
+<p>1、配置校验规则：</p>
+
+<p>Element-UI的Form组件提供表单校验的方法：</p>
+
+<p>在form属性上配置rules（表单验证规则）</p>
+
+<pre><code class="language-java"> &lt;el-form :model=&quot;pageForm&quot; :rules=&quot;pageFormRules&quot; ref=&quot;pageForm&quot; label-width=&quot;80px&quot; &gt;
+</code></pre>
+
+<p>在数据模型中配置校验规则：</p>
+
+<pre><code class="language-java">pageFormRules: {
+siteId:[
+{required: true, message: '请选择站点', trigger: 'blur'}
+],
+templateId:[
+{required: true, message: '请选择模版', trigger: 'blur'}
+],
+pageName: [
+{required: true, message: '请输入页面名称', trigger: 'blur'}
+],
+pageWebPath: [
+{required: true, message: '请输入访问路径', trigger: 'blur'}
+],
+pagePhysicalPath: [
+{required: true, message: '请输入物理路径', trigger: 'blur'}
+]
+}
+</code></pre>
+
+<p>2、点击提交按钮触发校验
+1)在form表单上添加 ref属性（ref=&ldquo;pageForm&rdquo;）在校验时引用此表单对象</p>
+
+<pre><code class="language-java">&lt;el-form :model=&quot;pageForm&quot; :rules=&quot;pageFormRules&quot; label-width=&quot;80px&quot; ref=&quot;pageForm&quot;&gt;
+</code></pre>
+
+<p>2）执行校验</p>
+
+<pre><code class="language-java">this.$refs.pageForm.validate((valid) =&gt; {
+    if (valid) {
+    	alert('提交');
+    } else {
+        alert('校验失败');
+        return false;
+    }
+})
+</code></pre>
+
+<h2 id="api调用后端">Api调用后端</h2>
+
+<p>1、在cms.js中定义page_add方法。</p>
+
+<pre><code class="language-java">/*页面添加*/
+export const page_add = params =&gt; {
+return http.requestPost(apiUrl+'/cms/page/add',params)
+}
+</code></pre>
+
+<p>2、添加事件</p>
+
+<p>本功能使用到两个UI组件：</p>
+
+<p>1、使用element-ui的message-box组件弹出确认提交窗口</p>
+
+<pre><code class="language-java">this.$confirm('确认提交吗？', '提示', {}).then(() =&gt; {｝）
+</code></pre>
+
+<p>2、使用 message组件提示操作结果</p>
+
+<pre><code class="language-java">this.$message({
+message: '提交成功',
+type: 'success'
+})
+</code></pre>
+
+<p>完整的代码如下：</p>
+
+<pre><code class="language-java">addSubmit(formName){
+        this.$refs['pageForm'].validate((valid) =&gt; {
+          if (valid) {
+            //加一个确认提示,参见element-ui
+            this.$confirm('您确认提交吗?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() =&gt; {
+              //调用服务端请求新增页面接口
+              cmsApi.page_add(this.pageForm).then(res=&gt;{
+                //解析响应内容
+                if (res.success){
+                  this.$message({
+                    message: '提交成功',
+                    type: 'success'
+                  })
+                  //清空表单
+                  this.$refs['pageForm'].resetFields();
+                }else {
+                  /*this.$message({
+                    message: '提交失败',
+                    type: 'error'
+                  })*/
+                  //等效下面
+                  this.$message.error(&quot;提交失败&quot;);
+                }
+              })
+            })
+          } else {
+            console.log('校验失败');
+            return false;
+          }
+        });
+      },
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=cms02-%e5%89%8d%e7%ab%af-page_add%e5%bc%80%e5%8f%91%e4%b8%8e%e8%b0%83%e8%af%95%20&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2589%258D%25E7%25AB%25AF%2fcms02-%25E5%2589%258D%25E7%25AB%25AF-page_add%25E5%25BC%2580%25E5%258F%2591%25E4%25B8%258E%25E8%25B0%2583%25E8%25AF%2595-%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2589%258D%25E7%25AB%25AF%2fcms02-%25E5%2589%258D%25E7%25AB%25AF-page_add%25E5%25BC%2580%25E5%258F%2591%25E4%25B8%258E%25E8%25B0%2583%25E8%25AF%2595-%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2589%258D%25E7%25AB%25AF%2fcms02-%25E5%2589%258D%25E7%25AB%25AF-page_add%25E5%25BC%2580%25E5%258F%2591%25E4%25B8%258E%25E8%25B0%2583%25E8%25AF%2595-%2f&amp;description=cms02-%e5%89%8d%e7%ab%af-page_add%e5%bc%80%e5%8f%91%e4%b8%8e%e8%b0%83%e8%af%95%20"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2589%258D%25E7%25AB%25AF%2fcms02-%25E5%2589%258D%25E7%25AB%25AF-page_add%25E5%25BC%2580%25E5%258F%2591%25E4%25B8%258E%25E8%25B0%2583%25E8%25AF%2595-%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%89%8D%E7%AB%AF\/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%89%8D%E7%AB%AF\/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">
+          <section class="post">
+              <h2>cms02--后端-网站管理页面条件查询</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>cms03--后端-网站管理新增页面接口</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

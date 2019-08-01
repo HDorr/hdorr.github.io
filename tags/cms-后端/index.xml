@@ -50,5 +50,43 @@ CmsPage：页面信息
  定义条件查询对象Example,在定义条件值类型对象,cmsPage 由于只有页面别名为条件匹配,其他为精确匹配,因此定义ExampleMacher条件匹配器,传入匹配字段,和查询方式 使用lang3工具类公的isNotEmpty方法判断三个查询参数,存在就设置进去 在findAll方法中将example对象传入,测试</description>
     </item>
     
+    <item>
+      <title>cms03--后端-网站管理新增页面接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/</guid>
+      <description>新增页面接口 定义响应模型 /** * 继承通用的responseResult响应类, * 在构造方法中添加模型类参数 */ @Data public class CmsPageResult extends ResponseResult { CmsPage cmsPage; public CmsPageResult(ResultCode resultCode,CmsPage cmsPage) { super(resultCode); this.cmsPage = cmsPage; } }  加上CmsPage参数是因为前端可能或使用到返回的数据对象
+定义Api接口 /** * 新增页面 */ @ApiOperation(&amp;quot;新增页面接口&amp;quot;) public CmsPageResult addPage(CmsPage cmsPage);  Service /** * 页面新增 * @param cmsPage * @return */ public CmsPageResult addPage(CmsPage cmsPage) { //校验页面名称,webPath,页面名称唯一性 //根据上述去页面查询集合,查到就说明已存在,查询不到就可以添加 CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); if (cmsPage1 == null) { //调用dao,新增页面 /** * 这里因为cms_page页面pageId为主键,所以避免人为设置, * 不管有没有都将其置为空,让mongoDB的自增长自动生成主键 */ cmsPage.</description>
+    </item>
+    
+    <item>
+      <title>cms04--后端-网站管理修改页面接口 </title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/</guid>
+      <description>修改页面 修改页面用户操作流程：
+1、用户进入修改页面，在页面上显示了修改页面的信息
+2、用户修改页面的内容，点击“提交”，提示“修改成功”或“修改失败”
+修改页面接口定义 /** * 根据页面id查询页面信息 */ @ApiOperation(&amp;quot;根据id查询页面接口&amp;quot;) public CmsPage findPageById(String pageId); /** * 修改页面 */ @ApiOperation(&amp;quot;修改页面接口&amp;quot;) public CmsPageResult editPage(String pageId,CmsPage cmsPage);  说明：提交数据使用post、put都可以，只是根据http方法的规范，put方法是对服务器指定资源进行修改，所以这里使用put方法对页面修改进行修改。
+修改页面服务端开发 Dao 使用 Spring Data提供的fifindById方法完成根据主键查询 。
+使用 Spring Data提供的save方法完成数据保存 。
+Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage findPageById(String pageId) { Optional&amp;lt;CmsPage&amp;gt; optional = cmsPageRepository.findById(pageId); if (optional.isPresent()) { CmsPage cmsPage = optional.get(); return cmsPage; } return null; } /** * 修改页面 * @param pageId * @param cmsPage * @return */ public CmsPageResult editPage(String pageId, CmsPage cmsPage) { // 调用方法查询是否存在 CmsPage pageById = this.</description>
+    </item>
+    
+    <item>
+      <title>cms05--后端-网站管理删除页面接口  </title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/</guid>
+      <description> 删除页面 用户操作流程：
+1、用户进入用户列表，点击“删除”
+2、执行删除操作，提示“删除成功”或“删除失败”
+删除页面接口定义 @ApiOperation(&amp;quot;通过ID删除页面&amp;quot;) public ResponseResult delete(String id);  删除页面服务端开发 Dao 使用 Spring Data提供的deleteById方法完成删除操作 。
+Service //删除页面 public ResponseResult delete(String id){ CmsPage one = this.getById(id); if(one!=null){ //删除页面 cmsPageRepository.deleteById(id); return new ResponseResult(CommonCode.SUCCESS); } return new ResponseResult(CommonCode.FAIL); }  Controller @DeleteMapping(&amp;quot;/del/{id}&amp;quot;) //使用http的delete方法完成岗位操作 public ResponseResult delete(@PathVariable(&amp;quot;id&amp;quot;) String id) { return pageService.delete(id); }  </description>
+    </item>
+    
   </channel>
 </rss>
