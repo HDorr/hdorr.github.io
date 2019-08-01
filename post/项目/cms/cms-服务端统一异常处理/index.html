@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="cms-服务端统一异常处理"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="cms-服务端统一异常处理 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="异常处理" />
+    
+    
+
+    <title>cms-服务端统一异常处理 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="异常处理 异常处理的问题分析 从添加页面的service方法中找问题：
+//添加页面 public CmsPageResult add(CmsPage cmsPage){ //校验页面是否存在，根据页面名称、站点Id、页面webpath查询 CmsPage cmsPage1 = cmsPageRepository.fi" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "cms-服务端统一异常处理",
+    "name": "cms-服务端统一异常处理",
+    "wordCount":  614 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, 异常处理",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">cms-服务端统一异常处理</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">#异常处理</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="异常处理"><strong>异常处理</strong></h1>
+
+<h2 id="异常处理的问题分析"><strong>异常处理的问题分析</strong></h2>
+
+<p>从添加页面的service方法中找问题：</p>
+
+<pre><code class="language-java">//添加页面
+public CmsPageResult add(CmsPage cmsPage){
+//校验页面是否存在，根据页面名称、站点Id、页面webpath查询
+CmsPage cmsPage1 =
+    cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(),
+cmsPage.getSiteId(), cmsPage.getPageWebPath());
+if(cmsPage1==null){
+cmsPage.setPageId(null);//添加页面主键由spring data 自动生成
+cmsPageRepository.save(cmsPage);
+//返回结果
+CmsPageResult cmsPageResult = new CmsPageResult(CommonCode.SUCCESS,cmsPage);
+return cmsPageResult;
+}
+return new CmsPageResult(CommonCode.FAIL,null);
+}
+</code></pre>
+
+<p>问题：</p>
+
+<p>1、上边的代码只要操作不成功仅向用户返回“错误代码：11111，失败信息：操作失败”，无法区别具体的错误信</p>
+
+<p>息。</p>
+
+<p>2、service方法在执行过程出现异常在哪捕获？在service中需要都加try/catch，如果在controller也需要添加</p>
+
+<p>try/catch，代码冗余严重且不易维护。</p>
+
+<p>解决方案：</p>
+
+<p>1、在Service方法中的编码顺序是先校验判断，有问题则抛出具体的异常信息，最后执行具体的业务操作，返回成</p>
+
+<p>功信息。</p>
+
+<p>2、在统一异常处理类中去捕获异常，无需controller捕获异常，向用户返回统一规范的响应信息。</p>
+
+<p>代码模板如下：</p>
+
+<pre><code class="language-java">//添加页面
+public CmsPageResult add(CmsPage cmsPage){
+    //校验cmsPage是否为空
+    if(cmsPage == null){
+        //抛出异常，非法请求
+        //...
+    }
+    //根据页面名称查询（页面名称已在mongodb创建了唯一索引）
+    CmsPage cmsPage1 =
+    cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(),
+    cmsPage.getSiteId(), cmsPage.getPageWebPath());
+    //校验页面是否存在，已存在则抛出异常
+    if(cmsPage1 !=null){
+        //抛出异常，已存在相同的页面名称
+        //...
+    }
+    cmsPage.setPageId(null);//添加页面主键由spring data 自动生成
+    CmsPage save = cmsPageRepository.save(cmsPage);
+    //返回结果
+    CmsPageResult cmsPageResult = new CmsPageResult(CommonCode.SUCCESS,save);
+    return cmsPageResult;
+}	
+</code></pre>
+
+<h2 id="异常处理流程"><strong>异常处理流程</strong></h2>
+
+<p>系统对异常的处理使用统一的异常处理流程：</p>
+
+<p>1、自定义异常类型。</p>
+
+<p>2、自定义错误代码及错误信息。</p>
+
+<p>3、对于可预知的异常由程序员在代码中主动抛出，由SpringMVC统一捕获。</p>
+
+<p>可预知异常是程序员在代码中手动抛出本系统定义的特定异常类型，由于是程序员抛出的异常，通常异常信息比较</p>
+
+<p>齐全，程序员在抛出时会指定错误代码及错误信息，获取异常信息也比较方便。</p>
+
+<p>4、对于不可预知的异常（运行时异常）由SpringMVC统一捕获Exception类型的异常。</p>
+
+<p>不可预知异常通常是由于系统出现bug、或一些不要抗拒的错误（比如网络中断、服务器宕机等），异常类型为</p>
+
+<p>RuntimeException类型（运行时异常）。</p>
+
+<p>5、可预知的异常及不可预知的运行时异常最终会采用统一的信息格式（错误代码+错误信息）来表示，最终也会随</p>
+
+<p>请求响应给客户端。</p>
+
+<p>异常抛出及处理流程：</p>
+
+<p><img src="//images//1564669815626.png" alt="1564669815626" /></p>
+
+<p>1、在controller、service、dao中程序员抛出自定义异常；springMVC框架抛出框架异常类型</p>
+
+<p>2、统一由异常捕获类捕获异常，并进行处理</p>
+
+<p>3、捕获到自定义异常则直接取出错误代码及错误信息，响应给用户。</p>
+
+<p>4、捕获到非自定义异常类型首先从Map中找该异常类型是否对应具体的错误代码，如果有则取出错误代码和错误信息并响应给用户，如果从Map中找不到异常类型所对应的错误代码则统一为99999错误代码并响应给用户。</p>
+
+<p>5、将错误代码及错误信息以Json格式响应给用户。</p>
+
+<h2 id="可预知异常处理"><strong>可预知异常处理</strong></h2>
+
+<h3 id="自定义异常类"><strong>自定义异常类</strong></h3>
+
+<p>在common工程定义异常类型。</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.exception;
+import com.xuecheng.framework.model.response.ResultCode;
+/**
+ * 自定义异常类
+ * @author Hr|黄锐
+ * @create 2019/8/1 20:30
+ */
+//继承运行时异常,好处是对代码没有侵入性,比如: 定义普通异常的话,会报错,必须捕获异常才行
+public class CustomException extends RuntimeException {
+
+    //错误代码
+    private ResultCode resultCode;
+
+    public CustomException(ResultCode resultCode) {
+        this.resultCode = resultCode;
+    }
+    //取出错误代码
+    public ResultCode getResultCode() {
+        return resultCode;
+    }
+}
+
+</code></pre>
+
+<p>此类作用是继承RuntimeException异常,ResultCode作为构造参数传进去,并定义获取错误代码方法</p>
+
+<h3 id="异常抛出类">异常抛出类</h3>
+
+<pre><code class="language-java">package com.xuecheng.framework.exception;
+
+import com.xuecheng.framework.model.response.ResultCode;
+
+/**
+ * 异常抛出类
+ * @author Hr|黄锐
+ * @create 2019/8/1 20:41
+ */
+public class ExceptionCast {
+    public static void cast(ResultCode resultCode) {
+        throw new CustomException(resultCode);
+    }
+}
+
+</code></pre>
+
+<p>此类作用是,将上面自定义异常类进行封装,通过静态方法直接调用传参,不用自己new</p>
+
+<h3 id="异常捕获类"><strong>异常捕获类</strong></h3>
+
+<p>使用 @ControllerAdvice和@ExceptionHandler注解来捕获指定类型的异</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.exception;
+
+import com.xuecheng.framework.model.response.ResponseResult;
+import com.xuecheng.framework.model.response.ResultCode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ * 统一的异常捕获类,用来捕获自定的所有异常,避免代码中重复捕获,代码冗余
+ * @author Hr|黄锐
+ * @create 2019/8/1 20:44
+ */
+
+@ControllerAdvice//控制器增强
+public class ExceptionCatch {
+//把出错的信息进行日志记录
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionCatch.class);
+
+    //捕获CustomException类异常
+    @ExceptionHandler(CustomException.class)//指定捕获哪一类异常
+    @ResponseBody//以后要将返回的ResponseResult对象数据转为json类型返回
+    public ResponseResult customException(CustomException customException) {
+//        记录日志
+        LOGGER.error(&quot;catch exception:{}&quot;, customException.getMessage());
+//        拿到抛出的异常对象,获取异常信息
+        ResultCode resultCode = customException.getResultCode();
+        return new ResponseResult(resultCode);
+    }
+
+}
+
+</code></pre>
+
+<p>此类作用是,对抛出的自定义异常进行捕获,调用获取异常信息方法,获取错误信息,并转为统一的ResponseResult返回给前端,由于前段显示的错误信息数据类型为json,所以使用@ResponseBody注解转为json,并再捕获时进行日志记录.</p>
+
+<h2 id="异常处理测试"><strong>异常处理测试</strong></h2>
+
+<h3 id="定义错误代码"><strong>定义错误代码</strong></h3>
+
+<p>每个业务操作的异常使用异常代码去标识。</p>
+
+<p>在cms工程中,有对应的cms处理的异常代码处理类,cmsCode类</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.domain.cms.response;
+
+import com.xuecheng.framework.model.response.ResultCode;
+import lombok.ToString;
+
+/**
+ * Created by mrt on 2018/3/5.
+ */
+@ToString
+public enum CmsCode implements ResultCode {
+    CMS_ADDPAGE_EXISTSNAME(false,24001,&quot;页面名称已存在！&quot;),
+    CMS_GENERATEHTML_DATAURLISNULL(false,24002,&quot;从页面信息中找不到获取数据的url！&quot;),
+    CMS_GENERATEHTML_DATAISNULL(false,24003,&quot;根据页面的数据url获取不到数据！&quot;),
+    CMS_GENERATEHTML_TEMPLATEISNULL(false,24004,&quot;页面模板为空！&quot;),
+    CMS_GENERATEHTML_HTMLISNULL(false,24005,&quot;生成的静态html为空！&quot;),
+    CMS_GENERATEHTML_SAVEHTMLERROR(false,24005,&quot;保存静态html出错！&quot;),
+    CMS_COURSE_PERVIEWISNULL(false,24007,&quot;预览页面为空！&quot;),
+    CMS_ERROR_PARAMETER(false, 24008, &quot;非法参数异常！&quot;);
+    //操作代码
+    boolean success;
+    //操作代码
+    int code;
+    //提示信息
+    String message;
+    private CmsCode(boolean success, int code, String message){
+        this.success = success;
+        this.code = code;
+        this.message = message;
+    }
+
+    @Override
+    public boolean success() {
+        return success;
+    }
+
+    @Override
+    public int code() {
+        return code;
+    }
+
+    @Override
+    public String message() {
+        return message;
+    }
+}
+
+</code></pre>
+
+<h3 id="异常处理测试-1"><strong>异常处理测试</strong></h3>
+
+<p>1、抛出异常</p>
+
+<p>在controller、service、 dao中都可以抛出异常。</p>
+
+<p>修改PageService的add方法，添加抛出异常的代码</p>
+
+<pre><code class="language-java"> if (cmsPage == null) {
+//            抛出异常,非法参数异常,cmsPage参数为空
+            ExceptionCast.cast(CmsCode.CMS_ERROR_PARAMETER);
+        }
+        //校验页面名称,webPath,页面名称唯一性
+        //根据上述去页面查询集合,查到就说明已存在,查询不到就可以添加
+        CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath());
+        if (cmsPage1 != null) {
+            //页面已经存在
+            //抛出页面已存在异常
+            ExceptionCast.cast(CmsCode.CMS_ADDPAGE_EXISTSNAME);
+        }
+</code></pre>
+
+<p>2、启动工程，扫描到异常捕获的类ExceptionCatch</p>
+
+<p>在springBoot的启动类中添加</p>
+
+<pre><code class="language-java">@ComponentScan(basePackages=&quot;com.xuecheng.framework&quot;)//扫描common工程下的类
+</code></pre>
+
+<h3 id="前端页面提取异常处理">前端页面提取异常处理</h3>
+
+<pre><code class="language-java"> addSubmit(){
+        this.$refs['pageForm'].validate((valid) =&gt; {
+          if (valid) {
+            //加一个确认提示,参见element-ui
+            this.$confirm('您确认提交吗?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() =&gt; {
+              //调用服务端请求新增页面接口
+              cmsApi.page_add(this.pageForm).then(res=&gt;{
+                //解析响应内容
+                if (res.success){
+                  this.$message({
+                    message: '提交成功',
+                    type: 'success'
+                  })
+                  //清空表单
+                  this.$refs['pageForm'].resetFields();
+                }else if (res.message){
+                  this.$message.error(res.message);
+                }else {
+                  /*this.$message({
+                    message: '提交失败',
+                    type: 'error'
+                  })*/
+                  //等效下面
+                  this.$message.error(&quot;提交失败&quot;);
+                }
+              })
+            })
+          } else {
+            console.log('校验失败');
+            return false;
+          }
+        });
+      },
+
+</code></pre>
+
+<p>增加一层else if判断,如果响应的json信息中有message这一项数据,就直接在前端页面提示显示客户端异常信息内容</p>
+
+<h2 id="不可预知异常处理"><strong>不可预知异常处理</strong></h2>
+
+<h3 id="定义异常捕获方法"><strong>定义异常捕获方法</strong></h3>
+
+<p>使用postman测试添加页面，不输入cmsPost信息，提交，报错信息如下：</p>
+
+<pre><code class="language-java">org.springframework.http.converter.HttpMessageNotReadableException
+此异常是springMVC在进行参数转换时报的错误
+
+</code></pre>
+
+<p>具体的响应的信息为:</p>
+
+<pre><code class="language-java">{
+&quot;timestamp&quot;: 1528712906727,
+&quot;status&quot;: 400,
+&quot;error&quot;: &quot;Bad Request&quot;,
+&quot;exception&quot;: &quot;org.springframework.http.converter.HttpMessageNotReadableException&quot;,
+&quot;message&quot;: &quot;Required request body is missing: public
+com.xuecheng.framework.domain.cms.response.CmsPageResult
+com.xuecheng.manage_cms.web.controller.CmsPageController.add(com.xuecheng.framework.domain.cms.C
+msPage)&quot;,
+&quot;path&quot;: &quot;/cms/page/add&quot;
+}
+
+</code></pre>
+
+<p>上边的响应信息在客户端是无法解析的。</p>
+
+<p>在异常捕获类中添加对Exception异常的捕获：</p>
+
+<pre><code class="language-java">@ExceptionHandler(Exception.class)
+@ResponseBody
+public ResponseResult exception(Exception exception){
+//记录日志
+LOGGER.error(&quot;catch exception:{}&quot;,exception.getMessage());
+return null;
+}
+
+</code></pre>
+
+<h3 id="异常捕获方法"><strong>异常捕获方法</strong></h3>
+
+<p>针对上边的问题其解决方案是：</p>
+
+<p>1、我们在map中配置HttpMessageNotReadableException和错误代码。</p>
+
+<p>2、在异常捕获类中对Exception异常进行捕获，并从map中获取异常类型对应的错误代码，如果存在错误代码则返</p>
+
+<p>回此错误，否则统一返回99999错误。</p>
+
+<p>具体的开发实现如下：</p>
+
+<p>1、在通用错误代码类CommCode中配置非法参数异常</p>
+
+<pre><code class="language-java">INVALID_PARAM(false,10003,&quot;非法参数！&quot;),
+
+</code></pre>
+
+<p>2、在异常捕获类中配置 HttpMessageNotReadableException 为非法参数异常。
+异常捕获类代码如下：</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.exception;
+
+import com.google.common.collect.ImmutableMap;
+import com.xuecheng.framework.model.response.CommonCode;
+import com.xuecheng.framework.model.response.ResponseResult;
+import com.xuecheng.framework.model.response.ResultCode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ * 统一的异常捕获类,用来捕获自定的所有异常,避免代码中重复捕获,代码冗余
+ * @author Hr|黄锐
+ * @create 2019/8/1 20:44
+ */
+
+@ControllerAdvice//控制器增强
+public class ExceptionCatch {
+//把出错的信息进行日志记录
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionCatch.class);
+
+    //    定义一个map,配置异常类型对应的错误代码
+    /*ImmutableMap是google的一个工具包map类型,这个map类型的数据一旦放进去是不可修改的
+    也就是只读的,并且它是线程安全的
+    */
+    private static ImmutableMap&lt;Class&lt;? extends Throwable&gt;, ResultCode&gt; EXCEPTIONS;
+    //定义map的builder对象,去构建ImmutableMap
+    protected static ImmutableMap.Builder&lt;Class&lt;? extends Throwable&gt;, ResultCode&gt; builder = ImmutableMap.builder();
+
+
+    //捕获Exception类异常
+    @ExceptionHandler(Exception.class)//指定捕获哪一类异常
+    @ResponseBody//以后要将返回的ResponseResult对象数据转为json类型返回
+    public ResponseResult exception(Exception exception) {
+//        记录日志
+        LOGGER.error(&quot;catch exception:{}&quot;, exception.getMessage());
+        if (EXCEPTIONS == null) {
+            EXCEPTIONS=builder.build();//EXCEPTIONS构建成功,不能更改
+        }
+        //从EXCEPTIONS中找到异常类型对应的错误代码,找得到就响应对应数据,找不到就返回99999
+        ResultCode resultCode = EXCEPTIONS.get(exception.getClass());
+        if (resultCode != null) {
+            return new ResponseResult(resultCode);
+        }else {
+            //返回99999异常
+            return new ResponseResult(CommonCode.SERVER_ERROR);
+        }
+    }
+
+    static {
+//        定义异常类型所对应的错误代码,也就是自己可预知的一些异常
+        builder.put(HttpMessageNotReadableException.class, CommonCode.INVALID_PARAM);
+    }
+}
+
+
+</code></pre>
+
+<h3 id="异常处理测试-2"><strong>异常处理测试</strong></h3>
+
+<p>仍然模拟“问题测试”中的测试步骤，异常结果为“非法参数”。</p>
+
+<p><strong>不可预知异常总结:</strong></p>
+
+<ol>
+<li>​    定义ImmutableMap 的map类型,定义它的builder对象</li>
+<li>再类中添加static静态代码块,罗列出可处理的异常类型,builder.put方法传入异常类型,和错误代码</li>
+<li>在Exception异常处理方法中判断有没有ImmutableMap 这个对象,没有就构建</li>
+<li>从map中取出抛出的异常代码,如果不为空说明在map里,就返回map里的异常信息,否则返回99999</li>
+</ol>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=cms-%e6%9c%8d%e5%8a%a1%e7%ab%af%e7%bb%9f%e4%b8%80%e5%bc%82%e5%b8%b8%e5%a4%84%e7%90%86&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%259C%258D%25E5%258A%25A1%25E7%25AB%25AF%25E7%25BB%259F%25E4%25B8%2580%25E5%25BC%2582%25E5%25B8%25B8%25E5%25A4%2584%25E7%2590%2586%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%259C%258D%25E5%258A%25A1%25E7%25AB%25AF%25E7%25BB%259F%25E4%25B8%2580%25E5%25BC%2582%25E5%25B8%25B8%25E5%25A4%2584%25E7%2590%2586%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%259C%258D%25E5%258A%25A1%25E7%25AB%25AF%25E7%25BB%259F%25E4%25B8%2580%25E5%25BC%2582%25E5%25B8%25B8%25E5%25A4%2584%25E7%2590%2586%2f&amp;description=cms-%e6%9c%8d%e5%8a%a1%e7%ab%af%e7%bb%9f%e4%b8%80%e5%bc%82%e5%b8%b8%e5%a4%84%e7%90%86"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%259C%258D%25E5%258A%25A1%25E7%25AB%25AF%25E7%25BB%259F%25E4%25B8%2580%25E5%25BC%2582%25E5%25B8%25B8%25E5%25A4%2584%25E7%2590%2586%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">
+          <section class="post">
+              <h2>cms-接口请求规范</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">
+          <section class="post">
+              <h2>cms01-前端-page_List页面编写与整合后端运行</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
