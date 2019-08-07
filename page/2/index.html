@@ -160,7 +160,27 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="https://hdorr.github.io/tags/xm">项目</a>
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch</a>
             </li>
         
         
@@ -271,6 +291,8 @@
     
         
     
+        
+    
 
     
 
@@ -336,12 +358,12 @@ page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &l
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/">cms03--后端-网站管理新增页面接口</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/">cms03--后端-网站管理新增页面接口</a></h2>
     </header>
     <section class="post-excerpt">
         
             <p>新增页面接口 定义响应模型 /** * 继承通用的responseResult响应类, * 在构造方法中添加模型类参数 */ @Data public class CmsPageResult extends ResponseResult { CmsPage cmsPage; public CmsPageResult(ResultCode resultCode,CmsPage cmsPage) { super(resultCode); this.cmsPage = cmsPage; } }  加上CmsPage参数是因为前端可能或使用到返回的数据对象
-定义Api接口 /** * 新增页面 */ @ApiOperation(&quot;新增页面接口&quot;) public CmsPageResult addPage(CmsPage cmsPage);  Service /** * 页面新增 * @param cmsPage * @return */ public CmsPageResult addPage(CmsPage cmsPage) { //校验页面名称,webPath,页面名称唯一性 //根据上述去页面查询集合,查到就说明已存在,查询不到就可以添加 CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); if (cmsPage1 == null) { //调用dao,新增页面 /** * 这里因为cms_page页面pageId为主键,所以避免人为设置, * 不管有没有都将其置为空,让mongoDB的自增长自动生成主键 */ cmsPage. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+定义Api接口 /** * 新增页面 */ @ApiOperation(&quot;新增页面接口&quot;) public CmsPageResult addPage(CmsPage cmsPage);  Service /** * 页面新增 * @param cmsPage * @return */ public CmsPageResult addPage(CmsPage cmsPage) { //校验页面名称,webPath,页面名称唯一性 //根据上述去页面查询集合,查到就说明已存在,查询不到就可以添加 CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); if (cmsPage1 == null) { //调用dao,新增页面 /** * 这里因为cms_page页面pageId为主键,所以避免人为设置, * 不管有没有都将其置为空,让mongoDB的自增长自动生成主键 */ cmsPage. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -432,7 +454,7 @@ export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id�
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">cms04--后端-网站管理修改页面接口 </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">cms04--后端-网站管理修改页面接口 </a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -442,7 +464,7 @@ export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id�
 修改页面接口定义 /** * 根据页面id查询页面信息 */ @ApiOperation(&quot;根据id查询页面接口&quot;) public CmsPage findPageById(String pageId); /** * 修改页面 */ @ApiOperation(&quot;修改页面接口&quot;) public CmsPageResult editPage(String pageId,CmsPage cmsPage);  说明：提交数据使用post、put都可以，只是根据http方法的规范，put方法是对服务器指定资源进行修改，所以这里使用put方法对页面修改进行修改。
 修改页面服务端开发 Dao 使用 Spring Data提供的fifindById方法完成根据主键查询 。
 使用 Spring Data提供的save方法完成数据保存 。
-Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage findPageById(String pageId) { Optional&lt;CmsPage&gt; optional = cmsPageRepository.findById(pageId); if (optional.isPresent()) { CmsPage cmsPage = optional.get(); return cmsPage; } return null; } /** * 修改页面 * @param pageId * @param cmsPage * @return */ public CmsPageResult editPage(String pageId, CmsPage cmsPage) { // 调用方法查询是否存在 CmsPage pageById = this. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
+Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage findPageById(String pageId) { Optional&lt;CmsPage&gt; optional = cmsPageRepository.findById(pageId); if (optional.isPresent()) { CmsPage cmsPage = optional.get(); return cmsPage; } return null; } /** * 修改页面 * @param pageId * @param cmsPage * @return */ public CmsPageResult editPage(String pageId, CmsPage cmsPage) { // 调用方法查询是否存在 CmsPage pageById = this. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -518,7 +540,7 @@ Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage f
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">cms05--后端-网站管理删除页面接口  </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">cms05--后端-网站管理删除页面接口  </a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -526,7 +548,7 @@ Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage f
 1、用户进入用户列表，点击“删除”
 2、执行删除操作，提示“删除成功”或“删除失败”
 删除页面接口定义 @ApiOperation(&quot;通过ID删除页面&quot;) public ResponseResult delete(String id);  删除页面服务端开发 Dao 使用 Spring Data提供的deleteById方法完成删除操作 。
-Service //删除页面 public ResponseResult delete(String id){ CmsPage one = this.getById(id); if(one!=null){ //删除页面 cmsPageRepository.deleteById(id); return new ResponseResult(CommonCode.SUCCESS); } return new ResponseResult(CommonCode.FAIL); }  Controller @DeleteMapping(&quot;/del/{id}&quot;) //使用http的delete方法完成岗位操作 public ResponseResult delete(@PathVariable(&quot;id&quot;) String id) { return pageService.delete(id); }   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
+Service //删除页面 public ResponseResult delete(String id){ CmsPage one = this.getById(id); if(one!=null){ //删除页面 cmsPageRepository.deleteById(id); return new ResponseResult(CommonCode.SUCCESS); } return new ResponseResult(CommonCode.FAIL); }  Controller @DeleteMapping(&quot;/del/{id}&quot;) //使用http的delete方法完成岗位操作 public ResponseResult delete(@PathVariable(&quot;id&quot;) String id) { return pageService.delete(id); }   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -593,6 +615,89 @@ Service //删除页面 public ResponseResult delete(String id){ CmsPage one = th
         on
             
                 <a href="https://hdorr.github.io//tags/sm/">#sm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/">页面静态化与页面预览功能  </a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>页面静态化 页面预览 页面静态化需求 1、为什么要进行页面管理？
+本项目cms系统的功能就是根据运营需要，对门户等子系统的部分页面进行管理，从而实现快速根据用户需求修改
+页面内容并上线的需求。
+2、如何修改页面的内容？
+在开发中修改页面内容是需要人工编写html及JS文件，CMS系统是通过程序自动化的对页面内容进行修改，通过
+页面静态化技术生成html页面。
+3、如何对页面进行静态化？
+一个页面等于模板加数据，在添加页面的时候我们选择了页面的模板。
+页面静态化就是将页面模板和数据通过技术手段将二者合二为一，生成一个html网页文件。
+4、页面静态化及页面发布流程图如下：
+业务流程如下：
+1、获取模型数据
+2、制作模板
+3、对页面进行静态化
+4、将静态化生成的html页面存放文件系统中
+5、将存放在文件系统的html文件发布到服务器
+FreeMarker 研究 参考&rdquo;Freemarker&rdquo;相关资料
+页面静态化 页面静态化流程 通过上边对FreeMarker的研究我们得出：模板+数据模型=输出，页面静态化需要准备数据模型和模板，先知道数
+据模型的结构才可以编写模板，因为在模板中要引用数据模型中的数据，本节将系统讲解CMS页面数据模型获取、
+模板管理及静态化的过程。
+下边讨论一个问题：如何获取页面的数据模型？
+CMS管理了各种页面，CMS对页面进行静态化时需要数据模型，但是CMS并不知道每个页面的数据模型的具体内
+容，它只管执行静态化程序便可对页面进行静态化，所以CMS静态化程序需要通过一种通用的方法来获取数据模
+型。
+在编辑页面信息时指定一个DataUrl，此DataUrl便是获取数据模型的Url，它基于Http方式，CMS对页面进行静态
+化时会从页面信息中读取DataUrl，通过Http远程调用的方法请求DataUrl获取数据模型。
+管理员怎么知道DataUrl的内容呢？
+举例说明：
+此页面是轮播图页面，它的DataUrl由开发轮播图管理的程序员提供。
+此页面是精品课程推荐页面，它的DataUrl由精品课程推荐的程序员提供。
+此页面是课程详情页面，它的DataUrl由课程管理的程序员提供。
+页面静态化流程如下图：
+1、静态化程序首先读取页面获取DataUrl。
+2、静态化程序远程请求DataUrl得到数据模型。
+3、获取页面模板。
+4、执行页面静态化。
+数据模型 轮播图DataUrl接口 需求分析
+CMS中有轮播图管理、精品课程推荐的功能，以轮播图管理为例说明：轮播图管理是通过可视化的操作界面由管理
+员指定轮播图图片地址，最后将轮播图图片地址保存在cms_confifig集合中，下边是轮播图数据模型：
+针对首页的轮播图信息、精品推荐等信息的获取统一提供一个Url供静态化程序调用，这样我们就知道了轮播图页
+面、精品课程推荐页面的DataUrl，管理在页面配置中将此Url配置在页面信息中。
+​ 本小节开发一个查询轮播图、精品推荐信息的接口，此接口供静态化程序调用获取数据模型。
+接口定义 轮播图信息、精品推荐等信息存储在MongoDB的cms_confifig集合中。
+cms_confifig有固定的数据结构，如下：
+package com.xuecheng.framework.domain.cms; import lombok.Data; import lombok.ToString; import org.springframework.data.annotation.Id; import org.springframework.data.mongodb.core.mapping.Document; import java.util.List; /** * Created by admin on 2018/2/6. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">

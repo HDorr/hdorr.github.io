@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="页面静态化与页面预览功能  "/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="页面静态化与页面预览功能   &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="cms-后端" />
+    
+    
+
+    <title>页面静态化与页面预览功能   &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="页面静态化 页面预览 页面静态化需求 1、为什么要进行页面管理？
+本项目cms系统的功能就是根据运营需要，对门户等子系统的部分页面进行管理，从而实现快速根据用户需求修改
+页面内容并上线的需求。
+2、如何修改页面的内容？
+在开发中修改页面内容是需要人工编写html及JS文件，CMS系统是通过程序自动化的对页面内容进行修改" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "页面静态化与页面预览功能  ",
+    "name": "页面静态化与页面预览功能  ",
+    "wordCount":  1273 ,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, cms-后端",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">页面静态化与页面预览功能  </h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="页面静态化-页面预览"><strong>页面静态化 页面预览</strong></h1>
+
+<h2 id="页面静态化需求"><strong>页面静态化需求</strong></h2>
+
+<p>1、为什么要进行页面管理？</p>
+
+<p>本项目cms系统的功能就是根据运营需要，对门户等子系统的部分页面进行管理，从而实现快速根据用户需求修改</p>
+
+<p>页面内容并上线的需求。</p>
+
+<p>2、如何修改页面的内容？</p>
+
+<p>在开发中修改页面内容是需要人工编写html及JS文件，CMS系统是通过程序自动化的对页面内容进行修改，通过</p>
+
+<p>页面静态化技术生成html页面。</p>
+
+<p>3、如何对页面进行静态化？</p>
+
+<p>一个页面等于模板加数据，在添加页面的时候我们选择了页面的模板。</p>
+
+<p>页面静态化就是将页面模板和数据通过技术手段将二者合二为一，生成一个html网页文件。</p>
+
+<p>4、页面静态化及页面发布流程图如下：</p>
+
+<p><img src="\images\1565170183324.png" alt="1565170183324" /></p>
+
+<p><strong>业务流程如下：</strong></p>
+
+<p>1、获取模型数据</p>
+
+<p>2、制作模板</p>
+
+<p>3、对页面进行静态化</p>
+
+<p>4、将静态化生成的html页面存放文件系统中</p>
+
+<p>5、将存放在文件系统的html文件发布到服务器</p>
+
+<h2 id="freemarker-研究"><strong>FreeMarker</strong> <strong>研究</strong></h2>
+
+<p>参考&rdquo;Freemarker&rdquo;相关资料</p>
+
+<h2 id="页面静态化"><strong>页面静态化</strong></h2>
+
+<h3 id="页面静态化流程"><strong>页面静态化流程</strong></h3>
+
+<p>通过上边对FreeMarker的研究我们得出：<strong>模板+数据模型=输出</strong>，页面静态化需要准备数据模型和模板，先知道数</p>
+
+<p>据模型的结构才可以编写模板，因为在模板中要引用数据模型中的数据，本节将系统讲解CMS页面数据模型获取、</p>
+
+<p>模板管理及静态化的过程。</p>
+
+<p>下边讨论一个问题：如何获取页面的数据模型？</p>
+
+<p>CMS管理了各种页面，CMS对页面进行静态化时需要数据模型，但是CMS并不知道每个页面的数据模型的具体内</p>
+
+<p>容，它只管执行静态化程序便可对页面进行静态化，所以CMS静态化程序需要通过一种通用的方法来获取数据模</p>
+
+<p>型。</p>
+
+<p>在编辑页面信息时指定一个DataUrl，此DataUrl便是获取数据模型的Url，它基于Http方式，CMS对页面进行静态</p>
+
+<p>化时会从页面信息中读取DataUrl，通过Http远程调用的方法请求DataUrl获取数据模型。</p>
+
+<p>管理员怎么知道DataUrl的内容呢？</p>
+
+<p>举例说明：</p>
+
+<p>此页面是轮播图页面，它的DataUrl由开发轮播图管理的程序员提供。</p>
+
+<p>此页面是精品课程推荐页面，它的DataUrl由精品课程推荐的程序员提供。</p>
+
+<p>此页面是课程详情页面，它的DataUrl由课程管理的程序员提供。</p>
+
+<p>页面静态化流程如下图：</p>
+
+<p>1、静态化程序首先读取页面获取DataUrl。</p>
+
+<p>2、静态化程序远程请求DataUrl得到数据模型。</p>
+
+<p>3、获取页面模板。</p>
+
+<p>4、执行页面静态化。</p>
+
+<p><img src="\images\1565170159607.png" alt="1565170159607" /></p>
+
+<h3 id="数据模型"><strong>数据模型</strong></h3>
+
+<h4 id="轮播图dataurl接口"><strong>轮播图DataUrl接口</strong></h4>
+
+<p><strong>需求分析</strong></p>
+
+<p>CMS中有轮播图管理、精品课程推荐的功能，以轮播图管理为例说明：轮播图管理是通过可视化的操作界面由管理</p>
+
+<p>员指定轮播图图片地址，最后将轮播图图片地址保存在cms_confifig集合中，下边是轮播图数据模型：</p>
+
+<p><img src="\images\1565170136738.png" alt="1565170136738" /></p>
+
+<p>针对首页的轮播图信息、精品推荐等信息的获取统一提供一个Url供静态化程序调用，这样我们就知道了轮播图页</p>
+
+<p>面、精品课程推荐页面的DataUrl，管理在页面配置中将此Url配置在页面信息中。</p>
+
+<p>​   本小节开发一个查询轮播图、精品推荐信息的接口，此接口供静态化程序调用获取数据模型。</p>
+
+<h4 id="接口定义"><strong>接口定义</strong></h4>
+
+<p>轮播图信息、精品推荐等信息存储在MongoDB的cms_confifig集合中。</p>
+
+<p>cms_confifig有固定的数据结构，如下：</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.domain.cms;
+
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
+/**
+ * Created by admin on 2018/2/6.
+ */
+@Data
+@ToString
+@Document(collection = &quot;cms_config&quot;)
+public class CmsConfig {
+    @Id
+    private String id;
+    private String name;
+    private List&lt;CmsConfigModel&gt; model;
+}
+</code></pre>
+
+<p>数据模型项目内容如下:</p>
+
+<pre><code class="language-java">@Data
+@ToString
+public class CmsConfigModel {
+    private String key;//主键
+    private String name;//项目名称
+    private String url;//项目url
+    private Map mapValue;//项目复杂值
+    private String value;//项目简单值
+}	
+</code></pre>
+
+<p>上边的模型结构可以对照cms_confifig中的数据进行分析。</p>
+
+<p>其中，在mapValue 中可以存储一些复杂的数据模型内容。</p>
+
+<p>根据配置信息Id查询配置信息，定义接口如下：</p>
+
+<pre><code class="language-java">@Api(value=&quot;cms配置管理接口&quot;,description = &quot;cms配置管理接口，提供数据模型的管理、查询接口&quot;)
+public interface CmsConfigControllerApi {
+    @ApiOperation(&quot;根据id查询CMS配置信息&quot;)
+    public CmsConfig getmodel(String id);
+}
+</code></pre>
+
+<h4 id="dao"><strong>Dao</strong></h4>
+
+<p>定义CmsConfifig的dao接口：</p>
+
+<pre><code class="language-java">public interface CmsConfigRepository extends MongoRepository&lt;CmsConfig,String&gt; {
+}
+</code></pre>
+
+<h4 id="service"><strong>Service</strong></h4>
+
+<p>定义CmsConfifigService实现根据id查询CmsConfifig信息。</p>
+
+<pre><code class="language-java">@Service
+public class CmsConfigService {
+@Autowired
+CmsConfigRepository cmsConfigRepository;
+//根据id查询配置管理信息
+ public CmsConfig getConfigById(String id){
+    Optional&lt;CmsConfig&gt; optional = cmsConfigRepository.findById(id);
+    if(optional.isPresent()){
+    CmsConfig cmsConfig = optional.get();
+    return cmsConfig;
+	}
+	return null;
+	}
+}
+</code></pre>
+
+<h4 id="controller"><strong>Controller</strong></h4>
+
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/cms/config&quot;)
+public class CmsConfigController implements CmsConfigControllerApi {
+  @Autowired
+  CmsConfigService cmsConfigService;
+    @Override
+    @GetMapping(&quot;/getmodel/{id}&quot;)
+    public CmsConfig getmodel(@PathVariable(&quot;id&quot;) String id) {
+        return cmsConfigService.getConfigById(id);
+    }
+}
+</code></pre>
+
+<p><strong>测试</strong></p>
+
+<p>使用postman测试接口：</p>
+
+<p>get请求：<a href="http://localhost:31001/cms/confifig/getmodel/5a791725dd573c3574ee333f">http://localhost:31001/cms/confifig/getmodel/5a791725dd573c3574ee333f</a> （轮播图信息）</p>
+
+<h2 id="远程请求接口"><strong>远程请求接口</strong></h2>
+
+<p>SpringMVC提供 RestTemplate请求http接口，RestTemplate的底层可以使用第三方的http客户端工具实现http 的</p>
+
+<p>请求，常用的http客户端工具有Apache HttpClient、OkHttpClient等，本项目使用OkHttpClient完成http请求，</p>
+
+<p>原因也是因为它的性能比较出众。</p>
+
+<p>1、添加依赖</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.squareup.okhttp3&lt;/groupId&gt;
+    &lt;artifactId&gt;okhttp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>2、配置RestTemplate</p>
+
+<p>在SpringBoot启动类中配置 RestTemplate</p>
+
+<pre><code class="language-java">...
+public class ManageCmsApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ManageCmsApplication.class,args);
+    }	
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+    }
+}
+</code></pre>
+
+<p>3、测试RestTemplate</p>
+
+<p>根据url获取数据，并转为map格式。</p>
+
+<pre><code class="language-java">@Test
+public void testRestTemplate(){
+ResponseEntity&lt;Map&gt; forEntity =
+restTemplate.getForEntity(&quot;http://localhost:31001/cms/config/get/5a791725dd573c3574ee333f&quot;,
+Map.class);
+	System.out.println(forEntity);
+}
+</code></pre>
+
+<h2 id="模板管理"><strong>模板管理</strong></h2>
+
+<h3 id="模板管理业务流程"><strong>模板管理业务流程</strong></h3>
+
+<p>CMS提供模板管理功能，业务流程如下：</p>
+
+<p><img src="\images\1565170106571.png" alt="1565170106571" /></p>
+
+<p>1、要增加新模板首先需要制作模板，模板的内容就是Freemarker ftl模板内容。</p>
+
+<p>2、通过模板管理模块功能新增模板、修改模板、删除模板。</p>
+
+<p>3、模板信息存储在MongoDB数据库，其中模板信息存储在cms_template集合中，模板文件存储在GridFS文件系</p>
+
+<p>统中。</p>
+
+<p>​   <code>注意:这里cms前端并未开发模板管理模块,因此可自行开发,或者直接后端代码或手动操作数据库修改</code></p>
+
+<p>cms_template集合：</p>
+
+<p>下边是一个模板的例子：</p>
+
+<pre><code class="language-json">{
+    &quot;_id&quot; : ObjectId(&quot;5a962b52b00ffc514038faf7&quot;),
+    &quot;_class&quot; : &quot;com.xuecheng.framework.domain.cms.CmsTemplate&quot;,
+    &quot;siteId&quot; : &quot;5a751fab6abb5044e0d19ea1&quot;,
+    &quot;templateName&quot; : &quot;首页&quot;,
+    &quot;templateParameter&quot; : &quot;&quot;,
+    &quot;templateFileId&quot; : &quot;5a962b52b00ffc514038faf5&quot;
+}
+</code></pre>
+
+<p>上边模板信息中templateFileId是模板文件的ID，此ID对应GridFS文件系统中文件ID。</p>
+
+<h2 id="模板制作"><strong>模板制作</strong></h2>
+
+<h3 id="编写模板文件"><strong>编写模板文件</strong></h3>
+
+<p>1、轮播图页面原型</p>
+
+<p>在门户的静态工程目录有轮播图的静态页面，路径是：/include/index_banner.html。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/plugins/normalize-css/normalize.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/plugins/bootstrap/dist/css/bootstrap.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/css/page-learing-index.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/css/page-header.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;banner-roll&quot;&gt;
+    &lt;div class=&quot;banner-item&quot;&gt;
+        &lt;div class=&quot;item&quot; style=&quot;background-image: url(../img/widget-bannerB.jpg);&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;item&quot; style=&quot;background-image: url(../img/widget-bannerA.jpg);&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;item&quot; style=&quot;background-image: url(../img/widget-banner3.png);&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;item&quot; style=&quot;background-image: url(../img/widget-bannerB.jpg);&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;item&quot; style=&quot;background-image: url(../img/widget-bannerA.jpg);&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;item&quot; style=&quot;background-image: url(../img/widget-banner3.png);&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;indicators&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/plugins/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/plugins/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var tg = $('.banner-item .item');
+    var num = 0;
+    for (i = 0; i &lt; tg.length; i++) {
+        $('.indicators').append('&lt;span&gt;&lt;/span&gt;');
+        $('.indicators').find('span').eq(num).addClass('active');
+    }
+
+    function roll() {
+        tg.eq(num).animate({
+            'opacity': '1',
+            'z-index': num
+        }, 1000).siblings().animate({
+            'opacity': '0',
+            'z-index': 0
+        }, 1000);
+        $('.indicators').find('span').eq(num).addClass('active').siblings().removeClass('active');
+        if (num &gt;= tg.length - 1) {
+            num = 0;
+        } else {
+            num++;
+        }
+    }
+    $('.indicators').find('span').click(function() {
+        num = $(this).index();
+        roll();
+    });
+    var timer = setInterval(roll, 3000);
+    $('.banner-item').mouseover(function() {
+        clearInterval(timer)
+    });
+    $('.banner-item').mouseout(function() {
+        timer = setInterval(roll, 3000)
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<p>2、数据模型为：</p>
+
+<p>通过http 获取到数据模型如下：</p>
+
+<p>下图数据模型的图片路径改成可以浏览的正确路径。</p>
+
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;5a791725dd573c3574ee333f&quot;,
+    &quot;name&quot;: &quot;轮播图&quot;,
+    &quot;model&quot;: [
+        {
+            &quot;key&quot;: &quot;banner1&quot;,
+            &quot;name&quot;: &quot;轮播图1地址&quot;,
+            &quot;url&quot;: null,
+            &quot;mapValue&quot;: null,
+            &quot;value&quot;: &quot;http://www.xuecheng.com/img/widget‐bannerB.jpg&quot;
+        },
+        {
+            &quot;key&quot;: &quot;banner2&quot;,
+            &quot;name&quot;: &quot;轮播图2地址&quot;,
+            &quot;url&quot;: null,
+            &quot;mapValue&quot;: null,
+            &quot;value&quot;: &quot;http://www.xuecheng.com/img/widget‐bannerA.jpg&quot;
+        },
+        {
+            &quot;key&quot;: &quot;banner3&quot;,
+            &quot;name&quot;: &quot;轮播图3地址&quot;,
+            &quot;url&quot;: null,
+            &quot;mapValue&quot;: null,
+            &quot;value&quot;: &quot;http://www.xuecheng.com/img/widget‐banner3.jpg&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>3、编写模板</p>
+
+<p>在freemarker测试工程中新建模板index_banner.ftl。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/plugins/normalize-css/normalize.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/plugins/bootstrap/dist/css/bootstrap.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/css/page-learing-index.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xuecheng.com/css/page-header.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;banner-roll&quot;&gt;
+    &lt;div class=&quot;banner-item&quot;&gt;
+&lt;#--        &lt;div class=&quot;item&quot; style=&quot;background-image: url(http://www.xuecheng.com/img/widget-bannerB.jpg);&quot;&gt;&lt;/div&gt;--&gt;
+&lt;#--        &lt;div class=&quot;item&quot; style=&quot;background-image: url(http://www.xuecheng.com/img/widget-bannerA.jpg);&quot;&gt;&lt;/div&gt;--&gt;
+&lt;#--        &lt;div class=&quot;item&quot; style=&quot;background-image: url(http://www.xuecheng.com/img/widget-banner3.png);&quot;&gt;&lt;/div&gt;--&gt;
+&lt;#--        &lt;div class=&quot;item&quot; style=&quot;background-image: url(http://www.xuecheng.com/img/widget-bannerB.jpg);&quot;&gt;&lt;/div&gt;--&gt;
+&lt;#--        &lt;div class=&quot;item&quot; style=&quot;background-image: url(http://www.xuecheng.com/img/widget-bannerA.jpg);&quot;&gt;&lt;/div&gt;--&gt;
+&lt;#--        &lt;div class=&quot;item&quot; style=&quot;background-image: url(http://www.xuecheng.com/img/widget-banner3.png);&quot;&gt;&lt;/div&gt;--&gt;
+
+        &lt;#if model??&gt;
+            &lt;#list model as item&gt;
+                &lt;div class=&quot;item&quot; style=&quot;background-image: url(${item.value});&quot;&gt;&lt;/div&gt;
+            &lt;/#list&gt;
+        &lt;/#if&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;indicators&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xuecheng.com/plugins/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xuecheng.com/plugins/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var tg = $('.banner-item .item');
+    var num = 0;
+    for (i = 0; i &lt; tg.length; i++) {
+        $('.indicators').append('&lt;span&gt;&lt;/span&gt;');
+        $('.indicators').find('span').eq(num).addClass('active');
+    }
+
+    function roll() {
+        tg.eq(num).animate({
+            'opacity': '1',
+            'z-index': num
+        }, 1000).siblings().animate({
+            'opacity': '0',
+            'z-index': 0
+        }, 1000);
+        $('.indicators').find('span').eq(num).addClass('active').siblings().removeClass('active');
+        if (num &gt;= tg.length - 1) {
+            num = 0;
+        } else {
+            num++;
+        }
+    }
+    $('.indicators').find('span').click(function() {
+        num = $(this).index();
+        roll();
+    });
+    var timer = setInterval(roll, 3000);
+    $('.banner-item').mouseover(function() {
+        clearInterval(timer)
+    });
+    $('.banner-item').mouseout(function() {
+        timer = setInterval(roll, 3000)
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="模板测试"><strong>模板测试</strong></h3>
+
+<p>在freemarker测试工程编写一个方法测试轮播图模板，代码如下：</p>
+
+<pre><code class="language-java">@Autowired
+RestTemplate restTemplate;
+@RequestMapping(&quot;/banner&quot;)
+public String index_banner(Map&lt;String, Object&gt; map){
+    String dataUrl = &quot;http://localhost:31001/cms/config/getmodel/5a791725dd573c3574ee333f&quot;;
+    ResponseEntity&lt;Map&gt; forEntity = restTemplate.getForEntity(dataUrl, Map.class);
+    Map body = forEntity.getBody();
+    map.putAll(body);
+    return &quot;index_banner&quot;;	
+}
+</code></pre>
+
+<p>请求：<a href="http://localhost:8088/freemarker/banner">http://localhost:8088/freemarker/banner</a></p>
+
+<h3 id="gridfs研究"><strong>GridFS研究</strong></h3>
+
+<p>GridFS是MongoDB提供的用于持久化存储文件的模块，CMS使用MongoDB存储数据，使用GridFS可以快速集成</p>
+
+<p>开发。</p>
+
+<p>它的工作原理是：</p>
+
+<p>在GridFS存储文件是将文件分块存储，文件会按照256KB的大小分割成多个块进行存储，GridFS使用两个集合</p>
+
+<p>（collection）存储文件，一个集合是chunks, 用于存储文件的二进制数据；一个集合是fifiles，用于存储文件的元数</p>
+
+<p>据信息（文件名称、块大小、上传时间等信息）。</p>
+
+<p>从GridFS中读取文件要对文件的各各块进行组装、合并。</p>
+
+<p>详细参考：<a href="https://docs.mongodb.com/manual/core/gridfs/">https://docs.mongodb.com/manual/core/gridfs/</a></p>
+
+<h3 id="gridfs-存取文件测试"><strong>GridFS</strong>存取文件测试</h3>
+
+<p>1、存文件</p>
+
+<p>使用GridFsTemplate存储文件测试代码：</p>
+
+<p>向测试程序注入GridFsTemplate。</p>
+
+<pre><code class="language-java">@Test
+public void testGridFs() throws FileNotFoundException {
+    //要存储的文件
+    File file = new File(&quot;d:/index_banner.html&quot;);
+    //定义输入流
+    FileInputStream inputStram = new FileInputStream(file);
+    //向GridFS存储文件
+    ObjectId objectId = = gridFsTemplate.store(inputStram, &quot;轮播图测试文件01&quot;, &quot;&quot;);
+    //得到文件ID
+    String fileId = objectId.toString();
+    System.out.println(file);
+}
+</code></pre>
+
+<p>存储原理说明：</p>
+
+<p>文件存储成功得到一个文件id</p>
+
+<p>此文件id是fs.fifiles集合中的主键。</p>
+
+<p>可以通过文件id查询fs.chunks表中的记录，得到文件的内容。</p>
+
+<p>2、读取文件</p>
+
+<p>1）在confifig包中定义Mongodb的配置类，如下：</p>
+
+<p>GridFSBucket用于打开下载流对象</p>
+
+<pre><code class="language-java">@Configuration
+public class MongoConfig {
+
+    @Value(&quot;${spring.data.mongodb.database}&quot;)
+	String db;
+    
+    @Bean
+    public GridFSBucket getGridFSBucket(MongoClient mongoClient){
+        MongoDatabase database = mongoClient.getDatabase(db);
+        GridFSBucket bucket = GridFSBuckets.create(database);
+        return bucket;
+    }
+}
+</code></pre>
+
+<p>2）测试代码如下</p>
+
+<pre><code class="language-java">@SpringBootTest
+@RunWith(SpringRunner.class)
+public class GridFsTest {
+
+    @Autowired
+	GridFsTemplate gridFsTemplate;
+    @Autowired
+    GridFSBucket gridFSBucket;
+    
+@Test
+public void queryFile() throws IOException {
+    String fileId = &quot;5b9c54e264c614237c271a99&quot;;
+    //根据id查询文件
+    GridFSFile gridFSFile =
+    gridFsTemplate.findOne(Query.query(Criteria.where(&quot;_id&quot;).is(fileId)));
+    //打开下载流对象
+    GridFSDownloadStream gridFSDownloadStream =
+    gridFSBucket.openDownloadStream(gridFSFile.getObjectId());
+    //创建gridFsResource，用于获取流对象
+    GridFsResource gridFsResource = new GridFsResource(gridFSFile,gridFSDownloadStream);
+    //获取流中的数据
+    String s = IOUtils.toString(gridFsResource.getInputStream(), &quot;UTF‐8&quot;);
+    System.out.println(s);
+}	
+...
+
+</code></pre>
+
+<p>3、删除文件</p>
+
+<pre><code class="language-java">//删除文件
+@Test
+public void testDelFile() throws IOException {
+    //根据文件id删除fs.files和fs.chunks中的记录
+    gridFsTemplate.delete(Query.query(Criteria.where(&quot;_id&quot;).is(&quot;5b32480ed3a022164c4d2f92&quot;)));
+}
+
+</code></pre>
+
+<h2 id="模板存储"><strong>模板存储</strong></h2>
+
+<p>根据模板管理的流程，最终将模板信息存储到MongoDB的cms_template中，将模板文件存储到GridFS中。</p>
+
+<p>模板管理功能在课堂中不再讲解，教学中手动向cms_template及GridFS中存储模板，方法如下：</p>
+
+<p>1、添加模板</p>
+
+<p>1）使用GridFS测试代码存储模板文件到GridFS，并得到文件id.</p>
+
+<p>2）向cms_template添加记录。</p>
+
+<p>2、删除模板</p>
+
+<p>1）使用GridFS测试代码根据文件id删除模板文件。</p>
+
+<p>2）根据模板id删除cms_template中的记录。</p>
+
+<p>3、修改模板信息</p>
+
+<p>使用Studio 3T修改cms_template中的记录。</p>
+
+<p>4、修改模板文件</p>
+
+<p>1）通过Studio 3T修改模板文件(此方法限文件小于256K)</p>
+
+<p>可以通过Studio 3T修改模板文件，先找到模板文件，再导入进去：</p>
+
+<h2 id="静态化测试"><strong>静态化测试</strong></h2>
+
+<p>上边章节完成了数据模型和模板管理的测试，下边测试整个页面静态化的流程，流程如下：</p>
+
+<p>1、填写页面DataUrl</p>
+
+<p>在编辑cms页面信息界面填写DataUrl，将此字段保存到cms_page集合中。</p>
+
+<p>2、静态化程序获取页面的DataUrl</p>
+
+<p>3、静态化程序远程请求DataUrl获取数据模型。</p>
+
+<p>4、静态化程序获取页面的模板信息</p>
+
+<p>5、执行页面静态化</p>
+
+<h3 id="填写页面-dataurl"><strong>填写页面</strong>DataUrl</h3>
+
+<p>修改页面管理模板代码，实现编辑页面DataUrl。</p>
+
+<p>注意：此地址由程序员提供给系统管理员，由系统管理员录入到系统中。</p>
+
+<p>下边实现页面修改界面录入DataUrl：</p>
+
+<p>1、修改页面管理前端的page_edit.vue</p>
+
+<p>在表单中添加dataUrl输入框：</p>
+
+<pre><code class="language-java">&lt;el‐form‐item label=&quot;数据Url&quot; prop=&quot;dataUrl&quot;&gt;
+	&lt;el‐input v‐model=&quot;pageForm.dataUrl&quot; auto‐complete=&quot;off&quot; &gt;&lt;/el‐input&gt;
+&lt;/el‐form‐item&gt;
+
+</code></pre>
+
+<p>2、修改页面管理服务端PageService</p>
+
+<p>在更新cmsPage数据代码中添加：</p>
+
+<pre><code class="language-java">//更新dataUrl
+one.setDataUrl(cmsPage.getDataUrl());
+
+</code></pre>
+
+<h3 id="静态化程序"><strong>静态化程序</strong></h3>
+
+<p>在PageService中定义页面静态化方法，如下：</p>
+
+<pre><code class="language-java">/**
+     * 页面静态化方法
+     * 获取cmspage中的dataUrl,远程请求dataurl获取数据模型,再获取模板信息,执行静态化
+     */
+    public String getPageHtml(String pageId) {
+        //获取模型数据
+        Map map = this.getModelByPageId(pageId);
+        if (map == null) {
+            //数据模型获取不到
+            ExceptionCast.cast(CmsCode.CMS_GENERATEHTML_DATAISNULL);
+        }
+        //获取页面模板
+        String template = getTemplate(pageId);
+        if (template == null) {
+            ExceptionCast.cast(CmsCode.CMS_GENERATEHTML_TEMPLATEISNULL);
+        }
+        //执行静态化
+        String generateHtml = generateHtml(map, template);
+        return generateHtml;
+    }
+
+    /**
+     * 获取模型数据
+     * @param pageId
+     * @return
+     */
+    private Map getModelByPageId(String pageId) {
+        CmsPage cmsPage = this.findPageById(pageId);
+        if (cmsPage == null) {
+            //页面找不到
+            ExceptionCast.cast(CmsCode.CMS_PAGE_PERVIEWISNULL);
+        }
+        String dataUrl = cmsPage.getDataUrl();
+        if (StringUtils.isEmpty(dataUrl)) {
+            //页面dataUrl为空异常
+            ExceptionCast.cast(CmsCode.CMS_GENERATEHTML_DATAURLISNULL);
+        }
+        //远程请求url
+        ResponseEntity&lt;Map&gt; forEntity = restTemplate.getForEntity(dataUrl, Map.class);
+        Map map = forEntity.getBody();
+        return map;
+    }
+
+    /**
+     * 获取页面模板
+     * @param pageId
+     * @return
+     */
+    private String getTemplate(String pageId) {
+        CmsPage cmsPage = this.findPageById(pageId);
+        if (cmsPage == null) {
+            //页面找不到
+            ExceptionCast.cast(CmsCode.CMS_PAGE_PERVIEWISNULL);
+        }
+        //获取页面模板id
+        String templateId = cmsPage.getTemplateId();
+        if (StringUtils.isEmpty(templateId)) {
+            //模板为空
+            ExceptionCast.cast(CmsCode.CMS_GENERATEHTML_TEMPLATEISNULL);
+        }
+        //查询模板信息
+        Optional&lt;CmsTemplate&gt; optional = cmsTemplateRepository.findById(templateId);
+        if (optional.isPresent()) {
+        CmsTemplate cmsTemplate = optional.get();
+        //获取模板文件的id
+        String templateFileId = cmsTemplate.getTemplateFileId();
+        //从GridFS中取文件内容
+        GridFSFile gridFSFile = gridFsTemplate.findOne(Query.query(Criteria.where(&quot;_id&quot;).is(templateFileId)));
+            GridFSDownloadStream downloadStream = gridFSBucket.openDownloadStream(gridFSFile.getObjectId());
+            GridFsResource gridFsResource = new GridFsResource(gridFSFile, downloadStream);
+            //读取数据
+            try {
+                String content = IOUtils.toString(gridFsResource.getInputStream(), &quot;utf-8&quot;);
+                return content;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 执行静态化
+     * @param model
+     * @param templateContent
+     * @return
+     */
+    private String generateHtml(Map model, String templateContent) {
+        //创建配置对象
+        Configuration configuration = new Configuration(Configuration.getVersion());
+        StringTemplateLoader stringTemplateLoader = new StringTemplateLoader();
+        stringTemplateLoader.putTemplate(&quot;template&quot;,templateContent);
+        //向Configuration配置模板加载器
+        configuration.setTemplateLoader(stringTemplateLoader);
+        try {
+            Template template = configuration.getTemplate(&quot;template&quot;);
+            String htmlContent = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+            return htmlContent;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+</code></pre>
+
+<p>单元测试getPageHtml方法，过程略。</p>
+
+<h2 id="页面预览"><strong>页面预览</strong></h2>
+
+<h3 id="页面预览开发"><strong>页面预览开发</strong></h3>
+
+<p><strong>需求分析</strong></p>
+
+<p>页面在发布前增加页面预览的步骤，方便用户检查页面内容是否正确。页面预览的流程如下：</p>
+
+<p><img src="\images\1565170041360.png" alt="1565170041360" /></p>
+
+<p>1、用户进入cms前端，点击“页面预览”在浏览器请求cms页面预览链接。</p>
+
+<p>2、cms根据页面id查询DataUrl并远程请求DataUrl获取数据模型。</p>
+
+<p>3、cms根据页面id查询页面模板内容</p>
+
+<p>4、cms执行页面静态化。</p>
+
+<p>5、cms将静态化内容响应给浏览器。</p>
+
+<p>6、在浏览器展示页面内容，实现页面预览的功能。</p>
+
+<h3 id="搭建环境"><strong>搭建环境</strong></h3>
+
+<p>在cms服务需要集成freemarker：</p>
+
+<p>1、在CMS服务中加入freemarker的依赖</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring‐boot‐starter‐freemarker&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+</code></pre>
+
+<p>2、在application.yml配置freemarker</p>
+
+<pre><code class="language-yaml">server:
+  port: 31001
+spring:
+  application:
+    name: xc-service-manage-cms
+  data:
+    mongodb:
+      uri: mongodb://root:123456@localhost:27017
+      database: xc_cms
+  freemarker:
+    cache: false #关闭模板缓存，方便测试
+    settings:
+      template_update_delay: 0
+
+</code></pre>
+
+<h3 id="service-1"><strong>Service</strong></h3>
+
+<p>静态化方法在静态化测试章节已经实现。</p>
+
+<h3 id="controller-1"><strong>Controller</strong></h3>
+
+<p>调用service的静态化方法，将静态化内容通过response输出到浏览器显示</p>
+
+<p>创建CmsPagePreviewController类，用于页面预览：</p>
+
+<p>请求页面id，查询得到页面的模板信息、数据模型url，根据模板和数据生成静态化内容，并输出到浏览器。</p>
+
+<pre><code class="language-java">package com.xuecheng.manage_cms.controller;
+
+import com.xuecheng.framework.web.BaseController;
+import com.xuecheng.manage_cms.service.PageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.ServletOutputStream;
+import java.io.IOException;
+
+/**
+ * 页面预览controller
+ * @author Hr|黄锐
+ * @create 2019/8/3 21:39
+ */
+@Controller
+//因为我们要在页面显示html内容,所以不能写restcontroller,会被转为json
+public class CmsPagePreviewController extends BaseController {
+    @Autowired
+    PageService pageService;
+
+    /**
+     * 页面预览
+     */
+    @RequestMapping(value = &quot;/cms/preview/{pageId}&quot;, method = RequestMethod.GET)
+    public void preView(@PathVariable(&quot;pageId&quot;) String pageId) throws IOException {
+        //执行静态化
+        String pageHtml = pageService.getPageHtml(pageId);
+        //通过response对象将内容输出
+        ServletOutputStream outputStream = response.getOutputStream();
+        outputStream.write(pageHtml.getBytes(&quot;utf-8&quot;));
+    }
+}
+
+
+</code></pre>
+
+<h3 id="页面预览测试"><strong>页面预览测试</strong></h3>
+
+<p>为了通过nginx请求静态资源（css、图片等），通过nginx代理进行页面预览。</p>
+
+<p>在www.xuecheng.com虚拟主机配置：</p>
+
+<pre><code class="language-java">#页面预览
+location /cms/preview/ {
+	proxy_pass http://cms_server_pool/cms/preview/;
+}
+
+</code></pre>
+
+<p>配置cms_server_pool将请求转发到cms：</p>
+
+<pre><code class="language-java">#cms页面预览
+upstream cms_server_pool{
+	server 127.0.0.1:31001 weight=10;
+}
+
+</code></pre>
+
+<p>重新加载nginx 配置文件。</p>
+
+<p>从cms_page找一个页面进行测试。注意：页面配置一定要正确，需设置正确的模板id和dataUrl。</p>
+
+<p>在浏览器打开：<a href="http://www.xuecheng.com/cms/preview/5a795ac7dd573c04508f3a56">http://www.xuecheng.com/cms/preview/5a795ac7dd573c04508f3a56</a></p>
+
+<p>5a795ac7dd573c04508f3a56：轮播图页面的id</p>
+
+<h3 id="添加-页面预览-链接">添加“页面预览”链接</h3>
+
+<p>在页面列表添加“页面预览”链接，修改page_list.vue:</p>
+
+<pre><code class="language-html">&lt;template slot‐scope=&quot;page&quot;&gt;
+    &lt;el‐button @click=&quot;edit(page.row.pageId)&quot; type=&quot;text&quot; size=&quot;small&quot;&gt;修改&lt;/el‐button&gt;
+    &lt;el‐button @click=&quot;del(page.row.pageId)&quot; type=&quot;text&quot; size=&quot;small&quot;&gt;删除&lt;/el‐button&gt;
+    &lt;el‐button @click=&quot;preview(page.row.pageId)&quot; type=&quot;text&quot; size=&quot;small&quot;&gt;页面预览&lt;/el‐button&gt;
+...
+
+</code></pre>
+
+<p>添加preview方法：</p>
+
+<pre><code class="language-java">//页面预览
+preview(pageId){
+	window.open(&quot;http://www.xuecheng.com/cms/preview/&quot;+pageId)
+},
+
+</code></pre>
+
+<p>效果：</p>
+
+<p>点击轮播图页面的“页面预览”，预览页面效果。</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e9%a1%b5%e9%9d%a2%e9%9d%99%e6%80%81%e5%8c%96%e4%b8%8e%e9%a1%b5%e9%9d%a2%e9%a2%84%e8%a7%88%e5%8a%9f%e8%83%bd%20%20&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f2.%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%2f%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%25E4%25B8%258E%25E9%25A1%25B5%25E9%259D%25A2%25E9%25A2%2584%25E8%25A7%2588%25E5%258A%259F%25E8%2583%25BD%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f2.%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%2f%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%25E4%25B8%258E%25E9%25A1%25B5%25E9%259D%25A2%25E9%25A2%2584%25E8%25A7%2588%25E5%258A%259F%25E8%2583%25BD%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f2.%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%2f%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%25E4%25B8%258E%25E9%25A1%25B5%25E9%259D%25A2%25E9%25A2%2584%25E8%25A7%2588%25E5%258A%259F%25E8%2583%25BD%2f&amp;description=%e9%a1%b5%e9%9d%a2%e9%9d%99%e6%80%81%e5%8c%96%e4%b8%8e%e9%a1%b5%e9%9d%a2%e9%a2%84%e8%a7%88%e5%8a%9f%e8%83%bd%20%20"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f2.%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%2f%25E9%25A1%25B5%25E9%259D%25A2%25E9%259D%2599%25E6%2580%2581%25E5%258C%2596%25E4%25B8%258E%25E9%25A1%25B5%25E9%259D%25A2%25E9%25A2%2584%25E8%25A7%2588%25E5%258A%259F%25E8%2583%25BD%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96\/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96\/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+          <section class="post">
+              <h2>博客书写说明</h2>
+              
+          </section>
+      </a>
+  
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

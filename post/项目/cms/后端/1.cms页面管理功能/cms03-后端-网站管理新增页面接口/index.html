@@ -12,15 +12,15 @@
 
 
 
-<meta name="twitter:title" content="cms-接口请求规范"/>
+<meta name="twitter:title" content="cms03--后端-网站管理新增页面接口"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="cms-接口请求规范 &middot; I am thinking ..." />
+  	<meta property="og:title" content="cms03--后端-网站管理新增页面接口 &middot; I am thinking ..." />
   	<meta property="og:site_name" content="I am thinking ..." />
-  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/" />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/" />
 
     
         
@@ -36,14 +36,14 @@
     
     <meta property="article:tag" content="xm" />
     
+    <meta property="article:tag" content="cms-后端" />
+    
     
 
-    <title>cms-接口请求规范 &middot; I am thinking ...</title>
+    <title>cms03--后端-网站管理新增页面接口 &middot; I am thinking ...</title>
 
     
-    <meta name="description" content=" Api请求及响应规范 为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。
-1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。
-2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded" />
+    <meta name="description" content="新增页面接口 定义响应模型 /** * 继承通用的responseResult响应类, * 在构造方法中添加模型类参数 */ @Data public class CmsPageResult extends ResponseResult { CmsPage cmsPage; public CmsPageResult(R" />
     
 
     <meta name="HandheldFriendly" content="True" />
@@ -72,7 +72,7 @@
     
     <meta name="generator" content="Hugo 0.56.0" />
 
-    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/" />
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/" />
 
     
       
@@ -111,23 +111,23 @@
         "description": "Every man dies, not every man really lives."
         
     },
-    "headline": "cms-接口请求规范",
-    "name": "cms-接口请求规范",
-    "wordCount":  32 ,
+    "headline": "cms03--后端-网站管理新增页面接口",
+    "name": "cms03--后端-网站管理新增页面接口",
+    "wordCount":  112 ,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/",
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/",
     "datePublished": "2019-07-27T17:02Z",
     "dateModified": "2019-07-27T17:02Z",
     
-    "keywords": "xm",
+    "keywords": "xm, cms-后端",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/"
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3/"
     }
 }
     </script>
@@ -243,7 +243,7 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">cms-接口请求规范</h1>
+        <h1 class="post-title">cms03--后端-网站管理新增页面接口</h1>
         <small></small>
 
         <section class="post-meta">
@@ -255,45 +255,84 @@
          
           <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
          
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a></span>
+         
         </section>
     </header>
 
     <section class="post-content">
       
 
-<h1 id="api请求及响应规范"><strong>Api请求及响应规范</strong></h1>
+<h1 id="新增页面接口"><strong>新增页面接口</strong></h1>
 
-<p>为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。</p>
+<h2 id="定义响应模型">定义响应模型</h2>
 
-<p>1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。</p>
-
-<p>2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded）和Json数据（Content</p>
-
-<p>Type=application/json），文件等多部件类型（multipart/form-data）三种数据格式，SpringMVC接收Json数据</p>
-
-<p>使用@RequestBody注解解析请求的json数据。</p>
-
-<p>4、响应结果统一信息为：是否成功、操作代码、提示信息及自定义数据。</p>
-
-<p>​       <strong>本项目,统一采用成功信息,相应代码,相应结果组成,并且最终返回结果为QueryResponseResult类型</strong></p>
-
-<p>5、响应结果统一格式为json。</p>
-
-<h1 id="api定义约束"><strong>Api定义约束</strong></h1>
-
-<p>Api定义使用SpringMVC来完成，由于此接口后期将作为微服务远程调用使用，在定义接口时有如下限制：</p>
-
-<p>1、@PathVariable 统一指定参数名称，如：@PathVariable(&ldquo;id&rdquo;)</p>
-
-<p>​       方法内参数要使用@PathVariable来映射路径上的参数</p>
-
-<p>2、@RequestParam统一指定参数名称，如： @RequestParam（&rdquo;id&rdquo;）</p>
-
-<pre><code class="language-java">public String getDetails(
-    @RequestParam(value=&quot;param1&quot;, required=true) String param1,
-        @RequestParam(value=&quot;param2&quot;, required=false) String param2){
-...
+<pre><code class="language-java">/**
+ * 继承通用的responseResult响应类,
+ * 在构造方法中添加模型类参数
+ */
+@Data
+public class CmsPageResult extends ResponseResult {
+    CmsPage cmsPage;
+    public CmsPageResult(ResultCode resultCode,CmsPage cmsPage) {
+        super(resultCode);
+        this.cmsPage = cmsPage;
+    }
 }
+</code></pre>
+
+<p>加上CmsPage参数是因为前端可能或使用到返回的数据对象</p>
+
+<h2 id="定义api接口">定义Api接口</h2>
+
+<pre><code class="language-java"> /**
+     * 新增页面
+     */
+    @ApiOperation(&quot;新增页面接口&quot;)
+    public CmsPageResult addPage(CmsPage cmsPage);
+</code></pre>
+
+<h2 id="service">Service</h2>
+
+<pre><code class="language-java">/**
+     * 页面新增
+     * @param cmsPage
+     * @return
+     */
+    public CmsPageResult addPage(CmsPage cmsPage) {
+        //校验页面名称,webPath,页面名称唯一性
+        //根据上述去页面查询集合,查到就说明已存在,查询不到就可以添加
+        CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath());
+        if (cmsPage1 == null) {
+        //调用dao,新增页面
+            /**
+             * 这里因为cms_page页面pageId为主键,所以避免人为设置,
+             * 不管有没有都将其置为空,让mongoDB的自增长自动生成主键
+             */
+            cmsPage.setPageId(null);
+            CmsPage save = cmsPageRepository.save(cmsPage1);
+            return new CmsPageResult(CommonCode.SUCCESS, save);
+        }
+        //添加失败
+        return new CmsPageResult(CommonCode.FAIL, null);
+    }
+</code></pre>
+
+<p>由于新增页面需要进行校验, 判断站点ID,webPath,页面名称是否唯一来判断页面是否已经存在,</p>
+
+<p>​   所以<strong>需要先自定Dao接口查询</strong>,根据不同的返回接口进行不同的return操作</p>
+
+<h2 id="controller">Controller</h2>
+
+<pre><code class="language-java">/**
+     * 新增页面接口,页面提交信息,所以用post请求,又因为前端提交过来的都是json
+     * 数据,所以SpringMVC使用@RequstBody注解转成CmsPage对象
+     */
+    @Override
+    @PostMapping(&quot;/add&quot;)
+    public CmsPageResult addPage(@RequestBody CmsPage cmsPage) {
+        return pageService.addPage(cmsPage);
+    }
 </code></pre>
 
     </section>
@@ -333,19 +372,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=cms-%e6%8e%a5%e5%8f%a3%e8%af%b7%e6%b1%82%e8%a7%84%e8%8c%83&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%258E%25A5%25E5%258F%25A3%25E5%25BC%2580%25E5%258F%2591%25E8%25AF%25B7%25E6%25B1%2582%25E8%25A7%2584%25E8%258C%2583%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=cms03--%e5%90%8e%e7%ab%af-%e7%bd%91%e7%ab%99%e7%ae%a1%e7%90%86%e6%96%b0%e5%a2%9e%e9%a1%b5%e9%9d%a2%e6%8e%a5%e5%8f%a3&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f1.cms%25E9%25A1%25B5%25E9%259D%25A2%25E7%25AE%25A1%25E7%2590%2586%25E5%258A%259F%25E8%2583%25BD%2fcms03-%25E5%2590%258E%25E7%25AB%25AF-%25E7%25BD%2591%25E7%25AB%2599%25E7%25AE%25A1%25E7%2590%2586%25E6%2596%25B0%25E5%25A2%259E%25E9%25A1%25B5%25E9%259D%25A2%25E6%258E%25A5%25E5%258F%25A3%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%258E%25A5%25E5%258F%25A3%25E5%25BC%2580%25E5%258F%2591%25E8%25AF%25B7%25E6%25B1%2582%25E8%25A7%2584%25E8%258C%2583%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f1.cms%25E9%25A1%25B5%25E9%259D%25A2%25E7%25AE%25A1%25E7%2590%2586%25E5%258A%259F%25E8%2583%25BD%2fcms03-%25E5%2590%258E%25E7%25AB%25AF-%25E7%25BD%2591%25E7%25AB%2599%25E7%25AE%25A1%25E7%2590%2586%25E6%2596%25B0%25E5%25A2%259E%25E9%25A1%25B5%25E9%259D%25A2%25E6%258E%25A5%25E5%258F%25A3%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%258E%25A5%25E5%258F%25A3%25E5%25BC%2580%25E5%258F%2591%25E8%25AF%25B7%25E6%25B1%2582%25E8%25A7%2584%25E8%258C%2583%2f&amp;description=cms-%e6%8e%a5%e5%8f%a3%e8%af%b7%e6%b1%82%e8%a7%84%e8%8c%83"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f1.cms%25E9%25A1%25B5%25E9%259D%25A2%25E7%25AE%25A1%25E7%2590%2586%25E5%258A%259F%25E8%2583%25BD%2fcms03-%25E5%2590%258E%25E7%25AB%25AF-%25E7%25BD%2591%25E7%25AB%2599%25E7%25AE%25A1%25E7%2590%2586%25E6%2596%25B0%25E5%25A2%259E%25E9%25A1%25B5%25E9%259D%25A2%25E6%258E%25A5%25E5%258F%25A3%2f&amp;description=cms03--%e5%90%8e%e7%ab%af-%e7%bd%91%e7%ab%99%e7%ae%a1%e7%90%86%e6%96%b0%e5%a2%9e%e9%a1%b5%e9%9d%a2%e6%8e%a5%e5%8f%a3"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2fcms-%25E6%258E%25A5%25E5%258F%25A3%25E5%25BC%2580%25E5%258F%2591%25E8%25AF%25B7%25E6%25B1%2582%25E8%25A7%2584%25E8%258C%2583%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f1.cms%25E9%25A1%25B5%25E9%259D%25A2%25E7%25AE%25A1%25E7%2590%2586%25E5%258A%259F%25E8%2583%25BD%2fcms03-%25E5%2590%258E%25E7%25AB%25AF-%25E7%25BD%2591%25E7%25AB%2599%25E7%25AE%25A1%25E7%2590%2586%25E6%2596%25B0%25E5%25A2%259E%25E9%25A1%25B5%25E9%259D%25A2%25E6%258E%25A5%25E5%258F%25A3%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>
@@ -362,8 +401,8 @@
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83\/";  
-this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83\/"; 
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD\/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD\/cms03-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E6%96%B0%E5%A2%9E%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3\/"; 
 };
 
 (function() { 
@@ -390,17 +429,17 @@ s.setAttribute('data-timestamp', +new Date());
 
   <aside class="read-next">
   
-      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">
           <section class="post">
-              <h2>cms-开发准备</h2>
+              <h2>cms02-前端-page_add开发与调试 </h2>
               
           </section>
       </a>
   
   
-      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">
           <section class="post">
-              <h2>cms-服务端统一异常处理</h2>
+              <h2>cms03-前端-page_edit开发与调试  </h2>
           </section>
       </a>
   

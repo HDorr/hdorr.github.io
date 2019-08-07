@@ -160,7 +160,27 @@
         
             
             <li class="nav-opened" role="presentation">
-            	<a href="https://hdorr.github.io/tags/xm">项目</a>
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch</a>
             </li>
         
         
@@ -236,6 +256,8 @@
 
 <main id="content" class="content" role="main">
 
+    
+        
     
         
     
@@ -716,7 +738,7 @@ import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定�
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">cms01-后端-网站管理页面查询接口</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">cms01-后端-网站管理页面查询接口</a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -732,7 +754,7 @@ import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定�
 CmsSite：站点模型
 CmsTemplate：页面模板
 CmsPage：页面信息
-@Data @ToString @Document(collection = &quot;cms_page&quot;) public class CmsPage { /** * 页面名称、别名、访问地址、类型（静态/动态）、页面模版、状态 */ //站点ID private String siteId; //页面ID @Id private String pageId; //页面名称 private String pageName; //别名 private String pageAliase; //访问地址 private String pageWebPath; //参数 private String pageParameter; //物理路径 private String pagePhysicalPath; //类型（静态/动态） private String pageType; //页面模版 private String pageTemplate; //页面静态化内容 private String pageHtml; //状态 private String pageStatus; //创建时间 private Date pageCreateTime; //模版id private String templateId; //参数列表，暂不用 private List&lt;CmsPageParam&gt; pageParams; //模版文件Id // private String templateFileId; //静态文件Id private String htmlFileId; //数据Url private String dataUrl; }  属性说明： <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+@Data @ToString @Document(collection = &quot;cms_page&quot;) public class CmsPage { /** * 页面名称、别名、访问地址、类型（静态/动态）、页面模版、状态 */ //站点ID private String siteId; //页面ID @Id private String pageId; //页面名称 private String pageName; //别名 private String pageAliase; //访问地址 private String pageWebPath; //参数 private String pageParameter; //物理路径 private String pagePhysicalPath; //类型（静态/动态） private String pageType; //页面模版 private String pageTemplate; //页面静态化内容 private String pageHtml; //状态 private String pageStatus; //创建时间 private Date pageCreateTime; //模版id private String templateId; //参数列表，暂不用 private List&lt;CmsPageParam&gt; pageParams; //模版文件Id // private String templateFileId; //静态文件Id private String htmlFileId; //数据Url private String dataUrl; }  属性说明： <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -767,7 +789,7 @@ CmsPage：页面信息
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">cms02--后端-网站管理页面条件查询</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">cms02--后端-网站管理页面条件查询</a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -779,7 +801,7 @@ CmsPage：页面信息
 服务端 Dao 使用 CmsPageRepository中的findAll(Example&lt;S&gt; var1, Pageable var2)方法实现，无需定义。  下边测试fifindAll方法实现自定义条件查询：
 //页面条件查询测试dao @Test public void testFindAllByExample() { Pageable pageable = PageRequest.of(0, 10); //创建条件匹配器,注意匹配器每返回一个引用,在创建就是一个新对象了 //可以链式调用实现多条件 ExampleMatcher exampleMatcher = ExampleMatcher.matching() //要匹配的字段,和查询方式 //contains:模糊匹配 startWith:开头匹配 等等 .withMatcher(&quot;pageAliase&quot;, ExampleMatcher.GenericPropertyMatchers.contains()); // .withMatcher(&quot;pageAliase&quot;, ExampleMatcher.GenericPropertyMatchers.startsWith()); CmsPage cmsPage = new CmsPage(); cmsPage.setPageAliase(&quot;分类导航&quot;); Example&lt;CmsPage&gt; example = Example.of(cmsPage,exampleMatcher); Page&lt;CmsPage&gt; all = cmsPageRepository.findAll(example, pageable); System.out.println(all); }  Service 由于前面编写了普通查询,也将封装的条件查询类QueryPageRequest也传入参数中
 ​ 因此,对之前的进行改造:
- 定义条件查询对象Example,在定义条件值类型对象,cmsPage 由于只有页面别名为条件匹配,其他为精确匹配,因此定义ExampleMacher条件匹配器,传入匹配字段,和查询方式 使用lang3工具类公的isNotEmpty方法判断三个查询参数,存在就设置进去 在findAll方法中将example对象传入,测试 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">&raquo;</a></p>
+ 定义条件查询对象Example,在定义条件值类型对象,cmsPage 由于只有页面别名为条件匹配,其他为精确匹配,因此定义ExampleMacher条件匹配器,传入匹配字段,和查询方式 使用lang3工具类公的isNotEmpty方法判断三个查询参数,存在就设置进去 在findAll方法中将example对象传入,测试 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
