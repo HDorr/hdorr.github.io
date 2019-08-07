@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="freemaker快速入门"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="freemaker快速入门 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/freemarker/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="hd" />
+    
+    <meta property="article:tag" content="freemaker" />
+    
+    
+
+    <title>freemaker快速入门 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="Freemarker研究 FreeMarker介绍 1、freemarker是一个用Java开发的模板引擎
+常用的java模板引擎还有哪些？
+Jsp、Freemarker、Thymeleaf 、Velocity 等。
+2、模板&#43;数据模型=输出
+freemarker并不关心数据的来源，只是根据模板的内容，将数据模型在模板" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/freemarker/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "freemaker快速入门",
+    "name": "freemaker快速入门",
+    "wordCount":  636 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/freemarker/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "hd, freemaker",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/freemarker/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">freemaker快速入门</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/hd/">#hd</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/freemaker/">#freemaker</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="freemarker研究"><strong>Freemarker研究</strong></h1>
+
+<h2 id="freemarker介绍"><strong>FreeMarker介绍</strong></h2>
+
+<p>1、freemarker是一个用Java开发的模板引擎</p>
+
+<p><img src="\images\1565171603164.png" alt="1565171603164" /></p>
+
+<p>常用的java模板引擎还有哪些？</p>
+
+<p>Jsp、Freemarker、Thymeleaf 、Velocity 等。</p>
+
+<p>2、<strong>模板+数据模型=输出</strong></p>
+
+<p>freemarker并不关心数据的来源，只是根据模板的内容，将数据模型在模板中显示并输出文件（通常为html，也</p>
+
+<p>可以生成其它格式的文本文件）</p>
+
+<p>1、数据模型</p>
+
+<p>数据模型在java中可以是基本类型也可以List、Map、Pojo等复杂类型。</p>
+
+<p>2、来自官方的例子：（<a href="https://freemarker.apache.org/docs/dgui_quickstart_basics.html）">https://freemarker.apache.org/docs/dgui_quickstart_basics.html）</a></p>
+
+<p>数据模型：</p>
+
+<p><img src="\images\1565171636467.png" alt="1565171636467" /></p>
+
+<p>模板：</p>
+
+<p><img src="\images\1565171655918.png" alt="1565171655918" /></p>
+
+<p>输出：</p>
+
+<p><img src="\images\1565171675677.png" alt="1565171675677" /></p>
+
+<h2 id="freemarker快速入门"><strong>FreeMarker快速入门</strong></h2>
+
+<p>freemarker作为springmvc一种视图格式，默认情况下SpringMVC支持freemarker视图格式。</p>
+
+<p>需要创建Spring Boot+Freemarker工程用于测试模板。</p>
+
+<h3 id="创建测试工程"><strong>创建测试工程</strong></h3>
+
+<p>创建一个freemarker 的测试工程专门用于freemarker的功能测试与模板的测试。</p>
+
+<p>pom.xml如下</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;xc-framework-parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;relativePath&gt;../xc-framework-parent/pom.xml&lt;/relativePath&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;test-freemarker&lt;/artifactId&gt;
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-freemarker&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;!--    http远程访问包--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.squareup.okhttp3&lt;/groupId&gt;
+        &lt;artifactId&gt;okhttp&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+        &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<h3 id="配置文件"><strong>配置文件</strong></h3>
+
+<p>配置application.yml和 logback-spring.xml，从cms工程拷贝这两个文件，进行更改， logback-spring.xml无需更</p>
+
+<p>改，application.yml内容如下：</p>
+
+<pre><code class="language-yaml">server:
+  port: 8088
+spring:
+  application:
+    name: test-freemarker #指定服务器名字
+  freemarker:
+    cache: false #关闭模板缓存,方便测试
+    settings:
+      template_update_delay: 0 #检查模板更新延迟时间,设置为0表示立即检查,如果时间大于0会有缓存不方便进行测试
+    #cache和settings设置目的是有缓存,如果数据更新会不方便快速看到结果,所以关掉缓存,并设置数据一旦更新立即检查
+</code></pre>
+
+<h3 id="创建模型类"><strong>创建模型类</strong></h3>
+
+<p>在freemarker的测试工程下创建模型类型用于测试</p>
+
+<pre><code class="language-java">package com.xuecheng.test.freemarker.model;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/2 15:09
+ */
+import lombok.Data;
+import lombok.ToString;
+import java.util.Date;
+import java.util.List;
+@Data
+@ToString
+public class Student {
+    private String name;//姓名
+    private int age;//年龄
+    private Date birthday;//生日
+    private Float money;//钱包
+    private List&lt;Student&gt; friends;//朋友列表
+    private Student bestFriend;//最好的朋友
+}
+</code></pre>
+
+<h3 id="创建模板"><strong>创建模板</strong></h3>
+
+<p>在 src/main/resources下创建templates，此目录为freemarker的默认模板存放目录。
+在templates下创建模板文件test1.ftl，模板中的${name}最终会被freemarker替换成具体的数据。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf‐8&quot;&gt;
+    &lt;title&gt;Hello World!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	Hello ${name}!
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>创建controller</strong></p>
+
+<p>创建Controller类，向Map中添加name，最后返回模板文件。</p>
+
+<pre><code class="language-java">package com.xuecheng.test.freemarker.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
+import java.util.Map;
+
+@RequestMapping(&quot;/freemarker&quot;)
+@Controller
+
+public class FreemarkerController {
+@Autowired
+RestTemplate restTemplate;
+    
+@RequestMapping(&quot;/test1&quot;)
+public String freemarker(Map&lt;String, Object&gt; map){
+    map.put(&quot;name&quot;,&quot;黑马程序员&quot;);
+    //返回模板文件名称
+    return &quot;test1&quot;;
+}
+}
+</code></pre>
+
+<h3 id="创建启动类"><strong>创建启动类</strong></h3>
+
+<h3 id="测试"><strong>测试</strong></h3>
+
+<p>请求：<a href="http://localhost:8088/freemarker/test1">http://localhost:8088/freemarker/test1</a>
+屏幕显示：Hello 黑马程序员!</p>
+
+<h2 id="freemarker基础"><strong>FreeMarker基础</strong></h2>
+
+<h3 id="核心指令"><strong>核心指令</strong></h3>
+
+<h4 id="数据模型"><strong>数据模型</strong></h4>
+
+<p>Freemarker静态化依赖数据模型和模板，下边定义数据模型：</p>
+
+<p>下边方法形参map即为freemarker静态化所需要的数据模型，在map中填充数据：</p>
+
+<pre><code class="language-java">@RequestMapping(&quot;/test1&quot;)
+public String freemarker(Map&lt;String, Object&gt; map){
+    //向数据模型放数据
+    map.put(&quot;name&quot;,&quot;黑马程序员&quot;);
+    Student stu1 = new Student();
+    stu1.setName(&quot;小明&quot;);
+    stu1.setAge(18);
+    stu1.setMondy(1000.86f);
+    stu1.setBirthday(new Date());
+    Student stu2 = new Student();
+    stu2.setName(&quot;小红&quot;);
+    stu2.setMondy(200.1f);
+    stu2.setAge(19);
+    // stu2.setBirthday(new Date());
+    List&lt;Student&gt; friends = new ArrayList&lt;&gt;();
+    friends.add(stu1);
+    stu2.setFriends(friends);
+    stu2.setBestFriend(stu1);
+    List&lt;Student&gt; stus = new ArrayList&lt;&gt;();
+    stus.add(stu1);
+    stus.add(stu2);
+    //向数据模型放数据
+    map.put(&quot;stus&quot;,stus);
+    //准备map数据
+    HashMap&lt;String,Student&gt; stuMap = new HashMap&lt;&gt;();
+    stuMap.put(&quot;stu1&quot;,stu1);
+    stuMap.put(&quot;stu2&quot;,stu2);
+    //向数据模型放数据
+    map.put(&quot;stu1&quot;,stu1);
+    //向数据模型放数据
+    map.put(&quot;stuMap&quot;,stuMap);
+    //返回模板文件名称
+    return &quot;test1&quot;;
+}
+</code></pre>
+
+<h4 id="list指令"><strong>List指令</strong></h4>
+
+<p>本节定义freemarker模板，模板中使用freemarker的指令，关于freemarker的指令需要知道：</p>
+
+<pre><code class="language-txt">1、注释，即&lt;#‐‐和‐‐&gt;，介于其之间的内容会被freemarker忽略
+2、插值（Interpolation）：即${..}部分,freemarker会用真实的值代替${..}
+3、FTL指令：和HTML标记类似，名字前加#予以区分，Freemarker会解析标签中的表达式或逻辑。
+4、文本，仅文本信息，这些不是freemarker的注释、插值、FTL指令的内容会被freemarker忽略解析，直接输出内
+容。
+</code></pre>
+
+<p>在test1.ftl模板中使用list指令遍历数据模型中的数据：</p>
+
+<pre><code class="language-html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;序号&lt;/td&gt;
+        &lt;td&gt;姓名&lt;/td&gt;
+        &lt;td&gt;年龄&lt;/td&gt;
+        &lt;td&gt;钱包&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;#list stus as stu&gt;
+        &lt;tr&gt;
+            &lt;td&gt;${stu_index + 1}&lt;/td&gt;
+            &lt;td&gt;${stu.name}&lt;/td&gt;
+            &lt;td&gt;${stu.age}&lt;/td&gt;
+            &lt;td&gt;${stu.mondy}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/#list&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>3、输出：</p>
+
+<p>Hello 黑马程序员! 序号 姓名 年龄 钱包 1 小明 18 1,000.86 2 小红 19 200.1</p>
+
+<p><code>说明： _index：得到循环的下标，使用方法是在stu后边加&quot;_index&quot;，它的值是从0开始</code></p>
+
+<h4 id="遍历map数据"><strong>遍历Map数据</strong></h4>
+
+<p>1、数据模型</p>
+
+<p>使用map指令遍历数据模型中的stuMap。</p>
+
+<p>2、模板</p>
+
+<pre><code class="language-html">输出stu1的学生信息：&lt;br/&gt;
+姓名：${stuMap['stu1'].name}&lt;br/&gt;
+年龄：${stuMap['stu1'].age}&lt;br/&gt;
+输出stu1的学生信息：&lt;br/&gt;
+姓名：${stuMap.stu1.name}&lt;br/&gt;
+年龄：${stuMap.stu1.age}&lt;br/&gt;
+遍历输出两个学生信息：&lt;br/&gt;
+
+&lt;table&gt;
+&lt;tr&gt;
+    &lt;td&gt;序号&lt;/td&gt;
+    &lt;td&gt;姓名&lt;/td&gt;
+    &lt;td&gt;年龄&lt;/td&gt;
+    &lt;td&gt;钱包&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;#list stuMap?keys as k&gt;
+        &lt;tr&gt;
+            &lt;td&gt;${k_index + 1}&lt;/td&gt;
+            &lt;td&gt;${stuMap[k].name}&lt;/td&gt;
+            &lt;td&gt;${stuMap[k].age}&lt;/td&gt;
+            &lt;td &gt;${stuMap[k].mondy}&lt;/td&gt;
+        &lt;/tr&gt;	
+    &lt;/#list&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>输出</p>
+
+<pre><code class="language-java">输出stu1的学生信息：
+姓名：小明
+年龄：18
+输出stu1的学生信息：
+姓名：小明
+年龄：18
+遍历输出两个学生信息：
+序号 姓名 年龄 钱包
+1 小红 19 200.1
+2 小明 18 1,000.86
+</code></pre>
+
+<h4 id="if指令"><strong>if指令</strong></h4>
+
+<p>if 指令即判断指令，是常用的FTL指令，freemarker在解析时遇到if会进行判断，条件为真则输出if中间的内容，否</p>
+
+<p>则跳过内容不再输出。</p>
+
+<p>1、数据模型：</p>
+
+<p>使用list指令中测试数据模型。</p>
+
+<p>2、模板：</p>
+
+<pre><code class="language-html">&lt;table&gt;
+&lt;tr&gt;
+    &lt;td&gt;姓名&lt;/td&gt;
+    &lt;td&gt;年龄&lt;/td&gt;
+    &lt;td&gt;钱包&lt;/td&gt;
+&lt;/tr&gt;
+    
+    &lt;#list stus as stu&gt;
+        &lt;tr&gt;
+            &lt;td &lt;#if stu.name =='小明'&gt;style=&quot;background:red;&quot;&lt;/#if&gt;&gt;${stu.name}&lt;/td&gt;
+            &lt;td&gt;${stu.age}&lt;/td&gt;
+            &lt;td &gt;${stu.mondy}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/#list&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>通过阅读上边的代码，实现的功能是：如果姓名为“小明”则背景色显示为红色。</p>
+
+<p>3、输出：</p>
+
+<p>通过测试发现 姓名为小明的背景色为红色。</p>
+
+<h4 id="其它指令"><strong>其它指令</strong></h4>
+
+<p><strong>运算符</strong></p>
+
+<p>1、算数运算符 FreeMarker表达式中完全支持算术运算,FreeMarker支持的算术运算符包括:+, - , * , / , % 2、逻辑</p>
+
+<p>运算符 逻辑运算符有如下几个: 逻辑与:&amp;&amp; 逻辑或:|| 逻辑非:! 逻辑运算符只能作用于布尔值,否则将产生错误 3、</p>
+
+<p>比较运算符 表达式中支持的比较运算符有如下几个: 1 =或者==:判断两个值是否相等. 2 !=:判断两个值是否不等. 3 &gt;</p>
+
+<p>或者gt:判断左边值是否大于右边值 4 &gt;=或者gte:判断左边值是否大于等于右边值 5 &lt;或者lt:判断左边值是否小于右</p>
+
+<p>边值 6 &lt;=或者lte:判断左边值是否小于等于右边值</p>
+
+<p>注意: =和!=可以用于字符串,数值和日期来比较是否相等,但=和!=两边必须是相同类型的值,否则会产生错误,而且</p>
+
+<p>FreeMarker是精确比较,&ldquo;x&rdquo;,&ldquo;x &ldquo;,&ldquo;X&rdquo;是不等的.其它的运行符可以作用于数字和日期,但不能作用于字符串,大部分的时</p>
+
+<p>候,使用gt等字母运算符代替&gt;会有更好的效果,因为 FreeMarker会把&gt;解释成FTL标签的结束字符,当然,也可以使用括</p>
+
+<p>号来避免这种情况,如:&lt;#if (x&gt;y)&gt;</p>
+
+<p><strong>空值处理</strong></p>
+
+<p>1、判断某变量是否存在使用 “??” 用法为:variable??,如果该变量存在,返回true,否则返回false
+例：为防止stus为空报错可以加上判断如下：</p>
+
+<pre><code class="language-html">&lt;#if stus??&gt;
+&lt;#list stus as stu&gt;
+......
+&lt;/#list&gt;
+&lt;/#if&gt;
+</code></pre>
+
+<p>2、缺失变量默认值使用 “!” 使用!要以指定一个默认值，当变量为空时显示默认值。</p>
+
+<p>例： ${name! &lsquo; &lsquo;}表示如果name为空显示空字符串。</p>
+
+<p>例： ${(stu.bestFriend.name)!&rsquo; &lsquo;}表示，如果stu或bestFriend或name为空默认显示空字符串。</p>
+
+<h4 id="内建函数"><strong>内建函数</strong></h4>
+
+<p>内建函数语法格式： 变量+?+函数名称</p>
+
+<p>1、和到某个集合的大小</p>
+
+<p>${集合名?size}</p>
+
+<p>2、日期格式化</p>
+
+<pre><code class="language-html">显示年月日: ${today?date}
+显示时分秒：${today?time}
+显示日期+时间：${today?datetime} &lt;br&gt;
+自定义格式化： ${today?string(&quot;yyyy年MM月&quot;)}
+</code></pre>
+
+<p>3、内建函数c</p>
+
+<p>map.put(&ldquo;point&rdquo;, 102920122);</p>
+
+<p>point是数字型，使用${point}会显示这个数字的值，不并每三位使用逗号分隔。</p>
+
+<p>如果不想显示为每三位分隔的数字，可以使用c函数将数字型转成字符串输出</p>
+
+<p>${point?c}</p>
+
+<p>4、将json字符串转成对象</p>
+
+<p>一个例子：</p>
+
+<p>其中用到了 assign标签，assign的作用是定义一个变量。</p>
+
+<pre><code class="language-java">&lt;#assign text=&quot;{'bank':'工商银行','account':'10101920201920212'}&quot; /&gt;
+&lt;#assign data=text?eval /&gt;
+开户行：${data.bank} 账号：${data.account}
+
+</code></pre>
+
+<h2 id="静态化测试"><strong>静态化测试</strong></h2>
+
+<p>在cms中使用freemarker将页面生成html文件，本节测试html文件生成的方法：</p>
+
+<p>1、使用模板文件静态化</p>
+
+<p>定义模板文件，使用freemarker静态化程序生成html文件。</p>
+
+<p>2、使用模板字符串静态化</p>
+
+<p>定义模板字符串，使用freemarker静态化程序生成html文件。</p>
+
+<h3 id="使用模板文件静态化"><strong>使用模板文件静态化</strong></h3>
+
+<p>在test下创建测试类，并且将main下的resource/templates拷贝到test下，本次测试使用之前我们在main下创建</p>
+
+<p>的模板文件。</p>
+
+<pre><code class="language-java">//基于模板生成静态化文件
+@Test
+public void testGenerateHtml() throws IOException, TemplateException {
+    //创建配置类
+    Configuration configuration=new Configuration(Configuration.getVersion());
+    //设置模板路径
+    String classpath = this.getClass().getResource(&quot;/&quot;).getPath();
+    configuration.setDirectoryForTemplateLoading(new File(classpath + &quot;/templates/&quot;));
+    //设置字符集
+    configuration.setDefaultEncoding(&quot;utf‐8&quot;);
+    //加载模板
+    Template template = configuration.getTemplate(&quot;test1.ftl&quot;);
+    //数据模型
+    Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;name&quot;,&quot;黑马程序员&quot;);
+    //静态化
+    String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, map);
+    //静态化内容
+    System.out.println(content);
+    InputStream inputStream = IOUtils.toInputStream(content);
+    //输出文件
+    FileOutputStream fileOutputStream = new FileOutputStream(new File(&quot;d:/test1.html&quot;));
+    int copy = IOUtils.copy(inputStream, fileOutputStream);
+}
+
+</code></pre>
+
+<h3 id="使用模板字符串静态化"><strong>使用模板字符串静态化</strong></h3>
+
+<pre><code class="language-java">//基于模板字符串生成静态化文件
+@Test
+public void testGenerateHtmlByString() throws IOException, TemplateException {
+    //创建配置类
+    Configuration configuration=new Configuration(Configuration.getVersion());
+    //模板内容，这里测试时使用简单的字符串作为模板
+    String templateString=&quot;&quot; +
+    &quot;&lt;html&gt;\n&quot; +
+    &quot; &lt;head&gt;&lt;/head&gt;\n&quot; +
+    &quot; &lt;body&gt;\n&quot; +
+    &quot; 名称：${name}\n&quot; +
+    &quot; &lt;/body&gt;\n&quot; +
+    &quot;&lt;/html&gt;&quot;;
+    //模板加载器
+    StringTemplateLoader stringTemplateLoader = new StringTemplateLoader();
+    stringTemplateLoader.putTemplate(&quot;template&quot;,templateString);
+    configuration.setTemplateLoader(stringTemplateLoader);
+    //得到模板
+    Template template = configuration.getTemplate(&quot;template&quot;,&quot;utf‐8&quot;);
+    //数据模型
+    Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;name&quot;,&quot;黑马程序员&quot;);
+    //静态化
+    String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, map);
+    //静态化内容
+    System.out.println(content);
+    InputStream inputStream = IOUtils.toInputStream(content);
+	//输出文件
+	FileOutputStream fileOutputStream = new FileOutputStream(new File(&quot;d:/test1.html&quot;));
+	IOUtils.copy(inputStream, fileOutputStream);
+}			
+
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=freemaker%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2ffreemarker%2ffreemaker%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2ffreemarker%2ffreemaker%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2ffreemarker%2ffreemaker%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8%2f&amp;description=freemaker%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2ffreemarker%2ffreemaker%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/freemarker\/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/freemarker\/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">
+          <section class="post">
+              <h2>cms05--后端-网站管理删除页面接口  </h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+          <section class="post">
+              <h2>博客书写说明</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

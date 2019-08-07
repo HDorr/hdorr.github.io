@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>freemaker on I am thinking ...</title>
+    <link>https://hdorr.github.io/tags/freemaker/</link>
+    <description>Recent content in freemaker on I am thinking ...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>All rights reserved - 2018</copyright>
+    <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://hdorr.github.io/tags/freemaker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>freemaker快速入门</title>
+      <link>https://hdorr.github.io/post/freemarker/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/freemarker/freemaker%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>Freemarker研究 FreeMarker介绍 1、freemarker是一个用Java开发的模板引擎
+常用的java模板引擎还有哪些？
+Jsp、Freemarker、Thymeleaf 、Velocity 等。
+2、模板+数据模型=输出
+freemarker并不关心数据的来源，只是根据模板的内容，将数据模型在模板中显示并输出文件（通常为html，也
+可以生成其它格式的文本文件）
+1、数据模型
+数据模型在java中可以是基本类型也可以List、Map、Pojo等复杂类型。
+2、来自官方的例子：（https://freemarker.apache.org/docs/dgui_quickstart_basics.html）
+数据模型：
+模板：
+输出：
+FreeMarker快速入门 freemarker作为springmvc一种视图格式，默认情况下SpringMVC支持freemarker视图格式。
+需要创建Spring Boot+Freemarker工程用于测试模板。
+创建测试工程 创建一个freemarker 的测试工程专门用于freemarker的功能测试与模板的测试。
+pom.xml如下
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt; &amp;lt;parent&amp;gt; &amp;lt;artifactId&amp;gt;xc-framework-parent&amp;lt;/artifactId&amp;gt; &amp;lt;groupId&amp;gt;com.xuecheng&amp;lt;/groupId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;relativePath&amp;gt;../xc-framework-parent/pom.xml&amp;lt;/relativePath&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;artifactId&amp;gt;test-freemarker&amp;lt;/artifactId&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-freemarker&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- http远程访问包--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.squareup.okhttp3&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;okhttp&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-io&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;/project&amp;gt;  配置文件 配置application.</description>
+    </item>
+    
+  </channel>
+</rss>
