@@ -13,15 +13,15 @@
 
 
 
-<meta name="twitter:title" content="Tags"/>
+<meta name="twitter:title" content="ext"/>
 <meta name="twitter:description" content="心之所向"/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="Tags &middot; I am thinking ..." />
+  	<meta property="og:title" content="ext &middot; I am thinking ..." />
   	<meta property="og:site_name" content="I am thinking ..." />
-  	<meta property="og:url" content="https://hdorr.github.io/tags/" />
+  	<meta property="og:url" content="https://hdorr.github.io/tags/ext/" />
 
     
         
@@ -34,7 +34,7 @@
     <meta property="og:description" content="心之所向" />
     
 
-    <title>Tags &middot; I am thinking ...</title>
+    <title>ext &middot; I am thinking ...</title>
 
     
     <meta name="description" content="Used as &#39;description&#39; meta tag for both home and index pages. If not set, &#39;description&#39; will be used instead" />
@@ -63,12 +63,12 @@
           <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
       
       
-        <link href="https://hdorr.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" title="Tags &middot; I am thinking ..." />
+        <link href="https://hdorr.github.io/tags/ext/index.xml" rel="alternate" type="application/rss+xml" title="ext &middot; I am thinking ..." />
       
     
     <meta name="generator" content="Hugo 0.56.0" />
 
-    <link rel="canonical" href="https://hdorr.github.io/tags/" />
+    <link rel="canonical" href="https://hdorr.github.io/tags/ext/" />
 
     
       
@@ -189,7 +189,7 @@
     </ul>
 
     
-    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/tags/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/tags/ext/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -214,7 +214,7 @@
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            <h1 class="page-title">Tags</h1>
+            <h1 class="page-title">ext</h1>
             <h2 class="page-description">
                 
             </h2>
@@ -235,13 +235,24 @@
 	</div>
 
 	
-	   <article class="post tags">
+	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/tags/cms-%E5%89%8D%E7%AB%AF/">cms-前端</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">cms-服务端统一异常处理</a></h2>
     </header>
     <section class="post-excerpt">
         
-            <p> <a class="read-more" href="https://hdorr.github.io/tags/cms-%E5%89%8D%E7%AB%AF/">&raquo;</a></p>
+            <p>异常处理 异常处理的问题分析 从添加页面的service方法中找问题：
+//添加页面 public CmsPageResult add(CmsPage cmsPage){ //校验页面是否存在，根据页面名称、站点Id、页面webpath查询 CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); if(cmsPage1==null){ cmsPage.setPageId(null);//添加页面主键由spring data 自动生成 cmsPageRepository.save(cmsPage); //返回结果 CmsPageResult cmsPageResult = new CmsPageResult(CommonCode.SUCCESS,cmsPage); return cmsPageResult; } return new CmsPageResult(CommonCode.FAIL,null); }  问题：
+1、上边的代码只要操作不成功仅向用户返回“错误代码：11111，失败信息：操作失败”，无法区别具体的错误信
+息。
+2、service方法在执行过程出现异常在哪捕获？在service中需要都加try/catch，如果在controller也需要添加
+try/catch，代码冗余严重且不易维护。
+解决方案：
+1、在Service方法中的编码顺序是先校验判断，有问题则抛出具体的异常信息，最后执行具体的业务操作，返回成
+功信息。
+2、在统一异常处理类中去捕获异常，无需controller捕获异常，向用户返回统一规范的响应信息。
+代码模板如下：
+//添加页面 public CmsPageResult add(CmsPage cmsPage){ //校验cmsPage是否为空 if(cmsPage == null){ //抛出异常，非法请求 //... } //根据页面名称查询（页面名称已在mongodb创建了唯一索引） CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath()); //校验页面是否存在，已存在则抛出异常 if(cmsPage1 !=null){ //抛出异常，已存在相同的页面名称 //... } cmsPage. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -260,138 +271,12 @@
                  
         
 
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post tags">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/tags/cms-%E5%90%8E%E7%AB%AF/">cms-后端</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> <a class="read-more" href="https://hdorr.github.io/tags/cms-%E5%90%8E%E7%AB%AF/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
+        on
             
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
             
-
+                <a href="https://hdorr.github.io//tags/ext/">#ext</a>,
             
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post tags">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/tags/ext/">ext</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> <a class="read-more" href="https://hdorr.github.io/tags/ext/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post tags">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/tags/sm/">sm</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> <a class="read-more" href="https://hdorr.github.io/tags/sm/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post tags">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/tags/xm/">xm</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> <a class="read-more" href="https://hdorr.github.io/tags/xm/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
             27 Jul 2019
