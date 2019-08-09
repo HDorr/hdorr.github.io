@@ -295,6 +295,10 @@
     
         
     
+        
+    
+        
+    
 
     
         
@@ -309,13 +313,94 @@
     <div class="extra-pagination inner">
         <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 2</span>
+	<span class="page-number">Page 1 of 3</span>
 	
 	    <a class="older-posts" href="https://hdorr.github.io/page/2/">Older Posts &rarr;</a>
 	
 </nav>
 
     </div>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/">RabbitMQ入门 及win安装mq</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>RabbitMQ 入门 介绍 RabbitMQ MQ全称为Message Queue，即消息队列， RabbitMQ是由erlang语言开发，基于AMQP（Advanced Message
+Queue 高级消息队列协议）协议实现的消息队列，它是一种应用程序之间的通信方法，消息队列在分布式系统开
+发中应用非常广泛。RabbitMQ官方地址：http://www.rabbitmq.com/
+开发中消息队列通常有如下应用场景：
+1、任务异步处理。
+将不需要同步处理的并且耗时长的操作由消息队列通知消息接收方进行异步处理。提高了应用程序的响应时间。
+2、应用程序解耦合
+MQ相当于一个中介，生产方通过MQ与消费方交互，它将应用程序进行解耦合。
+市场上还有哪些消息队列？
+ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ、Redis。
+为什么使用RabbitMQ呢？
+1、使得简单，功能强大。
+2、基于AMQP协议。
+3、社区活跃，文档完善。
+4、高并发性能好，这主要得益于Erlang语言。
+5、Spring Boot默认已集成RabbitMQ
+其它相关知识 AMQP是什么 ？
+总结：AMQP是一套公开的消息队列协议，最早在2003年被提出，它旨在从协议层定义消息通信数据的标准格式，
+为的就是解决MQ市场上协议不统一的问题。RabbitMQ就是遵循AMQP标准协议开发的MQ服务。
+官方：http://www.amqp.org/
+JMS是什么 ？
+总结：
+JMS是java提供的一套消息服务API标准，其目的是为所有的java应用程序提供统一的消息通信的标准，类似java的
+jdbc，只要遵循jms标准的应用程序之间都可以进行消息通信。它和AMQP有什么 不同，jms是java语言专属的消
+息服务标准，它是在api层定义标准，并且只能用于java应用；而AMQP是在协议层定义的标准，是跨语言的 。
+入门知识 RabbitMQ的工作原理 下图是RabbitMQ的基本结构：
+组成部分说明如下：
+ Broker：消息队列服务进程，此进程包括两个部分：Exchange和Queue。
+ Exchange：消息队列交换机，按一定的规则将消息路由转发到某个队列，对消息进行过虑。
+ Queue：消息队列，存储消息的队列，消息到达队列并转发给指定的消费方。
+ Producer：消息生产者，即生产方客户端，生产方客户端将消息发送到MQ。
+ Consumer：消息消费者，即消费方客户端，接收MQ转发的消息。
+  消息发布接收流程：
+&mdash;&ndash;发送消息&mdash;&ndash;
+1、生产者和Broker建立TCP连接。
+2、生产者和Broker建立通道。
+3、生产者通过通道消息发送给Broker，由Exchange将消息进行转发。
+4、Exchange将消息转发到指定的Queue（队列）
+&mdash;-接收消息&mdash;&ndash;
+1、消费者和Broker建立TCP连接
+2、消费者和Broker建立通道
+3、消费者监听指定的Queue（队列）
+4、当有消息到达Queue时Broker默认将消息推送给消费者。
+5、消费者接收到消息。
+下载安装 下载安装 RabbitMQ由Erlang语言开发，Erlang语言用于并发及分布式系统的开发，在电信领域应用广泛，OTP（Open <a class="read-more" href="https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/rabbitmq/">#rabbitmq</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
 
     
         <article class="post post">
@@ -789,57 +874,10 @@ CmsPage：页面信息
 </article>
 
     
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">cms02--后端-网站管理页面条件查询</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>页面条件查询接口 需求分析 在页面输入查询条件，查询符合条件的页面信息。
-查询条件如下：
-站点Id：精确匹配
-模板Id：精确匹配
-页面别名：模糊匹配
-服务端 Dao 使用 CmsPageRepository中的findAll(Example&lt;S&gt; var1, Pageable var2)方法实现，无需定义。  下边测试fifindAll方法实现自定义条件查询：
-//页面条件查询测试dao @Test public void testFindAllByExample() { Pageable pageable = PageRequest.of(0, 10); //创建条件匹配器,注意匹配器每返回一个引用,在创建就是一个新对象了 //可以链式调用实现多条件 ExampleMatcher exampleMatcher = ExampleMatcher.matching() //要匹配的字段,和查询方式 //contains:模糊匹配 startWith:开头匹配 等等 .withMatcher(&quot;pageAliase&quot;, ExampleMatcher.GenericPropertyMatchers.contains()); // .withMatcher(&quot;pageAliase&quot;, ExampleMatcher.GenericPropertyMatchers.startsWith()); CmsPage cmsPage = new CmsPage(); cmsPage.setPageAliase(&quot;分类导航&quot;); Example&lt;CmsPage&gt; example = Example.of(cmsPage,exampleMatcher); Page&lt;CmsPage&gt; all = cmsPageRepository.findAll(example, pageable); System.out.println(all); }  Service 由于前面编写了普通查询,也将封装的条件查询类QueryPageRequest也传入参数中
-​ 因此,对之前的进行改造:
- 定义条件查询对象Example,在定义条件值类型对象,cmsPage 由于只有页面别名为条件匹配,其他为精确匹配,因此定义ExampleMacher条件匹配器,传入匹配字段,和查询方式 使用lang3工具类公的isNotEmpty方法判断三个查询参数,存在就设置进去 在findAll方法中将example对象传入,测试 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms02-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-    
 
     <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 2</span>
+	<span class="page-number">Page 1 of 3</span>
 	
 	    <a class="older-posts" href="https://hdorr.github.io/page/2/">Older Posts &rarr;</a>
 	

@@ -37,5 +37,29 @@ pom.xml如下
 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt; &amp;lt;parent&amp;gt; &amp;lt;artifactId&amp;gt;xc-framework-parent&amp;lt;/artifactId&amp;gt; &amp;lt;groupId&amp;gt;com.xuecheng&amp;lt;/groupId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;relativePath&amp;gt;../xc-framework-parent/pom.xml&amp;lt;/relativePath&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;artifactId&amp;gt;test-freemarker&amp;lt;/artifactId&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-freemarker&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- http远程访问包--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.squareup.okhttp3&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;okhttp&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-io&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;/project&amp;gt;  配置文件 配置application.</description>
     </item>
     
+    <item>
+      <title>消息队列与GridFS</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/</guid>
+      <description>消息队列 GridFS 页面发布 需求分析 业务流程如下：
+1、管理员进入管理界面点击“页面发布”，前端请求cms页面发布接口。
+2、cms页面发布接口执行页面静态化，并将静态化页面(html文件)存储至GridFS中。
+3、静态化成功后，向消息队列发送页面发布的消息。
+页面发布的最终目标是将页面发布到服务器。
+通过消息队列将页面发布的消息发送给各各服务器。
+3、消息队列负责将消息发送给各各服务器上部署的Cms Client(Cms客户端)。
+在服务器上部署Cms Client(Cms客户端)，客户端接收消息队列的通知。
+4、每个接收到页面发布消息的Cms Client从GridFS获取Html页面文件，并将Html文件存储在本地服务器。
+CmsClient根据页面发布消息的内容请求GridFS获取页面文件，存储在本地服务器。
+整个流程就是,基于前面的页面静态化工作之后,在进行页面预览之后,符合要求的页面需要发布到服务器端存一份,由于服务器是分布式的,所以要用到消息队列,发送消息请求发布,服务器接收到消息,从数据库中拿页面存到自己的服务器文件夹中,完成页面发布工作.
+RabbitMQ研究 要实现上边页面发布的功能，有一个重要的环节就是由消息队列将页面发布的消息通知给各各服务器。
+本节的教学目标是对MQ的研究：
+1、理解MQ的应用场景
+2、理解MQ常用的工作模式
+RabbitMQ相关知识参考Rabbitmq笔记模块</description>
+    </item>
+    
   </channel>
 </rss>

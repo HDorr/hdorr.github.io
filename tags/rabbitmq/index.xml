@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rabbitmq on I am thinking ...</title>
+    <link>https://hdorr.github.io/tags/rabbitmq/</link>
+    <description>Recent content in rabbitmq on I am thinking ...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>All rights reserved - 2018</copyright>
+    <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://hdorr.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RabbitMQ入门 及win安装mq</title>
+      <link>https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/</guid>
+      <description>RabbitMQ 入门 介绍 RabbitMQ MQ全称为Message Queue，即消息队列， RabbitMQ是由erlang语言开发，基于AMQP（Advanced Message
+Queue 高级消息队列协议）协议实现的消息队列，它是一种应用程序之间的通信方法，消息队列在分布式系统开
+发中应用非常广泛。RabbitMQ官方地址：http://www.rabbitmq.com/
+开发中消息队列通常有如下应用场景：
+1、任务异步处理。
+将不需要同步处理的并且耗时长的操作由消息队列通知消息接收方进行异步处理。提高了应用程序的响应时间。
+2、应用程序解耦合
+MQ相当于一个中介，生产方通过MQ与消费方交互，它将应用程序进行解耦合。
+市场上还有哪些消息队列？
+ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ、Redis。
+为什么使用RabbitMQ呢？
+1、使得简单，功能强大。
+2、基于AMQP协议。
+3、社区活跃，文档完善。
+4、高并发性能好，这主要得益于Erlang语言。
+5、Spring Boot默认已集成RabbitMQ
+其它相关知识 AMQP是什么 ？
+总结：AMQP是一套公开的消息队列协议，最早在2003年被提出，它旨在从协议层定义消息通信数据的标准格式，
+为的就是解决MQ市场上协议不统一的问题。RabbitMQ就是遵循AMQP标准协议开发的MQ服务。
+官方：http://www.amqp.org/
+JMS是什么 ？
+总结：
+JMS是java提供的一套消息服务API标准，其目的是为所有的java应用程序提供统一的消息通信的标准，类似java的
+jdbc，只要遵循jms标准的应用程序之间都可以进行消息通信。它和AMQP有什么 不同，jms是java语言专属的消
+息服务标准，它是在api层定义标准，并且只能用于java应用；而AMQP是在协议层定义的标准，是跨语言的 。
+入门知识 RabbitMQ的工作原理 下图是RabbitMQ的基本结构：
+组成部分说明如下：
+ Broker：消息队列服务进程，此进程包括两个部分：Exchange和Queue。
+ Exchange：消息队列交换机，按一定的规则将消息路由转发到某个队列，对消息进行过虑。
+ Queue：消息队列，存储消息的队列，消息到达队列并转发给指定的消费方。
+ Producer：消息生产者，即生产方客户端，生产方客户端将消息发送到MQ。
+ Consumer：消息消费者，即消费方客户端，接收MQ转发的消息。
+  消息发布接收流程：
+&amp;mdash;&amp;ndash;发送消息&amp;mdash;&amp;ndash;
+1、生产者和Broker建立TCP连接。
+2、生产者和Broker建立通道。
+3、生产者通过通道消息发送给Broker，由Exchange将消息进行转发。
+4、Exchange将消息转发到指定的Queue（队列）
+&amp;mdash;-接收消息&amp;mdash;&amp;ndash;
+1、消费者和Broker建立TCP连接
+2、消费者和Broker建立通道
+3、消费者监听指定的Queue（队列）
+4、当有消息到达Queue时Broker默认将消息推送给消费者。
+5、消费者接收到消息。
+下载安装 下载安装 RabbitMQ由Erlang语言开发，Erlang语言用于并发及分布式系统的开发，在电信领域应用广泛，OTP（Open</description>
+    </item>
+    
+  </channel>
+</rss>
