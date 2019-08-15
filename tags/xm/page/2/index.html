@@ -239,7 +239,7 @@
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms02-前端-page_add开发与调试 </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms02-前端-page_add开发与调试 </a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -248,7 +248,7 @@
 在页面列表添加“添加页面”的按钮 实际情况是用户进入页面查询列表，点击“新增页面”按钮进入新增页面窗口。 在查询按钮的旁边添加：
 &lt;router-link :to=&quot;{path:'/cms/page/add'}&quot; &gt; &lt;el-button type=&quot;primary&quot; size=&quot;small&quot;&gt;新增页面&lt;/el-button&gt; &lt;/router-link&gt;  :to为点击后跳转到相应路由
 说明：router-link是vue提供的路由功能，用于在页面生成路由链接，最终在html渲染后就是标签。
-page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &lt;el-form :model=&quot;pageForm&quot; label-width=&quot;80px&quot; &gt; &lt;el-form-item label=&quot;所属站点&quot; prop=&quot;siteId&quot;&gt; &lt;el-select v-model=&quot;pageForm.siteId&quot; placeholder=&quot;请选择站点&quot;&gt; &lt;el-option v-for=&quot;item in siteList&quot; :key=&quot;item.siteId&quot; :label=&quot;item.siteName&quot; :value=&quot;item.siteId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;选择模板&quot; prop=&quot;templateId&quot;&gt; &lt;el-select v-model=&quot;pageForm.templateId&quot; placeholder=&quot;请选择模板&quot;&gt; &lt;el-option v-for=&quot;item in templateList&quot; :key=&quot;item.templateId&quot; :label=&quot;item.templateName&quot; :value=&quot;item.templateId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;页面名称&quot; prop=&quot;pageName&quot;&gt; &lt;el-input v-model=&quot;pageForm.pageName&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;别名&quot; prop=&quot;pageAliase&quot;&gt; &lt;el-input v-model=&quot;pageForm. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
+page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &lt;el-form :model=&quot;pageForm&quot; label-width=&quot;80px&quot; &gt; &lt;el-form-item label=&quot;所属站点&quot; prop=&quot;siteId&quot;&gt; &lt;el-select v-model=&quot;pageForm.siteId&quot; placeholder=&quot;请选择站点&quot;&gt; &lt;el-option v-for=&quot;item in siteList&quot; :key=&quot;item.siteId&quot; :label=&quot;item.siteName&quot; :value=&quot;item.siteId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;选择模板&quot; prop=&quot;templateId&quot;&gt; &lt;el-select v-model=&quot;pageForm.templateId&quot; placeholder=&quot;请选择模板&quot;&gt; &lt;el-option v-for=&quot;item in templateList&quot; :key=&quot;item.templateId&quot; :label=&quot;item.templateName&quot; :value=&quot;item.templateId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;页面名称&quot; prop=&quot;pageName&quot;&gt; &lt;el-input v-model=&quot;pageForm.pageName&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;别名&quot; prop=&quot;pageAliase&quot;&gt; &lt;el-input v-model=&quot;pageForm. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -323,7 +323,7 @@ page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &l
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms03-前端-page_edit开发与调试  </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms03-前端-page_edit开发与调试  </a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -344,7 +344,7 @@ import page_edit from '@/module/cms/page/page_edit.vue'; { path: '/cms/page/edit
 &lt;!-- 操作列,跳转到修改界面--&gt; &lt;el-table-column label=&quot;操作&quot; width=&quot;80&quot;&gt; &lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&gt; &lt;template slot-scope=&quot;page&quot;&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;edit(page.row.pageId)&quot;&gt;编辑 &lt;/template&gt; &lt;/el-table-column&gt;  编写edit方法
 //路由跳转 edit:function (pageId) { //打开修改页面 this.$router.push({ path:'/cms/page/edit/'+pageId, }) },  页面内容显示 本功能实现：进入修改页面立即显示要修改的页面信息。
 1、定义api方法
-export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id查询接口,返回结果 return http.requestQuickGet(apiUrl + '/cms/page/get/' +id); } export const page_edit=(id,params) =&gt; { //定义方法,请求服务端站点修改页面接口,返回结果 return http. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
+export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id查询接口,返回结果 return http.requestQuickGet(apiUrl + '/cms/page/get/' +id); } export const page_edit=(id,params) =&gt; { //定义方法,请求服务端站点修改页面接口,返回结果 return http. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -424,13 +424,13 @@ Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage f
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms04-前端-删除页面开发与调试 </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms04-前端-删除页面开发与调试 </a></h2>
     </header>
     <section class="post-excerpt">
         
             <p> 删除页面前端开发 Api方法 /*页面删除*/ export const page_del = id =&gt; { return http.requestDelete(apiUrl+'/cms/page/del/'+id) }  编写页面 1、在page_list.vue页面添加删除按钮
 &lt;el-table-column label=&quot;操作&quot; width=&quot;80&quot;&gt; &lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&gt; &lt;template slot-scope=&quot;page&quot;&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;edit(page.row.pageId)&quot;&gt;编辑 &lt;/el-button&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;del(page.row.pageId)&quot;&gt;删除 &lt;/el-button&gt; &lt;/template&gt; &lt;/el-table-column&gt;  在原来,修改页面按钮的插槽中直接再加一个按钮
-删除事件 del:function (pageId) { //调用接口 this.$confirm('确认删除吗？', '提示', {}).then(() =&gt; { cmsApi.page_del(pageId).then(res=&gt;{ if (res.success) { this.$message.success(&quot;删除成功&quot;) //刷新页面 this.query() }else { this.$message.success(&quot;删除失败&quot;) } }); }) } },   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+删除事件 del:function (pageId) { //调用接口 this.$confirm('确认删除吗？', '提示', {}).then(() =&gt; { cmsApi.page_del(pageId).then(res=&gt;{ if (res.success) { this.$message.success(&quot;删除成功&quot;) //刷新页面 this.query() }else { this.$message.success(&quot;删除失败&quot;) } }); }) } },   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -551,6 +551,158 @@ RabbitMQ相关知识参考Rabbitmq笔记模块 <a class="read-more" href="https:
                 <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
             
                 <a href="https://hdorr.github.io//tags/hd/">#hd</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">课程管理介绍与环境搭建</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>课程管理 需求分析 在线教育平台的课程信息相当于电商平台的商品。课程管理是后台管理功能中最重要的模块。本项目为教学机构提
+供课程管理功能，教学机构可以添加属于自己的课程，供学生在线学习。
+课程管理包括如下功能需求：
+1、分类管理
+2、新增课程
+3、修改课程
+4、预览课程
+5、发布课程
+用户的操作流程如下：
+1、进入我的课程
+2、点击“添加课程”，进入添加课程界面
+3、输入课程基本信息，点击提交
+4、课程基本信息提交成功，自动进入“管理课程”界面，点击“管理课程”也可以进入“管理课程”界面
+5、编辑图片
+上传课程图片。
+6、编辑课程营销信息
+营销信息主要是设置课程的收费方式及价格。
+7、编辑课程计划
+添加课程计划：
+环境搭建 搭建数据库环境
+1) 创建数据库
+课程管理使用MySQL数据库，创建课程管理数据库：xc_course。
+导入xc_course.sql脚本
+2) 数据表介绍
+课程信息内容繁多，将课程信息分类保存在如下表中
+数据表结构如下：
+导入课程管理服务工程 1）持久层技术介绍：
+课程管理服务使用MySQL数据库存储课程信息，持久层技术如下：
+1、spring data jpa：用于表的基本CRUD。
+2、mybatis：用于复杂的查询操作。
+3、druid：使用阿里巴巴提供的spring boot 整合druid包druid-spring-boot-starter管理连接池。
+druid-spring-boot-starter地址：https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+2）导入工程
+导入资料下的“xc-service-manage-course.zip”。
+注意:后端dao框架采用jpa和mybatis共同开发
+,在复杂查询或面向sql较多的时候用mybatis,简单查询yongjpa更加方便
+导入课程管理前端工程 课程管理属于教学管理子系统的功能，使用用户为教学机构的管理人员和老师，为保证系统的可维护性，单独创建
+一个教学管理前端工程。 教学管理前端工程与系统管理前端的工程结构一样，也采用vue.js框架来实现。
+从课程资料目录拷贝xc-ui-pc-teach.zip到工程，使用webstorm打开，启动工程：
+注意:前端node-sass有错误,要npm rebuild node-sass重新编译一下 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/">页面发布功能</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>页面发布 技术方案 本项目使用MQ实现页面发布的技术方案如下：
+技术方案说明：
+1、平台包括多个站点，页面归属不同的站点。
+2、发布一个页面应将该页面发布到所属站点的服务器上。
+3、每个站点服务部署cms client程序，并与交换机绑定，绑定时指定站点Id为routingKey。
+指定站点id为routingKey就可以实现cms client只能接收到所属站点的页面发布消息。
+4、页面发布程序向MQ发布消息时指定页面所属站点Id为routingKey，将该页面发布到它所在服务器上的cms
+client。
+路由模式分析如下：
+发布一个页面，需发布到该页面所属的每个站点服务器，其它站点服务器不发布。
+比如：发布一个门户的页面，需要发布到每个门户服务器上，而用户中心服务器则不需要发布。
+所以本项目采用routing模式，用站点id作为routingKey，这样就可以匹配页面只发布到所属的站点服务器上。
+页面发布流程图如下：
+1、前端请求cms执行页面发布。
+2、cms执行静态化程序生成html文件。
+3、cms将html文件存储到GridFS中。
+4、cms向MQ发送页面发布消息
+5、MQ将页面发布消息通知给Cms Client
+6、Cms Client从GridFS中下载html文件
+7、Cms Client将html保存到所在服务器指定目录
+页面发布消费方 需求分析
+功能分析：
+创建Cms Client工程作为页面发布消费方，将Cms Client部署在多个服务器上，它负责接收到页面发布 的消息后从 GridFS中下载文件在本地保存。
+需求如下：
+1、将cms Client部署在服务器，配置队列名称和站点ID。
+2、cms Client连接RabbitMQ并监听各自的“页面发布队列”
+3、cms Client接收页面发布队列的消息
+4、根据消息中的页面id从mongodb数据库下载页面到本地
+调用dao查询页面信息，获取到页面的物理路径，调用dao查询站点信息，得到站点的物理路径
+页面物理路径=站点物理路径+页面物理路径+页面名称。
+从GridFS查询静态文件内容，将静态文件内容保存到页面物理路径下。
+创建Cms Client工程 1、创建maven工程
+pom.xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt; &lt;parent&gt; &lt;artifactId&gt;xc-framework-parent&lt;/artifactId&gt; &lt;groupId&gt;com.xuecheng&lt;/groupId&gt; &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; &lt;relativePath&gt;../xc-framework-parent/pom.xml&lt;/relativePath&gt; &lt;/parent&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;artifactId&gt;xc-service-manage-cms-client&lt;/artifactId&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/hd/">#hd</a>,
+            
+                <a href="https://hdorr.github.io//tags/rabbitmq/">#rabbitmq</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">

@@ -299,6 +299,10 @@
     
         
     
+        
+    
+        
+    
 
     
         
@@ -781,7 +785,7 @@ try/catch，代码冗余严重且不易维护。
     
         <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms01-前端-page_List页面编写与整合后端运行</a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms01-前端-page_List页面编写与整合后端运行</a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -790,7 +794,7 @@ try/catch，代码冗余严重且不易维护。
 在router页面中创建index.js路由组件
 import Home from '@/module/home/page/home.vue'; import page_list from &quot;../page/page_list&quot;; export default [{ path: '/', component: Home, name: 'CMS', hidden: false, children:[ {path: '/cms/page/list',name:'页面列表',component: page_list } ] } ]  这样在home组件中,就可以获取到路与信息,并渲染成树状列表显示
 仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
-import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from '@/module/home/router' import CmsRouter from '@/module/cms/router' // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from '@/module/home/router' import CmsRouter from '@/module/cms/router' // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

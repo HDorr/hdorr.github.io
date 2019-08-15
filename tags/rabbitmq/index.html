@@ -316,6 +316,80 @@ jdbc，只要遵循jms标准的应用程序之间都可以进行消息通信。�
 </article>
 
 	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/">页面发布功能</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>页面发布 技术方案 本项目使用MQ实现页面发布的技术方案如下：
+技术方案说明：
+1、平台包括多个站点，页面归属不同的站点。
+2、发布一个页面应将该页面发布到所属站点的服务器上。
+3、每个站点服务部署cms client程序，并与交换机绑定，绑定时指定站点Id为routingKey。
+指定站点id为routingKey就可以实现cms client只能接收到所属站点的页面发布消息。
+4、页面发布程序向MQ发布消息时指定页面所属站点Id为routingKey，将该页面发布到它所在服务器上的cms
+client。
+路由模式分析如下：
+发布一个页面，需发布到该页面所属的每个站点服务器，其它站点服务器不发布。
+比如：发布一个门户的页面，需要发布到每个门户服务器上，而用户中心服务器则不需要发布。
+所以本项目采用routing模式，用站点id作为routingKey，这样就可以匹配页面只发布到所属的站点服务器上。
+页面发布流程图如下：
+1、前端请求cms执行页面发布。
+2、cms执行静态化程序生成html文件。
+3、cms将html文件存储到GridFS中。
+4、cms向MQ发送页面发布消息
+5、MQ将页面发布消息通知给Cms Client
+6、Cms Client从GridFS中下载html文件
+7、Cms Client将html保存到所在服务器指定目录
+页面发布消费方 需求分析
+功能分析：
+创建Cms Client工程作为页面发布消费方，将Cms Client部署在多个服务器上，它负责接收到页面发布 的消息后从 GridFS中下载文件在本地保存。
+需求如下：
+1、将cms Client部署在服务器，配置队列名称和站点ID。
+2、cms Client连接RabbitMQ并监听各自的“页面发布队列”
+3、cms Client接收页面发布队列的消息
+4、根据消息中的页面id从mongodb数据库下载页面到本地
+调用dao查询页面信息，获取到页面的物理路径，调用dao查询站点信息，得到站点的物理路径
+页面物理路径=站点物理路径+页面物理路径+页面名称。
+从GridFS查询静态文件内容，将静态文件内容保存到页面物理路径下。
+创建Cms Client工程 1、创建maven工程
+pom.xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt; &lt;parent&gt; &lt;artifactId&gt;xc-framework-parent&lt;/artifactId&gt; &lt;groupId&gt;com.xuecheng&lt;/groupId&gt; &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; &lt;relativePath&gt;../xc-framework-parent/pom.xml&lt;/relativePath&gt; &lt;/parent&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;artifactId&gt;xc-service-manage-cms-client&lt;/artifactId&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/hd/">#hd</a>,
+            
+                <a href="https://hdorr.github.io//tags/rabbitmq/">#rabbitmq</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
 
 	<nav class="pagination" role="navigation">
 	

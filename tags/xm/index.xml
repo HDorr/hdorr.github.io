@@ -192,10 +192,10 @@ try/catch，代码冗余严重且不易维护。
     
     <item>
       <title>cms01-前端-page_List页面编写与整合后端运行</title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
       <description>在module中创建CMS页面原型 定义cms目录,创建相应接口
 在page目录中创建page_list页面
 在router页面中创建index.js路由组件
@@ -244,10 +244,10 @@ CmsPage：页面信息
     
     <item>
       <title>cms02-前端-page_add开发与调试 </title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
       <description>创建组件 页面效果 ​ 创建page_add.vue页面 配置路由 在cms模块的路由文件中配置“添加页面”的路由：
 {path:&#39;/cms/page/add&#39;,name:&#39;新增页面&#39;,component: page_add,hidden:true}  注意：由于“添加页面”不需要显示为一个菜单，这里hidden设置为true隐藏菜单。 测试，在浏览器地址栏输入http://localhost:11000/#/cms/page/add
 在页面列表添加“添加页面”的按钮 实际情况是用户进入页面查询列表，点击“新增页面”按钮进入新增页面窗口。 在查询按钮的旁边添加：
@@ -268,10 +268,10 @@ page_add页面 &amp;lt;!-- pageForm就是page绑定的数据对象的名称--&am
     
     <item>
       <title>cms03-前端-page_edit开发与调试  </title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
       <description>修改页面前端开发 修改页面用户操作流程：
 1、用户进入修改页面，在页面上显示了修改页面的信息
 2、用户修改页面的内容，点击“提交”，提示“修改成功”或“修改失败”
@@ -309,10 +309,10 @@ Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage f
     
     <item>
       <title>cms04-前端-删除页面开发与调试 </title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
       <description> 删除页面前端开发 Api方法 /*页面删除*/ export const page_del = id =&amp;gt; { return http.requestDelete(apiUrl+&#39;/cms/page/del/&#39;+id) }  编写页面 1、在page_list.vue页面添加删除按钮
 &amp;lt;el-table-column label=&amp;quot;操作&amp;quot; width=&amp;quot;80&amp;quot;&amp;gt; &amp;lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&amp;gt; &amp;lt;template slot-scope=&amp;quot;page&amp;quot;&amp;gt; &amp;lt;el-button size=&amp;quot;small&amp;quot;type=&amp;quot;text&amp;quot; @click=&amp;quot;edit(page.row.pageId)&amp;quot;&amp;gt;编辑 &amp;lt;/el-button&amp;gt; &amp;lt;el-button size=&amp;quot;small&amp;quot;type=&amp;quot;text&amp;quot; @click=&amp;quot;del(page.row.pageId)&amp;quot;&amp;gt;删除 &amp;lt;/el-button&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;/el-table-column&amp;gt;  在原来,修改页面按钮的插槽中直接再加一个按钮
 删除事件 del:function (pageId) { //调用接口 this.$confirm(&#39;确认删除吗？&#39;, &#39;提示&#39;, {}).then(() =&amp;gt; { cmsApi.page_del(pageId).then(res=&amp;gt;{ if (res.success) { this.$message.success(&amp;quot;删除成功&amp;quot;) //刷新页面 this.query() }else { this.$message.success(&amp;quot;删除失败&amp;quot;) } }); }) } },  </description>
@@ -353,6 +353,96 @@ RabbitMQ研究 要实现上边页面发布的功能，有一个重要的环节�
 1、理解MQ的应用场景
 2、理解MQ常用的工作模式
 RabbitMQ相关知识参考Rabbitmq笔记模块</description>
+    </item>
+    
+    <item>
+      <title>课程管理介绍与环境搭建</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>课程管理 需求分析 在线教育平台的课程信息相当于电商平台的商品。课程管理是后台管理功能中最重要的模块。本项目为教学机构提
+供课程管理功能，教学机构可以添加属于自己的课程，供学生在线学习。
+课程管理包括如下功能需求：
+1、分类管理
+2、新增课程
+3、修改课程
+4、预览课程
+5、发布课程
+用户的操作流程如下：
+1、进入我的课程
+2、点击“添加课程”，进入添加课程界面
+3、输入课程基本信息，点击提交
+4、课程基本信息提交成功，自动进入“管理课程”界面，点击“管理课程”也可以进入“管理课程”界面
+5、编辑图片
+上传课程图片。
+6、编辑课程营销信息
+营销信息主要是设置课程的收费方式及价格。
+7、编辑课程计划
+添加课程计划：
+环境搭建 搭建数据库环境
+1) 创建数据库
+课程管理使用MySQL数据库，创建课程管理数据库：xc_course。
+导入xc_course.sql脚本
+2) 数据表介绍
+课程信息内容繁多，将课程信息分类保存在如下表中
+数据表结构如下：
+导入课程管理服务工程 1）持久层技术介绍：
+课程管理服务使用MySQL数据库存储课程信息，持久层技术如下：
+1、spring data jpa：用于表的基本CRUD。
+2、mybatis：用于复杂的查询操作。
+3、druid：使用阿里巴巴提供的spring boot 整合druid包druid-spring-boot-starter管理连接池。
+druid-spring-boot-starter地址：https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+2）导入工程
+导入资料下的“xc-service-manage-course.zip”。
+注意:后端dao框架采用jpa和mybatis共同开发
+,在复杂查询或面向sql较多的时候用mybatis,简单查询yongjpa更加方便
+导入课程管理前端工程 课程管理属于教学管理子系统的功能，使用用户为教学机构的管理人员和老师，为保证系统的可维护性，单独创建
+一个教学管理前端工程。 教学管理前端工程与系统管理前端的工程结构一样，也采用vue.js框架来实现。
+从课程资料目录拷贝xc-ui-pc-teach.zip到工程，使用webstorm打开，启动工程：
+注意:前端node-sass有错误,要npm rebuild node-sass重新编译一下</description>
+    </item>
+    
+    <item>
+      <title>页面发布功能</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/</guid>
+      <description>页面发布 技术方案 本项目使用MQ实现页面发布的技术方案如下：
+技术方案说明：
+1、平台包括多个站点，页面归属不同的站点。
+2、发布一个页面应将该页面发布到所属站点的服务器上。
+3、每个站点服务部署cms client程序，并与交换机绑定，绑定时指定站点Id为routingKey。
+指定站点id为routingKey就可以实现cms client只能接收到所属站点的页面发布消息。
+4、页面发布程序向MQ发布消息时指定页面所属站点Id为routingKey，将该页面发布到它所在服务器上的cms
+client。
+路由模式分析如下：
+发布一个页面，需发布到该页面所属的每个站点服务器，其它站点服务器不发布。
+比如：发布一个门户的页面，需要发布到每个门户服务器上，而用户中心服务器则不需要发布。
+所以本项目采用routing模式，用站点id作为routingKey，这样就可以匹配页面只发布到所属的站点服务器上。
+页面发布流程图如下：
+1、前端请求cms执行页面发布。
+2、cms执行静态化程序生成html文件。
+3、cms将html文件存储到GridFS中。
+4、cms向MQ发送页面发布消息
+5、MQ将页面发布消息通知给Cms Client
+6、Cms Client从GridFS中下载html文件
+7、Cms Client将html保存到所在服务器指定目录
+页面发布消费方 需求分析
+功能分析：
+创建Cms Client工程作为页面发布消费方，将Cms Client部署在多个服务器上，它负责接收到页面发布 的消息后从 GridFS中下载文件在本地保存。
+需求如下：
+1、将cms Client部署在服务器，配置队列名称和站点ID。
+2、cms Client连接RabbitMQ并监听各自的“页面发布队列”
+3、cms Client接收页面发布队列的消息
+4、根据消息中的页面id从mongodb数据库下载页面到本地
+调用dao查询页面信息，获取到页面的物理路径，调用dao查询站点信息，得到站点的物理路径
+页面物理路径=站点物理路径+页面物理路径+页面名称。
+从GridFS查询静态文件内容，将静态文件内容保存到页面物理路径下。
+创建Cms Client工程 1、创建maven工程
+pom.xml
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt; &amp;lt;parent&amp;gt; &amp;lt;artifactId&amp;gt;xc-framework-parent&amp;lt;/artifactId&amp;gt; &amp;lt;groupId&amp;gt;com.xuecheng&amp;lt;/groupId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;relativePath&amp;gt;../xc-framework-parent/pom.xml&amp;lt;/relativePath&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;artifactId&amp;gt;xc-service-manage-cms-client&amp;lt;/artifactId&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-amqp&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.</description>
     </item>
     
     <item>

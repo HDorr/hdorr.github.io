@@ -14,10 +14,10 @@
     
     <item>
       <title>cms01-前端-page_List页面编写与整合后端运行</title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
       <description>在module中创建CMS页面原型 定义cms目录,创建相应接口
 在page目录中创建page_list页面
 在router页面中创建index.js路由组件
@@ -28,10 +28,10 @@ import Vue from &#39;vue&#39;; import Router from &#39;vue-router&#39;; Vue.use(
     
     <item>
       <title>cms02-前端-page_add开发与调试 </title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
       <description>创建组件 页面效果 ​ 创建page_add.vue页面 配置路由 在cms模块的路由文件中配置“添加页面”的路由：
 {path:&#39;/cms/page/add&#39;,name:&#39;新增页面&#39;,component: page_add,hidden:true}  注意：由于“添加页面”不需要显示为一个菜单，这里hidden设置为true隐藏菜单。 测试，在浏览器地址栏输入http://localhost:11000/#/cms/page/add
 在页面列表添加“添加页面”的按钮 实际情况是用户进入页面查询列表，点击“新增页面”按钮进入新增页面窗口。 在查询按钮的旁边添加：
@@ -42,10 +42,10 @@ page_add页面 &amp;lt;!-- pageForm就是page绑定的数据对象的名称--&am
     
     <item>
       <title>cms03-前端-page_edit开发与调试  </title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/</guid>
       <description>修改页面前端开发 修改页面用户操作流程：
 1、用户进入修改页面，在页面上显示了修改页面的信息
 2、用户修改页面的内容，点击“提交”，提示“修改成功”或“修改失败”
@@ -68,10 +68,10 @@ export const page_get=(id) =&amp;gt; { //定义方法,请求服务端站点根�
     
     <item>
       <title>cms04-前端-删除页面开发与调试 </title>
-      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
       
-      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
       <description> 删除页面前端开发 Api方法 /*页面删除*/ export const page_del = id =&amp;gt; { return http.requestDelete(apiUrl+&#39;/cms/page/del/&#39;+id) }  编写页面 1、在page_list.vue页面添加删除按钮
 &amp;lt;el-table-column label=&amp;quot;操作&amp;quot; width=&amp;quot;80&amp;quot;&amp;gt; &amp;lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&amp;gt; &amp;lt;template slot-scope=&amp;quot;page&amp;quot;&amp;gt; &amp;lt;el-button size=&amp;quot;small&amp;quot;type=&amp;quot;text&amp;quot; @click=&amp;quot;edit(page.row.pageId)&amp;quot;&amp;gt;编辑 &amp;lt;/el-button&amp;gt; &amp;lt;el-button size=&amp;quot;small&amp;quot;type=&amp;quot;text&amp;quot; @click=&amp;quot;del(page.row.pageId)&amp;quot;&amp;gt;删除 &amp;lt;/el-button&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;/el-table-column&amp;gt;  在原来,修改页面按钮的插槽中直接再加一个按钮
 删除事件 del:function (pageId) { //调用接口 this.$confirm(&#39;确认删除吗？&#39;, &#39;提示&#39;, {}).then(() =&amp;gt; { cmsApi.page_del(pageId).then(res=&amp;gt;{ if (res.success) { this.$message.success(&amp;quot;删除成功&amp;quot;) //刷新页面 this.query() }else { this.$message.success(&amp;quot;删除失败&amp;quot;) } }); }) } },  </description>

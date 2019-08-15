@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="页面发布功能"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="页面发布功能 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="hd" />
+    
+    <meta property="article:tag" content="rabbitmq" />
+    
+    
+
+    <title>页面发布功能 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="页面发布 技术方案 本项目使用MQ实现页面发布的技术方案如下：
+技术方案说明：
+1、平台包括多个站点，页面归属不同的站点。
+2、发布一个页面应将该页面发布到所属站点的服务器上。
+3、每个站点服务部署cms client程序，并与交换机绑定，绑定时指定站点Id为routingKey。
+指定站点id为routingKey就" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "页面发布功能",
+    "name": "页面发布功能",
+    "wordCount":  975 ,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, hd, rabbitmq",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">页面发布功能</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/hd/">#hd</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/rabbitmq/">#rabbitmq</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="页面发布"><strong>页面发布</strong></h1>
+
+<h2 id="技术方案"><strong>技术方案</strong></h2>
+
+<p>本项目使用MQ实现页面发布的技术方案如下：</p>
+
+<p><img src="\images\1565871706846.png" alt="1565871706846" /></p>
+
+<p>技术方案说明：</p>
+
+<p>1、平台包括多个站点，页面归属不同的站点。</p>
+
+<p>2、发布一个页面应将该页面发布到所属站点的服务器上。</p>
+
+<p>3、每个站点服务部署cms client程序，并与交换机绑定，绑定时指定站点Id为routingKey。</p>
+
+<p>指定站点id为routingKey就可以实现cms client只能接收到所属站点的页面发布消息。</p>
+
+<p>4、页面发布程序向MQ发布消息时指定页面所属站点Id为routingKey，将该页面发布到它所在服务器上的cms</p>
+
+<p>client。</p>
+
+<p>路由模式分析如下：</p>
+
+<p>发布一个页面，需发布到该页面所属的每个站点服务器，其它站点服务器不发布。</p>
+
+<p>比如：发布一个门户的页面，需要发布到每个门户服务器上，而用户中心服务器则不需要发布。</p>
+
+<p>所以本项目采用routing模式，用站点id作为routingKey，这样就可以匹配页面只发布到所属的站点服务器上。</p>
+
+<p>页面发布流程图如下：</p>
+
+<p><img src="\images\1565871745166.png" alt="1565871745166" /></p>
+
+<p>1、前端请求cms执行页面发布。</p>
+
+<p>2、cms执行静态化程序生成html文件。</p>
+
+<p>3、cms将html文件存储到GridFS中。</p>
+
+<p>4、cms向MQ发送页面发布消息</p>
+
+<p>5、MQ将页面发布消息通知给Cms Client</p>
+
+<p>6、Cms Client从GridFS中下载html文件</p>
+
+<p>7、Cms Client将html保存到所在服务器指定目录</p>
+
+<h2 id="页面发布消费方"><strong>页面发布消费方</strong></h2>
+
+<p><strong>需求分析</strong></p>
+
+<p>功能分析：</p>
+
+<p>创建Cms Client工程作为页面发布消费方，将Cms Client部署在多个服务器上，它负责接收到页面发布 的消息后从 GridFS中下载文件在本地保存。</p>
+
+<p>需求如下：</p>
+
+<p>1、将cms Client部署在服务器，配置队列名称和站点ID。</p>
+
+<p>2、cms Client连接RabbitMQ并监听各自的“页面发布队列”</p>
+
+<p>3、cms Client接收页面发布队列的消息</p>
+
+<p>4、根据消息中的页面id从mongodb数据库下载页面到本地</p>
+
+<p>调用dao查询页面信息，获取到页面的物理路径，调用dao查询站点信息，得到站点的物理路径</p>
+
+<p>页面物理路径=站点物理路径+页面物理路径+页面名称。</p>
+
+<p>从GridFS查询静态文件内容，将静态文件内容保存到页面物理路径下。</p>
+
+<h3 id="创建cms-client工程"><strong>创建Cms Client工程</strong></h3>
+
+<p>1、创建maven工程</p>
+
+<p>pom.xml</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;xc-framework-parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;relativePath&gt;../xc-framework-parent/pom.xml&lt;/relativePath&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;xc-service-manage-cms-client&lt;/artifactId&gt;
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-mongodb&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+        &lt;artifactId&gt;xc-framework-model&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+        &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>2、配置文件</p>
+
+<p>在resources下配置application.yml和logback-spring.xml。</p>
+
+<p>application.yml的内容如下：</p>
+
+<pre><code class="language-yaml">server:
+  port: 31000
+spring:
+  application:
+    name: xc-service-manage-cms-client
+  data:
+    mongodb:
+      uri: mongodb://root:123456@localhost:27017
+      database: xc_cms
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+xuecheng:
+  mq:
+    #cms客户端监控的队列名称(不同的客户端监控的队列不能重复)
+    queue: queue_cms_postpage_01
+    routingKey: 5a751fab6abb5044e0d19ea1
+</code></pre>
+
+<p>说明：在配置文件中配置队列的名称，每个 cms client在部署时注意队列名称不要重复</p>
+
+<p>3、启动类</p>
+
+<pre><code class="language-java">@SpringBootApplication @EntityScan(&quot;com.xuecheng.framework.domain.cms&quot;)//扫描实体类 @ComponentScan(basePackages={&quot;com.xuecheng.framework&quot;})//扫描common下的所有类 @ComponentScan(basePackages={&quot;com.xuecheng.manage_cms_client&quot;}) 
+public class ManageCmsClientApplication {
+public static void main(String[] args) {
+    SpringApplication.run(ManageCmsClientApplication.class, args);
+} 
+}
+</code></pre>
+
+<h3 id="rabbitmqconfifig配置类"><strong>RabbitmqConfifig配置类</strong></h3>
+
+<p>消息队列设置如下：</p>
+
+<p>1、创建“ex_cms_postpage”交换机</p>
+
+<p>2、每个Cms Client创建一个队列与交换机绑定</p>
+
+<p>3、每个Cms Client程序配置队列名称和routingKey，将站点ID作为routingKey</p>
+
+<pre><code class="language-java">package com.xuecheng.manage_cms_client.config;
+
+import org.springframework.amqp.core.*;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/10 17:19
+ */
+@Configuration
+public class CmsCientConfig {
+    //队列bean名称
+    public static final String QUEUE_CMS_POSTPAGE = &quot;queue_cms_postpage&quot;;
+    //交换机名称
+    public static final String EX_ROUTING_CMS_POSTPAGE = &quot;ex_routing_cms_postpage&quot;;
+    //队列名称
+    @Value(&quot;${xuecheng.mq.queue}&quot;)
+    public String queue_cms_postpage_name;
+    //routingkey名称
+    @Value(&quot;${xuecheng.mq.routingKey}&quot;)
+    public String routingKey;
+
+    /**
+     * 交换机配置
+     */
+    @Bean(EX_ROUTING_CMS_POSTPAGE)
+    public Exchange EXCHANGE_ROUTING_INFORM() {
+        return ExchangeBuilder.directExchange(EX_ROUTING_CMS_POSTPAGE).durable(true).build();
+    }
+
+    /**
+     * 声明队列
+     */
+    @Bean(QUEUE_CMS_POSTPAGE)
+    public Queue QUEUE_CMS_POSTPAGE() {
+        return new Queue(queue_cms_postpage_name, true, false, false, null);
+    }
+    /**
+     * 绑定队列
+     */
+    @Bean
+    public Binding BINDING_QUEUE_INFORM_EXCHANGR(
+            @Qualifier(QUEUE_CMS_POSTPAGE) Queue queue,
+            @Qualifier(EX_ROUTING_CMS_POSTPAGE) Exchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(routingKey).noargs();
+    }
+
+}
+</code></pre>
+
+<pre><code class="language-java">package com.xuecheng.manage_cms_client.config;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * monggoDB的GridFS取文件所需配置类
+ * 用于创建下载流对象
+ * @author Hr|黄锐
+ * @create 2019/8/3 16:20
+ */
+@Configuration
+public class MongodbConfig {
+//    从配置文件中取出所用数据库对象
+    @Value(&quot;${spring.data.mongodb.database}&quot;)
+    String db;
+    @Bean
+    public GridFSBucket getGridFSBucket(MongoClient mongoClient){
+        MongoDatabase database = mongoClient.getDatabase(db);
+        GridFSBucket bucket = GridFSBuckets.create(database);
+        return bucket;
+    }
+}
+</code></pre>
+
+<h3 id="定义消息格式"><strong>定义消息格式</strong></h3>
+
+<p>消息内容采用json格式存储数据，如下：</p>
+
+<p>页面id：发布页面的id</p>
+
+<pre><code class="language-json">{ 
+    &quot;pageId&quot;:&quot;&quot; 
+}
+</code></pre>
+
+<h3 id="pagedao"><strong>PageDao</strong></h3>
+
+<p>1、使用CmsPageRepository 查询页面信息</p>
+
+<pre><code class="language-java">public interface CmsPageRepository extends MongoRepository&lt;CmsPage,String&gt; { 
+}
+</code></pre>
+
+<p>2、使用CmsSiteRepository查询站点信息，主要获取站点物理路径</p>
+
+<pre><code class="language-java">public interface CmsSiteRepository extends MongoRepository&lt;CmsSite,String&gt; { 
+}
+</code></pre>
+
+<h3 id="pageservice"><strong>PageService</strong></h3>
+
+<p>在Service中定义保存页面静态文件到服务器物理路径方法：</p>
+
+<pre><code class="language-java">package com.xuecheng.manage_cms_client.service;
+
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSDownloadStream;
+import com.mongodb.client.gridfs.model.GridFSFile;
+import com.xuecheng.framework.domain.cms.CmsPage;
+import com.xuecheng.framework.domain.cms.CmsSite;
+import com.xuecheng.manage_cms_client.dao.CmsPageRepository;
+import com.xuecheng.manage_cms_client.dao.CmsSiteRepository;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsResource;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
+import org.springframework.stereotype.Service;
+
+import java.io.*;
+import java.util.Optional;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/10 17:38
+ */
+@Service
+public class PageService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PageService.class);
+    @Autowired
+    CmsPageRepository cmsPageRepository;
+
+    @Autowired
+    GridFsTemplate gridFsTemplate;
+    @Autowired
+    GridFSBucket gridFSBucket;
+    @Autowired
+    CmsSiteRepository cmsSiteRepository;
+
+
+//保存页面到服务器物理路径
+    public void savePageToServerPath(String pageId) {
+        //根据pageid查询page
+        CmsPage cmsPage = this.findCmspageById(pageId);
+        //得到html文件id,从cms_page中查询
+        /**
+         * htmlFileId是将来页面发布程序,将页面静态化后的文件存在gridFS之后产生的文件id
+         */
+        String htmlFileId = cmsPage.getHtmlFileId();
+        //从gridfs中查询文件
+        InputStream inputStream = this.getFileById(htmlFileId);
+        if (inputStream == null) {
+            LOGGER.error(&quot;getFindById InputStream is null ,htmlFileId:{}&quot;,htmlFileId);
+            return;
+        }
+        //得到站点信息
+        CmsSite cmsSite = this.findSiteById(cmsPage.getSiteId());
+        //站点物理路径
+            String sitePhysicalPath = cmsSite.getSitePhysicalPath();
+        //页面物理路径
+            String pagePath = sitePhysicalPath + cmsPage.getPagePhysicalPath() + cmsPage.getPageName();
+        //将文件保存在服务器路径
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(new File(pagePath));
+            //工具类方法,能将inputStream内容写到outputStream中
+          IOUtils.copy(inputStream, outputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+              outputStream.close();
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //根据文件id查询文件内容
+    public InputStream getFileById(String fileId) {
+        //文件对象
+        GridFSFile fsFile = gridFsTemplate.findOne(Query.query(Criteria.where(&quot;_id&quot;).is(fileId)));
+        GridFSDownloadStream gridFSDownloadStream = gridFSBucket.openDownloadStream(fsFile.getObjectId());
+        GridFsResource gridFsResource = new GridFsResource(fsFile, gridFSDownloadStream);
+        try {
+            return gridFsResource.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //根据id,查询html文件id
+    public CmsPage findCmspageById(String pageId) {
+        Optional&lt;CmsPage&gt; optional = cmsPageRepository.findById(pageId);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
+    }
+
+    //根据站点id,查询站点信息
+    public CmsSite findSiteById(String siteId) {
+        Optional&lt;CmsSite&gt; optional = cmsSiteRepository.findById(siteId);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
+    }
+}
+</code></pre>
+
+<h3 id="consumerpostpage"><strong>ConsumerPostPage</strong></h3>
+
+<p>在cms client工程的mq包下创建ConsumerPostPage类，ConsumerPostPage作为发布页面的消费客户端，监听</p>
+
+<p>页面发布队列的消息，收到消息后从mongodb下载文件，保存在本地。</p>
+
+<pre><code class="language-java">package com.xuecheng.manage_cms_client.mq;
+
+import com.alibaba.fastjson.JSON;
+import com.xuecheng.framework.domain.cms.CmsPage;
+import com.xuecheng.manage_cms_client.service.PageService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+
+/**
+ * 监听mq,接收页面发布消息
+ * @author Hr|黄锐
+ * @create 2019/8/10 18:13
+ */
+@Component
+public class ConsumerPostPage {
+    @Autowired
+    PageService pageService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PageService.class);
+    /**
+     * 发布页面
+     */
+    @RabbitListener(queues = {&quot;${xuecheng.mq.queue}&quot;})
+    public void postPage(String msg) {
+        //解析消息
+        Map map = JSON.parseObject(msg, Map.class);
+        String pageId = (String) map.get(&quot;pageId&quot;);
+//        做一个判断,校验页面是否合法
+        CmsPage cmspage = pageService.findCmspageById(pageId);
+        if (cmspage == null) {
+            LOGGER.error(&quot;receive postpage msg,cmsPage is null,pageId:{}&quot;,pageId);
+            return;
+        }
+        //调用service方法将页面从GridFS中下载到服务器
+        pageService.savePageToServerPath(pageId);
+    }
+}
+
+</code></pre>
+
+<h2 id="页面发布生产方"><strong>页面发布生产方</strong></h2>
+
+<h3 id="需求分析"><strong>需求分析</strong></h3>
+
+<p>管理员通过 cms系统发布“页面发布”的消费，cms系统作为页面发布的生产方。</p>
+
+<p>需求如下：</p>
+
+<p>1、管理员进入管理界面点击“页面发布”，前端请求cms页面发布接口。</p>
+
+<p>2、cms页面发布接口执行页面静态化，并将静态化页面存储至GridFS中。</p>
+
+<p>3、静态化成功后，向消息队列发送页面发布的消息。</p>
+
+<p>1） 获取页面的信息及页面所属站点ID。</p>
+
+<p>2） 设置消息内容为页面ID。（采用json格式，方便日后扩展）</p>
+
+<p>3） 发送消息给ex_cms_postpage交换机，并将站点ID作为routingKey。</p>
+
+<h3 id="rabbitmq配置"><strong>RabbitMQ配置</strong></h3>
+
+<p>1、配置Rabbitmq的连接参数</p>
+
+<p>在application.yml添加如下配置：</p>
+
+<pre><code class="language-yaml"> rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+</code></pre>
+
+<p>2、在pom.xml添加依赖</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; 
+    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>3、RabbitMQConfifig配置</p>
+
+<p>由于cms作为页面发布方要面对很多不同站点的服务器，面对很多页面发布队列，所以这里不再配置队列，只需要</p>
+
+<p>配置交换机即可。</p>
+
+<p>在cms工程只配置交换机名称即可。</p>
+
+<pre><code class="language-java">package com.xuecheng.manage_cms.config;
+
+import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.ExchangeBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/10 17:19
+ */
+@Configuration
+public class CmsCientConfig {
+    /**
+     * 这里只用配交换机,因为队列在消费方已经绑定了交换机,这里不能再在yml文件中硬编码配置
+     * 队列,因为使用routing模式,未来会有各种生产者请求消息,要通过代码获取站点id指定为路由
+     * key,在消费方会根据路由key判断是否匹配.
+     */
+    //交换机名称
+    public static final String EX_ROUTING_CMS_POSTPAGE = &quot;ex_routing_cms_postpage&quot;;
+
+    /**
+     * 交换机配置
+     */
+    @Bean(EX_ROUTING_CMS_POSTPAGE)
+    public Exchange EXCHANGE_ROUTING_INFORM() {
+        return ExchangeBuilder.directExchange(EX_ROUTING_CMS_POSTPAGE).durable(true).build();
+    }
+}
+</code></pre>
+
+<h3 id="api接口"><strong>Api接口</strong></h3>
+
+<p>在api工程定义页面发布接口：</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;发布页面&quot;)
+public ResponseResult post(String pageId);
+</code></pre>
+
+<h3 id="pageservice-1"><strong>PageService</strong></h3>
+
+<p>在PageService中定义页面发布方法，代码如下：</p>
+
+<pre><code class="language-java">/**
+     * 页面发布
+     * @param pageId
+     * @return
+     */
+    public ResponseResult postPage(String pageId) {
+        //执行静态化
+        String pageHtml = this.getPageHtml(pageId);
+        //将静态化文件存储到GridFS中
+        CmsPage cmsPage = saveHtml(pageId, pageHtml);
+        //向MQ发送消息
+        sendPostPage(pageId);
+        return new ResponseResult(CommonCode.SUCCESS);
+    }
+
+    /**
+     * 保存静态页面内容到Gridfs
+     */
+    public CmsPage saveHtml(String pageId,String content) {
+        //先得到页面信息
+        CmsPage cmsPage = this.findPageById(pageId);
+        if (cmsPage == null) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        ObjectId objectId = null;
+        //将content内容转为输入流
+        try {
+            InputStream inputStream = IOUtils.toInputStream(content, &quot;utf-8&quot;);
+        //将文件内容保存到gridfs
+             objectId = gridFsTemplate.store(inputStream, cmsPage.getPageName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //将html文件id更新到cmspage中
+            cmsPage.setHtmlFileId(objectId.toHexString());
+        cmsPageRepository.save(cmsPage);
+        return cmsPage;
+    }
+
+    /**
+     * 向mq发送消息
+     */
+    public void sendPostPage(String pageId) {
+        //先得到页面信息
+        CmsPage cmsPage = this.findPageById(pageId);
+        if (cmsPage == null) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        //创建消息对象
+        Map&lt;String, String&gt; msg = new HashMap&lt;&gt;();
+        msg.put(&quot;pageId&quot;, pageId);
+        //转成json串
+        String jsonString = JSON.toJSONString(msg);
+        //站点id
+        String siteId = cmsPage.getSiteId();
+        rabbitTemplate.convertAndSend(CmsCientConfig.EX_ROUTING_CMS_POSTPAGE, siteId, jsonString);
+    }
+</code></pre>
+
+<h3 id="cmspagecontroller"><strong>CmsPageController</strong></h3>
+
+<p>编写Controller实现api接口，接收页面请求，调用service执行页面发布。</p>
+
+<pre><code class="language-java">  @Override
+    @PostMapping(&quot;/postPage/{pageId}&quot;)
+    public ResponseResult postPage(@PathVariable(&quot;pageId&quot;)String pageId) {
+        return  pageService.postPage(pageId);
+    }
+</code></pre>
+
+<h2 id="页面发布前端"><strong>页面发布前端</strong></h2>
+
+<p>用户操作流程：</p>
+
+<p>1、用户进入cms页面列表。</p>
+
+<p>2、点击“发布”请求服务端接口，发布页面。</p>
+
+<p>3、提示“发布成功”，或发布失败。</p>
+
+<h3 id="api方法"><strong>API方法</strong></h3>
+
+<p>在 cms前端添加 api方法。</p>
+
+<pre><code class="language-java">/*发布页面*/ 
+
+export const page_postPage= id =&gt; { 
+
+return http.requestPost(apiUrl+'/cms/page/postPage/'+id) 
+
+} 
+</code></pre>
+
+<h3 id="页面"><strong>页面</strong></h3>
+
+<p>修改page_list.vue，添加发布按钮</p>
+
+<pre><code class="language-html">&lt;el-table-column label=&quot;发布&quot; width=&quot;80&quot;&gt; 
+    &lt;template slot-scope=&quot;scope&quot;&gt; 
+        &lt;el-button 
+        size=&quot;small&quot; type=&quot;primary&quot; plain @click=&quot;postPage(scope.row.pageId)&quot;&gt;发布 
+        &lt;/el-button&gt; 
+    &lt;/template&gt; 
+&lt;/el-table-column&gt; 
+</code></pre>
+
+<h3 id="添加页面发布事件">添加页面发布事件：</h3>
+
+<pre><code class="language-js">postPage (id) {
+    this.$confirm('确认发布该页面吗?', '提示', {
+    }).then(() =&gt; { 
+        cmsApi.page_postPage(id).then((res) =&gt; { 
+            if(res.success){ 
+                console.log('发布页面id='+id); 
+                this.$message.success('发布成功，请稍后查看结果'); 
+            }else{
+                this.$message.error('发布失败'); 
+            } 
+        }); 
+    }).catch(() =&gt; { 
+    }); 
+},
+</code></pre>
+
+<h3 id="测试"><strong>测试</strong></h3>
+
+<p>这里测试轮播图页面修改、发布的流程：</p>
+
+<p>1、修改轮播图页面模板或修改轮播图地址</p>
+
+<p>注意：先修改页面原型，页面原型调试正常后再修改页面模板。</p>
+
+<p>2、执行页面预览</p>
+
+<p>3、执行页面发布，查看页面是否写到网站目录</p>
+
+<p>4、刷新门户首页并观察轮播图是否变化。</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e9%a1%b5%e9%9d%a2%e5%8f%91%e5%b8%83%e5%8a%9f%e8%83%bd&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f3.%25E6%25B6%2588%25E6%2581%25AF%25E9%2598%259F%25E5%2588%2597%25E4%25B8%258Egridfs%2f%25E9%25A1%25B5%25E9%259D%25A2%25E5%258F%2591%25E5%25B8%2583%25E5%258A%259F%25E8%2583%25BD%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f3.%25E6%25B6%2588%25E6%2581%25AF%25E9%2598%259F%25E5%2588%2597%25E4%25B8%258Egridfs%2f%25E9%25A1%25B5%25E9%259D%25A2%25E5%258F%2591%25E5%25B8%2583%25E5%258A%259F%25E8%2583%25BD%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f3.%25E6%25B6%2588%25E6%2581%25AF%25E9%2598%259F%25E5%2588%2597%25E4%25B8%258Egridfs%2f%25E9%25A1%25B5%25E9%259D%25A2%25E5%258F%2591%25E5%25B8%2583%25E5%258A%259F%25E8%2583%25BD%2f&amp;description=%e9%a1%b5%e9%9d%a2%e5%8f%91%e5%b8%83%e5%8a%9f%e8%83%bd"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f3.%25E6%25B6%2588%25E6%2581%25AF%25E9%2598%259F%25E5%2588%2597%25E4%25B8%258Egridfs%2f%25E9%25A1%25B5%25E9%259D%25A2%25E5%258F%2591%25E5%25B8%2583%25E5%258A%259F%25E8%2583%25BD%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs\/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs\/%E9%A1%B5%E9%9D%A2%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+          <section class="post">
+              <h2>课程管理介绍与环境搭建</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/2.%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96/%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%A2%84%E8%A7%88%E5%8A%9F%E8%83%BD/">
+          <section class="post">
+              <h2>页面静态化与页面预览功能  </h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

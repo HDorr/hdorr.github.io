@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>课程管理 on I am thinking ...</title>
+    <link>https://hdorr.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 课程管理 on I am thinking ...</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>All rights reserved - 2018</copyright>
+    <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://hdorr.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>课程管理介绍与环境搭建</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>课程管理 需求分析 在线教育平台的课程信息相当于电商平台的商品。课程管理是后台管理功能中最重要的模块。本项目为教学机构提
+供课程管理功能，教学机构可以添加属于自己的课程，供学生在线学习。
+课程管理包括如下功能需求：
+1、分类管理
+2、新增课程
+3、修改课程
+4、预览课程
+5、发布课程
+用户的操作流程如下：
+1、进入我的课程
+2、点击“添加课程”，进入添加课程界面
+3、输入课程基本信息，点击提交
+4、课程基本信息提交成功，自动进入“管理课程”界面，点击“管理课程”也可以进入“管理课程”界面
+5、编辑图片
+上传课程图片。
+6、编辑课程营销信息
+营销信息主要是设置课程的收费方式及价格。
+7、编辑课程计划
+添加课程计划：
+环境搭建 搭建数据库环境
+1) 创建数据库
+课程管理使用MySQL数据库，创建课程管理数据库：xc_course。
+导入xc_course.sql脚本
+2) 数据表介绍
+课程信息内容繁多，将课程信息分类保存在如下表中
+数据表结构如下：
+导入课程管理服务工程 1）持久层技术介绍：
+课程管理服务使用MySQL数据库存储课程信息，持久层技术如下：
+1、spring data jpa：用于表的基本CRUD。
+2、mybatis：用于复杂的查询操作。
+3、druid：使用阿里巴巴提供的spring boot 整合druid包druid-spring-boot-starter管理连接池。
+druid-spring-boot-starter地址：https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+2）导入工程
+导入资料下的“xc-service-manage-course.zip”。
+注意:后端dao框架采用jpa和mybatis共同开发
+,在复杂查询或面向sql较多的时候用mybatis,简单查询yongjpa更加方便
+导入课程管理前端工程 课程管理属于教学管理子系统的功能，使用用户为教学机构的管理人员和老师，为保证系统的可维护性，单独创建
+一个教学管理前端工程。 教学管理前端工程与系统管理前端的工程结构一样，也采用vue.js框架来实现。
+从课程资料目录拷贝xc-ui-pc-teach.zip到工程，使用webstorm打开，启动工程：
+注意:前端node-sass有错误,要npm rebuild node-sass重新编译一下</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -288,7 +288,7 @@
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms02-前端-page_add开发与调试 </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms02-前端-page_add开发与调试 </a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -297,7 +297,7 @@
 在页面列表添加“添加页面”的按钮 实际情况是用户进入页面查询列表，点击“新增页面”按钮进入新增页面窗口。 在查询按钮的旁边添加：
 &lt;router-link :to=&quot;{path:'/cms/page/add'}&quot; &gt; &lt;el-button type=&quot;primary&quot; size=&quot;small&quot;&gt;新增页面&lt;/el-button&gt; &lt;/router-link&gt;  :to为点击后跳转到相应路由
 说明：router-link是vue提供的路由功能，用于在页面生成路由链接，最终在html渲染后就是标签。
-page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &lt;el-form :model=&quot;pageForm&quot; label-width=&quot;80px&quot; &gt; &lt;el-form-item label=&quot;所属站点&quot; prop=&quot;siteId&quot;&gt; &lt;el-select v-model=&quot;pageForm.siteId&quot; placeholder=&quot;请选择站点&quot;&gt; &lt;el-option v-for=&quot;item in siteList&quot; :key=&quot;item.siteId&quot; :label=&quot;item.siteName&quot; :value=&quot;item.siteId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;选择模板&quot; prop=&quot;templateId&quot;&gt; &lt;el-select v-model=&quot;pageForm.templateId&quot; placeholder=&quot;请选择模板&quot;&gt; &lt;el-option v-for=&quot;item in templateList&quot; :key=&quot;item.templateId&quot; :label=&quot;item.templateName&quot; :value=&quot;item.templateId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;页面名称&quot; prop=&quot;pageName&quot;&gt; &lt;el-input v-model=&quot;pageForm.pageName&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;别名&quot; prop=&quot;pageAliase&quot;&gt; &lt;el-input v-model=&quot;pageForm. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
+page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &lt;el-form :model=&quot;pageForm&quot; label-width=&quot;80px&quot; &gt; &lt;el-form-item label=&quot;所属站点&quot; prop=&quot;siteId&quot;&gt; &lt;el-select v-model=&quot;pageForm.siteId&quot; placeholder=&quot;请选择站点&quot;&gt; &lt;el-option v-for=&quot;item in siteList&quot; :key=&quot;item.siteId&quot; :label=&quot;item.siteName&quot; :value=&quot;item.siteId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;选择模板&quot; prop=&quot;templateId&quot;&gt; &lt;el-select v-model=&quot;pageForm.templateId&quot; placeholder=&quot;请选择模板&quot;&gt; &lt;el-option v-for=&quot;item in templateList&quot; :key=&quot;item.templateId&quot; :label=&quot;item.templateName&quot; :value=&quot;item.templateId&quot;&gt; &lt;/el-option&gt; &lt;/el-select&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;页面名称&quot; prop=&quot;pageName&quot;&gt; &lt;el-input v-model=&quot;pageForm.pageName&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt; &lt;/el-form-item&gt; &lt;el-form-item label=&quot;别名&quot; prop=&quot;pageAliase&quot;&gt; &lt;el-input v-model=&quot;pageForm. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms02-%E5%89%8D%E7%AB%AF-page_add%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -372,7 +372,7 @@ page_add页面 &lt;!-- pageForm就是page绑定的数据对象的名称--&gt; &l
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms03-前端-page_edit开发与调试  </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">cms03-前端-page_edit开发与调试  </a></h2>
     </header>
     <section class="post-excerpt">
         
@@ -393,7 +393,7 @@ import page_edit from '@/module/cms/page/page_edit.vue'; { path: '/cms/page/edit
 &lt;!-- 操作列,跳转到修改界面--&gt; &lt;el-table-column label=&quot;操作&quot; width=&quot;80&quot;&gt; &lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&gt; &lt;template slot-scope=&quot;page&quot;&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;edit(page.row.pageId)&quot;&gt;编辑 &lt;/template&gt; &lt;/el-table-column&gt;  编写edit方法
 //路由跳转 edit:function (pageId) { //打开修改页面 this.$router.push({ path:'/cms/page/edit/'+pageId, }) },  页面内容显示 本功能实现：进入修改页面立即显示要修改的页面信息。
 1、定义api方法
-export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id查询接口,返回结果 return http.requestQuickGet(apiUrl + '/cms/page/get/' +id); } export const page_edit=(id,params) =&gt; { //定义方法,请求服务端站点修改页面接口,返回结果 return http. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
+export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id查询接口,返回结果 return http.requestQuickGet(apiUrl + '/cms/page/get/' +id); } export const page_edit=(id,params) =&gt; { //定义方法,请求服务端站点修改页面接口,返回结果 return http. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms03-%E5%89%8D%E7%AB%AF-page_edit%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -473,13 +473,13 @@ Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage f
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms04-前端-删除页面开发与调试 </a></h2>
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms04-前端-删除页面开发与调试 </a></h2>
     </header>
     <section class="post-excerpt">
         
             <p> 删除页面前端开发 Api方法 /*页面删除*/ export const page_del = id =&gt; { return http.requestDelete(apiUrl+'/cms/page/del/'+id) }  编写页面 1、在page_list.vue页面添加删除按钮
 &lt;el-table-column label=&quot;操作&quot; width=&quot;80&quot;&gt; &lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&gt; &lt;template slot-scope=&quot;page&quot;&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;edit(page.row.pageId)&quot;&gt;编辑 &lt;/el-button&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;del(page.row.pageId)&quot;&gt;删除 &lt;/el-button&gt; &lt;/template&gt; &lt;/el-table-column&gt;  在原来,修改页面按钮的插槽中直接再加一个按钮
-删除事件 del:function (pageId) { //调用接口 this.$confirm('确认删除吗？', '提示', {}).then(() =&gt; { cmsApi.page_del(pageId).then(res=&gt;{ if (res.success) { this.$message.success(&quot;删除成功&quot;) //刷新页面 this.query() }else { this.$message.success(&quot;删除失败&quot;) } }); }) } },   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+删除事件 del:function (pageId) { //调用接口 this.$confirm('确认删除吗？', '提示', {}).then(() =&gt; { cmsApi.page_del(pageId).then(res=&gt;{ if (res.success) { this.$message.success(&quot;删除成功&quot;) //刷新页面 this.query() }else { this.$message.success(&quot;删除失败&quot;) } }); }) } },   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
