@@ -524,6 +524,36 @@ RabbitMQ相关知识参考Rabbitmq笔记模块</description>
     </item>
     
     <item>
+      <title>课程管理-course_list我的课程接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/</guid>
+      <description>我的课程 需求分析 课程添加完成后可通过我的课程进入课程修改页面，此页面显示我的课程列表，如下图所示，可分页查询。
+上边的查询要实现分页、会存在多表关联查询，所以建议使用mybatis实现我的课程查询。
+API接口 输入参数：
+页码、每页显示个数、查询条件
+输出结果类型：
+QueryResponseResult&amp;lt;自定义类型&amp;gt;
+在api工程创建course包，创建CourseControllerApi接口。
+//查询课程列表 @ApiOperation(&amp;quot;查询我的课程列表&amp;quot;) public QueryResponseResult&amp;lt;CourseInfo&amp;gt; findCourseList( int page, int size, CourseListRequest courseListRequest );  课程管理服务 PageHelper PageHelper是mybatis的通用分页插件，通过mybatis的拦截器实现分页功能，拦截sql查询请求，添加分页语句，
+最终实现分页查询功能。
+我的课程具有分页功能，本项目使用Pagehelper实现Mybatis分页功能开发，由于本项目使用springboot开发，在
+springboot上集成pagehelper（https://github.com/pagehelper/pagehelper-spring-boot）
+PageHelper的使用方法及原理如下：
+在调用dao的service方法中设置分页参数：PageHelper.startPage(page, size)，分页参数会设置在ThreadLocal中
+PageHelper在mybatis执行sql前进行拦截，从ThreadLocal取出分页参数，修改当前执行的sql语句，添加分页
+sql。
+最后执行添加了分页sql的sql语句，实现分页查询。
+1）添加依赖
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.github.pagehelper&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;pagehelper-spring-boot-starter&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.2.4&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  2）配置pageHelper
+在application.yml中配置pageHelper操作的数据库类型：
+pagehelper: helper-dialect: mysql  Dao 1）mapper 接口
+CourseListRequest加上这个是为了后面如果有条件查询更方便
+package com.xuecheng.manage_course.dao; import com.github.pagehelper.Page; import com.xuecheng.framework.domain.course.CourseBase; import com.xuecheng.framework.domain.course.ext.CourseInfo; import com.xuecheng.framework.domain.course.request.CourseListRequest; import org.apache.ibatis.annotations.Mapper; import org.springframework.stereotype.Component; /** * Created by Administrator.</description>
+    </item>
+    
+    <item>
       <title>课程管理-course_market课程营销接口</title>
       <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="课程管理-course_list我的课程接口"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="课程管理-course_list我的课程接口 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="课程管理" />
+    
+    
+
+    <title>课程管理-course_list我的课程接口 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="我的课程 需求分析 课程添加完成后可通过我的课程进入课程修改页面，此页面显示我的课程列表，如下图所示，可分页查询。
+上边的查询要实现分页、会存在多表关联查询，所以建议使用mybatis实现我的课程查询。
+API接口 输入参数：
+页码、每页显示个数、查询条件
+输出结果类型：
+QueryResponseResult&amp;lt;" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "课程管理-course_list我的课程接口",
+    "name": "课程管理-course_list我的课程接口",
+    "wordCount":  627 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, 课程管理",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">课程管理-course_list我的课程接口</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="我的课程"><strong>我的课程</strong></h1>
+
+<h2 id="需求分析"><strong>需求分析</strong></h2>
+
+<p>课程添加完成后可通过我的课程进入课程修改页面，此页面显示我的课程列表，如下图所示，可分页查询。</p>
+
+<p>上边的查询要实现分页、会存在多表关联查询，所以建议使用mybatis实现我的课程查询。</p>
+
+<h2 id="api接口"><strong>API接口</strong></h2>
+
+<p>输入参数：</p>
+
+<p>页码、每页显示个数、查询条件</p>
+
+<p>输出结果类型：</p>
+
+<p>QueryResponseResult&lt;自定义类型&gt;</p>
+
+<p>在api工程创建course包，创建CourseControllerApi接口。</p>
+
+<pre><code class="language-java">//查询课程列表 
+@ApiOperation(&quot;查询我的课程列表&quot;) 
+public QueryResponseResult&lt;CourseInfo&gt; findCourseList( 
+    int page, 
+    int size, 
+    CourseListRequest courseListRequest 
+ );
+</code></pre>
+
+<h2 id="课程管理服务"><strong>课程管理服务</strong></h2>
+
+<h3 id="pagehelper"><strong>PageHelper</strong></h3>
+
+<p>PageHelper是mybatis的通用分页插件，通过mybatis的拦截器实现分页功能，拦截sql查询请求，添加分页语句，</p>
+
+<p>最终实现分页查询功能。</p>
+
+<p>我的课程具有分页功能，本项目使用Pagehelper实现Mybatis分页功能开发，由于本项目使用springboot开发，在</p>
+
+<p>springboot上集成pagehelper（<a href="https://github.com/pagehelper/pagehelper-spring-boot）">https://github.com/pagehelper/pagehelper-spring-boot）</a></p>
+
+<p>PageHelper的使用方法及原理如下：</p>
+
+<p>在调用dao的service方法中设置分页参数：PageHelper.startPage(page, size)，分页参数会设置在ThreadLocal中</p>
+
+<p>PageHelper在mybatis执行sql前进行拦截，从ThreadLocal取出分页参数，修改当前执行的sql语句，添加分页</p>
+
+<p>sql。</p>
+
+<p>最后执行添加了分页sql的sql语句，实现分页查询。</p>
+
+<p>1）添加依赖</p>
+
+<pre><code class="language-xml-dtd">&lt;dependency&gt; 
+    &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;
+    &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt; 
+    &lt;version&gt;1.2.4&lt;/version&gt; 
+&lt;/dependency&gt;
+</code></pre>
+
+<p>2）配置pageHelper</p>
+
+<p>在application.yml中配置pageHelper操作的数据库类型：</p>
+
+<pre><code class="language-properties">pagehelper: 
+	helper-dialect: mysql
+</code></pre>
+
+<h3 id="dao"><strong>Dao</strong></h3>
+
+<p>1）mapper 接口</p>
+
+<p><code>CourseListRequest加上这个是为了后面如果有条件查询更方便</code></p>
+
+<pre><code class="language-java">package com.xuecheng.manage_course.dao;
+
+import com.github.pagehelper.Page;
+import com.xuecheng.framework.domain.course.CourseBase;
+import com.xuecheng.framework.domain.course.ext.CourseInfo;
+import com.xuecheng.framework.domain.course.request.CourseListRequest;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
+/**
+ * Created by Administrator.
+ */
+@Mapper
+@Component
+public interface CourseMapper {
+   CourseBase findCourseBaseById(String id);
+   Page&lt;CourseInfo&gt; findCourseListPage(CourseListRequest courseListRequest);
+}
+
+</code></pre>
+
+<p>将courseBase加上图片属性二次封装,后期要根据课程信息关联查询课程图片</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.domain.course.ext;
+
+import com.xuecheng.framework.domain.course.CourseBase;
+import lombok.Data;
+import lombok.ToString;
+
+/**
+ * Created by admin on 2018/2/10.
+ */
+@Data
+@ToString
+public class CourseInfo extends CourseBase {
+
+    //课程图片
+    private String pic;
+}
+
+</code></pre>
+
+<p>2）mapper.xml映射文件</p>
+
+<pre><code class="language-xml-dtd">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot; &gt;
+&lt;mapper namespace=&quot;com.xuecheng.manage_course.dao.CourseMapper&quot;&gt;
+    &lt;select id=&quot;findCourseBaseById&quot; parameterType=&quot;java.lang.String&quot;
+            resultType=&quot;com.xuecheng.framework.domain.course.CourseBase&quot;&gt;
+        select * from course_base where id = #{id}
+    &lt;/select&gt;
+    &lt;!--关联查询图片表,获取图片信息,后期实现FastDFS后可直接从图片服务器获取 --&gt;
+    &lt;select id=&quot;findCourseListPage&quot; parameterType=&quot;com.xuecheng.framework.domain.course.request.CourseListRequest&quot;
+    resultType=&quot;com.xuecheng.framework.domain.course.ext.CourseInfo&quot;&gt;
+        select course_base.*,
+         (select pic from course_pic where courseid=course_base.id) pic
+         from course_base
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>3）测试Dao</p>
+
+<pre><code class="language-java">//测试分页
+@Test
+public void testPageHelper(){ 
+    PageHelper.startPage(2, 1); 
+    CourseListRequest courseListRequest = new CourseListRequest(); 
+    Page&lt;CourseInfo&gt; courseListPage = courseMapper.findCourseListPage(courseListRequest); 		         List&lt;CourseInfo&gt; result = courseListPage.getResult(); 
+    System.out.println(courseListPage); 
+}
+</code></pre>
+
+<p>测试前修改日志级别为debug，并跟踪运行日志，发现sql语句中已经包括分页语句</p>
+
+<h3 id="service"><strong>Service</strong></h3>
+
+<p>定义CourseService.java类，用于课程管理的service定义：</p>
+
+<pre><code class="language-java">/**
+     * 分页查询课程列表
+     * @param page
+     * @param size
+     * @param courseListRequest
+     * @return
+     */
+    public QueryResponseResult&lt;CourseInfo&gt; findCourseList(int page, int size, CourseListRequest courseListRequest) {
+        //保证传过来的对象不为空
+        if (courseListRequest == null) {
+            courseListRequest = new CourseListRequest();
+        }
+        //分页参数
+        if (page&lt;=0){
+            page = 1;
+        }
+        if (size &lt;= 0) {
+            size = 10;
+        }
+        PageHelper.startPage(page, size);
+        Page&lt;CourseInfo&gt; listPage = courseMapper.findCourseListPage(courseListRequest);
+        if (listPage==null) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        List&lt;CourseInfo&gt; result = listPage.getResult();
+        QueryResult queryResult = new QueryResult();
+        queryResult.setList(result);
+        queryResult.setTotal(listPage.getTotal());
+        System.out.println(listPage.getTotal());
+        return new QueryResponseResult&lt;CourseInfo&gt;(CommonCode.SUCCESS,queryResult);
+    }
+</code></pre>
+
+<h3 id="controller"><strong>Controller</strong></h3>
+
+<pre><code class="language-java">@RestController 
+@RequestMapping(&quot;/course&quot;) 
+public class CourseController implements CourseControllerApi {
+    @Autowired 
+    CourseService courseService; 
+    @Override 
+    @GetMapping(&quot;/coursebase/list/{page}/{size}&quot;) 
+    public QueryResponseResult&lt;CourseInfo&gt; findCourseList( 
+        @PathVariable(&quot;page&quot;) int page, 
+        @PathVariable(&quot;size&quot;) int size, 
+        CourseListRequest courseListRequest) { 
+        return courseService.findCourseList(page,size,courseListRequest); 
+    } 
+}
+</code></pre>
+
+<h2 id="前端"><strong>前端</strong></h2>
+
+<h3 id="页面"><strong>页面</strong></h3>
+
+<p>创建course_list.vue</p>
+
+<p>1）使用element 的card组件</p>
+
+<p>页面布局代码如下：</p>
+
+<pre><code class="language-html">&lt;template&gt;
+  &lt;section&gt;
+    &lt;el-row &gt;
+      &lt;el-col :span=&quot;8&quot;  :offset=2 &gt;
+        &lt;el-card :body-style=&quot;{ padding: '10px' }&quot;&gt;
+          &lt;img src=&quot;/static/images/add.jpg&quot; class=&quot;image&quot; height=&quot;150px&quot;&gt;
+          &lt;div style=&quot;padding: 10px;&quot;&gt;
+            &lt;span&gt;课程名称&lt;/span&gt;
+            &lt;div class=&quot;bottom clearfix&quot;&gt;
+              &lt;time class=&quot;time&quot;&gt;&lt;/time&gt;
+              &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/add/base'}&quot;&gt;
+                  &lt;el-button type=&quot;text&quot; class=&quot;button&quot; &gt;新增课程&lt;/el-button&gt;
+              &lt;/router-link&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/el-card&gt;
+      &lt;/el-col&gt;
+      &lt;el-col :span=&quot;8&quot; v-for=&quot;(course, index) in courses&quot; :key=&quot;course.id&quot; :offset=&quot;index &gt; 0 ? 2 : 2&quot;&gt;
+        &lt;el-card :body-style=&quot;{ padding: '10px' }&quot;&gt;
+          &lt;img :src=&quot;course.pic!=null?imgUrl+course.pic:'/static/images/nonepic.jpg'&quot; class=&quot;image&quot; height=&quot;150px&quot;&gt;
+          &lt;div style=&quot;padding: 10px;&quot;&gt;
+            &lt;span&gt;{{course.name}}&lt;/span&gt;
+            &lt;div class=&quot;bottom clearfix&quot;&gt;
+              &lt;time class=&quot;time&quot;&gt;&lt;/time&gt;
+              &lt;el-button type=&quot;text&quot; class=&quot;button&quot; @click=&quot;handleManage(course.id)&quot;&gt;管理课程&lt;/el-button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/el-card&gt;
+      &lt;/el-col&gt;
+
+      &lt;!--分页--&gt;
+      &lt;el-col :span=&quot;24&quot; class=&quot;toolbar&quot;&gt;
+        &lt;el-pagination background layout=&quot;prev, pager, next&quot; @current-change=&quot;handleCurrentChange&quot; :page-size=&quot;size&quot;
+                       :total=&quot;total&quot; :current-page=&quot;page&quot;
+                       style=&quot;float:right;&quot;&gt;
+        &lt;/el-pagination&gt;
+      &lt;/el-col&gt;
+    &lt;/el-row&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  import * as courseApi from '../api/course';
+  import utilApi from '../../../common/utils';
+  let sysConfig = require('@/../config/sysConfig')
+  export default {
+    data() {
+      return {
+        page:1,
+        size:5,
+        total: 0,
+        courses: [
+          {
+            id:'test01',
+            name:'test01',
+            pic:''
+          },
+          {
+            id:'test02',
+            name:'test02',
+            pic:''
+          }
+          ],
+        sels: [],//列表选中列
+        imgUrl:sysConfig.imgUrl
+      }
+    },
+    methods: {
+        //分页方法
+      handleCurrentChange(val) {
+        this.page = val;
+        this.getCourse();
+      },
+      //获取课程列表
+      getCourse() {
+        courseApi.findCourseList(this.page,this.size,{}).then((res) =&gt; {
+          console.log(res);
+          if(res.success){
+            this.total = res.queryResult.total;
+            this.courses = res.queryResult.list;
+          }
+
+        });
+      },
+      handleManage: function (id) {
+        console.log(id)
+        this.$router.push({ path: '/course/manager/'+id})
+      }
+
+    },
+    created(){
+
+    },
+    mounted() {
+      //查询我的课程
+      this.getCourse();
+    }
+  }
+&lt;/script&gt;
+&lt;style scoped&gt;
+  .el-col-8{
+    width:20%
+  }
+  .el-col-offset-2{
+    margin-left:2%
+  }
+  .time {
+    font-size: 13px;
+    color: #999;
+  }
+
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width: 100%;
+    display: block;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: &quot;&quot;;
+  }
+
+  .clearfix:after {
+    clear: both
+  }
+&lt;/style&gt;
+</code></pre>
+
+<p>6）路由</p>
+
+<pre><code class="language-js">import course_list from '@/module/course/page/course_list.vue'; 
+import Home from '@/module/home/page/home.vue'; 
+export default [ 
+    {
+        path: '/course', 
+        component: Home, 
+        name: '课程管理', 
+        hidden: false, 
+        iconCls: 'el‐icon‐document', 
+        children: [ 
+            { path: '/course/list', name: '我的课程',component: course_list,hidden: false } 
+        ] 
+    } 
+]
+</code></pre>
+
+<h3 id="api调用"><strong>Api调用</strong></h3>
+
+<p>1、定义Api方法</p>
+
+<pre><code class="language-js">//我的课程列表 
+export const findCourseList = (page,size,params) =&gt; { 
+    //对于查询条件，向服务端传入key/value串。 
+    //使用工具类将json对象转成key/value 
+    let queries = querystring.stringify(params) 
+    return http.requestQuickGet(apiUrl+&quot;/course/coursebase/list/&quot;+page+&quot;/&quot;+size+&quot;?&quot;+queries); 
+}
+</code></pre>
+
+<p>2、在页面调用fifindCourseList方法：</p>
+
+<pre><code class="language-js">//获取课程列表 
+getCourse() { 
+    courseApi.findCourseList(this.page,this.size,{}).then((res) =&gt; { 
+        console.log(res); 
+        if(res.success){ 
+            this.total = res.queryResult.total; 
+            this.courses = res.queryResult.list; 
+        } 
+    }); 
+}
+</code></pre>
+
+<p>在mounted钩子中调用getCourse方法</p>
+
+<pre><code class="language-js">mounted() { 
+    //查询我的课程 
+    this.getCourse(); 
+}
+</code></pre>
+
+<p>在分页方法中调用getCourse方法</p>
+
+<pre><code class="language-js">//分页方法 
+handleCurrentChange(val) { 
+    this.page = val; 
+    this.getCourse(); 
+},
+</code></pre>
+
+<h3 id="测试"><strong>测试</strong></h3>
+
+<p>页面效果如下：</p>
+
+<p>注意：由于课程图片服务器没有搭建，这里图片暂时无法显示。</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_list%e6%88%91%e7%9a%84%e8%af%be%e7%a8%8b%e6%8e%a5%e5%8f%a3&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f02.course_list%25E6%2588%2591%25E7%259A%2584%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f02.course_list%25E6%2588%2591%25E7%259A%2584%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f02.course_list%25E6%2588%2591%25E7%259A%2584%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f&amp;description=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_list%e6%88%91%e7%9a%84%e8%af%be%e7%a8%8b%e6%8e%a5%e5%8f%a3"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f02.course_list%25E6%2588%2591%25E7%259A%2584%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86\/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86\/02.course_list%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>课程管理-course_add新增课程接口</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>课程管理-course_market课程营销接口</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
