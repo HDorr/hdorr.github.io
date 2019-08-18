@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="课程管理-course_add新增课程接口"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="课程管理-course_add新增课程接口 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="课程管理" />
+    
+    
+
+    <title>课程管理-course_add新增课程接口 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="新增课程 需求分析 用户操作流程如下：
+1、用户进入“我的课程”页面，点击“新增课程”，进入新增课程页面
+2、填写课程信息，选择课程分类、课程等级、学习模式等。
+3、信息填写完毕，点击“提交”，课程添加成功或课程添加失败并提示失败原因。
+需要解决的是在新增页面上输入的信息：
+1、课程分类
+多级分类，需要方便用户去选择。" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "课程管理-course_add新增课程接口",
+    "name": "课程管理-course_add新增课程接口",
+    "wordCount":  1855 ,
+    "timeRequired": "PT9M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, 课程管理",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">课程管理-course_add新增课程接口</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="新增课程"><strong>新增课程</strong></h1>
+
+<h2 id="需求分析"><strong>需求分析</strong></h2>
+
+<p>用户操作流程如下：</p>
+
+<p>1、用户进入“我的课程”页面，点击“新增课程”，进入新增课程页面</p>
+
+<p>2、填写课程信息，选择课程分类、课程等级、学习模式等。</p>
+
+<p>3、信息填写完毕，点击“提交”，课程添加成功或课程添加失败并提示失败原因。</p>
+
+<p>需要解决的是在新增页面上输入的信息：</p>
+
+<p>1、课程分类</p>
+
+<p>多级分类，需要方便用户去选择。</p>
+
+<p>2、课程等级、学习模式等这些选项建议是可以配置的。</p>
+
+<h2 id="课程分类查询"><strong>课程分类查询</strong></h2>
+
+<h3 id="介绍"><strong>介绍</strong></h3>
+
+<p>在新增课程界面需要选择课程所属分类， 分类信息是整个项目非常重要的信息，课程即商品，分类信息设置的好</p>
+
+<p>坏直接影响用户访问量。</p>
+
+<p>分类信息在哪里应用？</p>
+
+<p>1、首页分类导航</p>
+
+<p>2、课程的归属地</p>
+
+<p>添加课程时要选择课程的所属分类。</p>
+
+<h3 id="数据结构"><strong>数据结构</strong></h3>
+
+<p>分类表category的结构如下：</p>
+
+<p><img src="\images\1566121126094.png" alt="1566121126094" /></p>
+
+<h3 id="分类查询"><strong>分类查询</strong></h3>
+
+<h4 id="数据格式"><strong>数据格式</strong></h4>
+
+<p>在添加课程时需要选择课程所属的分类，这里需要定义课程分类查询接口。</p>
+
+<p>接口格式要根据前端需要的数据格式来定义，前端展示课程分类使用elemenet-ui的cascader（级联选择器）组</p>
+
+<p>件。</p>
+
+<p><img src="\images\1566121141017.png" alt="1566121141017" /></p>
+
+<p>数据格式例子如下：</p>
+
+<pre><code class="language-json">[ 
+    { 
+        value: 'zhinan', 
+        label: '指南', 
+        children: [{ 
+            value: 'shejiyuanze', 
+            label: '设计原则', 
+            children: [{ 
+                value: 'yizhi', 
+                label: '一致' 
+            }, {
+                value: 'fankui', 
+                label: '反馈' 
+            }, {
+                value: 'xiaolv', 
+                label: '效率' 
+            }, {
+                value: 'kekong', 
+                label: '可控' 
+            }] 
+        }] 
+    } 
+]
+</code></pre>
+
+<h4 id="数据模型"><strong>数据模型</strong></h4>
+
+<p>1）定义category的模型</p>
+
+<p>category模型对数据字段对应，如下：</p>
+
+<pre><code class="language-java">@Data 
+@ToString 
+@Entity 
+@Table(name=&quot;category&quot;) 
+@GenericGenerator(name = &quot;jpa‐assigned&quot;, strategy = &quot;assigned&quot;) 
+public class Category implements Serializable { 
+    private static final long serialVersionUID = ‐906357110051689484L; 
+    @Id 
+    @GeneratedValue(generator = &quot;jpa‐assigned&quot;) 
+    @Column(length = 32) 
+    private String id; 
+    private String name; 
+    private String label; 
+    private String parentid; 
+    private String isshow;
+    private Integer orderby; 
+    private String isleaf; 
+} 
+</code></pre>
+
+<p>1）定义数据返回格式</p>
+
+<pre><code class="language-java">@Data 
+@ToString 
+public class CategoryNode extends Category { 
+    List&lt;CategoryNode&gt; children; 
+}
+</code></pre>
+
+<h4 id="api接口"><strong>Api接口</strong></h4>
+
+<pre><code class="language-java">package com.xuecheng.api.course;
+
+import com.xuecheng.framework.domain.course.ext.CategoryNode;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/16 17:33
+ */
+@Api(value=&quot;课程分类管理接口&quot;,description = &quot;课程表查询接口&quot;)
+public interface CategoryControllerApi {
+    @ApiOperation(&quot;查询课程分类&quot;)
+    public CategoryNode findCategory();
+}
+</code></pre>
+
+<h4 id="dao"><strong>dao</strong></h4>
+
+<p>根据数据格式的分析，此查询需要返回树型数据格式，为了开发方便我们使用mybatis实现查询 。</p>
+
+<p>1）定义mapper</p>
+
+<pre><code class="language-java">@Mapper 
+public interface CategoryMapper { 
+    //查询分类 
+    public CategoryNode selectList(); 
+}
+</code></pre>
+
+<p>2）定义mapper映射文件</p>
+
+<p>采用表的自连接方式输出树型结果集。</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot; &gt;
+&lt;mapper namespace=&quot;com.xuecheng.manage_course.dao.CategoryMapper&quot;&gt;
+    &lt;resultMap id=&quot;categoryMap&quot; type=&quot;com.xuecheng.framework.domain.course.ext.CategoryNode&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;one_id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;one_name&quot;/&gt;
+        &lt;result property=&quot;label&quot; column=&quot;one_label&quot;/&gt;
+        &lt;result property=&quot;isshow&quot; column=&quot;one_isshow&quot;/&gt;
+        &lt;result property=&quot;isleaf&quot; column=&quot;one_isleaf&quot;/&gt;
+        &lt;result property=&quot;orderby&quot; column=&quot;one_orderby&quot;/&gt;
+        &lt;result property=&quot;parentid&quot; column=&quot;one_parentid&quot;/&gt;
+        &lt;collection property=&quot;children&quot; ofType=&quot;com.xuecheng.framework.domain.course.ext.CategoryNode&quot;&gt;
+            &lt;id property=&quot;id&quot; column=&quot;two_id&quot;/&gt;
+            &lt;result property=&quot;name&quot; column=&quot;two_name&quot;/&gt;
+            &lt;result property=&quot;label&quot; column=&quot;two_label&quot;/&gt;
+            &lt;result property=&quot;isshow&quot; column=&quot;two_isshow&quot;/&gt;
+            &lt;result property=&quot;isleaf&quot; column=&quot;two_isleaf&quot;/&gt;
+            &lt;result property=&quot;orderby&quot; column=&quot;two_orderby&quot;/&gt;
+            &lt;result property=&quot;parentid&quot; column=&quot;two_parentid&quot;/&gt;
+            &lt;collection property=&quot;children&quot; ofType=&quot;com.xuecheng.framework.domain.course.ext.CategoryNode&quot;&gt;
+                &lt;id property=&quot;id&quot; column=&quot;three_id&quot;/&gt;
+                &lt;result property=&quot;name&quot; column=&quot;three_name&quot;/&gt;
+                &lt;result property=&quot;label&quot; column=&quot;three_label&quot;/&gt;
+                &lt;result property=&quot;isshow&quot; column=&quot;three_isshow&quot;/&gt;
+                &lt;result property=&quot;isleaf&quot; column=&quot;three_isleaf&quot;/&gt;
+                &lt;result property=&quot;orderby&quot; column=&quot;three_orderby&quot;/&gt;
+                &lt;result property=&quot;parentid&quot; column=&quot;three_parentid&quot;/&gt;
+            &lt;/collection&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+
+    &lt;select id=&quot;findCategory&quot; resultMap=&quot;categoryMap&quot;&gt;
+         SELECT
+         a.id one_id,
+         a.name one_name,
+         a.label one_label,
+         a.isshow one_isshow,
+         a.isleaf one_isleaf,
+         a.orderby one_orderby,
+         a.parentid one_parentid,
+         b.id two_id,
+         b.name two_name,
+         b.label two_label,
+         b.isshow two_isshow,
+         b.isleaf two_isleaf,
+         b.orderby two_orderby,
+         b.parentid two_parentid,
+         c.id three_id,
+         c.name three_name,
+         c.label three_label,
+         c.isshow three_isshow,
+         c.isleaf three_isleaf,
+         c.orderby three_orderby,
+         c.parentid three_parentid
+         FROM category a
+	LEFT JOIN category b
+	ON a.id=b.parentid
+	LEFT JOIN category c
+	ON b.id=c.parentid
+   WHERE
+    a.parentid='0'
+   ORDER BY
+	a.orderby,
+	b.orderby,
+    c.orderby
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<h4 id="service"><strong>Service</strong></h4>
+
+<pre><code class="language-java">@Service 
+public class CategoryService {
+    @Autowired 
+    CategoryMapper categoryMapper; 
+    //查询分类 
+    public CategoryNode findList(){ 
+        return categoryMapper.selectList(); 
+    } 
+}
+</code></pre>
+
+<h4 id="controller"><strong>Controller</strong></h4>
+
+<pre><code class="language-java">@RestController 
+@RequestMapping(&quot;/category&quot;) 
+public class CategoryController implements CategoryControllerApi { 
+    @Autowired 
+    CategoryService categoryService; 
+    
+    @Override 
+    @GetMapping(&quot;/list&quot;) 
+    public CategoryNode list() { 
+   	  return categoryService.findList(); 
+    } 	
+} 
+</code></pre>
+
+<h2 id="数据字典"><strong>数据字典</strong></h2>
+
+<h3 id="介绍-1"><strong>介绍</strong></h3>
+
+<p>在新增课程界面需要选择课程等级、课程状态等，这些信息统一采用数据字典管理的方式。</p>
+
+<p>本项目对一些业务的分类配置信息，比如：课程等级、课程状态、用户类型、用户状态等进行统一管理，通过在数</p>
+
+<p>据库创建数据字典表来维护这些分类信息。</p>
+
+<p>数据字典对系统的业务分类进行统一管理，并且也可以解决硬编码问题，比如添加课程时选择课程等级，下拉框中</p>
+
+<p>的课程等级信息如果在页面硬编码将造成不易修改维护的问题，所以从数据字典表中获取，如果要修改名称则在数</p>
+
+<p>据字典修改即可，提高系统的可维护性。</p>
+
+<h3 id="数据模型-1"><strong>数据模型</strong></h3>
+
+<p>在mongodb中创建数据字典表sys_dictionary</p>
+
+<p><img src="\images\1566121170354.png" alt="1566121170354" /></p>
+
+<p>一个字典信息如下：</p>
+
+<pre><code class="language-json">{ 
+    &quot;_id&quot; : ObjectId(&quot;5a7e8d2dd019f15418fa2b71&quot;), 
+    &quot;d_name&quot; : &quot;课程等级&quot;, 
+    &quot;d_type&quot; : &quot;200&quot;, 
+    &quot;d_value&quot; : [
+        {
+            &quot;sd_name&quot; : &quot;低级&quot;, 
+            &quot;sd_id&quot; : &quot;200001&quot;, 
+            &quot;sd_status&quot; : &quot;1&quot;
+        }, 
+        {
+            &quot;sd_name&quot; : &quot;中级&quot;, 
+            &quot;sd_id&quot; : &quot;200002&quot;, 
+            &quot;sd_status&quot; : &quot;1&quot;
+        }, 
+        {
+            &quot;sd_name&quot; : &quot;高级&quot;, 
+            &quot;sd_id&quot; : &quot;200003&quot;, 
+            &quot;sd_status&quot; : &quot;1&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>字段说明如下：</p>
+
+<p>d_name：字典名称</p>
+
+<p>d_type：字典分类</p>
+
+<p>d_value：字典数据</p>
+
+<p>sd_name：项目名称</p>
+
+<p>sd_id：项目id</p>
+
+<p>sd_status：项目状态（1：可用，0不可用）</p>
+
+<p>数据模型类：</p>
+
+<pre><code class="language-java">@Data 
+@ToString 
+@Document(collection = &quot;sys_dictionary&quot;) 
+public class SysDictionary { 
+    @Id private String id;
+    @Field(&quot;d_name&quot;) 
+    private String dName; 
+    
+    @Field(&quot;d_type&quot;) 
+    private String dType; 
+    
+    @Field(&quot;d_value&quot;) 
+    private List&lt;SysDictionaryValue&gt; dValue; 
+}
+</code></pre>
+
+<p>SysDictionaryValue类型：</p>
+
+<pre><code class="language-java">@Data 
+@ToString 
+public class SysDictionaryValue { 
+    @Field(&quot;sd_id&quot;) 
+    private String sdId; 
+    
+    @Field(&quot;sd_name&quot;) 
+    private String sdName; 
+    
+    @Field(&quot;sd_status&quot;) 
+    private String sdStatus; 
+}
+</code></pre>
+
+<h3 id="字典查询接口"><strong>字典查询接口</strong></h3>
+
+<h4 id="api接口-1"><strong>API接口</strong></h4>
+
+<p>为了方便其它子系统使用，在cms模块下创建字典查询接口，根据字典的type查询字典信息，接口定义如下：</p>
+
+<pre><code class="language-java">@Api(value = &quot;数据字典接口&quot;,description = &quot;提供数据字典接口的管理、查询功能&quot;) 
+public interface SysDicthinaryControllerApi { 
+    //数据字典 
+    @ApiOperation(value=&quot;数据字典查询接口&quot;) 
+    public SysDictionary getByType(String type); 
+}
+</code></pre>
+
+<h4 id="dao-1"><strong>Dao</strong></h4>
+
+<p>在cms模块下创建数据库的dao、service等类。</p>
+
+<pre><code class="language-java">@Repository 
+public interface SysDictionaryDao extends MongoRepository&lt;SysDictionary,String&gt; { 
+    //根据字典分类查询字典信息 
+    SysDictionary findBydType(String dType); 
+}
+</code></pre>
+
+<h4 id="service-1"><strong>Service</strong></h4>
+
+<pre><code class="language-java">@Service 
+public class SysdictionaryService {
+    @Autowired 
+    SysDictionaryDao sysDictionaryDao; 
+    
+    //根据字典分类type查询字典信息 
+    public SysDictionary findDictionaryByType(String type){ 
+        return sysDictionaryDao.findBydType(type); 
+    } 
+}
+</code></pre>
+
+<h4 id="controller-1"><strong>Controller</strong></h4>
+
+<pre><code class="language-java">@RestController 
+@RequestMapping(&quot;/sys/dictionary&quot;) 
+public class SysDictionaryController implements SysDictionaryControllerApi { 
+    @Autowired 
+    SysdictionaryService sysdictionaryService; 
+    
+    //根据字典分类id查询字典信息 
+    @Override 
+    @GetMapping(&quot;/get/{type}&quot;) 
+    public SysDictionary getByType(@PathVariable(&quot;type&quot;) String type) { 
+        return sysdictionaryService.findDictionaryByType(type); 
+    } 
+}
+</code></pre>
+
+<h2 id="新增课程页面完善"><strong>新增课程页面完善</strong></h2>
+
+<p>本节完成数据字典显示及课程分类显示。</p>
+
+<h3 id="新增课程页面"><strong>新增课程页面</strong></h3>
+
+<p>2）创建course_add.vue页面</p>
+
+<p>在teach前端工程的course模块下创建course_add.vue页面。</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-form :model=&quot;courseForm&quot; label-width=&quot;80px&quot; :rules=&quot;courseRules&quot; ref=&quot;courseForm&quot;&gt;
+      &lt;el-form-item label=&quot;课程名称&quot; prop=&quot;name&quot;&gt;
+        &lt;el-input v-model=&quot;courseForm.name&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;适用人群&quot; prop=&quot;users&quot;&gt;
+        &lt;el-input type=&quot;textarea&quot; v-model=&quot;courseForm.users&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;课程分类&quot; prop=&quot;categoryActive&quot;&gt;
+        &lt;el-cascader
+          expand-trigger=&quot;hover&quot;
+          :options=&quot;categoryList&quot;
+          v-model=&quot;categoryActive&quot;
+          :props=&quot;props&quot;&gt;
+        &lt;/el-cascader&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;课程等级&quot; prop=&quot;grade&quot;&gt;
+        &lt;b v-for=&quot;grade in gradeList&quot;&gt;
+          &lt;el-radio v-model=&quot;courseForm.grade&quot; :label=&quot;grade.sdId&quot; &gt;{{grade.sdName}}&lt;/el-radio&gt;&amp;nbsp;&amp;nbsp;
+        &lt;/b&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;学习模式&quot; prop=&quot;studymodel&quot;&gt;
+        &lt;b v-for=&quot;studymodel_v in studymodelList&quot;&gt;
+          &lt;el-radio v-model=&quot;courseForm.studymodel&quot; :label=&quot;studymodel_v.sdId&quot; &gt;{{studymodel_v.sdName}}&lt;/el-radio&gt;&amp;nbsp;&amp;nbsp;
+        &lt;/b&gt;
+
+      &lt;/el-form-item&gt;
+
+      &lt;el-form-item label=&quot;课程介绍&quot; prop=&quot;description&quot;&gt;
+        &lt;el-input type=&quot;textarea&quot; v-model=&quot;courseForm.description&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+
+    &lt;/el-form&gt;
+    &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;
+      &lt;el-button type=&quot;primary&quot;  @click.native=&quot;save&quot; &gt;提交&lt;/el-button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+
+  import * as courseApi from '../api/course';
+  import utilApi from '../../../common/utils';
+  import * as systemApi from '../../../base/api/system';
+  export default {
+
+    data() {
+      return {
+        studymodelList:[],
+        gradeList:[],
+        props: {
+          value: 'id',
+          label:'name',
+          children:'children'
+        },
+        categoryList: [],
+        categoryActive:[],
+        courseForm: {
+          id:'',
+          name: '',
+          users: '',
+          grade:'',
+          studymodel:'',
+          mt:'',
+          st:'',
+          description: ''
+        },
+        courseRules: {
+          name: [
+            {required: true, message: '请输入课程名称', trigger: 'blur'}
+          ],
+          category: [
+            {required: true, message: '请选择课程分类', trigger: 'blur'}
+          ],
+          grade: [
+            {required: true, message: '请选择课程等级', trigger: 'blur'}
+          ],
+          studymodel: [
+            {required: true, message: '请选择学习模式', trigger: 'blur'}
+          ]
+
+        }
+      }
+    },
+    methods: {
+        //新增课程提交
+      save () {
+          //处理课程分类
+          // 选择课程分类存储到categoryActive
+           this.courseForm.mt=  this.categoryActive[0]//大分类
+           this.courseForm.st=  this.categoryActive[1]//小分类
+          courseApi.addCourseBase(this.courseForm).then(res=&gt;{
+              if(res.success){
+                  this.$message.success(&quot;提交成功&quot;)
+                //跳转到我的课程
+                this.$router.push({ path: '/course/list'})
+              }else{
+                this.$message.error(res.message)
+              }
+
+          })
+      }
+    },
+    created(){
+
+    },
+    mounted(){
+      // 查询课程分类
+      courseApi.category_findlist().then(res=&gt;{
+          this.categoryList = res.children;
+          console.log(this.categoryList)
+
+      })
+
+      //查询数据字典
+      //查询课程等级
+      systemApi.sys_getDictionary(&quot;200&quot;).then(res=&gt;{
+
+        this.gradeList = res.dvalue;
+      })
+      //查询学习模式
+      systemApi.sys_getDictionary(&quot;201&quot;).then(res=&gt;{
+
+        this.studymodelList = res.dvalue;
+      })
+
+    }
+  }
+&lt;/script&gt;
+&lt;style scoped&gt;
+&lt;/style&gt;
+
+</code></pre>
+
+<p>2）页面路由</p>
+
+<pre><code class="language-js">import course_add from '@/module/course/page/course_add.vue'; 
+{ path: '/course/add/base', name: '添加课程',component: course_add,hidden: true },
+</code></pre>
+
+<p>3）课程添加链接</p>
+
+<p>在我的课程页面添加“新增课程”链接</p>
+
+<p>在course_list.vue 中添加：</p>
+
+<pre><code class="language-vue">&lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/add/base'}&quot;&gt; &lt;el-button type=&quot;text&quot; class=&quot;button&quot; &gt;新增课程&lt;/el-button&gt; &lt;/router-link&gt;
+</code></pre>
+
+<h3 id="查询数据字典"><strong>查询数据字典</strong></h3>
+
+<p>课程添加页面中课程等级、学习模式需要从数据字典查询字典信息。</p>
+
+<p>1）定义方法</p>
+
+<p>数据字典查询 为公用方法，所以定义在/base/api/system.js中</p>
+
+<pre><code class="language-js">let sysConfig = require('@/../config/sysConfig') 
+let apiUrl = sysConfig.xcApiUrlPre; 
+/*数据字典 */ 
+export const sys_getDictionary= dType =&gt; { 
+    return http.requestQuickGet(apiUrl+'/sys/dictionary/get/'+dType) 
+}
+</code></pre>
+
+<p>2）在页面获取数据字典</p>
+
+<p>在mounted钩子中定义方法如下：</p>
+
+<pre><code class="language-js">//查询数据字典字典 
+systemApi.sys_getDictionary('201').then((res) =&gt; { 
+    this.studymodelList = res.dvalue; 
+}); 
+systemApi.sys_getDictionary('200').then((res) =&gt; { 
+    this.gradeList = res.dvalue; 
+});
+</code></pre>
+
+<p>3）效果</p>
+
+<p><img src="\images\1566121190283.png" alt="1566121190283" /></p>
+
+<h3 id="课程分类"><strong>课程分类</strong></h3>
+
+<p>课程添加页面中课程分类采用Cascader组件完成。</p>
+
+<p>Cascader级联选择器</p>
+
+<p>1）页面</p>
+
+<pre><code class="language-vue">&lt;el-form-item label=&quot;课程分类&quot; prop=&quot;categoryActive&quot;&gt; 
+    &lt;el-cascader 
+                 expand‐trigger=&quot;hover&quot; 
+                 :options=&quot;categoryList&quot; 
+                 v-model=&quot;categoryActive&quot; 
+                 :props=&quot;props&quot;&gt; 
+    &lt;/el-cascader&gt; 
+&lt;/el-form-item&gt;
+</code></pre>
+
+<p>2）定义方法</p>
+
+<p>在本模块的course.js中定义</p>
+
+<pre><code class="language-java">/*查询课程分类 */ 
+export const category_findlist= () =&gt; { 
+    return http.requestQuickGet(apiUrl+'/category/list') 
+}
+</code></pre>
+
+<p>3）在页面获取课程分类</p>
+
+<p>在mounted钩子中定义</p>
+
+<pre><code class="language-java">//取课程分类 
+courseApi.category_findlist({}).then((res) =&gt; { 
+    this.categoryList = res.children; 
+});
+</code></pre>
+
+<p>5) 如何获取选择的分类</p>
+
+<p>用户选择课程分类后，所选分类ID绑定到categoryActive（数组）中，选择了一级、二级分类，分别存储在</p>
+
+<p>categoryActive数组的第一个、第二个元素中。</p>
+
+<h3 id="新增课程api接口"><strong>新增课程API接口</strong></h3>
+
+<p>创建课程添加提交接口：</p>
+
+<pre><code class="language-java">@Api(value = &quot;课程管理&quot;,description = &quot;课程管理&quot;,tags = {&quot;课程管理&quot;}) 
+public interface CourseControllerApi { 
+    @ApiOperation(&quot;添加课程基础信息&quot;) 
+    public AddCourseResult addCourseBase(CourseBase courseBase); 
+}
+</code></pre>
+
+<h3 id="新增课程服务端"><strong>新增课程服务端</strong></h3>
+
+<h4 id="dao-2"><strong>Dao</strong></h4>
+
+<pre><code class="language-java">public interface CourseBaseRepository extends JpaRepository&lt;CourseBase, String&gt; { 
+}
+</code></pre>
+
+<h4 id="service-2"><strong>Service</strong></h4>
+
+<pre><code class="language-java">//添加课程提交 
+@Transactional public AddCourseResult addCourseBase(CourseBase courseBase) { 
+    //课程状态默认为未发布 
+    courseBase.setStatus(&quot;202001&quot;); 
+    courseBaseRepository.save(courseBase); 
+    return new AddCourseResult(CommonCode.SUCCESS,courseBase.getId()); 
+}
+</code></pre>
+
+<h4 id="controller-2"><strong>Controller</strong></h4>
+
+<pre><code class="language-java">@Override 
+@PostMapping(&quot;/coursebase/add&quot;) 
+public AddCourseResult addCourseBase(@RequestBody CourseBase courseBase) { 
+    return courseService.addCourseBase(courseBase); 
+}
+</code></pre>
+
+<h3 id="新增课程前端"><strong>新增课程前端</strong></h3>
+
+<h4 id="api方法定义"><strong>Api方法定义</strong></h4>
+
+<p>在前端定义请求服务端添加课程的api的方法，在course模块中定义方法如下：</p>
+
+<pre><code class="language-js">/*添加课程基础信息*/ 
+export const addCourseBase = params =&gt; { 
+    return http.requestPost(apiUrl+'/course/coursebase/add',params) 
+}
+</code></pre>
+
+<h4 id="api方法调用"><strong>Api方法调用</strong></h4>
+
+<p>在course_add.vue 调用api提交课程信息</p>
+
+<pre><code class="language-js">methods: {
+        //新增课程提交
+      save () {
+          //处理课程分类
+          // 选择课程分类存储到categoryActive
+           this.courseForm.mt=  this.categoryActive[0]//大分类
+           this.courseForm.st=  this.categoryActive[1]//小分类
+          courseApi.addCourseBase(this.courseForm).then(res=&gt;{
+              if(res.success){
+                  this.$message.success(&quot;提交成功&quot;)
+                //跳转到我的课程
+                this.$router.push({ path: '/course/list'})
+              }else{
+                this.$message.error(res.message)
+              }
+
+          })
+      }
+    },
+</code></pre>
+
+<h4 id="测试"><strong>测试</strong></h4>
+
+<p>注意：将course_base表中的company_id改为非必填，待认证功能开发完成再修改为必填</p>
+
+<p>测试流程：</p>
+
+<p>1、进入我的课程，点击“新增课程”打开新增课程页面</p>
+
+<p>2、输入课程信息，点击提交</p>
+
+<h2 id="课程信息修改"><strong>课程信息修改</strong></h2>
+
+<h3 id="需求分析-1"><strong>需求分析</strong></h3>
+
+<p>课程添加成功进入课程管理页面，通过课程管理页面修改课程的基本信息、编辑课程图片、编辑课程营销信息等。</p>
+
+<p>本小节实现修改课程。</p>
+
+<h3 id="课程管理页面说明"><strong>课程管理页面说明</strong></h3>
+
+<h4 id="页面结构"><strong>页面结构</strong></h4>
+
+<p>课程管理页面的结构如下：</p>
+
+<p><img src="\images\1566121208963.png" alt="1566121208963" /></p>
+
+<h4 id="课程管理导航页面"><strong>课程管理导航页面</strong></h4>
+
+<p>1、定义course_manage.vue为课程管理导航页面。</p>
+
+<p>导航效果使用Element-UI的NavMenu组件实现。</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+
+    &lt;el-menu
+      :default-active=&quot;activeIndex&quot;
+      class=&quot;el-menu-demo&quot;
+      mode=&quot;horizontal&quot;
+      background-color=&quot;#eee&quot;
+      text-color=&quot;#000&quot;
+      active-text-color=&quot;#000&quot;&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/summary/'+this.courseid}&quot;&gt;
+      &lt;el-menu-item index=&quot;1&quot;&gt;课程首页&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/baseinfo/'+this.courseid}&quot;&gt;
+      &lt;el-menu-item index=&quot;2&quot;&gt;基本信息&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/picture/'+this.courseid}&quot;&gt;
+        &lt;el-menu-item index=&quot;3&quot;&gt;课程图片&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/marketinfo/'+this.courseid}&quot;&gt;
+      &lt;el-menu-item index=&quot;4&quot;&gt;课程营销&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/plan/'+this.courseid}&quot;&gt;
+      &lt;el-menu-item index=&quot;5&quot;&gt;课程计划&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/teacher/'+this.courseid}&quot;&gt;
+        &lt;el-menu-item index=&quot;6&quot;&gt;教师信息&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+      &lt;router-link class=&quot;mui-tab-item&quot; :to=&quot;{path:'/course/manage/pub/'+this.courseid}&quot;&gt;
+        &lt;el-menu-item index=&quot;7&quot;&gt;发布课程&lt;/el-menu-item&gt;
+      &lt;/router-link&gt;
+    &lt;/el-menu&gt;
+    &lt;router-view class=&quot;main&quot;&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  import * as courseApi from '../api/course';
+  import utilApi from '../../../common/utils';
+  export default {
+    data() {
+      return {
+        activeIndex:'2',
+        courseid:''
+      }
+    },
+    methods: {
+
+    },
+    mounted(){
+
+      //课程id
+      this.courseid = this.$route.params.courseid
+
+      console.log(&quot;courseid=&quot; + this.courseid)
+      //跳转到课程基本信息
+      this.$router.push({ path: '/course/manage/baseinfo/'+this.courseid})
+
+    }
+  }
+&lt;/script&gt;
+&lt;style scoped&gt;
+&lt;/style&gt;
+</code></pre>
+
+<p>2、创建各各信息管理页面</p>
+
+<p>通过管理页面的导航可以进入各各信息管理页面，这里先创建各各信息管理页面，页面内容暂时为空，待开发时再</p>
+
+<p>完善，在本模块的page目录下创建course_manage目录，此目录存放各各信息管理页面，页面明细如下：</p>
+
+<p>课程管理首页：course_summary.vue</p>
+
+<p>基本信息修改页面：course_baseinfo.vue</p>
+
+<p>图片管理页面：course_picture.vue 营销信息页面：course_marketinfo.vue</p>
+
+<p>老师信息页面：course_teacher.vue</p>
+
+<p>课程计划页面：course_plan.vue</p>
+
+<p>课程发布页面：course_pub.vue</p>
+
+<p>3、创建路由</p>
+
+<pre><code class="language-js">
+import Home from '@/module/home/page/home.vue';
+import course_list from '@/module/course/page/course_list.vue';
+import course_add from '@/module/course/page/course_add.vue';
+import course_manage from '@/module/course/page/course_manage.vue';
+import course_summary from '@/module/course/page/course_manage/course_summary.vue';
+import course_picture from '@/module/course/page/course_manage/course_picture.vue';
+import course_baseinfo from '@/module/course/page/course_manage/course_baseinfo.vue';
+import course_marketinfo from '@/module/course/page/course_manage/course_marketinfo.vue';
+import course_teacher from '@/module/course/page/course_manage/course_teacher.vue';
+import course_plan from '@/module/course/page/course_manage/course_plan.vue';
+import course_pub from '@/module/course/page/course_manage/course_pub.vue';
+export default [
+  {
+    path: '/course',
+    component: Home,
+    name: '课程管理',
+    hidden: false,
+    iconCls: 'el-icon-document',
+    children: [
+      { path: '/course/list', name: '我的课程',component: course_list,hidden: false },
+      { path: '/course/add/base', name: '新增课程',component: course_add,hidden: true },
+      { path: '/course/manager/:courseid', name: '管理课程',component: course_manage,hidden: true ,
+        children: [
+          { path: '/course/manage/plan/:courseid', name: '课程计划',component: course_plan,hidden: false },
+          { path: '/course/manage/baseinfo/:courseid', name: '基本信息',component: course_baseinfo,hidden: false },
+          { path: '/course/manage/picture/:courseid', name: '课程图片',component: course_picture,hidden: false },
+          { path: '/course/manage/marketinfo/:courseid', name: '营销信息',component: course_marketinfo,hidden: false },
+          { path: '/course/manage/teacher/:courseid', name: '教师信息',component: course_teacher,hidden: false},
+          { path: '/course/manage/pub/:courseid', name: '发布课程',component: course_pub,hidden: false},
+          { path: '/course/manage/summary/:courseid', name: '课程首页',component: course_summary,hidden: false }
+        ]}
+    ]
+  }
+]
+</code></pre>
+
+<h3 id="课程信息修改api接口"><strong>课程信息修改Api接口</strong></h3>
+
+<p>修改课程需要如下接口：</p>
+
+<p>1、根据id查询课程信息</p>
+
+<p>2、修改课程提交</p>
+
+<p>接口定义如下：</p>
+
+<p>1) 根据课程ID查询课程信息</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;获取课程基础信息&quot;) 
+public CourseBase getCourseBaseById(String courseId) throws RuntimeException;
+</code></pre>
+
+<p>2）修改课程信息</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;更新课程基础信息&quot;) 
+public ResponseResult updateCourseBase(String id,CourseBase courseBase);
+</code></pre>
+
+<h3 id="服务端"><strong>服务端</strong></h3>
+
+<h4 id="dao-3"><strong>Dao</strong></h4>
+
+<p>略</p>
+
+<h4 id="service-3"><strong>Service</strong></h4>
+
+<pre><code class="language-java">/**
+     * 查询课程信息
+     * @param courseId
+     * @return
+     */
+    public CourseBase getCourseBaseById(String courseId) {
+        Optional&lt;CourseBase&gt; optional = courseBaseRepository.findById(courseId);
+        if (optional.isPresent()) {
+            CourseBase courseBase = optional.get();
+            return courseBase;
+        }
+            return null;
+    }
+
+    /**
+     * 修改课程信息
+     * @param courseId
+     * @param courseBase
+     * @return
+     */
+    @Transactional
+    public ResponseResult updateCourseBase(String courseId, CourseBase courseBase) {
+        //先根据id查询
+        CourseBase courseBaseById = this.getCourseBaseById(courseId);
+        //查询不到的话抛异常
+        if (courseBaseById == null) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        //修改信息
+        courseBaseById.setName(courseBase.getName());
+        courseBaseById.setMt(courseBase.getMt());
+        courseBaseById.setSt(courseBase.getSt());
+        courseBaseById.setGrade(courseBase.getGrade());
+        courseBaseById.setStudymodel(courseBase.getStudymodel());
+        courseBaseById.setUsers(courseBase.getUsers());
+        courseBaseById.setDescription(courseBase.getDescription());
+        CourseBase save = courseBaseRepository.save(courseBaseById);
+        return new ResponseResult(CommonCode.SUCCESS);
+    }
+</code></pre>
+
+<h4 id="controller-3"><strong>Controller</strong></h4>
+
+<pre><code class="language-java">/**
+     * 查询课程基本信息
+     * @param courseId
+     * @return
+     */
+    @Override
+    @GetMapping(&quot;/coursebase/get/{courseId}&quot;)
+    public CourseBase getCourseBaseById(@PathVariable(&quot;courseId&quot;) String courseId) {
+        return courseService.getCourseBaseById(courseId);
+    }
+
+    /**
+     * 修改课程基础信息
+     * @param courseId
+     * @param courseBase
+     * @return
+     */
+    @Override
+    @PutMapping(&quot;/coursebase/update/{courseId}&quot;)
+    public ResponseResult updateCourseBase(@PathVariable(&quot;courseId&quot;) String courseId, @RequestBody CourseBase courseBase) {
+        return courseService.updateCourseBase(courseId,courseBase);
+    }
+</code></pre>
+
+<h3 id="前端"><strong>前端</strong></h3>
+
+<h4 id="修改页面"><strong>修改页面</strong></h4>
+
+<p>在course模块下的course_manage目录下创建course_baseinfo.vue页面，本页面实现课程修改</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-form :model=&quot;courseForm&quot; label-width=&quot;80px&quot; :rules=&quot;courseRules&quot; ref=&quot;courseForm&quot;&gt;
+      &lt;el-form-item label=&quot;课程名称&quot; prop=&quot;name&quot;&gt;
+        &lt;el-input v-model=&quot;courseForm.name&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;适用人群&quot; prop=&quot;users&quot;&gt;
+        &lt;el-input type=&quot;textarea&quot; v-model=&quot;courseForm.users&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;课程分类&quot; prop=&quot;categoryActive&quot;&gt;
+        &lt;el-cascader
+          expand-trigger=&quot;hover&quot;
+          :options=&quot;categoryList&quot;
+          v-model=&quot;categoryActive&quot;
+          :props=&quot;props&quot;&gt;
+        &lt;/el-cascader&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;课程等级&quot; prop=&quot;grade&quot;&gt;
+        &lt;b v-for=&quot;grade in gradeList&quot;&gt;
+          &lt;el-radio v-model=&quot;courseForm.grade&quot; :label=&quot;grade.sdId&quot; &gt;{{grade.sdName}}&lt;/el-radio&gt;&amp;nbsp;&amp;nbsp;
+        &lt;/b&gt;
+      &lt;/el-form-item&gt;
+      &lt;el-form-item label=&quot;学习模式&quot; prop=&quot;studymodel&quot;&gt;
+        &lt;b v-for=&quot;studymodel_v in studymodelList&quot;&gt;
+          &lt;el-radio v-model=&quot;courseForm.studymodel&quot; :label=&quot;studymodel_v.sdId&quot; &gt;{{studymodel_v.sdName}}&lt;/el-radio&gt;&amp;nbsp;&amp;nbsp;
+        &lt;/b&gt;
+
+      &lt;/el-form-item&gt;
+
+      &lt;el-form-item label=&quot;课程介绍&quot; prop=&quot;description&quot;&gt;
+        &lt;el-input type=&quot;textarea&quot; v-model=&quot;courseForm.description&quot; &gt;&lt;/el-input&gt;
+      &lt;/el-form-item&gt;
+
+    &lt;/el-form&gt;
+    &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;
+      &lt;el-button type=&quot;primary&quot;  @click.native=&quot;save&quot; :loading=&quot;editLoading&quot;&gt;提交&lt;/el-button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  import * as courseApi from '../../api/course';
+  import utilApi from '../../../../common/utils';
+  import * as systemApi from '../../../../base/api/system';
+  export default {
+
+    data() {
+      return {
+        dotype:'',
+        courseid:'',
+        studymodelList:[],
+        gradeList:[],
+        editLoading: false,
+        props: {
+          value: 'id',
+          label:'label',
+          children:'children'
+        },
+        categoryList: [],
+        categoryActive:[],
+        courseForm: {
+          id:'',
+          name: '',
+          users: '',
+          grade:'',
+          studymodel:'',
+          mt:'',
+          st:'',
+          description: ''
+        },
+        courseRules: {
+          name: [
+            {required: true, message: '请输入课程名称', trigger: 'blur'}
+          ],
+          category: [
+            {required: true, message: '请选择课程分类', trigger: 'blur'}
+          ],
+          grade: [
+            {required: true, message: '请选择课程等级', trigger: 'blur'}
+          ],
+          studymodel: [
+            {required: true, message: '请选择学习模式', trigger: 'blur'}
+          ]
+
+        }
+      }
+    },
+    methods: {
+      save () {
+          //修改课程
+          this.$refs.courseForm.validate((valid) =&gt; {
+            if (valid) {
+              this.$confirm('确认提交吗？', '提示', {}).then(() =&gt; {
+                this.editLoading = true;
+                let mt = this.categoryActive[0];
+                let st = this.categoryActive[1];
+                this.courseForm.mt = mt;
+                this.courseForm.st = st;
+                let id = this.courseForm.id
+                courseApi.updateCoursebase(id,this.courseForm).then((res) =&gt; {
+                  this.editLoading = false;
+                  if(res.success){
+                    this.$message({
+                      message: '提交成功',
+                      type: 'success'
+                    });
+                    //保存成功自动刷新
+                    courseApi.getCoursebaseById(id);
+                  }else{
+                    if(res.message){
+                      this.$message.error(res.message);
+                    }else{
+                      this.$message.error('提交失败');
+                    }
+                  }
+                });
+              });
+            }
+          });
+      }
+    },
+    created(){
+
+    },
+    mounted(){
+      //查询数据字典字典
+      systemApi.sys_getDictionary('201').then((res) =&gt; {
+//        console.log(res);
+        this.studymodelList = res.dvalue;
+      });
+      systemApi.sys_getDictionary('200').then((res) =&gt; {
+        this.gradeList = res.dvalue;
+      });
+      //取课程分类
+      courseApi.category_findlist({}).then((res) =&gt; {
+        this.categoryList = res.children;
+      });
+      //查询课程信息
+        //课程id
+        this.courseid = this.$route.params.courseid;
+         courseApi.getCoursebaseById(this.courseid).then((res) =&gt; {
+//          console.log(res);
+          this.courseForm = res;
+          //课程分类显示，需要两级分类
+          this.categoryActive.push(this.courseForm.mt);
+          this.categoryActive.push(this.courseForm.st);
+        });
+    }
+  }
+&lt;/script&gt;
+&lt;style scoped&gt;
+&lt;/style&gt;
+</code></pre>
+
+<h4 id="api方法"><strong>API方法</strong></h4>
+
+<pre><code class="language-js">//查询课程信息
+export const getCoursebaseById = courseId =&gt; {
+  return http.requestQuickGet(apiUrl+'/course/coursebase/get/'+courseId)
+}
+//修改课程信息
+export const updateCoursebase = (courseId,coursebase) =&gt; {
+  return http.requestPut(apiUrl+'/course/coursebase/update/'+courseId,coursebase)
+}
+</code></pre>
+
+<p><strong>课程信息显示</strong></p>
+
+<p>在mounted钩子方法中查询课程信息及数据字典：</p>
+
+<pre><code class="language-java">mounted(){
+      //查询数据字典字典
+      systemApi.sys_getDictionary('201').then((res) =&gt; {
+//        console.log(res);
+        this.studymodelList = res.dvalue;
+      });
+      systemApi.sys_getDictionary('200').then((res) =&gt; {
+        this.gradeList = res.dvalue;
+      });
+      //取课程分类
+      courseApi.category_findlist({}).then((res) =&gt; {
+        this.categoryList = res.children;
+      });
+      //查询课程信息
+        //课程id
+        this.courseid = this.$route.params.courseid;
+         courseApi.getCoursebaseById(this.courseid).then((res) =&gt; {
+//          console.log(res);
+          this.courseForm = res;
+          //课程分类显示，需要两级分类
+          this.categoryActive.push(this.courseForm.mt);
+          this.categoryActive.push(this.courseForm.st);
+        });
+    }
+  }
+</code></pre>
+
+<h3 id="课程修改提交"><strong>课程修改提交</strong></h3>
+
+<p>编辑课程提交方法：</p>
+
+<pre><code class="language-js">save () {
+          //修改课程
+          this.$refs.courseForm.validate((valid) =&gt; {
+            if (valid) {
+              this.$confirm('确认提交吗？', '提示', {}).then(() =&gt; {
+                this.editLoading = true;
+                let mt = this.categoryActive[0];
+                let st = this.categoryActive[1];
+                this.courseForm.mt = mt;
+                this.courseForm.st = st;
+                let id = this.courseForm.id
+                courseApi.updateCoursebase(id,this.courseForm).then((res) =&gt; {
+                  this.editLoading = false;
+                  if(res.success){
+                    this.$message({
+                      message: '提交成功',
+                      type: 'success'
+                    });
+                    //保存成功自动刷新
+                    courseApi.getCoursebaseById(id);
+                  }else{
+                    if(res.message){
+                      this.$message.error(res.message);
+                    }else{
+                      this.$message.error('提交失败');
+                    }
+                  }
+                });
+              });
+            }
+          });
+      }
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_add%e6%96%b0%e5%a2%9e%e8%af%be%e7%a8%8b%e6%8e%a5%e5%8f%a3&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f03.course_add%25E6%2596%25B0%25E5%25A2%259E%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f03.course_add%25E6%2596%25B0%25E5%25A2%259E%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f03.course_add%25E6%2596%25B0%25E5%25A2%259E%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f&amp;description=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_add%e6%96%b0%e5%a2%9e%e8%af%be%e7%a8%8b%e6%8e%a5%e5%8f%a3"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%25E5%25AE%259E%25E6%2588%2598%25E9%2583%25A8%25E5%2588%2586%2f03.course_add%25E6%2596%25B0%25E5%25A2%259E%25E8%25AF%25BE%25E7%25A8%258B%25E6%258E%25A5%25E5%258F%25A3%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86\/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86\/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/">
+          <section class="post">
+              <h2>消息队列与GridFS</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>课程管理-course_market课程营销接口</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

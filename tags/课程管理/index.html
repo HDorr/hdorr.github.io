@@ -185,6 +185,11 @@
             	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
             </li>
         
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
         
     </ul>
 
@@ -233,6 +238,106 @@
 </nav>
 
 	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/">课程管理-course_add新增课程接口</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>新增课程 需求分析 用户操作流程如下：
+1、用户进入“我的课程”页面，点击“新增课程”，进入新增课程页面
+2、填写课程信息，选择课程分类、课程等级、学习模式等。
+3、信息填写完毕，点击“提交”，课程添加成功或课程添加失败并提示失败原因。
+需要解决的是在新增页面上输入的信息：
+1、课程分类
+多级分类，需要方便用户去选择。
+2、课程等级、学习模式等这些选项建议是可以配置的。
+课程分类查询 介绍 在新增课程界面需要选择课程所属分类， 分类信息是整个项目非常重要的信息，课程即商品，分类信息设置的好
+坏直接影响用户访问量。
+分类信息在哪里应用？
+1、首页分类导航
+2、课程的归属地
+添加课程时要选择课程的所属分类。
+数据结构 分类表category的结构如下：
+分类查询 数据格式 在添加课程时需要选择课程所属的分类，这里需要定义课程分类查询接口。
+接口格式要根据前端需要的数据格式来定义，前端展示课程分类使用elemenet-ui的cascader（级联选择器）组
+件。
+数据格式例子如下：
+[ { value: 'zhinan', label: '指南', children: [{ value: 'shejiyuanze', label: '设计原则', children: [{ value: 'yizhi', label: '一致' }, { value: 'fankui', label: '反馈' }, { value: 'xiaolv', label: '效率' }, { value: 'kekong', label: '可控' }] }] } ]  数据模型 1）定义category的模型 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/">课程管理-course_market课程营销接口</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>课程营销 需求分析 课程营销信息包括课程价格、课程有效期等信息。
+数据模型 课程营销信息使用course_market表存储。
+数据模型如下：
+package com.xuecheng.framework.domain.course; import lombok.Data; import lombok.ToString; import org.hibernate.annotations.GenericGenerator; import javax.persistence.*; import java.io.Serializable; import java.util.Date; /** * 课程营销管理实体类 * Created by admin on 2018/2/10. */ @Data @ToString @Entity @Table(name=&quot;course_market&quot;) @GenericGenerator(name = &quot;jpa-assigned&quot;, strategy = &quot;assigned&quot;) public class CourseMarket implements Serializable { private static final long serialVersionUID = -916357110051689486L; @Id @GeneratedValue(generator = &quot;jpa-assigned&quot;) @Column(length = 32) private String id; private String charge; private String valid; private String qq; private Float price; private Float price_old; // private Date expires; @Column(name = &quot;start_time&quot;) private Date startTime; @Column(name = &quot;end_time&quot;) private Date endTime; }  API 1) 查询课程营销信息 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
 
 	
 	   <article class="post post">

@@ -13,6 +13,53 @@
     
     
     <item>
+      <title>FastDFS入门安装与nginx整合</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/</guid>
+      <description>分布式文件系统fastDFS研究 什么是分布式文件系统 技术应用场景 一个网站拥有大量的视频和图片资源,并且免费提供用户去下载,文件太多如何高效存储?用户访问量大,如何提升访问速度?
+分布式文件系统可以解决上述问题.
+分布式文件系统解决了海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等。
+什么是文件系统 总结：文件系统是负责管理和存储文件的系统软件，它是操作系统和硬件驱动之间的桥梁，操作系统通过文件系统
+提供的接口去存取文件，用户通过操作系统访问磁盘上的文件。如下图：
+常见的文件系统：FAT16/FAT32、NTFS、HFS、UFS、APFS、XFS、Ext4等 。
+什么是分布式文件系统 为什么会有分布文件系统呢？
+分布式文件系统是面对互联网的需求而产生，互联网时代对海量数据如何存储？靠简单的增加硬盘的个数已经满足
+不了我们的要求，因为硬盘传输速度有限但是数据在急剧增长，另外我们还要要做好数据备份、数据安全等。
+采用分布式文件系统可以将多个地点的文件系统通过网络连接起来，组成一个文件系统网络，结点之间通过网络进
+行通信，一台文件系统的存储和传输能力有限，我们让文件在多台计算机上存储，通过多台计算共同传输。如下
+图：
+好处：
+1、一台计算机的文件系统处理能力扩充到多台计算机同时处理。
+2、一台计算机挂了还有另外副本计算机提供数据。
+3、每台计算机可以放在不同的地域，这样用户就可以就近访问，提高访问速度。
+主流的分布式文件系统 1、NFS 2、GFS 1）GFS采用主从结构，一个GFS集群由一个master和大量的chunkserver组成。
+2）master存储了数据文件的元数据，一个文件被分成了若干块存储在多个chunkserver中。
+3）用户从master中获取数据元信息，从chunkserver存储数据。
+3、HDFS 1）HDFS采用主从结构，一个HDFS集群由一个名称结点和若干数据结点组成。
+名称结点存储数据的元信息，一个完整的数据文件分成若干块存储在数据结点。
+2）客户端从名称结点获取数据的元信息及数据分块的信息，得到信息客户端即可从数据块来存取数据。
+分布式文件服务提供商 什么是fastDFS fastDSF介绍 FastDFS是用c语言编写的一款开源的分布式文件系统，它是由淘宝资深架构师余庆编写并开源。FastDFS专为互联
+网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很
+容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。
+为什么要使用fastDFS呢？
+上边介绍的NFS、GFS都是通用的分布式文件系统，通用的分布式文件系统的优点的是开发体验好，但是系统复杂
+性高、性能一般，而专用的分布式文件系统虽然开发体验性差，但是系统复杂性低并且性能高。fastDFS非常适合
+存储图片等那些小文件，fastDFS不对文件进行分块，所以它就没有分块合并的开销，fastDFS网络通信采用
+socket，通信速度很快。
+fastDSF工作原理 fastDSF架构 FastDFS架构包括 Tracker server和Storageserver。客户端请求Tracker server进行文件上传、下载，通过Tracker
+server调度最终由Storage server完成文件上传和下载。
+1）Tracker Tracker Server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提
+供文件上传服务。可以将tracker称为追踪服务器或调度服务器。
+FastDFS集群中的Tracker server可以有多台，Tracker server之间是相互平等关系同时提供服务，Tracker server
+不存在单点故障。客户端请求Tracker server采用轮询方式，如果请求的tracker无法提供服务则换另一个tracker。
+2）Storage Storage Server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己
+的文件系统而是使用操作系统的文件系统来管理文件。可以将storage称为存储服务器。
+3）Storage状态收集</description>
+    </item>
+    
+    <item>
       <title>RabbitMQ入门 及win安装mq</title>
       <link>https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
@@ -446,6 +493,46 @@ RabbitMQ研究 要实现上边页面发布的功能，有一个重要的环节�
 1、理解MQ的应用场景
 2、理解MQ常用的工作模式
 RabbitMQ相关知识参考Rabbitmq笔记模块</description>
+    </item>
+    
+    <item>
+      <title>课程管理-course_add新增课程接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/</guid>
+      <description>新增课程 需求分析 用户操作流程如下：
+1、用户进入“我的课程”页面，点击“新增课程”，进入新增课程页面
+2、填写课程信息，选择课程分类、课程等级、学习模式等。
+3、信息填写完毕，点击“提交”，课程添加成功或课程添加失败并提示失败原因。
+需要解决的是在新增页面上输入的信息：
+1、课程分类
+多级分类，需要方便用户去选择。
+2、课程等级、学习模式等这些选项建议是可以配置的。
+课程分类查询 介绍 在新增课程界面需要选择课程所属分类， 分类信息是整个项目非常重要的信息，课程即商品，分类信息设置的好
+坏直接影响用户访问量。
+分类信息在哪里应用？
+1、首页分类导航
+2、课程的归属地
+添加课程时要选择课程的所属分类。
+数据结构 分类表category的结构如下：
+分类查询 数据格式 在添加课程时需要选择课程所属的分类，这里需要定义课程分类查询接口。
+接口格式要根据前端需要的数据格式来定义，前端展示课程分类使用elemenet-ui的cascader（级联选择器）组
+件。
+数据格式例子如下：
+[ { value: &#39;zhinan&#39;, label: &#39;指南&#39;, children: [{ value: &#39;shejiyuanze&#39;, label: &#39;设计原则&#39;, children: [{ value: &#39;yizhi&#39;, label: &#39;一致&#39; }, { value: &#39;fankui&#39;, label: &#39;反馈&#39; }, { value: &#39;xiaolv&#39;, label: &#39;效率&#39; }, { value: &#39;kekong&#39;, label: &#39;可控&#39; }] }] } ]  数据模型 1）定义category的模型</description>
+    </item>
+    
+    <item>
+      <title>课程管理-course_market课程营销接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/</guid>
+      <description>课程营销 需求分析 课程营销信息包括课程价格、课程有效期等信息。
+数据模型 课程营销信息使用course_market表存储。
+数据模型如下：
+package com.xuecheng.framework.domain.course; import lombok.Data; import lombok.ToString; import org.hibernate.annotations.GenericGenerator; import javax.persistence.*; import java.io.Serializable; import java.util.Date; /** * 课程营销管理实体类 * Created by admin on 2018/2/10. */ @Data @ToString @Entity @Table(name=&amp;quot;course_market&amp;quot;) @GenericGenerator(name = &amp;quot;jpa-assigned&amp;quot;, strategy = &amp;quot;assigned&amp;quot;) public class CourseMarket implements Serializable { private static final long serialVersionUID = -916357110051689486L; @Id @GeneratedValue(generator = &amp;quot;jpa-assigned&amp;quot;) @Column(length = 32) private String id; private String charge; private String valid; private String qq; private Float price; private Float price_old; // private Date expires; @Column(name = &amp;quot;start_time&amp;quot;) private Date startTime; @Column(name = &amp;quot;end_time&amp;quot;) private Date endTime; }  API 1) 查询课程营销信息</description>
     </item>
     
     <item>

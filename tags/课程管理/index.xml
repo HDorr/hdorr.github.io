@@ -13,6 +13,46 @@
     
     
     <item>
+      <title>课程管理-course_add新增课程接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/03.course_add%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B%E6%8E%A5%E5%8F%A3/</guid>
+      <description>新增课程 需求分析 用户操作流程如下：
+1、用户进入“我的课程”页面，点击“新增课程”，进入新增课程页面
+2、填写课程信息，选择课程分类、课程等级、学习模式等。
+3、信息填写完毕，点击“提交”，课程添加成功或课程添加失败并提示失败原因。
+需要解决的是在新增页面上输入的信息：
+1、课程分类
+多级分类，需要方便用户去选择。
+2、课程等级、学习模式等这些选项建议是可以配置的。
+课程分类查询 介绍 在新增课程界面需要选择课程所属分类， 分类信息是整个项目非常重要的信息，课程即商品，分类信息设置的好
+坏直接影响用户访问量。
+分类信息在哪里应用？
+1、首页分类导航
+2、课程的归属地
+添加课程时要选择课程的所属分类。
+数据结构 分类表category的结构如下：
+分类查询 数据格式 在添加课程时需要选择课程所属的分类，这里需要定义课程分类查询接口。
+接口格式要根据前端需要的数据格式来定义，前端展示课程分类使用elemenet-ui的cascader（级联选择器）组
+件。
+数据格式例子如下：
+[ { value: &#39;zhinan&#39;, label: &#39;指南&#39;, children: [{ value: &#39;shejiyuanze&#39;, label: &#39;设计原则&#39;, children: [{ value: &#39;yizhi&#39;, label: &#39;一致&#39; }, { value: &#39;fankui&#39;, label: &#39;反馈&#39; }, { value: &#39;xiaolv&#39;, label: &#39;效率&#39; }, { value: &#39;kekong&#39;, label: &#39;可控&#39; }] }] } ]  数据模型 1）定义category的模型</description>
+    </item>
+    
+    <item>
+      <title>课程管理-course_market课程营销接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/</guid>
+      <description>课程营销 需求分析 课程营销信息包括课程价格、课程有效期等信息。
+数据模型 课程营销信息使用course_market表存储。
+数据模型如下：
+package com.xuecheng.framework.domain.course; import lombok.Data; import lombok.ToString; import org.hibernate.annotations.GenericGenerator; import javax.persistence.*; import java.io.Serializable; import java.util.Date; /** * 课程营销管理实体类 * Created by admin on 2018/2/10. */ @Data @ToString @Entity @Table(name=&amp;quot;course_market&amp;quot;) @GenericGenerator(name = &amp;quot;jpa-assigned&amp;quot;, strategy = &amp;quot;assigned&amp;quot;) public class CourseMarket implements Serializable { private static final long serialVersionUID = -916357110051689486L; @Id @GeneratedValue(generator = &amp;quot;jpa-assigned&amp;quot;) @Column(length = 32) private String id; private String charge; private String valid; private String qq; private Float price; private Float price_old; // private Date expires; @Column(name = &amp;quot;start_time&amp;quot;) private Date startTime; @Column(name = &amp;quot;end_time&amp;quot;) private Date endTime; }  API 1) 查询课程营销信息</description>
+    </item>
+    
+    <item>
       <title>课程管理介绍与环境搭建</title>
       <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>

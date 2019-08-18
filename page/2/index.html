@@ -183,6 +183,11 @@
             	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
             </li>
         
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
         
     </ul>
 
@@ -303,6 +308,12 @@
     
         
     
+        
+    
+        
+    
+        
+    
 
     
 
@@ -322,6 +333,57 @@
 </nav>
 
     </div>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">cms01-后端-网站管理页面查询接口</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>页面查询接口定义 定义模型 需求分析
+在梳理完用户需求后就要去定义前后端的接口，接口定义后前端和后端就可以依据接口去开发功能了。
+本次定义页面查询接口，本接口供前端请求查询页面列表，支持分页及自定义条件查询方式。
+具体需求如下：
+1、分页查询CmsPage 集合下的数据
+2、根据站点Id、模板Id、页面别名查询页面信息
+3、接口基于Http Get请求，响应Json
+模型类介绍
+接口的定义离不开数据模型，根据前边对需求的分析，整个页面管理模块的数据模型如下：
+CmsSite：站点模型
+CmsTemplate：页面模板
+CmsPage：页面信息
+@Data @ToString @Document(collection = &quot;cms_page&quot;) public class CmsPage { /** * 页面名称、别名、访问地址、类型（静态/动态）、页面模版、状态 */ //站点ID private String siteId; //页面ID @Id private String pageId; //页面名称 private String pageName; //别名 private String pageAliase; //访问地址 private String pageWebPath; //参数 private String pageParameter; //物理路径 private String pagePhysicalPath; //类型（静态/动态） private String pageType; //页面模版 private String pageTemplate; //页面静态化内容 private String pageHtml; //状态 private String pageStatus; //创建时间 private Date pageCreateTime; //模版id private String templateId; //参数列表，暂不用 private List&lt;CmsPageParam&gt; pageParams; //模版文件Id // private String templateFileId; //静态文件Id private String htmlFileId; //数据Url private String dataUrl; }  属性说明： <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms01-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
 
     
         <article class="post post">
@@ -729,60 +791,6 @@ pom.xml如下
         on
             
                 <a href="https://hdorr.github.io//tags/sm/">#sm</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/">消息队列与GridFS</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>消息队列 GridFS 页面发布 需求分析 业务流程如下：
-1、管理员进入管理界面点击“页面发布”，前端请求cms页面发布接口。
-2、cms页面发布接口执行页面静态化，并将静态化页面(html文件)存储至GridFS中。
-3、静态化成功后，向消息队列发送页面发布的消息。
-页面发布的最终目标是将页面发布到服务器。
-通过消息队列将页面发布的消息发送给各各服务器。
-3、消息队列负责将消息发送给各各服务器上部署的Cms Client(Cms客户端)。
-在服务器上部署Cms Client(Cms客户端)，客户端接收消息队列的通知。
-4、每个接收到页面发布消息的Cms Client从GridFS获取Html页面文件，并将Html文件存储在本地服务器。
-CmsClient根据页面发布消息的内容请求GridFS获取页面文件，存储在本地服务器。
-整个流程就是,基于前面的页面静态化工作之后,在进行页面预览之后,符合要求的页面需要发布到服务器端存一份,由于服务器是分布式的,所以要用到消息队列,发送消息请求发布,服务器接收到消息,从数据库中拿页面存到自己的服务器文件夹中,完成页面发布工作.
-RabbitMQ研究 要实现上边页面发布的功能，有一个重要的环节就是由消息队列将页面发布的消息通知给各各服务器。
-本节的教学目标是对MQ的研究：
-1、理解MQ的应用场景
-2、理解MQ常用的工作模式
-RabbitMQ相关知识参考Rabbitmq笔记模块 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-                <a href="https://hdorr.github.io//tags/hd/">#hd</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">

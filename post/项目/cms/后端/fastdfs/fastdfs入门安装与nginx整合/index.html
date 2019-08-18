@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="FastDFS入门安装与nginx整合"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="FastDFS入门安装与nginx整合 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="hd" />
+    
+    <meta property="article:tag" content="fastdfs" />
+    
+    <meta property="article:tag" content="分布式文件系统" />
+    
+    
+
+    <title>FastDFS入门安装与nginx整合 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="分布式文件系统fastDFS研究 什么是分布式文件系统 技术应用场景 一个网站拥有大量的视频和图片资源,并且免费提供用户去下载,文件太多如何高效存储?用户访问量大,如何提升访问速度?
+分布式文件系统可以解决上述问题.
+分布式文件系统解决了海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等。
+什么是文" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "FastDFS入门安装与nginx整合",
+    "name": "FastDFS入门安装与nginx整合",
+    "wordCount":  1088 ,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, hd, fastdfs, 分布式文件系统",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">FastDFS入门安装与nginx整合</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/hd/">#hd</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/fastdfs/">#fastdfs</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">#分布式文件系统</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="分布式文件系统fastdfs研究"><strong>分布式文件系统fastDFS研究</strong></h1>
+
+<h2 id="什么是分布式文件系统"><strong>什么是分布式文件系统</strong></h2>
+
+<h3 id="技术应用场景"><strong>技术应用场景</strong></h3>
+
+<p>一个网站拥有大量的视频和图片资源,并且免费提供用户去下载,文件太多如何高效存储?用户访问量大,如何提升访问速度?</p>
+
+<p>分布式文件系统可以解决上述问题.</p>
+
+<p>分布式文件系统解决了海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等。</p>
+
+<h3 id="什么是文件系统"><strong>什么是文件系统</strong></h3>
+
+<p>总结：文件系统是负责管理和存储文件的系统软件，它是操作系统和硬件驱动之间的桥梁，操作系统通过文件系统</p>
+
+<p>提供的接口去存取文件，用户通过操作系统访问磁盘上的文件。如下图：</p>
+
+<p><img src="\images\1566120616102.png" alt="1566120616102" /></p>
+
+<p>常见的文件系统：FAT16/FAT32、NTFS、HFS、UFS、APFS、XFS、Ext4等 。</p>
+
+<h3 id="什么是分布式文件系统-1"><strong>什么是分布式文件系统</strong></h3>
+
+<p>为什么会有分布文件系统呢？</p>
+
+<p>分布式文件系统是面对互联网的需求而产生，互联网时代对海量数据如何存储？靠简单的增加硬盘的个数已经满足</p>
+
+<p>不了我们的要求，因为硬盘传输速度有限但是数据在急剧增长，另外我们还要要做好数据备份、数据安全等。</p>
+
+<p><strong>采用分布式文件系统可以将多个地点的文件系统通过网络连接起来，组成一个文件系统网络，结点之间通过网络进</strong></p>
+
+<p><strong>行通信，一台文件系统的存储和传输能力有限，我们让文件在多台计算机上存储，通过多台计算共同传输。</strong>如下</p>
+
+<p>图：</p>
+
+<p><img src="\images\1566120660440.png" alt="1566120660440" /></p>
+
+<p>好处：</p>
+
+<p>1、一台计算机的文件系统处理能力扩充到多台计算机同时处理。</p>
+
+<p>2、一台计算机挂了还有另外副本计算机提供数据。</p>
+
+<p>3、每台计算机可以放在不同的地域，这样用户就可以就近访问，提高访问速度。</p>
+
+<h2 id="主流的分布式文件系统"><strong>主流的分布式文件系统</strong></h2>
+
+<h3 id="1-nfs"><strong>1、NFS</strong></h3>
+
+<p><img src="\images\1566120677777.png" alt="1566120677777" /></p>
+
+<h3 id="2-gfs"><strong>2、GFS</strong></h3>
+
+<p><img src="\images\1566120700956.png" alt="1566120700956" /></p>
+
+<p>1）GFS采用主从结构，一个GFS集群由一个master和大量的chunkserver组成。</p>
+
+<p>2）master存储了数据文件的元数据，一个文件被分成了若干块存储在多个chunkserver中。</p>
+
+<p>3）用户从master中获取数据元信息，从chunkserver存储数据。</p>
+
+<h3 id="3-hdfs"><strong>3、HDFS</strong></h3>
+
+<p><img src="\images\1566120727733.png" alt="1566120727733" /></p>
+
+<p>1）HDFS采用主从结构，一个HDFS集群由一个名称结点和若干数据结点组成。</p>
+
+<p>名称结点存储数据的元信息，一个完整的数据文件分成若干块存储在数据结点。</p>
+
+<p>2）客户端从名称结点获取数据的元信息及数据分块的信息，得到信息客户端即可从数据块来存取数据。</p>
+
+<h2 id="分布式文件服务提供商"><strong>分布式文件服务提供商</strong></h2>
+
+<p><img src="\images\1566120746916.png" alt="1566120746916" /></p>
+
+<h2 id="什么是fastdfs"><strong>什么是fastDFS</strong></h2>
+
+<h3 id="fastdsf介绍"><strong>fastDSF介绍</strong></h3>
+
+<p>FastDFS是用c语言编写的一款开源的分布式文件系统，它是由淘宝资深架构师余庆编写并开源。FastDFS专为互联</p>
+
+<p>网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很</p>
+
+<p>容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
+
+<p>为什么要使用fastDFS呢？</p>
+
+<p>上边介绍的NFS、GFS都是通用的分布式文件系统，通用的分布式文件系统的优点的是开发体验好，但是系统复杂</p>
+
+<p>性高、性能一般，而专用的分布式文件系统虽然开发体验性差，但是系统复杂性低并且性能高。<strong>fastDFS非常适合</strong></p>
+
+<p><strong>存储图片等那些小文件，fastDFS不对文件进行分块，所以它就没有分块合并的开销，fastDFS网络通信采用</strong></p>
+
+<p><strong>socket，通信速度很快。</strong></p>
+
+<h2 id="fastdsf工作原理"><strong>fastDSF工作原理</strong></h2>
+
+<h3 id="fastdsf架构"><strong>fastDSF架构</strong></h3>
+
+<p>FastDFS架构包括 Tracker server和Storageserver。客户端请求Tracker server进行文件上传、下载，通过Tracker</p>
+
+<p>server调度最终由Storage server完成文件上传和下载。</p>
+
+<p><img src="\images\1566120766450.png" alt="1566120766450" /></p>
+
+<h4 id="1-tracker"><strong>1）Tracker</strong></h4>
+
+<p><strong>Tracker Server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提</strong></p>
+
+<p><strong>供文件上传服务。可以将tracker称为追踪服务器或调度服务器。</strong></p>
+
+<p>FastDFS集群中的Tracker server可以有多台，Tracker server之间是相互平等关系同时提供服务，Tracker server</p>
+
+<p>不存在单点故障。客户端请求Tracker server采用轮询方式，如果请求的tracker无法提供服务则换另一个tracker。</p>
+
+<h4 id="2-storage"><strong>2）Storage</strong></h4>
+
+<p><strong>Storage Server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己</strong></p>
+
+<p><strong>的文件系统而是使用操作系统的文件系统来管理文件。可以将storage称为存储服务器。</strong></p>
+
+<p><strong>3）Storage状态收集</strong></p>
+
+<p>Storage server会连接集群中所有的Tracker server，定时向他们报告自己的状态，包括磁盘剩余空间、文件同步</p>
+
+<p>状况、文件上传下载次数等统计信息。</p>
+
+<p><code>总结:</code></p>
+
+<p><code>(1)客户端请求tracker执行下载或者上传文件,tracker负责找到文件在storage集群的位置,将信息返回客户端</code></p>
+
+<p><code>(2)客户端拿到信息,向storage具体组,和具体文件位置执行操作</code></p>
+
+<p><code>(3)storage可以在配置时分多个group组,每组可以有多台storage服务器,但是每台服务器,再执行上传或者下载之后都会将</code></p>
+
+<p>​      <code>数据同步到该组下的其他服务器上,因此一个组的每个服务器文件内容一样,这样是为了高可用</code></p>
+
+<h2 id="文件上传流程"><strong>文件上传流程</strong></h2>
+
+<p><img src="\images\1566120786426.png" alt="1566120786426" /></p>
+
+<p>客户端上传文件后存储服务器将文件ID返回给客户端，此文件ID用于以后访问该文件的索引信息。文件索引信息</p>
+
+<p>包括：组名，虚拟磁盘路径，数据两级目录，文件名。</p>
+
+<p><img src="\images\1566120802924.png" alt="1566120802924" /></p>
+
+<ul>
+<li><p><strong>组名</strong>：文件上传后所在的storage组名称，在文件上传成功后有storage服务器返回，需要客户端自行保存。</p></li>
+
+<li><p><strong>虚拟磁盘路径</strong>：storage配置的虚拟路径，与磁盘选项store_path*对应。如果配置了store_path0则是M00，</p></li>
+</ul>
+
+<p>如果配置了store_path1则是M01，以此类推。</p>
+
+<ul>
+<li><p>数据两级目录：storage服务器在每个虚拟磁盘路径下创建的两级目录，用于存储数据文件。</p></li>
+
+<li><p>文件名：与文件上传时不同。是由存储服务器根据特定信息生成，文件名包含：源存储服务器IP地址、文件创</p></li>
+</ul>
+
+<p>建时间戳、文件大小、随机数和文件拓展名等信息。</p>
+
+<h2 id="文件下载流程"><strong>文件下载流程</strong></h2>
+
+<p><img src="\images\1566120819693.png" alt="1566120819693" /></p>
+
+<p>tracker根据请求的文件路径即文件ID 来快速定义文件。</p>
+
+<p><code>文件id从数据库中获取到,再去文件系统中查找</code></p>
+
+<p>比如请求下边的文件：</p>
+
+<p><img src="\images\1566120835619.png" alt="1566120835619" /></p>
+
+<p>1.通过组名tracker能够很快的定位到客户端需要访问的存储服务器组是group1，并选择合适的存储服务器提供客 户端访问。</p>
+
+<p>2.存储服务器根据“文件存储虚拟磁盘路径”和“数据文件两级目录”可以很快定位到文件所在目录，并根据文件名找到 客户端需要访问的文件。</p>
+
+<h1 id="fastdfs入门"><strong>fastDFS入门</strong></h1>
+
+<h2 id="fastdfs-安装与配置"><strong>FastDFS 安装与配置</strong></h2>
+
+<h3 id="导入虚拟机"><strong>导入虚拟机</strong></h3>
+
+<p>1、使用Vmware打开虚拟机配置文件“CentOS 7 64 位.vmx”，提示如下图：</p>
+
+<p>2、选择“我已复制该虚拟机”</p>
+
+<p>3、启动虚拟机之前启动VMware的服务：</p>
+
+<h2 id="fastdfs安装"><strong>fastDFS安装</strong></h2>
+
+<p>分别在 192.168.101.3 和 192.168.101.4 上安装 tracker。</p>
+
+<p>注：初次安装可只安装一台 tracker，快速体验。</p>
+
+<p>tracker 和 storage 使用相同的安装包，下载地址：</p>
+
+<p><a href="https://github.com/happyfish100/FastDFS">https://github.com/happyfish100/FastDFS</a></p>
+
+<p>本测试下载：FastDFS_v5.05.tar.gz</p>
+
+<h3 id="fastdfs-安装环境"><strong>FastDFS 安装环境</strong></h3>
+
+<p>FastDFS 是 C 语言开发，建议在 linux 上运行，本教程使用 Centos7 作为安</p>
+
+<p>装环境。</p>
+
+<p>安装 FastDFS 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果</p>
+
+<p>没有 gcc 环境，需要安装 gcc：yum install gcc-c++</p>
+
+<h4 id="安装-libevent"><strong>安装 libevent</strong></h4>
+
+<p>FastDFS 依赖 libevent 库，需要安装：</p>
+
+<p>yum -y install libevent</p>
+
+<h4 id="安装-libfastcommon"><strong>安装 libfastcommon</strong></h4>
+
+<p>libfastcommon 是 FastDFS 官方提供的，libfastcommon 包含了 FastDFS 运行所需</p>
+
+<p>要的一些基础库。</p>
+
+<p>将 libfastcommonV1.0.7.tar.gz 拷贝至/usr/local/下</p>
+
+<p><code>cd /usr/local</code></p>
+
+<p><code>tar -zxvf libfastcommonV1.0.7.tar.gz</code></p>
+
+<p><code>cd libfastcommon-1.0.7</code></p>
+
+<p><code>./make.sh</code></p>
+
+<p><code>./make.sh install</code></p>
+
+<p><code>注意:make指令不能用的话是缺少相关指令包,下载即可</code></p>
+
+<p><strong>注意：libfastcommon 安装好后会自动将库文件拷贝至/usr/lib64 下，由于 FastDFS 程</strong></p>
+
+<p><strong>序引用 usr/lib 目录所以需要将/usr/lib64 下的库文件拷贝至/usr/lib 下。</strong></p>
+
+<p><strong>要拷贝的文件如下：</strong></p>
+
+<p><img src="\images\1566120855467.png" alt="1566120855467" /></p>
+
+<h3 id="tracker-编译安装"><strong>tracker 编译安装</strong></h3>
+
+<p>将 FastDFS_v5.05.tar.gz 拷贝至/usr/local/下</p>
+
+<p><code>tar -zxvf FastDFS_v5.05.tar.gz</code></p>
+
+<p><code>cd FastDFS</code></p>
+
+<p><code>./make.sh 编译</code></p>
+
+<p><code>./make.sh install 安装</code></p>
+
+<p>安装成功将安装目录下的 conf 下的文件拷贝到/etc/fdfs/下。</p>
+
+<p><img src="\images\1566120871118.png" alt="1566120871118" /></p>
+
+<h4 id="配置"><strong>配置</strong></h4>
+
+<p>安装成功后进入/etc/fdfs 目录：</p>
+
+<p>拷贝一份新的 tracker 配置文件：</p>
+
+<p><code>cp tracker.conf.sample tracker.conf</code></p>
+
+<p><code>修改 tracker.conf</code></p>
+
+<p><code>vi tracker.conf</code></p>
+
+<p>端口：port=22122</p>
+
+<p>存储策略：store_lookup= 取值范围：0（轮询向storage存储文件）、1（指定具体的group）、2负载均衡，选择空闲的storage存储</p>
+
+<p>指定具体的group：store_group= 如果store_lookup设置为1则这里必须指定一个具体的group。</p>
+
+<p>tracker 基础目录：base_path=/home/fastdfs，tracker在运行时会向此目录存储storage的管理数据。</p>
+
+<h4 id="启动tracker"><strong>启动tracker</strong></h4>
+
+<p><code>usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
+
+<p><code>注意:没有目录自行创建,进程占用就kill掉</code></p>
+
+<h3 id="storage-安装"><strong>storage 安装</strong></h3>
+
+<p>分别在 192.168.101.5、192.168.101.6、192.168.101.7、192.168.101.8 上安装 storage。</p>
+
+<p>注：初次安装可只安装一台 storage，快速体验。</p>
+
+<h4 id="安装-libevent-1"><strong>安装 libevent</strong></h4>
+
+<p>同 tracker 安装</p>
+
+<h4 id="安装-libfastcommon-1"><strong>安装 libfastcommon</strong></h4>
+
+<p>同 tracker 安装。</p>
+
+<h4 id="storage-编译安装"><strong>storage 编译安装</strong></h4>
+
+<p>同 tracker 编译安装。</p>
+
+<h4 id="配置-1"><strong>配置</strong></h4>
+
+<pre><code class="language-shell">安装成功后进入/etc/fdfs 目录：
+
+拷贝一份新的 storage 配置文件： 
+
+cp storage.conf.sample storage.conf
+
+修改 storage.conf 
+
+vi storage.conf 
+
+group_name=group1 
+
+向tracker心跳间隔（秒）：heart_beat_interval=30 
+
+storage基础目录：base_path=/home/fastdfs 
+
+磁盘存储目录，可定义多个store_path： 
+store_path0=/home/fastdfs/fdfs_storage 此目录下存储上传的文件，在/home/fastdfs/fdfs_storage/data下 store_path1=... ... 
+
+上报tracker的地址：tracker_server=192.168.101.64:22122 
+如果有多个tracker则配置多个tracker，比如： 
+tracker_server=192.168.101.64:22122 
+tracker_server=192.168.101.65:22122 
+....
+</code></pre>
+
+<h4 id="启动storage"><strong>启动storage</strong></h4>
+
+<p><code>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart</code></p>
+
+<h1 id="文件上传下载测试"><strong>文件上传下载测试</strong></h1>
+
+<h2 id="搭建环境"><strong>搭建环境</strong></h2>
+
+<p>这里我们使用javaApi测试文件的上传，java版本的fastdfs-client地址在：</p>
+
+<p><a href="https://github.com/happyfifish100/fastdfs-client-java，参考此工程编写测试用例。">https://github.com/happyfifish100/fastdfs-client-java，参考此工程编写测试用例。</a></p>
+
+<p>1）创建maven工程</p>
+
+<p>pom.xml</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;xc-framework-parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;relativePath&gt;../xc-framework-parent/pom.xml&lt;/relativePath&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;artifactId&gt;test-fastdfs&lt;/artifactId&gt;
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.oschina.zcx7878&lt;/groupId&gt;
+        &lt;artifactId&gt;fastdfs-client-java&lt;/artifactId&gt;
+        &lt;version&gt;1.27.0.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+        &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>2) 配置 文件</p>
+
+<p>在classpath:confifig下创建<strong>fastdfs-client.properties</strong>文件</p>
+
+<pre><code class="language-yaml">#http连接超时时间
+fastdfs.connect_timeout_in_seconds=5 
+#tracker与storage网络通信超时时间
+fastdfs.network_timeout_in_seconds = 30 
+#字符编码
+fastdfs.charset = UTF-8
+#多个traker的话后面逗号继续配置
+#tracker服务器地址，多个地址中间用英文逗号分隔
+fastdfs.tracker_servers = 192.168.138.129:22122 
+</code></pre>
+
+<h2 id="文件上传"><strong>文件上传</strong></h2>
+
+<pre><code class="language-java">//上传测试
+    @Test
+    public void testUpload() {
+        //加载配置文件,提供端口等信息
+        try {
+            ClientGlobal.initByProperties(&quot;config/fastdfs-client.properties&quot;);
+            //定义一个tracker客户端,用来请求trackerServer
+            TrackerClient trackerClient = new TrackerClient();
+            //连接tracker
+            TrackerServer trackerServer = trackerClient.getConnection();
+            //获取storage
+            StorageServer storageServer = trackerClient.getStoreStorage(trackerServer);
+            //创建storageClient
+            StorageClient1 storageClient1 = new StorageClient1(trackerServer,storageServer);
+            //向storage服务器上传文件
+            //本地文件
+            String filePath = &quot;F:/logo.png&quot;;
+            //上传成功后拿到文件id
+            String fileId = storageClient1.upload_file1(filePath, &quot;png&quot;, null);
+            System.out.println(fileId);
+//            group1/M00/00/00/wKiKgV0iIOWAWnTPAAAawU0ID2Q874.png
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (MyException e) {
+            e.printStackTrace();
+        }
+    }
+</code></pre>
+
+<h2 id="文件下载"><strong>文件下载</strong></h2>
+
+<pre><code class="language-java">//下载测试
+    @Test
+    public void testDownload() {
+        try {
+        //读取配置文件
+        ClientGlobal.initByProperties(&quot;config/fastdfs-client.properties&quot;);
+        //创建tracker客户端
+        TrackerClient trackerClient = new TrackerClient();
+        //连接tracker
+        TrackerServer trackerServer = trackerClient.getConnection();
+        //tracker连接storage
+        StorageServer storageServer = trackerClient.getStoreStorage(trackerServer);
+        //创建storage客户端
+        StorageClient1 storageClient1 = new StorageClient1(trackerServer, storageServer);
+        //从服务器下载文件
+            String fileId = &quot;group1/M00/00/00/wKiKgV0iIOWAWnTPAAAawU0ID2Q874.png&quot;;
+        //获取下载路径
+            byte[] bytes = storageClient1.download_file1(&quot;group1/M00/00/00/wKiKgV0iIOWAWnTPAAAawU0ID2Q874.png&quot;);
+        //使用输出流保存文件
+        FileOutputStream outputStream = new FileOutputStream(new File(&quot;g:/logo.png&quot;));
+        //向本地写文件
+        outputStream.write(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (MyException e) {
+            e.printStackTrace();
+        }
+</code></pre>
+
+<h2 id="文件查询"><strong>文件查询</strong></h2>
+
+<pre><code class="language-java">//查询文件 
+@Test 
+public void testQueryFile() throws IOException, MyException { 
+
+    ClientGlobal.initByProperties(&quot;config/fastdfs‐client.properties&quot;); 
+
+    TrackerClient tracker = new TrackerClient(); 
+
+    TrackerServer trackerServer = tracker.getConnection(); 
+
+    StorageServer storageServer = null; 
+
+    StorageClient storageClient = new StorageClient(trackerServer, 
+
+    storageServer);
+
+    FileInfo fileInfo = storageClient.query_file_info(&quot;group1&quot;, 
+
+    &quot;M00/00/01/wKhlQFrKBSOAW5AWAALcAg10vf4862.png&quot;); 
+
+    System.out.println(fileInfo); 
+} 
+</code></pre>
+
+<h1 id="搭建图片虚拟主机"><strong>搭建图片虚拟主机</strong></h1>
+
+<h2 id="在storage上安装nginx"><strong>在storage上安装Nginx</strong></h2>
+
+<p>在 storage server 上安装 nginx 的目的是对外通过 http 访问 storage server 上的文 件。使用 nginx 的模块</p>
+
+<p><strong>FastDFS-nginx-module 的作用是通过 http 方式访问 storage 中 的文件，当 storage 本机没有要找的文件时向源</strong></p>
+
+<p><strong>storage 主机代理请求文件。</strong></p>
+
+<ul>
+<li>### <strong>在storage上安装FastDFS-nginx-module模块</strong></li>
+</ul>
+
+<p>将 FastDFS-nginx-module_v1.16.tar.gz 传 至 fastDFS 的 storage 服 务 器 的</p>
+
+<p>/usr/local/下，执行如下命令：</p>
+
+<pre><code class="language-shell">cd /usr/local
+tar -zxvf FastDFS-nginx-module_v1.16.tar.gz
+cd FastDFS-nginx-module/src
+修改 config 文件将/usr/local/路径改为/usr/
+</code></pre>
+
+<p><img src="\images\1566120893740.png" alt="1566120893740" /></p>
+
+<p>将 FastDFS-nginx-module/src 下的 mod_FastDFS.conf 拷贝至/etc/fdfs/下</p>
+
+<p>​   <code>cp mod_FastDFS.conf /etc/fdfs/</code></p>
+
+<p>并修改 mod_FastDFS.conf 的内容：</p>
+
+<pre><code class="language-shell">vi /etc/fdfs/mod_FastDFS.conf 
+
+base_path=/home/FastDFS
+
+tracker_server=192.168.101.3:22122 
+
+tracker_server=192.168.101.4:22122 
+
+url_have_group_name=true #url 中包含 group 名称 
+
+store_path0=/home/fastdfs/fdfs_storage #指定文件存储路径 
+
+\#如果有多个
+</code></pre>
+
+<p>将 libfdfsclient.so 拷贝至/usr/lib 下</p>
+
+<p><code>cp /usr/lib64/libfdfsclient.so /usr/lib/</code></p>
+
+<p>创建 nginx/client 目录</p>
+
+<p><code>mkdir -p /var/temp/nginx/client</code></p>
+
+<ul>
+<li><strong>storage上nginx 安装</strong></li>
+</ul>
+
+<p>将 nginx-1.8.0.tar.gz 拷贝到/usr/local 下</p>
+
+<p>解压 nginx-1.8.0.tar.gz</p>
+
+<p>进入 nginx-1.8.0 目录，执行如下配置命令：</p>
+
+<p>下边红色部分表示添加 fastdfs-nginx-module 模块</p>
+
+<pre><code class="language-shell">--prefix=/usr/local/nginx \
+--pid-path=/var/run/nginx/nginx.pid \
+--lock-path=/var/lock/nginx.lock \
+--error-log-path=/var/log/nginx/error.log \
+--http-log-path=/var/log/nginx/access.log \
+--with-http_gzip_static_module \
+--http-client-body-temp-path=/var/temp/nginx/client \
+--http-proxy-temp-path=/var/temp/nginx/proxy \
+--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+--http-scgi-temp-path=/var/temp/nginx/scgi \
+--add-module=/usr/local/fastdfs-nginx-module/src #红色
+</code></pre>
+
+<p>make</p>
+
+<p>make install</p>
+
+<ul>
+<li><strong>nginx 配置文件</strong></li>
+</ul>
+
+<p>在<code>usr/local/nginx/conf/</code>下新建一个 nginx 配置文件 nginx-fdfs.conf.</p>
+
+<pre><code class="language-properties">#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+}
+</code></pre>
+
+<p>添加虚拟主机:(对上述模板进行修改)</p>
+
+<pre><code class="language-properties">server{
+        listen  80;
+        server_name 192.168.138.129;
+
+        location /group1/M00/{
+            root /home/fastdfs/fdfs_storage/data;
+            ngx_fastdfs_module;
+        }
+ }
+</code></pre>
+
+<p>说明：</p>
+
+<p>server_name 指定本机 ip</p>
+
+<p>location /group1/M00/：group1 为 nginx 服务 FastDFS 的分组名称，M00 是 FastDFS</p>
+
+<p>自动生成编号，对应 store_path0=/home/fastdfs/fdfs_storage，如果 fastdfs定义</p>
+
+<p>store_path1，这里就是 M01</p>
+
+<ul>
+<li><strong>安装完成启动storage上的nginx：</strong></li>
+</ul>
+
+<p><code>/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx-fdfs.conf</code></p>
+
+<p><code>注意:启动如果报nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use) nginx: [emerg] still could not bind() 错误那是端口占用了,使用lsof -i :80命令查看被占用端口,kill掉</code></p>
+
+<h3 id="测试"><strong>测试</strong></h3>
+
+<p>通过 java 客户端上传文件，使用浏览器 http 访问文件，这里访问上传图片测试的文件：</p>
+
+<p>访问 storage：<a href="http://192.168.101.5/group1/M00/00/00/wKhlBVVY2M-AM_9DAAAT7-0xdqM485_big.png">http://192.168.101.5/group1/M00/00/00/wKhlBVVY2M-AM_9DAAAT7-0xdqM485_big.png</a></p>
+
+<p>ip 地址改为 192.168.101.6 也可以访问到文件，因为同一个分组的 storage 文件互相同步。</p>
+
+<p>访问 tracker：</p>
+
+<p><a href="http://192.168.101.3/group1/M00/00/00/wKhlBVVY2M-AM_9DAAAT7-0xdqM485_">http://192.168.101.3/group1/M00/00/00/wKhlBVVY2M-AM_9DAAAT7-0xdqM485_</a></p>
+
+<p>big.png</p>
+
+<p>ip 地址改为 192.168.101.4 也可以访问到文件。</p>
+
+<h2 id="配置nginx图片服务虚拟机主机"><strong>配置Nginx图片服务虚拟机主机</strong></h2>
+
+<p>图片服务虚拟主机的作用是负载均衡，将图片请求转发到storage server上。</p>
+
+<p>1、通过图片服务虚拟主机请求图片流程图</p>
+
+<p><img src="\images\1566120911979.png" alt="1566120911979" /></p>
+
+<p>3、在nginx图片代理服务上配置图片服务器虚拟主机</p>
+
+<p><code>配置 #图片服务配置了group1下的storage服务器地址  和 #学成在线图片服务</code></p>
+
+<pre><code class="language-properties">#gzip  on;
+	
+		#cms页面预览
+		upstream cms_server_pool{
+		server 127.0.0.1:31001 weight=10;
+		}
+		
+	#图片服务配置了group1下的storage服务器地址
+	upstream img_server_pool{
+	#server 192.168.101.5:80 weight=10;
+	server 192.168.138.129:80 weight=10;
+	}
+	#upstream img_server_pool2{
+	#server 192.168.101.5:80 weight=10;
+	#server 192.168.138.129:80 weight=10;
+	#}
+	
+    server{
+	listen       80;
+	server_name  www.xuecheng.com;
+	ssi on;
+	ssi_silent_errors on;
+	location / {
+		alias   F:/WebXiangmu/xuecheng/xc-ui-pc-static-portal/;
+		index  index.html;
+	}
+	#页面预览
+		location /cms/preview/ {
+		proxy_pass http://cms_server_pool/cms/preview/;
+	}
+	
+   }
+	#学成在线图片服务
+		server {
+		listen 80;
+		server_name img.xuecheng.com;
+		
+		#个人中心
+		location /group1{
+		
+		proxy_pass http://img_server_pool;
+		}
+		#location /group2{
+		#proxy_pass http://img_server_pool2; 
+		#} 
+	}
+</code></pre>
+
+<p>然后在HOSTS文件中添加   <code>127.0.0.1  img.xuecheng.com</code> dns服务,再执行<code>ipconfig/flushdns</code>刷新dns服务</p>
+
+<p>就可以使用域名加文件id访问了</p>
+
+<h2 id="图片服务器启动-脚本"><strong>图片服务器启动 脚本</strong></h2>
+
+<pre><code class="language-java">1、启动tracker：/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart 
+2、启动storage：/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart 
+3、启动storage上的nginx：/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx-fdfs.conf 
+4、启动图片虚拟主机 nginx
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=FastDFS%e5%85%a5%e9%97%a8%e5%ae%89%e8%a3%85%e4%b8%8enginx%e6%95%b4%e5%90%88&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2ffastdfs%2ffastdfs%25E5%2585%25A5%25E9%2597%25A8%25E5%25AE%2589%25E8%25A3%2585%25E4%25B8%258Enginx%25E6%2595%25B4%25E5%2590%2588%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2ffastdfs%2ffastdfs%25E5%2585%25A5%25E9%2597%25A8%25E5%25AE%2589%25E8%25A3%2585%25E4%25B8%258Enginx%25E6%2595%25B4%25E5%2590%2588%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2ffastdfs%2ffastdfs%25E5%2585%25A5%25E9%2597%25A8%25E5%25AE%2589%25E8%25A3%2585%25E4%25B8%258Enginx%25E6%2595%25B4%25E5%2590%2588%2f&amp;description=FastDFS%e5%85%a5%e9%97%a8%e5%ae%89%e8%a3%85%e4%b8%8enginx%e6%95%b4%e5%90%88"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2ffastdfs%2ffastdfs%25E5%2585%25A5%25E9%2597%25A8%25E5%25AE%2589%25E8%25A3%2585%25E4%25B8%258Enginx%25E6%2595%25B4%25E5%2590%2588%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/fastdfs\/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/fastdfs\/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/">
+          <section class="post">
+              <h2>RabbitMQ入门 及win安装mq</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
