@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="课程管理-course_plan课程计划接口"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="课程管理-course_plan课程计划接口 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="课程管理" />
+    
+    
+
+    <title>课程管理-course_plan课程计划接口 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="课程计划 需求分析 什么是课程计划？
+课程计划定义了课程的章节内容，学生通过课程计划进行在线学习，下图中右侧显示的就是课程计划。
+课程计划包括两级，第一级是课程的大章节、第二级是大章节下属的小章节，每个小章节通常是一段视频，学生点
+击小章节在线学习。
+教学管理人员对课程计划如何管理？
+功能包括：添加课程计划、删除课程计" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "课程管理-course_plan课程计划接口",
+    "name": "课程管理-course_plan课程计划接口",
+    "wordCount":  866 ,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, 课程管理",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">课程管理-course_plan课程计划接口</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="课程计划"><strong>课程计划</strong></h1>
+
+<h2 id="需求分析"><strong>需求分析</strong></h2>
+
+<p>什么是课程计划？</p>
+
+<p>课程计划定义了课程的章节内容，学生通过课程计划进行在线学习，下图中右侧显示的就是课程计划。</p>
+
+<p>课程计划包括两级，第一级是课程的大章节、第二级是大章节下属的小章节，每个小章节通常是一段视频，学生点</p>
+
+<p>击小章节在线学习。</p>
+
+<p>教学管理人员对课程计划如何管理？</p>
+
+<p>功能包括：添加课程计划、删除课程计划、修改课程计划等。</p>
+
+<p><img src="\images\1566121049657.png" alt="1566121049657" /></p>
+
+<h2 id="课程计划查询接口"><strong>课程计划查询接口</strong></h2>
+
+<h3 id="需求分析-1"><strong>需求分析</strong></h3>
+
+<p>课程计划查询是将某个课程的课程计划内容完整的显示出来，如下图所示：</p>
+
+<p><img src="\images\1566121033992.png" alt="1566121033992" /></p>
+
+<p>左侧显示的就是课程计划，课程计划是一个树型结构，方便扩展课程计划的级别。</p>
+
+<p>在上边页面中，点击“添加课程计划”即可对课程计划进行添加操作。</p>
+
+<p>点击修改可对某个章节内容进行修改。</p>
+
+<p>点击删除可删除某个章节。</p>
+
+<h3 id="页面原型"><strong>页面原型</strong></h3>
+
+<h4 id="tree组件介绍"><strong>tree组件介绍</strong></h4>
+
+<p>本功能使用element-ui 的tree组件来完成</p>
+
+<p>在course_plan.vue文件中添加tree组件的代码，进行测试：</p>
+
+<p>1、组件标签</p>
+
+<pre><code class="language-html">&lt;el-tree
+      :data=&quot;teachplanList&quot;
+      :props=&quot;defaultProps&quot;
+      node-key=&quot;id&quot;
+      default-expand-all
+      :expand-on-click-node=&quot;false&quot;
+      :render-content=&quot;renderContent&quot;&gt;
+    &lt;/el-tree&gt;
+</code></pre>
+
+<p>2、数据对象</p>
+
+<pre><code class="language-json">teachplanList : [{
+          id: 1,
+          pname: '一级 1',
+          children: [{
+            id: 4,
+            pname: '二级 1-1',
+            children: [{
+              id: 9,
+              pname: '三级 1-1-1'
+            }, {
+              id: 10,
+              pname: '三级 1-1-2'
+            }]
+          }]
+        }],
+</code></pre>
+
+<h3 id="webstorm配置jsx"><strong>webstorm配置JSX</strong></h3>
+
+<p>本组件用到了JSX语法，如下所示：</p>
+
+<p><img src="\images\1566121011502.png" alt="1566121011502" /></p>
+
+<p><strong>JSX 是Javascript和XML结合的一种格式，它是React的核心组成部分，</strong>JSX和XML语法类似，可以定义属性以及子元</p>
+
+<p>素。唯一特殊的是可以用大括号来加入JavaScript表达式。遇到 HTML 标签（以 &lt; 开头），就用 HTML 规则解析；</p>
+
+<p>遇到代码块（以 { 开头），就用 JavaScript 规则解析。</p>
+
+<p>下面是官方的一个例子：</p>
+
+<p>设置方法 如下：</p>
+
+<p>1、Javascript version 选择 React JSX （如果没有就选择JSX Harmony）</p>
+
+<p><img src="\images\1566120994294.png" alt="1566120994294" /></p>
+
+<p>2、HTML 类型文件中增加vue</p>
+
+<p><img src="\images\1566120977328.png" alt="1566120977328" /></p>
+
+<p>preferences -&gt; Editor -&gt; File Types 中找到上边框中HTML 在下边加一个 *.vue</p>
+
+<p>如果已经在vue template 中已存在.vue 则把它改为*.vue2(*因为要在*Html*中添加.vue)</p>
+
+<p><img src="\images\1566120958242.png" alt="1566120958242" /></p>
+
+<h2 id="api接口"><strong>API接口</strong></h2>
+
+<h3 id="数据模型"><strong>数据模型</strong></h3>
+
+<p>1、表结构</p>
+
+<p><img src="\images\1566120941368.png" alt="1566120941368" /></p>
+
+<p>2、模型类</p>
+
+<p>课程计划为树型结构，由树根（课程）和树枝（章节）组成，为了保证系统的可扩展性，在系统设计时将课程计划</p>
+
+<p>设置为树型结构。</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.domain.course;
+
+import lombok.Data;
+import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
+import java.io.Serializable;
+
+/**
+ * Created by admin on 2018/2/7.
+ */
+@Data
+@ToString
+@Entity
+@Table(name=&quot;teachplan&quot;)
+@GenericGenerator(name = &quot;jpa-uuid&quot;, strategy = &quot;uuid&quot;)
+public class Teachplan implements Serializable {
+    private static final long serialVersionUID = -916357110051689485L;
+    @Id
+    @GeneratedValue(generator = &quot;jpa-uuid&quot;)
+    @Column(length = 32)
+    private String id;
+    private String pname;
+    private String parentid;
+    private String grade;
+    private String ptype;
+    private String description;
+    private String courseid;
+    private String status;
+    private Integer orderby;
+    private Double timelength;
+    private String trylearn;
+}
+</code></pre>
+
+<h3 id="自定义模型类"><strong>自定义模型类</strong></h3>
+
+<p>前端页面需要树型结构的数据来展示Tree组件，如下：</p>
+
+<pre><code class="language-json">[{ 
+    id: 1, 
+    label: '一级 1', 
+    children: [{ 
+        id: 4, 
+        label: '二级 1‐1' 
+    }] 
+}]
+</code></pre>
+
+<p>自定义课程计划结点类如下：</p>
+
+<pre><code class="language-java">@Data 
+@ToString 
+public class TeachplanNode extends Teachplan { 
+    List&lt;TeachplanNode&gt; children; 
+}
+</code></pre>
+
+<h3 id="接口定义"><strong>接口定义</strong></h3>
+
+<p>根据课程id查询课程的计划接口如下，在api工程创建course包，创建CourseControllerApi接口类并定义接口方法</p>
+
+<p>如下：</p>
+
+<pre><code class="language-java">public interface CourseControllerApi {
+@ApiOperation(&quot;课程计划查询&quot;)
+    public TeachplanNode findTeachPlanList(String courseId);
+}
+</code></pre>
+
+<h2 id="课程管理服务"><strong>课程管理服务</strong></h2>
+
+<h3 id="sql"><strong>Sql</strong></h3>
+
+<p>课程计划是树型结构，采用表的自连接方式进行查询，sql语句如下：</p>
+
+<pre><code class="language-mysql">SELECT a.id one_id,
+         a.pname one_pname,
+         b.id two_id,
+         b.pname two_pname,
+         c.id three_id,
+         c.pname three_pname
+          FROM
+          teachplan a
+          LEFT JOIN teachplan b
+          ON a.id = b.parentid
+          LEFT JOIN teachplan c
+          ON b.id = c.parentid
+          WHERE
+          a.parentid = '0'
+             and a.courseid='402885816243d2dd016243f24c030002'
+          ORDER BY
+          a.orderby,
+          b.orderby,
+          c.orderby
+</code></pre>
+
+<h3 id="dao"><strong>Dao</strong></h3>
+
+<p>1) mapper接口</p>
+
+<pre><code class="language-java">@Mapper 
+@component
+public interface TeachplanMapper { 
+    public TeachplanNode selectList(String courseId); 
+}
+</code></pre>
+
+<p>2）mapper映射文件</p>
+
+<pre><code class="language-xml-dtd">&lt;mapper namespace=&quot;com.xuecheng.manage_course.dao.TeachplanMapper&quot;&gt;
+&lt;!-- 通过mybatis将查到的数据映射称为TeachplanNode类型的数据--&gt;
+    &lt;resultMap id=&quot;teachPlanMap&quot; type=&quot;com.xuecheng.framework.domain.course.ext.TeachplanNode&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;one_id&quot;/&gt;
+        &lt;result property=&quot;pname&quot; column=&quot;one_pname&quot;/&gt;
+&lt;!--        一对多映射使用collection--&gt;
+        &lt;collection property=&quot;children&quot; ofType=&quot;com.xuecheng.framework.domain.course.ext.TeachplanNode&quot;&gt;
+            &lt;id property=&quot;id&quot; column=&quot;two_id&quot;/&gt;
+            &lt;result property=&quot;pname&quot; column=&quot;two_pname&quot;/&gt;
+            &lt;collection property=&quot;children&quot; ofType=&quot;com.xuecheng.framework.domain.course.ext.TeachplanNode&quot;&gt;
+                &lt;id property=&quot;id&quot; column=&quot;three_id&quot;/&gt;
+                &lt;result property=&quot;pname&quot; column=&quot;three_pname&quot;/&gt;
+            &lt;/collection&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+&lt;!--通过表的自连接查到3级节点的信息--&gt;
+    &lt;select id=&quot;selectList&quot; parameterType=&quot;java.lang.String&quot;
+            resultMap=&quot;teachPlanMap&quot;&gt;
+        SELECT a.id one_id,
+         a.pname one_pname,
+         b.id two_id,
+         b.pname two_pname,
+         c.id three_id,
+         c.pname three_pname
+          FROM
+          teachplan a
+          LEFT JOIN teachplan b
+          ON a.id = b.parentid
+          LEFT JOIN teachplan c
+          ON b.id = c.parentid
+          WHERE
+          a.parentid = '0'
+&lt;!--           mybatis内置_parameter参数,表示当前以基本数据类型传进来的那个数据,也就是courseId--&gt;
+         &lt;if test=&quot;_parameter!=null and _parameter!=''&quot;&gt;
+             and a.courseid=#{courseId}
+         &lt;/if&gt;
+          ORDER BY
+          a.orderby,
+          b.orderby,
+          c.orderby
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>说明：针对输入参数为简单类型#{}中可以是任意类型，判断参数是否为空要用 _parameter（它属于mybatis的内</p>
+
+<p>置参数）</p>
+
+<h3 id="service"><strong>Service</strong></h3>
+
+<p>创建CourseService类，定义查询课程计划方法。</p>
+
+<pre><code class="language-java">@Service 
+public class CourseService { 
+@Autowired 
+TeachplanMapper teachplanMapper; 
+    
+    //查询课程计划 
+    public TeachplanNode findTeachplanList(String courseId){ 
+        TeachplanNode teachplanNode = teachplanMapper.selectList(courseId); 
+        return teachplanNode; 
+    } 
+}
+</code></pre>
+
+<h3 id="controller"><strong>Controller</strong></h3>
+
+<pre><code class="language-java">@RestController 
+@RequestMapping(&quot;/course&quot;) 
+public class CourseController implements CourseControllerApi { 
+@Autowired 
+CourseService courseService; 
+
+    //查询课程计划 
+    @Override 
+    @GetMapping(&quot;/teachplan/list/{courseId}&quot;) 
+    public TeachplanNode findTeachplanList(String courseId) { 
+        return courseService.findTeachplanList(courseId); 
+    } 
+} 
+</code></pre>
+
+<h3 id="前端页面"><strong>前端页面</strong></h3>
+
+<h4 id="api方法"><strong>Api方法</strong></h4>
+
+<p>定义课程计划查询的api方法：</p>
+
+<pre><code class="language-js">/*查询课程计划*/ 
+export const findTeachplanList = courseid =&gt; { 
+    return http.requestQuickGet(apiUrl+'/course/teachplan/list/'+courseid) 
+}
+</code></pre>
+
+<h4 id="api调用"><strong>Api调用</strong></h4>
+
+<p>1、在mounted钩子方法 中查询 课程计划</p>
+
+<p>定义查询课程计划的方法，赋值给数据对象teachplanList</p>
+
+<pre><code class="language-js">findTeachplan(){ 
+courseApi.findTeachplanList(this.courseid).then((res) =&gt; { 
+    this.teachplanList = [];//清空树 
+    if(res.children){ 
+    this.teachplanList = res.children; 
+  } 
+});
+</code></pre>
+
+<p>2）在mounted钩子中查询课程计划</p>
+
+<pre><code class="language-js">mounted(){ 
+    //课程id 
+    this.courseid = this.$route.params.courseid; 
+    //课程计划 
+    this.findTeachplan(); 
+}
+</code></pre>
+
+<p>3）修改树结点的标签属性</p>
+
+<p>课程计划信息中pname为结点的名称，需要修改树结点的标签属性方可正常显示课程计划名称，如下：</p>
+
+<pre><code class="language-java">defaultProps: { 
+    children: 'children', 
+    label: 'pname' 
+}
+</code></pre>
+
+<h2 id="添加课程计划接口"><strong>添加课程计划接口</strong></h2>
+
+<h3 id="需求分析-2"><strong>需求分析</strong></h3>
+
+<p>用户操作流程：</p>
+
+<p>1、进入课程计划页面，点击“添加课程计划”</p>
+
+<p>2、打开添加课程计划页面，输入课程计划信息</p>
+
+<p><strong>上级结点说明：</strong></p>
+
+<p>不选择上级结点表示当前课程计划为该课程的一级结点。</p>
+
+<p>当添加该课程在课程计划中还没有节点时要自动添加课程的根结点。</p>
+
+<p>3、点击提交。</p>
+
+<h3 id="页面原型说明"><strong>页面原型说明</strong></h3>
+
+<p>添加课程计划采用弹出窗口组件Dialog。</p>
+
+<p>1、视图部分</p>
+
+<p>在course_plan.vue页面添加添加课程计划的弹出窗口代码：</p>
+
+<pre><code class="language-html">    &lt;el-dialog title=&quot;添加课程计划&quot; :visible.sync=&quot;teachplayFormVisible&quot; &gt;
+      &lt;el-form ref=&quot;teachplanForm&quot;  :model=&quot;teachplanActive&quot; label-width=&quot;140px&quot; style=&quot;width:600px;&quot; :rules=&quot;teachplanRules&quot; &gt;
+        &lt;el-form-item label=&quot;上级结点&quot; &gt;
+          &lt;el-select v-model=&quot;teachplanActive.parentid&quot; placeholder=&quot;不填表示根结点&quot;&gt;
+            &lt;el-option
+              v-for=&quot;item in teachplanList&quot;
+              :key=&quot;item.id&quot;
+              :label=&quot;item.pname&quot;
+              :value=&quot;item.id&quot;&gt;
+            &lt;/el-option&gt;
+          &lt;/el-select&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item label=&quot;章节/课时名称&quot; prop=&quot;pname&quot;&gt;
+          &lt;el-input v-model=&quot;teachplanActive.pname&quot; auto-complete=&quot;off&quot;&gt;&lt;/el-input&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item label=&quot;课程类型&quot; &gt;
+          &lt;el-radio-group v-model=&quot;teachplanActive.ptype&quot;&gt;
+            &lt;el-radio class=&quot;radio&quot; label='1'&gt;视频&lt;/el-radio&gt;
+            &lt;el-radio class=&quot;radio&quot; label='2'&gt;文档&lt;/el-radio&gt;
+          &lt;/el-radio-group&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item label=&quot;学习时长（分钟）  请输入数字&quot; &gt;
+          &lt;el-input type=&quot;number&quot; v-model=&quot;teachplanActive.timelength&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item label=&quot;排序字段&quot; &gt;
+          &lt;el-input v-model=&quot;teachplanActive.orderby&quot; auto-complete=&quot;off&quot; &gt;&lt;/el-input&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item label=&quot;章节/课时介绍&quot; prop=&quot;description&quot;&gt;
+          &lt;el-input type=&quot;textarea&quot; v-model=&quot;teachplanActive.description&quot; &gt;&lt;/el-input&gt;
+        &lt;/el-form-item&gt;
+
+        &lt;el-form-item label=&quot;状态&quot; prop=&quot;status&quot;&gt;
+          &lt;el-radio-group v-model=&quot;teachplanActive.status&quot; &gt;
+            &lt;el-radio class=&quot;radio&quot; label=&quot;0&quot; &gt;未发布&lt;/el-radio&gt;
+            &lt;el-radio class=&quot;radio&quot; label='1'&gt;已发布&lt;/el-radio&gt;
+          &lt;/el-radio-group&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item  &gt;
+          &lt;el-button type=&quot;primary&quot; v-on:click=&quot;addTeachplan&quot;&gt;提交&lt;/el-button&gt;
+          &lt;el-button type=&quot;primary&quot; v-on:click=&quot;resetForm&quot;&gt;重置&lt;/el-button&gt;
+        &lt;/el-form-item&gt;
+      &lt;/el-form&gt;
+    &lt;/el-dialog&gt;
+</code></pre>
+
+<p>2、数据模型</p>
+
+<p>在数据模型中添加如下变量：</p>
+
+<pre><code class="language-js">teachplayFormVisible:false,//控制添加窗口是否显示
+    teachplanRules: {
+        pname: [
+            {required: true, message: '请输入课程计划名称', trigger: 'blur'}
+        ],
+            status: [
+                {required: true, message: '请选择状态', trigger: 'blur'}
+            ]
+    },
+        teachplanActive:{},
+</code></pre>
+
+<p>3、 添加按钮</p>
+
+<p>通过变量teachplayFormVisible控制弹出窗口是否显示。</p>
+
+<pre><code class="language-vue">&lt;el-button type=&quot;primary&quot; @click=&quot;teachplayFormVisible = true&quot;&gt;添加课程计划&lt;/el-button&gt;
+</code></pre>
+
+<p>4、定义表单提交方法和重置方法</p>
+
+<pre><code class="language-js">//提交课程计划 
+addTeachplan(){ 
+    alert() 
+},
+//重置表单 
+resetForm(){ 
+    this.teachplanActive = {} 
+},
+</code></pre>
+
+<h2 id="api接口-1"><strong>API接口</strong></h2>
+
+<p>1）添加课程计划</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;添加课程计划&quot;) 
+public ResponseResult addTeachplan(Teachplan teachplan);
+</code></pre>
+
+<h2 id="课程管理服务-1"><strong>课程管理服务</strong></h2>
+
+<h3 id="dao-1"><strong>Dao</strong></h3>
+
+<pre><code class="language-java">public interface TeachplanRepository extends JpaRepository&lt;Teachplan, String&gt; { 
+    //定义方法根据课程id和父结点id查询出结点列表，可以使用此方法实现查询根结点 
+    public List&lt;Teachplan&gt; findByCourseidAndParentid(String courseId,String parentId); 
+}
+</code></pre>
+
+<h3 id="service-1"><strong>Service</strong></h3>
+
+<pre><code class="language-java">/**
+     * 添加课程计划
+     */
+    @Transactional
+    public ResponseResult addTeachPlan(Teachplan teachplan) {
+        //先判断课程必要属性不为空
+        if (teachplan == null ||
+                StringUtils.isEmpty(teachplan.getCourseid()) ||
+                StringUtils.isEmpty(teachplan.getPname())) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        //获取到页面提交过来的课程id和父节点id
+       String courseId= teachplan.getCourseid();
+        String parentId = teachplan.getParentid();
+        //判断父节点id为是否为空
+        if (StringUtils.isEmpty(parentId)) {
+            //取出该课程的根节点,根节点id作为父id
+            parentId = this.getTeachplanRoot(courseId);
+        }
+        //根据父节点id查询上级节点信息
+        Optional&lt;Teachplan&gt; optional = teachPlanRepository.findById(parentId);
+        Teachplan parentNode = optional.get();
+        //获取父节点级别
+        String grade = parentNode.getGrade();
+        //新节点
+        Teachplan teachplanNew = new Teachplan();
+        //将页面提交的信息拷贝到teachplanNew对象中
+        BeanUtils.copyProperties(teachplan,teachplanNew);
+        teachplanNew.setParentid(parentId);
+        teachplanNew.setCourseid(courseId);
+        //设置新节点等级
+        if (grade.equals(&quot;1&quot;)) {
+
+        teachplanNew.setGrade(&quot;2&quot;);//级别
+        }else {
+            teachplanNew.setGrade(&quot;3&quot;);
+        }
+        //保存新节点信息
+        teachPlanRepository.save(teachplanNew);
+        return new ResponseResult(CommonCode.SUCCESS);
+    }
+
+    //查询课程的根节点,查不到自动添加根节点
+    private String getTeachplanRoot(String courseId) {
+        Optional&lt;CourseBase&gt; optional = courseBaseRepository.findById(courseId);
+        if (!optional.isPresent()){
+            return null;
+        }
+        CourseBase courseBase = optional.get();
+        //根据课程id查询到根节点
+        List&lt;Teachplan&gt; list = teachPlanRepository.findByCourseidAndParentid(courseId, &quot;0&quot;);
+        if (list == null || list.size() &lt;= 0) {
+            //查询不到,要手动添加一个根节点
+            Teachplan teachplan = new Teachplan();
+            teachplan.setParentid(&quot;0&quot;);
+            teachplan.setGrade(&quot;1&quot;);
+            //计划名采用课程名
+            teachplan.setPname(courseBase.getName());
+            teachplan.setCourseid(courseId);
+            teachplan.setStatus(&quot;0&quot;);
+//            保存根节点信息到数据库
+            teachPlanRepository.save(teachplan);
+//            返回根节点的id
+            return teachplan.getId();
+        }
+        return list.get(0).getId();
+    }
+</code></pre>
+
+<h3 id="controller-1"><strong>controller</strong></h3>
+
+<pre><code class="language-java">//添加课程计划 
+@Override 
+@PostMapping(&quot;/teachplan/add&quot;) 
+public ResponseResult addTeachplan(@RequestBody Teachplan teachplan) { 
+    return courseService.addTeachplan(teachplan); 
+}
+</code></pre>
+
+<h3 id="前端页面-1"><strong>前端页面</strong></h3>
+
+<h4 id="api调用-1"><strong>Api调用</strong></h4>
+
+<p>1、定义 api方法</p>
+
+<pre><code class="language-js">/*添加课程计划*/ 
+export const addTeachplan = teachplah =&gt; { 
+	return http.requestPost(apiUrl+'/course/teachplan/add',teachplah) 
+} 
+
+</code></pre>
+
+<p>2、调用 api</p>
+
+<pre><code class="language-js"> //提交课程计划
+      addTeachplan(){
+        //校验表单
+        this.$refs.teachplanForm.validate((valid) =&gt; {
+            if (valid) {
+                //调用api方法
+              //将课程id设置到teachplanActive
+              this.teachplanActive.courseid = this.courseid
+              courseApi.addTeachplan(this.teachplanActive).then(res=&gt;{
+                if(res.success){
+                    this.$message.success(&quot;添加成功&quot;)
+                    //刷新树
+                    this.findTeachplan()
+                }else{
+                  this.$message.error(res.message)
+                }
+              })
+            }
+        })
+      },
+</code></pre>
+
+<h4 id="测试"><strong>测试</strong></h4>
+
+<p>测试流程：</p>
+
+<p>1、新建一个课程</p>
+
+<p>2、向新建课程中添加课程计划</p>
+
+<p>添加一级结点</p>
+
+<p>添加二级结点</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_plan%e8%af%be%e7%a8%8b%e8%ae%a1%e5%88%92%e6%8e%a5%e5%8f%a3&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f01.course_plan%25E8%25AF%25BE%25E7%25A8%258B%25E8%25AE%25A1%25E5%2588%2592%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f01.course_plan%25E8%25AF%25BE%25E7%25A8%258B%25E8%25AE%25A1%25E5%2588%2592%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f01.course_plan%25E8%25AF%25BE%25E7%25A8%258B%25E8%25AE%25A1%25E5%2588%2592%25E6%258E%25A5%25E5%258F%25A3%2f&amp;description=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_plan%e8%af%be%e7%a8%8b%e8%ae%a1%e5%88%92%e6%8e%a5%e5%8f%a3"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f01.course_plan%25E8%25AF%25BE%25E7%25A8%258B%25E8%25AE%25A1%25E5%2588%2592%25E6%258E%25A5%25E5%258F%25A3%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>课程管理-course_market课程营销接口</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+          <section class="post">
+              <h2>课程管理介绍与环境搭建</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -443,6 +443,32 @@ package com.xuecheng.framework.domain.course; import lombok.Data; import lombok.
     </item>
     
     <item>
+      <title>课程管理-course_plan课程计划接口</title>
+      <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/</guid>
+      <description>课程计划 需求分析 什么是课程计划？
+课程计划定义了课程的章节内容，学生通过课程计划进行在线学习，下图中右侧显示的就是课程计划。
+课程计划包括两级，第一级是课程的大章节、第二级是大章节下属的小章节，每个小章节通常是一段视频，学生点
+击小章节在线学习。
+教学管理人员对课程计划如何管理？
+功能包括：添加课程计划、删除课程计划、修改课程计划等。
+课程计划查询接口 需求分析 课程计划查询是将某个课程的课程计划内容完整的显示出来，如下图所示：
+左侧显示的就是课程计划，课程计划是一个树型结构，方便扩展课程计划的级别。
+在上边页面中，点击“添加课程计划”即可对课程计划进行添加操作。
+点击修改可对某个章节内容进行修改。
+点击删除可删除某个章节。
+页面原型 tree组件介绍 本功能使用element-ui 的tree组件来完成
+在course_plan.vue文件中添加tree组件的代码，进行测试：
+1、组件标签
+&amp;lt;el-tree :data=&amp;quot;teachplanList&amp;quot; :props=&amp;quot;defaultProps&amp;quot; node-key=&amp;quot;id&amp;quot; default-expand-all :expand-on-click-node=&amp;quot;false&amp;quot; :render-content=&amp;quot;renderContent&amp;quot;&amp;gt; &amp;lt;/el-tree&amp;gt;  2、数据对象
+teachplanList : [{ id: 1, pname: &#39;一级 1&#39;, children: [{ id: 4, pname: &#39;二级 1-1&#39;, children: [{ id: 9, pname: &#39;三级 1-1-1&#39; }, { id: 10, pname: &#39;三级 1-1-2&#39; }] }] }],  webstorm配置JSX 本组件用到了JSX语法，如下所示：
+JSX 是Javascript和XML结合的一种格式，它是React的核心组成部分，JSX和XML语法类似，可以定义属性以及子元
+素。唯一特殊的是可以用大括号来加入JavaScript表达式。遇到 HTML 标签（以 &amp;lt; 开头），就用 HTML 规则解析；</description>
+    </item>
+    
+    <item>
       <title>课程管理介绍与环境搭建</title>
       <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>

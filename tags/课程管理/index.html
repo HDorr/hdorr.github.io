@@ -342,6 +342,62 @@ package com.xuecheng.framework.domain.course; import lombok.Data; import lombok.
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/">课程管理-course_plan课程计划接口</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>课程计划 需求分析 什么是课程计划？
+课程计划定义了课程的章节内容，学生通过课程计划进行在线学习，下图中右侧显示的就是课程计划。
+课程计划包括两级，第一级是课程的大章节、第二级是大章节下属的小章节，每个小章节通常是一段视频，学生点
+击小章节在线学习。
+教学管理人员对课程计划如何管理？
+功能包括：添加课程计划、删除课程计划、修改课程计划等。
+课程计划查询接口 需求分析 课程计划查询是将某个课程的课程计划内容完整的显示出来，如下图所示：
+左侧显示的就是课程计划，课程计划是一个树型结构，方便扩展课程计划的级别。
+在上边页面中，点击“添加课程计划”即可对课程计划进行添加操作。
+点击修改可对某个章节内容进行修改。
+点击删除可删除某个章节。
+页面原型 tree组件介绍 本功能使用element-ui 的tree组件来完成
+在course_plan.vue文件中添加tree组件的代码，进行测试：
+1、组件标签
+&lt;el-tree :data=&quot;teachplanList&quot; :props=&quot;defaultProps&quot; node-key=&quot;id&quot; default-expand-all :expand-on-click-node=&quot;false&quot; :render-content=&quot;renderContent&quot;&gt; &lt;/el-tree&gt;  2、数据对象
+teachplanList : [{ id: 1, pname: '一级 1', children: [{ id: 4, pname: '二级 1-1', children: [{ id: 9, pname: '三级 1-1-1' }, { id: 10, pname: '三级 1-1-2' }] }] }],  webstorm配置JSX 本组件用到了JSX语法，如下所示：
+JSX 是Javascript和XML结合的一种格式，它是React的核心组成部分，JSX和XML语法类似，可以定义属性以及子元
+素。唯一特殊的是可以用大括号来加入JavaScript表达式。遇到 HTML 标签（以 &lt; 开头），就用 HTML 规则解析； <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">课程管理介绍与环境搭建</a></h2>
     </header>
     <section class="post-excerpt">
