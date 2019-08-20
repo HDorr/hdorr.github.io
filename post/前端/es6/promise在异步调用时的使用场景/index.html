@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Promise在异步调用时的使用场景"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Promise在异步调用时的使用场景 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="qd" />
+    
+    <meta property="article:tag" content="vue" />
+    
+    <meta property="article:tag" content="es6" />
+    
+    
+
+    <title>Promise在异步调用时的使用场景 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="下面基于,前端要调用接口删除图片的环境背景下,说明为了实现删除成功图片消失,删除失败图片不会消失的实现过程` 用到ES6中的promise语法
+promise异步调用** 在handleRemove方法调用删除图片的api方法，删除成功时return true，删除失败时return false;
+//删除图片 han" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "Promise在异步调用时的使用场景",
+    "name": "Promise在异步调用时的使用场景",
+    "wordCount":  148 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "qd, vue, es6",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Promise在异步调用时的使用场景</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/qd/">#qd</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/vue/">#vue</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/es6/">#es6</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h2 id="下面基于-前端要调用接口删除图片的环境背景下-说明为了实现删除成功图片消失-删除失败图片不会消失的实现过程">下面基于,前端要调用接口删除图片的环境背景下,说明为了实现删除成功图片消失,删除失败图片不会消失的实现过程`</h2>
+
+<p>用到ES6中的promise语法</p>
+
+<h2 id="promise异步调用">promise异步调用**</h2>
+
+<p>在handleRemove方法调用删除图片的api方法，删除成功时return true，删除失败时return false;</p>
+
+<pre><code class="language-java">//删除图片 
+handleRemove(file, fileList) { console.log(file) 
+    // alert('删除') 
+    // return true; 
+    //删除图片 
+    courseApi.deleteCoursePic('1').then((res) =&gt; { 
+    if(res.success){ 
+        this.$message.success('删除成功'); 
+        return true; 
+    }else{ 
+        this.$message.error(res.message); 
+        return false; 
+    } 
+}); 
+},
+</code></pre>
+
+<p>在上边代码中将提交的课程id故意写错，按照我们预期应该是删除失败，而测试结果却是图片在页面上删除成功。</p>
+
+<p>问题原因：</p>
+
+<p>通过查询deleteCoursePic方法的底层代码，deleteCoursePic最终返回一个promise对象。</p>
+
+<p>Promise是ES6提供的用于异步处理的对象，因为axios提交是异步提交，这里使用promise作为返回值。</p>
+
+<p>Promise的使用方法如下：</p>
+
+<p>Promise对象在处理过程中有三种状态：</p>
+
+<p>pending：进行中</p>
+
+<p>resolved：操作成功</p>
+
+<p>rejected: 操作失败</p>
+
+<p>Promise的构建方法如下：</p>
+
+<pre><code class="language-java">const promise = new Promise(function(resolve,reject){ 
+    //...TODO... 
+    if(操作成功){ 
+        resolve(value); 
+    }else{
+        reject(error); 
+    } 
+})
+</code></pre>
+
+<p>上边的构造方法function(resolve,reject)执行流程如下：</p>
+
+<p>1）方法执行一些业务逻辑。</p>
+
+<p>2）如果操作成功将Promise的状态由pending变为resolved，并将操作结果传出去</p>
+
+<p>3）如果操作失败会将promise的状态由pending变为rejected，并将失败结果传出去。</p>
+
+<p>上边说的操作成功将操作结果传给谁了呢？操作失败将失败结果传给谁了呢？</p>
+
+<p>通过promise的then、catch来指定</p>
+
+<pre><code class="language-java">promise.then(function (result) { 
+    console.log('操作成功：' + result); 
+}); 
+promise.catch(function (reason) { c
+    onsole.log('操作失败：' + reason); 
+});
+</code></pre>
+
+<p>例子如下：</p>
+
+<p>1、定义一个方法，返回promise对象</p>
+
+<pre><code class="language-java">this.testPromise(3).then(res=&gt;{
+          alert(res)
+      }).catch(res=&gt;{//catch就是执行失败的回调方法
+          alert(&quot;失败了。。。。。&quot;)
+          alert(res)
+      })
+</code></pre>
+
+<p>2、调用此方法</p>
+
+<p>向方法传入偶数、奇数进行测试。</p>
+
+<pre><code class="language-java">this.testpromise(3).then(res=&gt;{
+    //在then中对成功结果进行处理 
+    alert(res) 
+}).catch(res=&gt;{
+    //在catch中对操作失败结果进行处理 
+    alert(res) 
+})
+</code></pre>
+
+<p>3、最终将handleRemove方法修改如下</p>
+
+<p>handleRemove方法返回promise对象，当删除成功则resolve，删除失败则reject。</p>
+
+<pre><code class="language-java"> //删除图片
+      handleRemove(file, fileList) {
+        console.log(file)
+        //调用服务端去删除课程图片信息，如果返回false，前端停止删除
+        //异步调用
+        return new Promise((resolve,rejct)=&gt;{
+          courseApi.deleteCoursePic(this.courseid).then(res=&gt;{
+            if(res.success){
+              this.$message.success(&quot;删除成功&quot;);
+                //成功
+              resolve()
+            }else{
+              this.$message.error(&quot;删除失败&quot;);
+                //失败
+              rejct()
+            }
+          })
+        })
+      },
+</code></pre>
+
+<p><code>因此,是用来处理异步调用的,在方法外面包裹一个new promise(){},在里面执行异步调用,成功则调用resolve,否则rejct回退</code></p>
+
+<p>一般在前端定义通用rest请求接口,都是这样定义的,</p>
+
+<p>如:post请求</p>
+
+<pre><code class="language-java">//post请求
+  requestPost (url, params = {}) {
+    return new Promise((resolve, reject) =&gt; {
+      axios.post(url, params).then(res =&gt; {
+        resolve(res.data)
+      }).catch(error =&gt; {
+        reject(error)
+      })
+    })
+  },
+</code></pre>
+
+<p>请求通过执行resolve返回数据,失败执行catch返回错误信息</p>
+
+<p><strong>注意:我们调用postApi时,并没有写catch,这是因为我们后端做了异常处理,无论请求成功与否,都会返回相关信息,所以前段会认为都是请求成功了</strong></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Promise%e5%9c%a8%e5%bc%82%e6%ad%a5%e8%b0%83%e7%94%a8%e6%97%b6%e7%9a%84%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fpromise%25E5%259C%25A8%25E5%25BC%2582%25E6%25AD%25A5%25E8%25B0%2583%25E7%2594%25A8%25E6%2597%25B6%25E7%259A%2584%25E4%25BD%25BF%25E7%2594%25A8%25E5%259C%25BA%25E6%2599%25AF%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fpromise%25E5%259C%25A8%25E5%25BC%2582%25E6%25AD%25A5%25E8%25B0%2583%25E7%2594%25A8%25E6%2597%25B6%25E7%259A%2584%25E4%25BD%25BF%25E7%2594%25A8%25E5%259C%25BA%25E6%2599%25AF%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fpromise%25E5%259C%25A8%25E5%25BC%2582%25E6%25AD%25A5%25E8%25B0%2583%25E7%2594%25A8%25E6%2597%25B6%25E7%259A%2584%25E4%25BD%25BF%25E7%2594%25A8%25E5%259C%25BA%25E6%2599%25AF%2f&amp;description=Promise%e5%9c%a8%e5%bc%82%e6%ad%a5%e8%b0%83%e7%94%a8%e6%97%b6%e7%9a%84%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fpromise%25E5%259C%25A8%25E5%25BC%2582%25E6%25AD%25A5%25E8%25B0%2583%25E7%2594%25A8%25E6%2597%25B6%25E7%259A%2584%25E4%25BD%25BF%25E7%2594%25A8%25E5%259C%25BA%25E6%2599%25AF%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E5%89%8D%E7%AB%AF\/es6\/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E5%89%8D%E7%AB%AF\/es6\/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/">
+          <section class="post">
+              <h2>FastDFS入门安装与nginx整合</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/">
+          <section class="post">
+              <h2>RabbitMQ入门 及win安装mq</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

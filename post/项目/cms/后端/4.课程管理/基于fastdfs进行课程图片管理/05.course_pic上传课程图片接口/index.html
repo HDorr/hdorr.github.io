@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="课程管理-course_pic上传课程图片接口"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="课程管理-course_pic上传课程图片接口 &middot; I am thinking ..." />
+  	<meta property="og:site_name" content="I am thinking ..." />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="xm" />
+    
+    <meta property="article:tag" content="课程管理" />
+    
+    <meta property="article:tag" content="fastdfs" />
+    
+    
+
+    <title>课程管理-course_pic上传课程图片接口 &middot; I am thinking ...</title>
+
+    
+    <meta name="description" content="上传图片开发 需求分析 在很多系统都有上传图片/上传文件的需求，比如：上传课程图片、上传课程资料、上传用户头像等，为了提供系 统的可重用性专门设立文件系统服务承担图片/文件的管理，文件系统服务实现对文件的上传、删除、查询等功能 进行管理。 各
+各子系统不再开发上传文件的请求，各各子系统通过文件系统服务进行文件的上传、删" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="I am thinking ..." />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "课程管理-course_pic上传课程图片接口",
+    "name": "课程管理-course_pic上传课程图片接口",
+    "wordCount":  1346 ,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "xm, 课程管理, fastdfs",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">课程管理-course_pic上传课程图片接口</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/xm/">#xm</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/">#课程管理</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/fastdfs/">#fastdfs</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="上传图片开发"><strong>上传图片开发</strong></h1>
+
+<h2 id="需求分析"><strong>需求分析</strong></h2>
+
+<p>在很多系统都有上传图片/上传文件的需求，比如：上传课程图片、上传课程资料、上传用户头像等，为了提供系 统的可重用性专门设立文件系统服务承担图片/文件的管理，文件系统服务实现对文件的上传、删除、查询等功能 进行管理。 各</p>
+
+<p>各子系统不再开发上传文件的请求，各各子系统通过文件系统服务进行文件的上传、删除等操作。文件系统服务 最终会将文件存储到fastDSF文件系统中。</p>
+
+<p>下图是各各子系统与文件系统服务之间的关系：</p>
+
+<p><img src="\images\1566290105521.png" alt="1566290105521" /></p>
+
+<p><code>说明:上述简而言之就是,搭建好fastdfs图片服务器后,由于本项目有多个系统,每个系统都可能要使用文件上传和下载功能,但是每个系统具体的业务明细又不同,比如:课程图片只用一张,各系统可能要传递额外的一些参数</code></p>
+
+<p><img src="\images\1566290131374.png" alt="1566290131374" /></p>
+
+<p><code>说明:上图就是上述问题的的解决办法,创建一个通用的文件上传和下载工程,实体类包含了上传文件的必要信息,以及各系统可能要传的额外数据组建一个实体类,设置通用的上传和下载方法,对外暴露接口     这样,课程管理系统可以调用通用接口上传,之后在调用方法将图片信息存到自己的数据库中供以后使用</code></p>
+
+<p><code>也就是通用文件系统和其他文件系统没有关联,只是提供服务</code></p>
+
+<p>执行流程如下：</p>
+
+<p>1、管理员进入教学管理前端，点击上传图片</p>
+
+<p>2、图片上传至文件系统服务，文件系统请求fastDFS上传文件</p>
+
+<p>3、文件系统将文件入库，存储到文件系统服务数据库中。</p>
+
+<p>4、文件系统服务向前端返回文件上传结果，如果成功则包括文件的Url路径。</p>
+
+<p>5、课程管理前端请求课程管理进行保存课程图片信息到课程数据库。</p>
+
+<p>6、课程管理服务将课程图片保存在课程数据库。</p>
+
+<h2 id="创建文件系统服务工程"><strong>创建文件系统服务工程</strong></h2>
+
+<p>导入xc-service-base-fifilesystem.zip工程。</p>
+
+<p>1）工程目录结构</p>
+
+<p>pom.xml</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;xc-framework-parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;relativePath&gt;../xc-framework-parent/pom.xml&lt;/relativePath&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;xc-service-base-filesystem&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+            &lt;artifactId&gt;xc-service-api&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+            &lt;artifactId&gt;xc-framework-model&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.xuecheng&lt;/groupId&gt;
+            &lt;artifactId&gt;xc-framework-common&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;net.oschina.zcx7878&lt;/groupId&gt;
+            &lt;artifactId&gt;fastdfs-client-java&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-mongodb&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>2）配置文件</p>
+
+<p>原测试程序中fastdfs-client.properties的配置信息统一放在application.yml</p>
+
+<p>application.yml</p>
+
+<pre><code class="language-yaml">server:
+  port: 22100
+spring:
+  application:
+    name: xc-service-base-filesystem
+#mongo配置
+  data:
+    mongodb:
+      database: xc_fs
+      uri: mongodb://root:123456@127.0.0.1:27017
+#SpringMVC上传文件配置
+  servlet:
+    multipart:
+      #默认支持文件上传.
+      enabled: true
+      #支持文件写入磁盘.
+      file-size-threshold: 0
+      # 上传文件的临时目录
+      location:
+      # 最大支持文件大小
+      max-file-size: 2MB
+      # 最大支持请求大小
+      max-request-size: 40MB
+xuecheng:
+  fastdfs:
+    connect_timeout_in_seconds: 20
+    network_timeout_in_seconds: 30
+    charset: UTF-8
+    tracker_servers: 192.168.138.129:22122 #多个 trackerServer中间以逗号分隔
+</code></pre>
+
+<h2 id="api接口"><strong>API接口</strong></h2>
+
+<h3 id="模型类"><strong>模型类</strong></h3>
+
+<p>系统的文件信息（图片、文档等小文件的信息）在mongodb中存储，下边是文件信息的模型类。</p>
+
+<p>1) 模型如下：</p>
+
+<pre><code class="language-java">package com.xuecheng.framework.domain.filesystem;
+
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Map;
+
+/**
+ * 文件系统实体类
+ * Created by mrt on 2018/2/5.
+ */
+@Data
+@ToString
+@Document(collection = &quot;filesystem&quot;)
+public class FileSystem {
+
+    @Id
+    private String fileId;
+    //文件请求路径
+    private String filePath;
+    //文件大小
+    private long fileSize;
+    //文件名称
+    private String fileName;
+    //文件类型
+    private String fileType;
+    //图片宽度
+    private int fileWidth;
+    //图片高度
+    private int fileHeight;
+//    外加一些通用的属性,在其他服务调用时可以用到,因为很多文件系统都会用到这个文件系统服务,
+//    外加一些属性备用,可以让其他业务系统能存自己所需信息
+    //用户id，用于授权
+    private String userId;
+    //业务key
+    private String businesskey;
+    //业务标签
+    private String filetag;
+    //文件元信息
+    private Map metadata;
+}
+</code></pre>
+
+<p><strong>说明：</strong></p>
+
+<p>fifileId：fastDFS返回的文件ID。</p>
+
+<p>fifilePath：请求fastDFS浏览文件URL。</p>
+
+<p>fifiletag：文件标签，由于文件系统服务是公共服务，文件系统服务会为使用文件系统服务的子系统分配文件标签，</p>
+
+<p>用于标识此文件来自哪个系统。</p>
+
+<p>businesskey：文件系统服务为其它子系统提供的一个业务标识字段，各子系统根据自己的需求去使用，比如：课</p>
+
+<p>程管理会在此字段中存储课程id用于标识该图片属于哪个课程。</p>
+
+<p>metadata：文件相关的元信息。</p>
+
+<p>2) collection</p>
+
+<p>在mongodb创建数据库xc_fs（文件系统数据库），并创建集合 fifilesystem。</p>
+
+<p><code>这里可以直接先创建数据库,后面代码写好写入可以自动生成文档</code></p>
+
+<h3 id="api接口-1"><strong>Api接口</strong></h3>
+
+<p>在api工程下创建com.xuecheng.api.fifilesystem包，</p>
+
+<pre><code class="language-java">package com.xuecheng.api.fileSystem;
+
+import com.xuecheng.framework.domain.filesystem.response.UploadFileResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.multipart.MultipartFile;
+
+/**
+ * 文件系统通用接口
+ * @author Hr|黄锐
+ * @create 2019/8/18 20:47
+ */
+@Api(value = &quot;文件管理接口&quot;,description = &quot;文件管理接口,提供文件的上传于下载&quot;)
+public interface FileSystemControllerApi {
+    //上传文件
+    @ApiOperation(&quot;上传文件&quot;)
+    public UploadFileResult uploadFile(
+            MultipartFile multipartFile,
+            String fileTag,
+            String businessKey,
+            String metadata//传过来的为json数据,先用String,再转map存储
+    );
+}
+</code></pre>
+
+<h3 id="dao"><strong>Dao</strong></h3>
+
+<p>将文件信息存入数据库，主要存储文件系统中的文件路径。</p>
+
+<pre><code class="language-java">public interface FileSystemRepository extends MongoRepository&lt;FileSystem,String&gt; { 
+}
+</code></pre>
+
+<h3 id="service"><strong>Service</strong></h3>
+
+<pre><code class="language-java">package com.xuecheng.filesystem.service;
+
+import com.alibaba.fastjson.JSON;
+import com.xuecheng.filesystem.dao.FileSystemRepository;
+import com.xuecheng.framework.domain.filesystem.FileSystem;
+import com.xuecheng.framework.domain.filesystem.response.FileSystemCode;
+import com.xuecheng.framework.domain.filesystem.response.UploadFileResult;
+import com.xuecheng.framework.exception.ExceptionCast;
+import com.xuecheng.framework.model.response.CommonCode;
+import org.apache.commons.lang3.StringUtils;
+import org.csource.fastdfs.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/18 20:59
+ */
+@Service
+public class FileSystemService {
+//注入配置文件属性
+    @Value(&quot;${xuecheng.fastdfs.tracker_servers}&quot;)
+    String tracker_servers;
+    @Value(&quot;${xuecheng.fastdfs.connect_timeout_in_seconds}&quot;)
+    int connect_timeout_in_seconds;
+    @Value(&quot;${xuecheng.fastdfs.network_timeout_in_seconds}&quot;)
+    int network_timeout_in_seconds;
+    @Value(&quot;${xuecheng.fastdfs.charset}&quot;)
+    String charset;
+
+    @Autowired
+    FileSystemRepository fileSystemRepository;
+
+    //上传文件
+    public UploadFileResult uploadFile(
+            MultipartFile multipartFile,
+           String fileTag,
+           String businessKey,
+           String metadata) {
+        if (multipartFile == null) {
+            ExceptionCast.cast(FileSystemCode.FS_UPLOADFILE_FILEISNULL);
+        }
+        //将文件上传到fastdfs
+        String fileId = this.uploadFastdfs(multipartFile);
+        if (StringUtils.isEmpty(fileId)) {
+            ExceptionCast.cast(FileSystemCode.FS_UPLOADFILE_SERVERFAIL);
+        }
+        //将文件id与其他信息存储到mongodb中
+        FileSystem fileSystem = new FileSystem();
+        fileSystem.setFileId(fileId);
+        fileSystem.setFilePath(fileId);
+        fileSystem.setFiletag(fileTag);
+        fileSystem.setBusinesskey(businessKey);
+        fileSystem.setFileName(multipartFile.getOriginalFilename());
+        fileSystem.setFileType(multipartFile.getContentType());
+        if (StringUtils.isEmpty(metadata)) {
+            try {
+//                将json转为map
+            Map map = JSON.parseObject(metadata, Map.class);
+            fileSystem.setMetadata(map);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        fileSystem.setFileSize(multipartFile.getSize());
+        fileSystemRepository.save(fileSystem);
+        return new UploadFileResult(CommonCode.SUCCESS, fileSystem);
+
+    }
+
+    //    将文件上传到fastdfs
+    /**
+     *
+     * @param multipartFile 文件本身
+     * @return  文件id
+     */
+    private String uploadFastdfs(MultipartFile multipartFile) {
+        try {
+            //初始化fastdfs环境
+            initFdfsConfig();
+            //创建一个trackerClient
+            TrackerClient trackerClient = new TrackerClient();
+            TrackerServer trackerServer = trackerClient.getConnection();
+            //得到storage服务器
+            StorageServer storageServer = trackerClient.getStoreStorage(trackerServer);
+            StorageClient1 storageClient1 = new StorageClient1(trackerServer, storageServer);
+            //上传文件
+            //得到原始名称
+            String originalFilename = multipartFile.getOriginalFilename();
+            //获取扩展名
+            String type = originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;) + 1);
+            //获取字节文件
+            byte[] bytes = multipartFile.getBytes();
+            String fileId = storageClient1.upload_file1(bytes, type, null);
+            return fileId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //初始化fastdfs环境
+    private void initFdfsConfig() {
+        try {
+        //初始化tracker服务器,多个tracker以半角逗号分隔
+            ClientGlobal.initByTrackers(tracker_servers);
+            ClientGlobal.setG_charset(charset);
+            ClientGlobal.setG_network_timeout(network_timeout_in_seconds);
+            ClientGlobal.setG_connect_timeout(connect_timeout_in_seconds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //初始化出错,抛出异常
+            ExceptionCast.cast(FileSystemCode.FS_INITFDFSERROR);
+        }
+    }
+}
+</code></pre>
+
+<p><code>说明:(1) 由于这是springboot工程所以这里配置文件是yaml格式,读取文件时使用Value注解的方式诸如配置信息</code></p>
+
+<h3 id="controller"><strong>Controller</strong></h3>
+
+<pre><code class="language-java">package com.xuecheng.filesystem.controller;
+
+import com.xuecheng.api.fileSystem.FileSystemControllerApi;
+import com.xuecheng.filesystem.service.FileSystemService;
+import com.xuecheng.framework.domain.filesystem.response.UploadFileResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+/**
+ * @author Hr|黄锐
+ * @create 2019/8/18 20:58
+ */
+@RestController
+@RequestMapping(&quot;/filesystem&quot;)
+public class FileSystemController implements FileSystemControllerApi {
+    @Autowired
+    FileSystemService fileSystemService;
+
+    /**
+     * 上传文件
+     * @param multipartFile
+     * @param fileTag
+     * @param businessKey
+     * @param metadata
+     * @return
+     */
+    @Override
+    @PostMapping(&quot;/upload&quot;)
+    /*
+    *这里一定注意在进行前后端联调时,开始当我们选择文件上传时,会报错,原因是
+    * 前端传过来的文件名称默认为file,饿了么ui默认的,但是我们测试时Springmvc框架默认
+    * 参数为multipartFile,所以我们要在前端upload组件上加上name=&quot;multipartFile&quot;属性才行
+    *
+    * 或者我们在后端的参数上加上@RequestParam(&quot;File&quot;)也行,
+    * 总之,前端的name要和后端@RequestParam参数名相同
+     */
+    public UploadFileResult uploadFile(
+           @RequestParam(value = &quot;multipartFile&quot;) MultipartFile multipartFile,
+           @RequestParam(value = &quot;filetag&quot;,required = false) String fileTag,
+           @RequestParam(value = &quot;businessKey&quot;,required = false) String businessKey,
+           @RequestParam(value = &quot;metadata&quot;,required = false) String metadata) {
+        return fileSystemService.uploadFile(multipartFile, fileTag, businessKey, metadata);
+    }
+}
+</code></pre>
+
+<h2 id="上传课程图片前端"><strong>上传课程图片前端</strong></h2>
+
+<h3 id="需求"><strong>需求</strong></h3>
+
+<p>点击“加号”上传图片，图片上传成功自动显示；点击“删除”将删除图片。</p>
+
+<h3 id="页面"><strong>页面</strong></h3>
+
+<p>使用Element-UI的Upload上传组件实现上边的效果。</p>
+
+<p>1) template</p>
+
+<pre><code class="language-java">&lt;el-upload
+      action=&quot;/api/filesystem/upload&quot;
+      list-type=&quot;picture-card&quot;
+      :before-upload=&quot;setuploaddata&quot;
+      :on-success=&quot;handleSuccess&quot;
+      :file-list=&quot;fileList&quot;
+      :limit=&quot;picmax&quot;
+      :on-exceed=&quot;rejectupload&quot;
+      :before-remove=&quot;handleRemove&quot;
+      :data=&quot;uploadval&quot;
+      name=&quot;multipartFile&quot;&gt;
+      &lt;i class=&quot;el-icon-plus&quot;&gt;&lt;/i&gt;
+    &lt;/el-upload&gt;
+</code></pre>
+
+<p>el-upload参数说明：</p>
+
+<p>action：必选参数，上传的地址</p>
+
+<p>list-type：文件列表的类型（text/picture/picture-card）</p>
+
+<p>before-upload：上传前执行钩子方法 ，function(fifile)</p>
+
+<p>on-success：上传成功 执行的钩子方法 ，function(response, fifile, fifileList)</p>
+
+<p>on-error：上传失败的钩子方法，function(err, fifile, fifileList)</p>
+
+<p>on-remove：文件删除的钩子方法，function(fifile, fifileList)</p>
+
+<p>fifile-list：文件列表，此列表为上传成功 的文件</p>
+
+<p>limit：最大允许上传个数</p>
+
+<p>on-exceed：文件超出个数限制时的钩子，方法为：function(fifiles, fifileList)</p>
+
+<p>data：提交上传的额外参数，需要封装为json对象，最终提交给服务端为key/value串</p>
+
+<p>2)数据模型</p>
+
+<pre><code class="language-js">&lt;script&gt;
+  import * as sysConfig from '@/../config/sysConfig';
+  import * as courseApi from '../../api/course';
+  import utilApi from '../../../../common/utils';
+  import * as systemApi from '../../../../base/api/system';
+  export default {
+    data() {
+      return {
+        picmax:1,//最大上传文件的数量
+        courseid:'',
+        dialogImageUrl: '',
+        dialogVisible: false,
+        fileList:[],
+        uploadval:{filetag:&quot;course&quot;,businessKey:&quot;testBusinesskey&quot;},//上传提交的额外的数据 ，将uploadval转成key/value提交给服务器
+        imgUrl:sysConfig.imgUrl
+      }
+    },
+    methods: {
+      //超出文件上传个数提示信息
+      rejectupload(){
+        this.$message.error(&quot;最多上传&quot;+this.picmax+&quot;个图片&quot;);
+      },
+      //在上传前设置上传请求的数据
+      setuploaddata(){
+
+      },
+      //删除图片
+      handleRemove(file, fileList) {
+        console.log(file)
+        //调用服务端去删除课程图片信息，如果返回false，前端停止删除
+        //异步调用
+        return new Promise((resolve,rejct)=&gt;{
+          courseApi.deleteCoursePic(this.courseid).then(res=&gt;{
+            if(res.success){
+              this.$message.success(&quot;删除成功&quot;);
+                //成功
+              resolve()
+            }else{
+              this.$message.error(&quot;删除失败&quot;);
+                //失败
+              rejct()
+            }
+
+          })
+        })
+
+      },
+      //上传成功的钩子方法
+      handleSuccess(response, file, fileList){
+        console.log(response)
+        //调用课程管理的保存图片接口，将图片信息保存到课程管理数据库course_pic中
+        //从response得到新的图片文件的地址
+        if(response.success){
+          let fileId = response.fileSystem.fileId;
+          courseApi.addCoursePic(this.courseid,fileId).then(res=&gt;{
+              if(res.success){
+                  this.$message.success(&quot;上传图片成功&quot;)
+              }else{
+                this.$message.error(res.message)
+              }
+
+          })
+        }
+
+      },
+      //上传失败执行的钩子方法
+      handleError(err, file, fileList){
+        this.$message.error('上传失败');
+        //清空文件队列
+        this.fileList = []
+      },
+      //promise 有三种状态:
+      //进行中pending
+      //执行成功 resolve
+      //执行失败 reject
+      testPromise(i){
+
+          return new Promise((resolve,reject)=&gt;{
+              if(i&lt;2){
+                  //成功了
+                resolve('成功了');
+              }else{
+                  //失败了
+                reject('失败了');
+              }
+
+          })
+      }
+    },
+    mounted(){
+      //课程id
+      this.courseid = this.$route.params.courseid;
+      //查询课程
+      courseApi.findCoursePicList(this.courseid).then(res=&gt;{
+          if(res &amp;&amp; res.pic){
+              let imgUrl = this.imgUrl+res.pic;
+              //将图片地址设置到
+            this.fileList.push({name:'pic',url:imgUrl,fileId:res.pic})
+          }
+
+      })
+      //测试调用promise方法，then中写的成功后的回调方法，
+//      this.testPromise(3).then(res=&gt;{
+//          alert(res)
+//      }).catch(res=&gt;{//catch就是执行失败的回调方法
+//          alert(&quot;失败了。。。。。&quot;)
+//          alert(res)
+//      })
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+
+<h1 id="保存课程图片"><strong>保存课程图片</strong></h1>
+
+<h2 id="需求分析-1"><strong>需求分析</strong></h2>
+
+<p>图片上传到文件系统后，其它子系统如果想使用图片可以引用图片的地址，课程管理模块使用图片的方式是将图片</p>
+
+<p>地址保存到课程数据库中。</p>
+
+<p>业务流程如下：</p>
+
+<p>1、上传图片到文件系统服务</p>
+
+<p>2、保存图片地址到课程管理服务</p>
+
+<p>在课程管理服务创建保存课程与图片对应关系的表 course_pic。</p>
+
+<p><img src="\images\1566290150375.png" alt="1566290150375" /></p>
+
+<p>3、在course_pic保存图片成功后方可查询课程图片信息。</p>
+
+<p>通过查询course_pic表数据则查询到某课程的图片信息。</p>
+
+<h2 id="课程管理服务端开发"><strong>课程管理服务端开发</strong></h2>
+
+<h3 id="api"><strong>API</strong></h3>
+
+<p>课程管理需要使用图片则在课程管理服务中要提供保存课程图片的api。</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;添加课程图片&quot;) 
+public ResponseResult addCoursePic(String courseId,String pic);
+</code></pre>
+
+<p><strong>Dao</strong></p>
+
+<p>模型：</p>
+
+<pre><code class="language-java">@Data 
+@ToString 
+@Entity 
+@Table(name=&quot;course_pic&quot;) 
+@GenericGenerator(name = &quot;jpa‐assigned&quot;, strategy = &quot;assigned&quot;) 
+public class CoursePic implements Serializable { 
+    private static final long serialVersionUID = ‐916357110051689486L; 
+    @Id
+    @GeneratedValue(generator = &quot;jpa‐assigned&quot;) 
+    private String courseid; 
+    private String pic; 
+}
+</code></pre>
+
+<p>API如下：</p>
+
+<pre><code class="language-java">public interface CoursePicRepository extends JpaRepository&lt;CoursePic, String&gt; { 
+}
+</code></pre>
+
+<h3 id="service-1"><strong>Service</strong></h3>
+
+<pre><code class="language-java">/**
+     * 添加课程id与fastdfs图片信息到课程管理数据库
+     * @param courseId
+     * @param picId
+     * @return
+     */
+    @Transactional
+    public ResponseResult addCoursePic(String courseId, String picId) {
+        /*
+        *由于课程管理数据库每个课程只能有一个图片,主键就是courseId,所以先查询是否存在该课程图片信息,
+        * 没有就创建对象,有的话就更新
+         */
+        //课程图片信息
+        CoursePic coursePic = null;
+        //查询课程图片
+        Optional&lt;CoursePic&gt; optional = coursePicRepository.findById(courseId);
+        if (optional.isPresent()) {
+            coursePic = optional.get();
+        }
+        if (coursePic == null) {
+             coursePic = new CoursePic();
+        }
+        coursePic.setCourseid(courseId);
+        coursePic.setPic(picId);
+        coursePicRepository.save(coursePic);
+        return new ResponseResult(CommonCode.SUCCESS);
+    }
+</code></pre>
+
+<p><code>在前端执行完成上传图片之后,调用钩子方法执行此接口,将信息存到自己得数据库中.</code></p>
+
+<h3 id="controller-1"><strong>Controller</strong></h3>
+
+<pre><code class="language-java">@Override 
+@PostMapping(&quot;/coursepic/add&quot;) 
+public ResponseResult addCoursePic(
+    @RequestParam(&quot;courseId&quot;) String courseId, 
+    @RequestParam(&quot;pic&quot;) String pic) { 
+    //保存课程图片 
+    return courseService.saveCoursePic(courseId,pic); 
+}
+</code></pre>
+
+<h2 id="前端开发"><strong>前端开发</strong></h2>
+
+<p>前端需要在上传图片成功后保存课程图片信息。</p>
+
+<h3 id="api方法"><strong>Api方法</strong></h3>
+
+<pre><code class="language-java">//添加课程图片 
+export const addCoursePic= (courseId,pic) =&gt; { 
+    return http.requestPost(apiUrl+'/course/coursepic/add?courseId='+courseId+&quot;&amp;pic=&quot;+pic) 
+}
+</code></pre>
+
+<h3 id="页面-1"><strong>页面</strong></h3>
+
+<p>1）添加上传成功的钩子 :on-success=&ldquo;handleSuccess&rdquo;</p>
+
+<pre><code class="language-vue">&lt;el-upload 
+           action=&quot;/api/filesystem/upload&quot; 
+           list-type=&quot;picture-card&quot; 
+           :on-success=&quot;handleSuccess&quot;&gt; 
+    &lt;i class=&quot;el-icon-plus&quot;&gt;&lt;/i&gt; 
+&lt;/el-upload&gt;
+</code></pre>
+
+<p>2）在钩子方法 中保存课程图片信息</p>
+
+<p>如果保存图片失败则上传失败，清除文件列表。</p>
+
+<pre><code class="language-java"> //上传成功的钩子方法
+      handleSuccess(response, file, fileList){
+        console.log(response)
+        //调用课程管理的保存图片接口，将图片信息保存到课程管理数据库course_pic中
+        //从response得到新的图片文件的地址
+        if(response.success){
+          let fileId = response.fileSystem.fileId;
+          courseApi.addCoursePic(this.courseid,fileId).then(res=&gt;{
+              if(res.success){
+                  this.$message.success(&quot;上传图片成功&quot;)
+              }else{
+                this.$message.error(res.message)
+              }
+
+          })
+        }
+      },
+    //上传失败执行的钩子方法
+          handleError(err, file, fileList){
+            this.$message.error('上传失败');
+            //清空文件队列
+            this.fileList = []
+          },
+</code></pre>
+
+<h1 id="图片查询"><strong>图片查询</strong></h1>
+
+<h2 id="需求分析-2"><strong>需求分析</strong></h2>
+
+<p>课程图片上传成功，再次进入课程上传页面应该显示出来已上传的图片。</p>
+
+<h2 id="api-1"><strong>API</strong></h2>
+
+<p>在课程管理服务定义查询方法</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;获取课程基础信息&quot;) 
+public CoursePic findCoursePic(String courseId);
+</code></pre>
+
+<h2 id="课程管理服务开发"><strong>课程管理服务开发</strong></h2>
+
+<h3 id="dao-1"><strong>Dao</strong></h3>
+
+<p>使用CoursePicRepository即可，无需再开发。</p>
+
+<h3 id="service-2"><strong>Service</strong></h3>
+
+<p>根据课程id查询课程图片</p>
+
+<pre><code class="language-java">public CoursePic findCoursepic(String courseId) {
+    return coursePicRepository.findOne(courseId); 
+}
+</code></pre>
+
+<h3 id="controller-2"><strong>Controller</strong></h3>
+
+<pre><code class="language-java">@Override @GetMapping(&quot;/coursepic/list/{courseId}&quot;) 
+public CoursePic findCoursePic(
+    @PathVariable(&quot;courseId&quot;) String courseId) { 
+    return courseService.findCoursepic(courseId); 
+}
+</code></pre>
+
+<h2 id="前端开发-1"><strong>前端开发</strong></h2>
+
+<h3 id="api方法-1"><strong>API方法</strong></h3>
+
+<pre><code class="language-js">//查询课程图片 
+export const findCoursePicList = courseId =&gt; { 
+    return http.requestQuickGet(apiUrl+'/course/coursepic/list/'+courseId) 
+}
+</code></pre>
+
+<h3 id="页面-2"><strong>页面</strong></h3>
+
+<p>在课程图片页面的mounted钩子方法 中查询课程图片信息，并将图片地址赋值给数据对象</p>
+
+<p>1、定义图片查询方法</p>
+
+<pre><code class="language-java"> //课程id
+      this.courseid = this.$route.params.courseid;
+//查询课程
+      courseApi.findCoursePicList(this.courseid).then(res=&gt;{
+          if(res &amp;&amp; res.pic){
+              let imgUrl = this.imgUrl+res.pic;
+              //将图片地址设置到
+            this.fileList.push({name:'pic',url:imgUrl,fileId:res.pic})
+          }
+
+      })
+</code></pre>
+
+<p><code>在mounted中调用,直接进入页面就查询</code></p>
+
+<h3 id="测试"><strong>测试</strong></h3>
+
+<p>测试流程：</p>
+
+<p>1、上传图片成</p>
+
+<p>2、进入上传图片页面，观察图片是否显示</p>
+
+<h1 id="课程图片删除"><strong>课程图片删除</strong></h1>
+
+<h2 id="需求分析-3"><strong>需求分析</strong></h2>
+
+<p>课程图片上传成功后，可以重新上传，方法是先删除现有图片再上传新图片。</p>
+
+<p><strong>注意：</strong>此删除只删除课程数据库的课程图片信息，不去删除文件数据库的文件信息及文件系统服务器上的文件，由</p>
+
+<p>于课程图片来源于该用户的文件库，所以此图片可能存在多个地方共用的情况，所以要删除文件系统中的文件需要</p>
+
+<p>到图片库由用户确认后再删除。</p>
+
+<h2 id="api-2"><strong>API</strong></h2>
+
+<p>在课程管理服务添加删除课程图片api：</p>
+
+<pre><code class="language-java">@ApiOperation(&quot;删除课程图片&quot;) 
+public ResponseResult deleteCoursePic(String courseId);
+</code></pre>
+
+<h2 id="课程管理服务端开发-1"><strong>课程管理服务端开发</strong></h2>
+
+<h3 id="dao-2"><strong>Dao</strong></h3>
+
+<p>CoursePicRepository父类提供的delete方法没有返回值，无法知道是否删除成功，这里我们在</p>
+
+<p>CoursePicRepository下边自定义方法：</p>
+
+<pre><code class="language-java">//删除成功返回1否则返回0 
+long deleteByCourseid(String courseid);
+</code></pre>
+
+<h3 id="service-3"><strong>Service</strong></h3>
+
+<pre><code class="language-java">//删除课程图片 
+@Transactional 
+public ResponseResult deleteCoursePic(String courseId) { 
+    //执行删除，返回1表示删除成功，返回0表示删除失败 
+    long result = coursePicRepository.deleteByCourseid(courseId); 
+    if(result&gt;0){ 
+        return new ResponseResult(CommonCode.SUCCESS); 
+    }
+    return new ResponseResult(CommonCode.FAIL); 
+}
+</code></pre>
+
+<h3 id="controller-3"><strong>Controller</strong></h3>
+
+<pre><code class="language-java">@Override 
+@DeleteMapping(&quot;/coursepic/delete&quot;) 
+public ResponseResult deleteCoursePic(
+    @RequestParam(&quot;courseId&quot;) String courseId) { 
+    return courseService.deleteCoursePic(courseId); 
+}
+</code></pre>
+
+<h2 id="前端开发-2"><strong>前端开发</strong></h2>
+
+<h3 id="api-调用"><strong>API</strong> <strong>调用</strong></h3>
+
+<pre><code class="language-java">//删除课程图片 
+export const deleteCoursePic= courseId =&gt; { 
+    return http.requestDelete(apiUrl+'/course/coursepic/delete?courseId='+courseId) 
+}
+</code></pre>
+
+<h3 id="页面测试"><strong>页面测试</strong></h3>
+
+<p>1）before-remove钩子方法</p>
+
+<p>在upload组件的before-remove钩子方法 中实现删除动作。</p>
+
+<pre><code class="language-vue">&lt;el‐upload 
+           action=&quot;/filesystem/upload&quot; 
+           list‐type=&quot;picture‐card&quot; 
+           :before‐remove=&quot;handleRemove&quot;&gt; 
+    &lt;i class=&quot;el‐icon‐plus&quot;&gt;&lt;/i&gt; 
+&lt;/el‐upload&gt;
+</code></pre>
+
+<p>before-remove说明：删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止删除。</p>
+
+<p>定义handleRemove方法进行测试：</p>
+
+<p>handleRemove 返回true则删除页面的图片，返回false则停止删除页面的图片。</p>
+
+<pre><code class="language-java">//删除图片 
+handleRemove(file, fileList) { 
+    console.log(file) alert('删除成功') 
+        return true; 
+}
+</code></pre>
+
+<h2 id="promise异步调用"><strong>promise异步调用</strong></h2>
+
+<p>在handleRemove方法调用删除图片的api方法，删除成功时return true，删除失败时return false;</p>
+
+<pre><code class="language-java">//删除图片 
+handleRemove(file, fileList) { console.log(file) 
+    // alert('删除') 
+    // return true; 
+    //删除图片 
+    courseApi.deleteCoursePic('1').then((res) =&gt; { 
+    if(res.success){ 
+        this.$message.success('删除成功'); 
+        return true; 
+    }else{ 
+        this.$message.error(res.message); 
+        return false; 
+    } 
+}); 
+},
+</code></pre>
+
+<p>在上边代码中将提交的课程id故意写错，按照我们预期应该是删除失败，而测试结果却是图片在页面上删除成功。</p>
+
+<p>问题原因：</p>
+
+<p>通过查询deleteCoursePic方法的底层代码，deleteCoursePic最终返回一个promise对象。</p>
+
+<p>Promise是ES6提供的用于异步处理的对象，因为axios提交是异步提交，这里使用promise作为返回值。</p>
+
+<p>Promise的使用方法如下：</p>
+
+<p>Promise对象在处理过程中有三种状态：</p>
+
+<p>pending：进行中</p>
+
+<p>resolved：操作成功</p>
+
+<p>rejected: 操作失败</p>
+
+<p>Promise的构建方法如下：</p>
+
+<pre><code class="language-java">const promise = new Promise(function(resolve,reject){ 
+    //...TODO... 
+    if(操作成功){ 
+        resolve(value); 
+    }else{
+        reject(error); 
+    } 
+})
+</code></pre>
+
+<p>上边的构造方法function(resolve,reject)执行流程如下：</p>
+
+<p>1）方法执行一些业务逻辑。</p>
+
+<p>2）如果操作成功将Promise的状态由pending变为resolved，并将操作结果传出去</p>
+
+<p>3）如果操作失败会将promise的状态由pending变为rejected，并将失败结果传出去。</p>
+
+<p>上边说的操作成功将操作结果传给谁了呢？操作失败将失败结果传给谁了呢？</p>
+
+<p>通过promise的then、catch来指定</p>
+
+<pre><code class="language-java">promise.then(function (result) { 
+    console.log('操作成功：' + result); 
+}); 
+promise.catch(function (reason) { c
+    onsole.log('操作失败：' + reason); 
+});
+</code></pre>
+
+<p>例子如下：</p>
+
+<p>1、定义一个方法，返回promise对象</p>
+
+<pre><code class="language-java">this.testPromise(3).then(res=&gt;{
+          alert(res)
+      }).catch(res=&gt;{//catch就是执行失败的回调方法
+          alert(&quot;失败了。。。。。&quot;)
+          alert(res)
+      })
+</code></pre>
+
+<p>2、调用此方法</p>
+
+<p>向方法传入偶数、奇数进行测试。</p>
+
+<pre><code class="language-java">this.testpromise(3).then(res=&gt;{
+    //在then中对成功结果进行处理 
+    alert(res) 
+}).catch(res=&gt;{
+    //在catch中对操作失败结果进行处理 
+    alert(res) 
+})
+</code></pre>
+
+<p>3、最终将handleRemove方法修改如下</p>
+
+<p>handleRemove方法返回promise对象，当删除成功则resolve，删除失败则reject。</p>
+
+<pre><code class="language-java"> //删除图片
+      handleRemove(file, fileList) {
+        console.log(file)
+        //调用服务端去删除课程图片信息，如果返回false，前端停止删除
+        //异步调用
+        return new Promise((resolve,rejct)=&gt;{
+          courseApi.deleteCoursePic(this.courseid).then(res=&gt;{
+            if(res.success){
+              this.$message.success(&quot;删除成功&quot;);
+                //成功
+              resolve()
+            }else{
+              this.$message.error(&quot;删除失败&quot;);
+                //失败
+              rejct()
+            }
+          })
+        })
+      },
+</code></pre>
+
+<p><code>因此,是用来处理异步调用的,在方法外面包裹一个new promise(){},在里面执行异步调用,成功则调用resolve,否则rejct回退</code></p>
+
+<p>一般在前端定义通用rest请求接口,都是这样定义的,</p>
+
+<p>如:post请求</p>
+
+<pre><code class="language-java">//post请求
+  requestPost (url, params = {}) {
+    return new Promise((resolve, reject) =&gt; {
+      axios.post(url, params).then(res =&gt; {
+        resolve(res.data)
+      }).catch(error =&gt; {
+        reject(error)
+      })
+    })
+  },
+</code></pre>
+
+<p>请求通过执行resolve返回数据,失败执行catch返回错误信息</p>
+
+<p><strong>注意:我们调用postApi时,并没有写catch,这是因为我们后端做了异常处理,无论请求成功与否,都会返回相关信息,所以前段会认为都是请求成功了</strong></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_pic%e4%b8%8a%e4%bc%a0%e8%af%be%e7%a8%8b%e5%9b%be%e7%89%87%e6%8e%a5%e5%8f%a3&nbsp;-&nbsp;I%20am%20thinking%20...&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E5%259F%25BA%25E4%25BA%258Efastdfs%25E8%25BF%259B%25E8%25A1%258C%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E7%25AE%25A1%25E7%2590%2586%2f05.course_pic%25E4%25B8%258A%25E4%25BC%25A0%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E5%259F%25BA%25E4%25BA%258Efastdfs%25E8%25BF%259B%25E8%25A1%258C%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E7%25AE%25A1%25E7%2590%2586%2f05.course_pic%25E4%25B8%258A%25E4%25BC%25A0%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E5%259F%25BA%25E4%25BA%258Efastdfs%25E8%25BF%259B%25E8%25A1%258C%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E7%25AE%25A1%25E7%2590%2586%2f05.course_pic%25E4%25B8%258A%25E4%25BC%25A0%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E6%258E%25A5%25E5%258F%25A3%2f&amp;description=%e8%af%be%e7%a8%8b%e7%ae%a1%e7%90%86-course_pic%e4%b8%8a%e4%bc%a0%e8%af%be%e7%a8%8b%e5%9b%be%e7%89%87%e6%8e%a5%e5%8f%a3"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E9%25A1%25B9%25E7%259B%25AE%2fcms%2f%25E5%2590%258E%25E7%25AB%25AF%2f4.%25E8%25AF%25BE%25E7%25A8%258B%25E7%25AE%25A1%25E7%2590%2586%2f%25E5%259F%25BA%25E4%25BA%258Efastdfs%25E8%25BF%259B%25E8%25A1%258C%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E7%25AE%25A1%25E7%2590%2586%2f05.course_pic%25E4%25B8%258A%25E4%25BC%25A0%25E8%25AF%25BE%25E7%25A8%258B%25E5%259B%25BE%25E7%2589%2587%25E6%258E%25A5%25E5%258F%25A3%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86\/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E9%A1%B9%E7%9B%AE\/cms\/%E5%90%8E%E7%AB%AF\/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86\/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86\/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>课程管理-course_market课程营销接口</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/01.course_plan%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%A5%E5%8F%A3/">
+          <section class="post">
+              <h2>课程管理-course_plan课程计划接口</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">I am thinking ...</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

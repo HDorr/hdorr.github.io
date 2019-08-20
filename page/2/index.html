@@ -318,6 +318,10 @@
     
         
     
+        
+    
+        
+    
 
     
 
@@ -337,6 +341,50 @@
 </nav>
 
     </div>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms01-前端-page_List页面编写与整合后端运行</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>在module中创建CMS页面原型 定义cms目录,创建相应接口
+在page目录中创建page_list页面
+在router页面中创建index.js路由组件
+import Home from '@/module/home/page/home.vue'; import page_list from &quot;../page/page_list&quot;; export default [{ path: '/', component: Home, name: 'CMS', hidden: false, children:[ {path: '/cms/page/list',name:'页面列表',component: page_list } ] } ]  这样在home组件中,就可以获取到路与信息,并渲染成树状列表显示
+仿照home路由组件,创建cms路由默认显示,并且设置管理页面的子路由 在base工程中合并路由组件
+import Vue from 'vue'; import Router from 'vue-router'; Vue.use(Router); // 定义路由配置 let routes = [] let concat = (router) =&gt; { routes = routes.concat(router) } // // 导入路由规则 import HomeRouter from '@/module/home/router' import CmsRouter from '@/module/cms/router' // 合并路由规则 concat(HomeRouter) concat(CmsRouter) export default routes;  开发page_list. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms01-%E5%89%8D%E7%AB%AF-page_list%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+                <a href="https://hdorr.github.io//tags/cms-%E5%89%8D%E7%AB%AF/">#cms-前端</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
 
     
         <article class="post post">
@@ -752,49 +800,6 @@ pom.xml如下
                 <a href="https://hdorr.github.io//tags/hd/">#hd</a>,
             
                 <a href="https://hdorr.github.io//tags/freemarker/">#freemarker</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">博客书写说明</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>配置文件
-[[menu.main]] name = &ldquo;说明&rdquo; weight = -1 identifier = &ldquo;sm&rdquo; url = &ldquo;/tags/sm&rdquo;
-[[menu.main]] name = &ldquo;主页&rdquo; weight = -2 identifier = &ldquo;blog&rdquo; url = &ldquo;/&rdquo;
-[[menu.main]] name = &ldquo;前端&rdquo; weight = -3 identifier = &ldquo;qd&rdquo; url = &ldquo;/tags/qd&rdquo;
-[[menu.main]] name = &ldquo;vue&rdquo; weight = -4 identifier = &ldquo;vue&rdquo; url = &ldquo;/tags/vue&rdquo;
-[[menu.main]] name = &ldquo;Java基础&rdquo; weight = -5 identifier = &ldquo;jc&rdquo; url = &ldquo;/tags/jc&rdquo;
-[[menu.main]] name = &ldquo;后端&rdquo; weight = -6 identifier = &ldquo;hd&rdquo; url = &ldquo;/tags/hd&rdquo; <a class="read-more" href="https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/sm/">#sm</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">

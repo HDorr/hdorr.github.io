@@ -20,6 +20,11 @@
   </url>
   
   <url>
+    <loc>https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/promise%E5%9C%A8%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E6%97%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</loc>
+    <lastmod>2019-07-27T17:02:37+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hdorr.github.io/post/rabbitmq/rabbitmq%E5%85%A5%E9%97%A8-%E5%8F%8Awin%E5%AE%89%E8%A3%85mq/</loc>
     <lastmod>2019-07-27T17:02:37+08:00</lastmod>
   </url>
@@ -123,6 +128,12 @@
   </url>
   
   <url>
+    <loc>https://hdorr.github.io/tags/es6/</loc>
+    <lastmod>2019-07-27T17:02:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hdorr.github.io/tags/ext/</loc>
     <lastmod>2019-07-27T17:02:37+08:00</lastmod>
     <priority>0</priority>
@@ -152,6 +163,12 @@
   </url>
   
   <url>
+    <loc>https://hdorr.github.io/tags/qd/</loc>
+    <lastmod>2019-07-27T17:02:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hdorr.github.io/tags/rabbitmq/</loc>
     <lastmod>2019-07-27T17:02:37+08:00</lastmod>
     <priority>0</priority>
@@ -159,6 +176,12 @@
   
   <url>
     <loc>https://hdorr.github.io/tags/sm/</loc>
+    <lastmod>2019-07-27T17:02:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hdorr.github.io/tags/vue/</loc>
     <lastmod>2019-07-27T17:02:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -203,6 +226,11 @@
   
   <url>
     <loc>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E5%AE%9E%E6%88%98%E9%83%A8%E5%88%86/04.course_market%E8%AF%BE%E7%A8%8B%E8%90%A5%E9%94%80%E6%8E%A5%E5%8F%A3/</loc>
+    <lastmod>2019-07-27T17:02:37+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/4.%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86/%E5%9F%BA%E4%BA%8Efastdfs%E8%BF%9B%E8%A1%8C%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E7%AE%A1%E7%90%86/05.course_pic%E4%B8%8A%E4%BC%A0%E8%AF%BE%E7%A8%8B%E5%9B%BE%E7%89%87%E6%8E%A5%E5%8F%A3/</loc>
     <lastmod>2019-07-27T17:02:37+08:00</lastmod>
   </url>
   
