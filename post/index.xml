@@ -492,10 +492,10 @@ pom.xml如下
       <description>配置文件
 [[menu.main]] name = &amp;ldquo;说明&amp;rdquo; weight = -1 identifier = &amp;ldquo;sm&amp;rdquo; url = &amp;ldquo;/tags/sm&amp;rdquo;
 [[menu.main]] name = &amp;ldquo;主页&amp;rdquo; weight = -2 identifier = &amp;ldquo;blog&amp;rdquo; url = &amp;ldquo;/&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;前端&amp;rdquo; weight = -3 identifier = &amp;ldquo;qd&amp;rdquo; url = &amp;ldquo;/tags/qd&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;vue&amp;rdquo; weight = -4 identifier = &amp;ldquo;vue&amp;rdquo; url = &amp;ldquo;/tags/vue&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;Java基础&amp;rdquo; weight = -5 identifier = &amp;ldquo;jc&amp;rdquo; url = &amp;ldquo;/tags/jc&amp;rdquo;
-[[menu.main]] name = &amp;ldquo;后端&amp;rdquo; weight = -6 identifier = &amp;ldquo;hd&amp;rdquo; url = &amp;ldquo;/tags/hd&amp;rdquo;</description>
+[[menu.main]] name = &amp;ldquo;Java基础&amp;rdquo; weight = -3 identifier = &amp;ldquo;jc&amp;rdquo; url = &amp;ldquo;/tags/jc&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;前端&amp;rdquo; weight = -4 identifier = &amp;ldquo;qd&amp;rdquo; url = &amp;ldquo;/tags/qd&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;后端&amp;rdquo; weight = -5 identifier = &amp;ldquo;hd&amp;rdquo; url = &amp;ldquo;/tags/hd&amp;rdquo;
+[[menu.main]] name = &amp;ldquo;ms&amp;rdquo; weight = -6 identifier = &amp;ldquo;ms&amp;rdquo; url = &amp;ldquo;/tags/ms&amp;rdquo;</description>
     </item>
     
     <item>
