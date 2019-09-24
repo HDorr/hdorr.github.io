@@ -41,6 +41,52 @@ public class Demo01Logger { private static void log(int level, String msg) { if 
     </item>
     
     <item>
+      <title>1.8新特性-2Lambda表达式</title>
+      <link>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-2lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-2lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>第三章 Lambda表达式 1.1 函数式编程思想概述 在数学中，函数就是有输入量、输出量的一套计算方案，也就是“拿什么东西做什么事情”。相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——强调做什么，而不是以什么形式做。
+面向对象的思想:
+做一件事情,找一个能解决这个事情的对象,调用对象的方法,完成事情.
+函数式编程思想:
+只要能获取到结果,谁去做的,怎么做的都不重要,重视的是结果,不重视过程
+1.2 冗余的Runnable代码 传统写法
+当需要启动一个线程去完成任务时，通常会通过 java.lang.Runnable 接口来定义任务内容，并使用
+java.lang.Thread 类来启动该线程。代码如下：
+public class Demo01Runnable { public static void main(String[] args) { // 匿名内部类 Runnable task = new Runnable() { @Override public void run() { // 覆盖重写抽象方法 System.out.println(&amp;quot;多线程任务执行！&amp;quot;); } }; new Thread(task).start(); // 启动线程 } }  本着“一切皆对象”的思想，这种做法是无可厚非的：首先创建一个 Runnable 接口的匿名内部类对象来指定任务内容，再将其交给一个线程来启动。
+代码分析
+对于 Runnable 的匿名内部类用法，可以分析出几点内容：
+ Thread 类需要 Runnable 接口作为参数，其中的抽象 run 方法是用来指定线程任务内容的核心；
+ 为了指定 run 的方法体，不得不需要 Runnable 接口的实现类；</description>
+    </item>
+    
+    <item>
+      <title>1.8新特性-3Stream流</title>
+      <link>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/</guid>
+      <description>Stream流 说到Stream便容易想到I/O Stream，而实际上，谁规定“流”就一定是“IO流”呢？在Java 8中，得益于Lambda所带
+来的函数式编程，引入了一个全新的Stream概念，用于解决已有集合类库既有的弊端。
+引言 传统集合的多步遍历代码
+几乎所有的集合（如 Collection 接口或 Map 接口等）都支持直接或间接的遍历操作。而当我们需要对集合中的元
+素进行操作的时候，除了必需的添加、删除、获取外，最典型的就是集合遍历。例如：
+import java.util.ArrayList; import java.util.List; public class Demo01ForEach { public static void main(String[] args) { List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(); list.add(&amp;quot;张无忌&amp;quot;); list.add(&amp;quot;周芷若&amp;quot;); list.add(&amp;quot;赵敏&amp;quot;); list.add(&amp;quot;张强&amp;quot;); list.add(&amp;quot;张三丰&amp;quot;); for (String name : list) { System.out.println(name); } } }  这是一段非常简单的集合遍历操作：对集合中的每一个字符串都进行打印输出操作。
+循环遍历的弊端
+Java 8的Lambda让我们可以更加专注于做什么（What），而不是怎么做（How），这点此前已经结合内部类进行
+了对比说明。现在，我们仔细体会一下上例代码，可以发现：
+ for循环的语法就是“怎么做”
+ for循环的循环体才是“做什么”
+  为什么使用循环？因为要进行遍历。但循环是遍历的唯一方式吗？遍历是指每一个元素逐一进行处理，而并不是从
+第一个到最后一个顺次处理的循环。前者是目的，后者是方式。
+试想一下，如果希望对集合中的元素进行筛选过滤：
+ 将集合A根据条件一过滤为子集B；
+ 然后再根据条件二过滤为子集C。
+  那怎么办？在Java 8之前的做法可能为：</description>
+    </item>
+    
+    <item>
       <title>FastDFS入门安装与nginx整合</title>
       <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
@@ -545,6 +591,21 @@ cpu:中央处理器,对数据进行计算,只会电脑中软件和硬件干活.�
     </item>
     
     <item>
+      <title>常用API1</title>
+      <link>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/01%E5%B8%B8%E7%94%A8api/%E5%B8%B8%E7%94%A8api1/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/01%E5%B8%B8%E7%94%A8api/%E5%B8%B8%E7%94%A8api1/</guid>
+      <description>常用的API1 1.Scanner类 作用:一个可以解析基本类型和字符串的简单文本扫描器。
+​ 例如，以下代码使用户能够从 System.in 中读取一个数：
+备注：System.in 系统输入指的是通过键盘录入数据。
+使用步骤  导包  java.util.Scanner;
+ 创建对象  `Scanner sc=new Scanner(System.in);
+ 调用  int i=sc.nextInt(); //接受一个键盘录入数据
+/** * Scanner 初使用 */ public class Scanner01 { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int i = sc.nextInt(); System.out.println(i+&amp;quot;...&amp;quot;); } }  练习 /** * 键盘输入两个数字,并且求和 */ public class Scanner02 { public static void main(String[] args) { Scanner sc = new Scanner(System.</description>
+    </item>
+    
+    <item>
       <title>消息队列与GridFS</title>
       <link>https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/</link>
       <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
@@ -566,6 +627,27 @@ RabbitMQ研究 要实现上边页面发布的功能，有一个重要的环节�
 1、理解MQ的应用场景
 2、理解MQ常用的工作模式
 RabbitMQ相关知识参考Rabbitmq笔记模块</description>
+    </item>
+    
+    <item>
+      <title>网络编程</title>
+      <link>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/06%E7%BD%91%E8%B7%AF%E7%BC%96%E7%A8%8B/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/06%E7%BD%91%E8%B7%AF%E7%BC%96%E7%A8%8B/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+      <description>网络编程 主要内容  软件架构CS／BS 网络通信三要素 TCP通信 Socket套接字 ServerSocket  第一章 网络编程入门 1.1软件结构  C/S结构 ：全称为Client/Server结构，是指客户端和服务器结构。常见程序有ＱＱ、迅雷等软件。  B/S结构 ：全称为Browser/Server结构，是指浏览器和服务器结构。常见浏览器有谷歌、火狐等。
+两种架构各有优势，但是无论哪种架构，都离不开网络的支持。网络编程，就是在一定的协议下，实现两台计算机的通信的程序。
+1.2 网络通信协议  网络通信协议：通过计算机网络可以使多台计算机实现连接，位于同一个网络中的计算机在进行连接和通信时需要遵守一定的规则，这就好比在道路中行驶的汽车一定要遵守交通规则一样。在计算机网络中，这些连接和通信的规则被称为网络通信协议，它对数据的传输格式、传输速率、传输步骤等做了统一规定，通信双方必须同时遵守才能完成数据交换。
+ TCP/IP协议： 传输控制协议/因特网互联协议( Transmission Control Protocol/Internet Protocol)，是Internet最基本、最广泛的协议。它定义了计算机如何连入因特网，以及数据如何在它们之间传输的标准。它的内部包含一系列的用于处理数据通信的协议，并采用了4层的分层模型，每一层都呼叫它的下一层所提供的协议来完成自己的需求。
+  上图中，TCP/IP协议中的四层分别是应用层、传输层、网络层和链路层，每层分别负责不同的通信功能。 链路层：链路层是用于定义物理传输通道，通常是对某些网络连接设备的驱动协议，例如针对光纤、网线提供的驱动。 网络层：网络层是整个TCP/IP协议的核心，它主要用于将传输的数据进行分组，将分组数据发送到目标计算机或者网络。 运输层：主要使网络程序进行通信，在进行网络通信时，可以采用TCP协议，也可以采用UDP协议。 应用层：主要负责应用程序的协议，例如HTTP协议、FTP协议等。
+1.3 协议分类 通信的协议还是比较复杂的，java.net 包中包含的类和接口，它们提供低层次的通信细节。我们可以直接使用这些类和接口，来专注于网络程序开发，而不用考虑通信的细节。
+java.net 包中提供了两种常见的网络协议的支持：
+ UDP：用户数据报协议(User Datagram Protocol)。UDP是无连接通信协议，即在数据传输时，数据的发送端和接收端不建立逻辑连接。简单来说，当一台计算机向另外一台计算机发送数据时，发送端不会确认接收端是否存在，就会发出数据，同样接收端在收到数据时，也不会向发送端反馈是否收到数据。  由于使用UDP协议消耗资源小，通信效率高，所以通常都会用于音频、视频和普通数据的传输例如视频会议都使用UDP协议，因为这种情况即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。
+但是在使用UDP协议传送数据时，由于UDP的面向无连接性，不能保证数据的完整性，因此在传输重要数据时不建议使用UDP协议。UDP的交换过程如下图所示。
+特点:数据被限制在64kb以内，超出这个范围就不能发送了。
+数据报(Datagram):网络传输的基本单位
+ TCP：传输控制协议 (Transmission Control Protocol)。TCP协议是面向连接的通信协议，即传输数据之前，在发送端和接收端建立逻辑连接，然后再传输数据，它提供了两台计算机之间可靠无差错的数据传输。  在TCP连接中必须要明确客户端与服务器端，由客户端向服务端发出连接请求，每次连接的创建都需要经过“三次握手”。
+ 三次握手：TCP协议中，在发送数据的准备阶段，客户端与服务器之间的三次交互，以保证连接的可靠。  第一次握手，客户端向服务器端发出连接请求，等待服务器确认。 第二次握手，服务器端向客户端回送一个响应，通知客户端收到了连接请求。 第三次握手，客户端再次向服务器端发送确认信息，确认连接。整个交互过程如下图所示。   ​ 完成三次握手，连接建立后，客户端和服务器就可以开始进行数据传输了。由于这种面向连接的特性，TCP协议可以保证传输数据的安全，所以应用十分广泛，例如下载文件、浏览网页等。</description>
     </item>
     
     <item>

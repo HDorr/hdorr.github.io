@@ -346,6 +346,14 @@
     
         
     
+        
+    
+        
+    
+        
+    
+        
+    
 
     
 
@@ -365,6 +373,105 @@
 </nav>
 
     </div>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">cms-开发准备</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>1.CMS概述 学成在线借鉴了MOOC（大型开放式网络课程，即MOOC（massive open online courses））的设计思想，是一个提供IT职业课程在线学习的平台
+当前市场的在线教育模式多种多样，包括：B2C、C2C、B2B2C等业务模式，学成在线采用B2B2C业务模式，即向 企业或个人提供在线教育平台提供教学服务，老师和学生通过平台完成整个教学和学习的过程，市场上类似的平台 有：网易云课堂、腾讯课堂等，学成在线的特点是IT职业课程在线教学。
+功能模块 学成在线包括门户、学习中心、教学管理中、社交系统、系统管理等功能模块。
+技术架构 技术栈 开发步骤 项目是基于前后端分离的架构进行开发，前后端分离架构总体上包括前端和服务端，通常是多人协作并行开发，开
+发步骤如下：
+1、需求分析
+梳理用户的需求，分析业务流程
+2、接口定义
+根据需求分析定义接口
+3、服务端和前端并行开发
+依据接口进行服务端接口开发。
+前端开发用户操作界面，并请求服务端接口完成业务处理。
+4、前后端集成测试
+最终前端调用服务端接口完成业务。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">cms-接口请求规范</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p> Api请求及响应规范 为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。
+1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。
+2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded）和Json数据（Content
+Type=application/json），文件等多部件类型（multipart/form-data）三种数据格式，SpringMVC接收Json数据
+使用@RequestBody注解解析请求的json数据。
+4、响应结果统一信息为：是否成功、操作代码、提示信息及自定义数据。
+​ 本项目,统一采用成功信息,相应代码,相应结果组成,并且最终返回结果为QueryResponseResult类型
+5、响应结果统一格式为json。
+Api定义约束 Api定义使用SpringMVC来完成，由于此接口后期将作为微服务远程调用使用，在定义接口时有如下限制：
+1、@PathVariable 统一指定参数名称，如：@PathVariable(&ldquo;id&rdquo;)
+​ 方法内参数要使用@PathVariable来映射路径上的参数
+2、@RequestParam统一指定参数名称，如： @RequestParam（&rdquo;id&rdquo;）
+public String getDetails( @RequestParam(value=&quot;param1&quot;, required=true) String param1, @RequestParam(value=&quot;param2&quot;, required=false) String param2){ ... }   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
 
     
         <article class="post post">
@@ -712,90 +819,6 @@ export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id�
 修改页面服务端开发 Dao 使用 Spring Data提供的fifindById方法完成根据主键查询 。
 使用 Spring Data提供的save方法完成数据保存 。
 Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage findPageById(String pageId) { Optional&lt;CmsPage&gt; optional = cmsPageRepository.findById(pageId); if (optional.isPresent()) { CmsPage cmsPage = optional.get(); return cmsPage; } return null; } /** * 修改页面 * @param pageId * @param cmsPage * @return */ public CmsPageResult editPage(String pageId, CmsPage cmsPage) { // 调用方法查询是否存在 CmsPage pageById = this. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">cms04-前端-删除页面开发与调试 </a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> 删除页面前端开发 Api方法 /*页面删除*/ export const page_del = id =&gt; { return http.requestDelete(apiUrl+'/cms/page/del/'+id) }  编写页面 1、在page_list.vue页面添加删除按钮
-&lt;el-table-column label=&quot;操作&quot; width=&quot;80&quot;&gt; &lt;!--slot-scope:插槽,取得当前行数据,命名为page 拿到行数据,从行中取出pageid--&gt; &lt;template slot-scope=&quot;page&quot;&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;edit(page.row.pageId)&quot;&gt;编辑 &lt;/el-button&gt; &lt;el-button size=&quot;small&quot;type=&quot;text&quot; @click=&quot;del(page.row.pageId)&quot;&gt;删除 &lt;/el-button&gt; &lt;/template&gt; &lt;/el-table-column&gt;  在原来,修改页面按钮的插槽中直接再加一个按钮
-删除事件 del:function (pageId) { //调用接口 this.$confirm('确认删除吗？', '提示', {}).then(() =&gt; { cmsApi.page_del(pageId).then(res=&gt;{ if (res.success) { this.$message.success(&quot;删除成功&quot;) //刷新页面 this.query() }else { this.$message.success(&quot;删除失败&quot;) } }); }) } },   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%89%8D%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF/cms04-%E5%89%8D%E7%AB%AF-%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E4%B8%8E%E8%B0%83%E8%AF%95/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-                <a href="https://hdorr.github.io//tags/cms-%E5%89%8D%E7%AB%AF/">#cms-前端</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">cms05--后端-网站管理删除页面接口  </a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> 删除页面 用户操作流程：
-1、用户进入用户列表，点击“删除”
-2、执行删除操作，提示“删除成功”或“删除失败”
-删除页面接口定义 @ApiOperation(&quot;通过ID删除页面&quot;) public ResponseResult delete(String id);  删除页面服务端开发 Dao 使用 Spring Data提供的deleteById方法完成删除操作 。
-Service //删除页面 public ResponseResult delete(String id){ CmsPage one = this.getById(id); if(one!=null){ //删除页面 cmsPageRepository.deleteById(id); return new ResponseResult(CommonCode.SUCCESS); } return new ResponseResult(CommonCode.FAIL); }  Controller @DeleteMapping(&quot;/del/{id}&quot;) //使用http的delete方法完成岗位操作 public ResponseResult delete(@PathVariable(&quot;id&quot;) String id) { return pageService.delete(id); }   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms05-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E5%88%A0%E9%99%A4%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

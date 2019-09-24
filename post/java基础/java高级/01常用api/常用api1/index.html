@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="常用API1"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="常用API1 &middot; 喜欢养狗,不爱洗头!" />
+  	<meta property="og:site_name" content="喜欢养狗,不爱洗头!" />
+  	<meta property="og:url" content="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/01%E5%B8%B8%E7%94%A8api/%E5%B8%B8%E7%94%A8api1/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="jc" />
+    
+    <meta property="article:tag" content="java高级" />
+    
+    
+
+    <title>常用API1 &middot; 喜欢养狗,不爱洗头!</title>
+
+    
+    <meta name="description" content="常用的API1 1.Scanner类 作用:一个可以解析基本类型和字符串的简单文本扫描器。
+​ 例如，以下代码使用户能够从 System.in 中读取一个数：
+备注：System.in 系统输入指的是通过键盘录入数据。
+使用步骤  导包  java.util.Scanner;
+ 创建对象  `Scanner sc=ne" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="喜欢养狗,不爱洗头!" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/01%E5%B8%B8%E7%94%A8api/%E5%B8%B8%E7%94%A8api1/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "常用API1",
+    "name": "常用API1",
+    "wordCount":  2008 ,
+    "timeRequired": "PT10M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/01%E5%B8%B8%E7%94%A8api/%E5%B8%B8%E7%94%A8api1/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "jc, java高级",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/01%E5%B8%B8%E7%94%A8api/%E5%B8%B8%E7%94%A8api1/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ms">ms</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/spring">Spring&amp;SpringMVC相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/mybatis">Mybatis相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/springcloud">SpringCloud微服务相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">常用API1</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/jc/">#jc</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="常用的api1"><strong>常用的API1</strong></h1>
+
+<h1 id="1-scanner类">1.Scanner类</h1>
+
+<p><strong>作用:</strong>一个可以解析基本类型和字符串的简单文本扫描器。</p>
+
+<p>​    例如，以下代码使用户能够从 System.in 中读取一个数：</p>
+
+<p><code>备注：System.in 系统输入指的是通过键盘录入数据。</code></p>
+
+<h2 id="使用步骤">使用步骤</h2>
+
+<ul>
+<li>导包</li>
+</ul>
+
+<p><code>java.util.Scanner;</code></p>
+
+<ul>
+<li>创建对象</li>
+</ul>
+
+<p>`Scanner sc=new Scanner(System.in);</p>
+
+<ul>
+<li>调用</li>
+</ul>
+
+<p><code>int i=sc.nextInt(); //接受一个键盘录入数据</code></p>
+
+<pre><code class="language-java">/**
+ * Scanner 初使用
+ */
+public class Scanner01 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i = sc.nextInt();
+        System.out.println(i+&quot;...&quot;);
+    }
+}
+</code></pre>
+
+<h2 id="练习">练习</h2>
+
+<pre><code class="language-java">/**
+ * 键盘输入两个数字,并且求和
+ */
+public class Scanner02 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入第一个数字:&quot;);
+        int i1 = sc.nextInt();
+        System.out.println(&quot;请输入第二个数字:&quot;);
+        int i2 = sc.nextInt();
+        System.out.println(&quot;结果为:&quot;+(i1+i2));
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">/**
+ * 键盘输入三个数字,求最大值
+ */
+public class Scanner03 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请输入第一个数字:&quot;);
+        int a = sc.nextInt();
+        System.out.println(&quot;请输入第二个数字:&quot;);
+        int b = sc.nextInt();
+        System.out.println(&quot;请输入第三个数字:&quot;);
+        int c = sc.nextInt();
+        int temp = (a &gt; b ? a : b);
+        int max = (temp &gt; c ? temp : c);
+        System.out.println(&quot;最大的数字为:&quot; + max);
+    }
+}
+</code></pre>
+
+<h1 id="2-匿名对象">2.匿名对象</h1>
+
+<h2 id="概念"><strong>概念</strong></h2>
+
+<p>创建对象时，只有创建对象的语句，却没有把对象地址值赋值给某个变量。虽然是创建对象的简化写法，但是应用</p>
+
+<p>场景非常有限。</p>
+
+<ul>
+<li><strong>匿名对象</strong> ：没有变量名的对象。</li>
+</ul>
+
+<p>格式：</p>
+
+<p><code>new 类名(参数列表)；</code></p>
+
+<p>举例：</p>
+
+<p><code>new Scanner(System.in)；</code></p>
+
+<p><strong>应用场景</strong></p>
+
+<ul>
+<li>创建匿名对象直接调用方法，没有变量名。</li>
+</ul>
+
+<p><code>new Scanner(System.in).nextInt();</code></p>
+
+<ul>
+<li>一旦调用两次方法，就是创建了两个对象，造成浪费，请看如下代码。</li>
+</ul>
+
+<p><code>new Scanner(System.in).nextInt();</code></p>
+
+<p><code>new Scanner(System.in).nextInt();</code></p>
+
+<ul>
+<li><p>匿名对象可以作为方法的参数和返回值</p>
+
+<pre><code class="language-java">class Test {
+public static void main(String[] args) {
+// 普通方式
+Scanner sc = new Scanner(System.in);
+input(sc);
+//匿名对象作为方法接收的参数
+input(new Scanner(System.in));
+}
+public static void input(Scanner sc){
+System.out.println(sc);
+}
+}
+</code></pre>
+
+<pre><code class="language-java">class Test2 {
+public static void main(String[] args) {
+// 普通方式
+Scanner sc = getScanner();
+}
+public static Scanner getScanner(){
+//普通方式
+//Scanner sc = new Scanner(System.in);
+//return sc;
+//匿名对象作为方法返回值
+return new Scanner(System.in);
+}
+}
+</code></pre></li>
+</ul>
+
+<h1 id="3-random类">3.Random类</h1>
+
+<p>此类的实例用于生成伪随机数。</p>
+
+<p>例如，以下代码使用户能够得到一个随机数：</p>
+
+<p><code>Random r = new Random();</code></p>
+
+<p><code>int i = r.nextInt();</code></p>
+
+<p><strong>查看类</strong></p>
+
+<ul>
+<li>java.util.Random ：该类需要 import导入使后使用。</li>
+</ul>
+
+<p><strong>查看构造方法</strong></p>
+
+<ul>
+<li>public Random() ：创建一个新的随机数生成器。</li>
+</ul>
+
+<p><strong>查看成员方法</strong></p>
+
+<ul>
+<li>public int nextInt(int n) ：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的</li>
+</ul>
+
+<p>​     int 值。</p>
+
+<p>使用Random类，完成生成3个10以内的随机整数的操作，代码如下：</p>
+
+<pre><code class="language-java">//1. 导包
+import java.util.Random;
+public class Demo01_Random {
+public static void main(String[] args) {
+//2. 创建键盘录入数据的对象
+Random r = new Random();
+for(int i = 0; i &lt; 3; i++){
+//3. 随机生成一个数据
+int number = r.nextInt(10);
+//4. 输出数据
+System.out.println(&quot;number:&quot;+ number);
+}
+}
+}
+</code></pre>
+
+<h2 id="练习-1">练习</h2>
+
+<pre><code class="language-java">/**
+ * 猜数字小游戏
+ */
+public class Random1 {
+    public static void main(String[] args) {
+        Random r = new Random();
+        int b = r.nextInt(100) + 1;
+        System.out.println(&quot;请输入一个1-100的整数:&quot;);
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            int a = sc.nextInt();
+            if (a &gt; b) {
+                System.out.println(&quot;太大了&quot;);
+            }else if(a&lt;b){
+                System.out.println(&quot;太小了&quot;);
+            }else {
+                System.out.println(&quot;牛批&quot;);
+                break;
+            }
+        }
+    }
+}
+</code></pre>
+
+<h1 id="4-arraylist类">4.ArrayList类</h1>
+
+<p><code>java.util.ArrayList</code> 是大小<strong>可变的数组</strong>的实现，存储在内的数据称为元素。此类提供一些方法来操作内部存储</p>
+
+<p>的元素。 ArrayList 中可不断添加元素，其大小也自动增长。</p>
+
+<h2 id="arraylist使用步骤">ArrayList使用步骤</h2>
+
+<h3 id="查看类"><strong>查看类</strong></h3>
+
+<ul>
+<li><code>java.util.ArrayList</code>  ：该类需要 import导入使后使用。</li>
+</ul>
+
+<p><code>&lt;E&gt;</code> ，表示一种指定的数据类型，叫做泛型。 E ，取自Element（元素）的首字母。在出现 E 的地方，我们使
+  用一种引用数据类型将其替换即可，表示我们将存储哪种引用类型的元素。代码如下：</p>
+
+<p><code>ArrayList&lt;String&gt;，ArrayList&lt;Student&gt;</code></p>
+
+<h3 id="查看构造方法"><strong>查看构造方法</strong></h3>
+
+<ul>
+<li><code>public ArrayList()</code> ：构造一个内容为空的集合。
+基本格式:</li>
+</ul>
+
+<p><code>ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();</code></p>
+
+<p>在JDK 7后,右侧泛型的尖括号之内可以留空，但是&lt;&gt;仍然要写。简化格式：</p>
+
+<h3 id="查看成员方法"><strong>查看成员方法</strong></h3>
+
+<p>对于元素的操作,基本体现在——增、删、查。常用的方法有：</p>
+
+<ul>
+<li><p><code>public boolean add(E e)</code>：将指定的元素添加到此集合的尾部。</p></li>
+
+<li><p><code>public E remove(int index)</code> ：移除此集合中指定位置上的元素。返回被删除的元素。</p></li>
+
+<li><p><code>public E get(int index)</code>：返回此集合中指定位置上的元素。返回获取的元素。</p></li>
+
+<li><p><code>public int size()</code>：返回此集合中的元素数。遍历集合时，可以控制索引范围，防止越界。</p></li>
+</ul>
+
+<h2 id="练习-2">练习</h2>
+
+<pre><code class="language-java">/**
+ * 生成6个1-33之间的整数,添加到集合中并遍历
+ */
+public class ArrayList01 {
+    public static void main(String[] args) {
+        Random r = new Random();
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 6; i++) {
+            int s = r.nextInt(33)+1;
+            list.add(s);
+        }
+        for (Integer l : list) {
+            System.out.println(l);
+        }
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">/**
+ * 定义四个学生对象,添加到集合中,并且遍历
+ */
+public class ArrayList02 {
+    public static void main(String[] args) {
+        ArrayList&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+        list.add(new Student(&quot;马云&quot;, 65));
+        list.add(new Student(&quot;牛云&quot;, 45));
+        list.add(new Student(&quot;猪云&quot;, 12));
+        list.add(new Student(&quot;狗云&quot;, 77));
+        for (Student student : list) {
+            System.out.println(student);
+        }
+    }
+}
+
+</code></pre>
+
+<pre><code class="language-java">
+/**
+ * 创建集合,按一定的规则输出集合,比如{aaa@bbb@ccc}
+ */
+public class ArrayList03 {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+        list.add(&quot;张三&quot;);
+        list.add(&quot;李四&quot;);
+        list.add(&quot;王五&quot;);
+        list.add(&quot;赵六&quot;);
+        printList(list);
+    }
+
+    public static void printList(ArrayList&lt;String&gt; list) {
+        String a=&quot;{&quot;;
+        for (int i = 0; i &lt; list.size(); i++) {
+            String s = list.get(i);
+            if (i!=list.size()-1){
+                a = a + s+&quot;@&quot;;
+            }else {
+                a = a +s+ &quot;}&quot;;
+            }
+        }
+            System.out.println(a);
+    }
+}
+</code></pre>
+
+<h1 id="5-string类">5.String类</h1>
+
+<h2 id="5-1-string-类概述"><strong>5.1 String</strong><strong>类概述</strong></h2>
+
+<p><code>java.lang.String</code>类代表字符串。Java程序中所有的字符串文字（例如 &ldquo;abc&rdquo; ）都可以被看作是实现此类的实例。</p>
+
+<p>类 String 中包括用于检查各个字符串的方法，比如用于<strong>比较</strong>字符串，<strong>搜索</strong>字符串，<strong>提取</strong>子字符串以及创建具有翻</p>
+
+<p>译为<strong>大写</strong>或<strong>小写</strong>的所有字符的字符串的副本。</p>
+
+<h2 id="5-2-常用方法"><strong>5.2</strong> <strong>常用方法</strong></h2>
+
+<h3 id="判断功能的方法"><strong>判断功能的方法</strong></h3>
+
+<ul>
+<li><p><code>public boolean equals (Object anObject)</code> ：将此字符串与指定对象进行比较。</p></li>
+
+<li><p><code>public boolean equalsIgnoreCase (String anotherString)</code> ：将此字符串与指定对象进行比较，忽略大小</p></li>
+</ul>
+
+<p>写。</p>
+
+<h3 id="获取功能的方法"><strong>获取功能的方法</strong></h3>
+
+<ul>
+<li><p><code>public int length ()</code>：返回此字符串的长度。</p></li>
+
+<li><p><code>public String concat (String str)</code> ：将指定的字符串连接到该字符串的末尾。</p></li>
+
+<li><p><code>public char charAt (int index)</code>：返回指定索引处的 char值。</p></li>
+
+<li><p><code>public int indexOf (String str)</code>：返回指定子字符串第一次出现在该字符串内的索引。</p></li>
+
+<li><p><code>public String substring (int beginIndex)</code> ：返回一个子字符串，从beginIndex开始截取字符串到字符串结尾。</p></li>
+
+<li><p><code>public String substring (int beginIndex, int endIndex)</code>：返回一个子字符串，从beginIndex到endIndex截取字符串。含beginIndex，不含endIndex。</p></li>
+</ul>
+
+<h3 id="转换功能的方法"><strong>转换功能的方法</strong></h3>
+
+<ul>
+<li><p><code>public char[] toCharArray ()</code> ：将此字符串转换为新的字符数组。</p></li>
+
+<li><p><code>public byte[] getBytes ()</code> ：使用平台的默认字符集将该 String编码转换为新的字节数组。</p></li>
+
+<li><p><code>public String replace (CharSequence target, CharSequence replacement)</code> ：将与target匹配的字符串使用replacement字符串替换。</p></li>
+</ul>
+
+<h3 id="分割功能的方法"><strong>分割功能的方法</strong></h3>
+
+<ul>
+<li>public String[] split(String regex) ：将此字符串按照给定的regex（规则）拆分为字符串数组.方法演示，代码如下：</li>
+</ul>
+
+<h2 id="练习-3">练习</h2>
+
+<pre><code class="language-java">/**
+ * 拼接字符串
+ * 定义一个方法，把数组{1,2,3}按照指定个格式拼接成一
+ * 个字符串。格式参照如下：[word1#word2#word3]。
+ */
+public class String01 {
+    public static void main(String[] args) {
+        String[] strings={&quot;word1&quot;,&quot;word2&quot;,&quot;word3&quot;};
+        newString(strings);
+    }
+
+    public static void newString(String[] strings) {
+        String s1 = &quot;[&quot;;
+        for (int i = 0; i &lt; strings.length; i++) {
+            if (i &lt; strings.length - 1) {
+            s1 = s1.concat(strings[i]+&quot;#&quot;);
+            }else {
+            s1 = s1.concat(strings[i]+&quot;]&quot;);
+            }
+        }
+        System.out.println(s1);
+    }
+}
+
+</code></pre>
+
+<pre><code class="language-java">/**
+ * 统计字符个数
+ * 键盘录入一个字符，统计字符串中大小写字母及数字字符个数
+ */
+public class String02 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(&quot;请录入一个字符串:&quot;);
+        String s = sc.nextLine();
+        int big=0,small=0,count=0;
+
+        for (int i = 0; i &lt; s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') {
+                big++;
+            }else if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z'){
+                small++;
+            } else if (ch &gt;= '0' &amp;&amp; ch &lt;= '9') {
+                count++;
+            }else {
+                System.out.println(&quot;非法&quot;);
+            }
+        }
+        System.out.println(&quot;大写字母为:&quot;+big+&quot;,&quot;+&quot;小写字母为:&quot;+small+&quot;,&quot;+&quot;数字为:&quot;+count);
+    }
+}
+</code></pre>
+
+<h1 id="6-static关键字">6.static关键字</h1>
+
+<h2 id="6-1-概述"><strong>6.1</strong> <strong>概述</strong></h2>
+
+<p>关于 static 关键字的使用，它可以用来修饰的成员变量和成员方法，被修饰的成员是<strong>属于类</strong>的，而不是单单是属于某个对象的。也就是说，既然属于类，就可以不靠创建对象来调用了。</p>
+
+<h2 id="6-2-类变量">6.2<strong>类变量</strong></h2>
+
+<p>当 static 修饰成员变量时，该变量称为<strong>类变量</strong>。该类的每个对象都<strong>共享</strong>同一个类变量的值。任何对象都可以更改该类变量的值，但也可以在不创建该类的对象的情况下对类变量进行操作。</p>
+
+<ul>
+<li><strong>类变量</strong>：使用 static关键字修饰的成员变量。</li>
+</ul>
+
+<p>比如说，基础班新班开班，学员报到。现在想为每一位新来报到的同学编学号（sid），从第一名同学开始，sid为1，以此类推。学号必须是唯一的，连续的，并且与班级的人数相符，这样以便知道，要分配给下一名新同学的学号是多少。这样我们就需要一个变量，与单独的每一个学生对象无关，而是与整个班级同学数量有关。</p>
+
+<p>所以，我们可以这样定义一个静态变量numberOfStudent，代码如下：</p>
+
+<pre><code class="language-java">public class Student {
+private String name;
+private int age;
+// 学生的id
+private int sid;
+// 类变量，记录学生数量，分配学号
+public static int numberOfStudent = 0;
+public Student(String name, int age){
+this.name = name;
+this.age = age;
+// 通过 numberOfStudent 给学生分配学号
+this.sid = ++numberOfStudent;
+}
+// 打印属性值
+public void show() {
+System.out.println(&quot;Student : name=&quot; + name + &quot;, age=&quot; + age + &quot;, sid=&quot; + sid );
+}
+}
+</code></pre>
+
+<pre><code class="language-java">public class StuDemo {
+public static void main(String[] args) {
+Student s1 = new Student(&quot;张三&quot;, 23);
+Student s2 = new Student(&quot;李四&quot;, 24);
+Student s3 = new Student(&quot;王五&quot;, 25);
+Student s4 = new Student(&quot;赵六&quot;, 26);
+s1.show(); // Student : name=张三, age=23, sid=1
+s2.show(); // Student : name=李四, age=24, sid=2
+s3.show(); // Student : name=王五, age=25, sid=3
+s4.show(); // Student : name=赵六, age=26, sid=4
+}
+}
+</code></pre>
+
+<h2 id="6-3-静态方法">6.3<strong>静态方法</strong></h2>
+
+<p>当 static 修饰成员方法时，该方法称为<strong>类方法</strong> 。静态方法在声明中有 static ，建议使用类名来调用，而不需要创建类的对象。调用方式非常简单。</p>
+
+<ul>
+<li><strong>类方法</strong>：使用 static关键字修饰的成员方法，习惯称为<strong>静态方法</strong>。</li>
+</ul>
+
+<p><strong>静态方法调用的注意事项：</strong></p>
+
+<ul>
+<li><p>静态方法可以直接访问类变量和静态方法。</p></li>
+
+<li><p>静态方法<strong>不能直接访问</strong>普通成员变量或成员方法。反之，成员方法可以直接访问类变量或静态方法。</p></li>
+
+<li><p>静态方法中，不能使用<strong>this</strong>关键</p></li>
+</ul>
+
+<p><code>小贴士：静态方法只能访问静态成员。</code></p>
+
+<h2 id="6-4-静态代码块"><strong>6.4</strong> <strong>静态代码块</strong></h2>
+
+<ul>
+<li><strong>静态代码块</strong>：定义在成员位置，使用static修饰的代码块{ }。
+    位置：类中方法外。
+      执行：随着类的加载而执行且执行一次，优先于main方法和构造方法的执行。</li>
+</ul>
+
+<p>格式：</p>
+
+<pre><code class="language-java">public class ClassName{
+    static {
+    // 执行语句
+    }
+}
+</code></pre>
+
+<h1 id="7-arrays类">7.Arrays类</h1>
+
+<h2 id="7-1-概述"><strong>7.1</strong> <strong>概述</strong></h2>
+
+<p><code>java.util.Arrays</code> 此类包含用来操作数组的各种方法，比如排序和搜索等。其所有方法均为静态方法，调用起来
+非常简单。</p>
+
+<h2 id="7-2-操作数组的方法"><strong>7.2</strong> <strong>操作数组的方法</strong></h2>
+
+<p><code>public static String toString(int[] a)</code>：返回指定数组内容的字符串表示形式。</p>
+
+<pre><code class="language-java">public static void main(String[] args) {
+    // 定义int 数组
+    int[] arr = {2,34,35,4,657,8,69,9};
+    // 打印数组,输出地址值
+    System.out.println(arr); // [I@2ac1fdc4
+    // 数组内容转为字符串
+    String s = Arrays.toString(arr);
+    // 打印字符串,输出内容
+    System.out.println(s); // [2, 34, 35, 4, 657, 8, 69, 9]
+}
+</code></pre>
+
+<p><code>public static void sort(int[] a)</code> ：对指定的 int 型数组按数字升序进行排序。</p>
+
+<p>​       <code>注意: 如果是自定义排序类型,需要comparable或者comparator接口的支持</code></p>
+
+<pre><code class="language-java">public static void main(String[] args) {
+    // 定义int 数组
+    int[] arr = {24, 7, 5, 48, 4, 46, 35, 11, 6, 2};
+    System.out.println(&quot;排序前:&quot;+ Arrays.toString(arr)); // 排序前:[24, 7, 5, 48, 4, 46, 35, 11, 6,
+    2]
+    // 升序排序
+    Arrays.sort(arr);
+    System.out.println(&quot;排序后:&quot;+ Arrays.toString(arr));// 排序后:[2, 4, 5, 6, 7, 11, 24, 35, 46,
+    48]
+}
+</code></pre>
+
+<h2 id="练习-4">练习</h2>
+
+<pre><code class="language-java">/**
+ * 请使用 Arrays 相关的API，将一个随机字符串中的所有字符升序排列，并倒序打印。
+ */
+public class Arrays01 {
+    public static void main(String[] args) {
+        String line = &quot;ysKUreaytWTRHsgFdSAoidq&quot;;
+        char[] chars = line.toCharArray();
+
+        Arrays.sort(chars);
+        for (int i = chars.length - 1; i &gt;= 0; i--) {
+            System.out.println(chars[i]+&quot; &quot;);
+        }
+    }
+}
+</code></pre>
+
+<h1 id="8-math类">8.Math类</h1>
+
+<h2 id="8-1概述">8.1概述</h2>
+
+<p>java.lang.Math 类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。类似这样的工具 类，其所有方法均为静态方法，并且不会创建对象，调用起来非常简单。</p>
+
+<h2 id="8-2-基本运算的方法"><strong>8.2</strong> <strong>基本运算的方法</strong></h2>
+
+<p><code>public static double abs(double a)</code>：返回 double 值的绝对值。</p>
+
+<p><code>public static double ceil(double a</code>) ：返回大于等于参数的最小的整数。</p>
+
+<p><code>public static double floor(double a)</code>：返回小于等于参数最大的整数。</p>
+
+<p><code>public static long round(double a)</code> ：返回最接近参数的 long。(相当于四舍五入方法)</p>
+
+<h1 id="9-object类">9.Object类</h1>
+
+<p><code>java.lang.Object</code>类是Java语言中的根类，即所有类的父类。它中描述的所有方法子类都可以使用。在对象实例化的时候，最终找的父类就是Object。</p>
+
+<p>如果一个类没有特别指定父类，  那么默认则继承自Object类。例如：</p>
+
+<pre><code class="language-java">public class MyClass /*extends Object*/ {
+  	// ...
+}
+</code></pre>
+
+<p><strong>toString方法</strong></p>
+
+<p><strong>方法摘要</strong></p>
+
+<ul>
+<li><code>public String toString()</code>：返回该对象的字符串表示。</li>
+</ul>
+
+<p>toString方法返回该对象的字符串表示，其实该字符串内容就是对象的类型+@+内存地址值。</p>
+
+<p>由于toString方法返回的结果是内存地址，而在开发中，经常需要按照对象的属性得到相应的字符串表现形式，因此也需要重写它。</p>
+
+<p><strong>覆盖重写</strong></p>
+
+<p>如果不希望使用toString方法的默认行为，则可以对它进行覆盖重写。例如自定义的Person类：</p>
+
+<pre><code class="language-java">public class Person {  
+    private String name;
+    private int age;
+
+    @Override
+    public String toString() {
+        return &quot;Person{&quot; + &quot;name='&quot; + name + '\'' + &quot;, age=&quot; + age + '}';
+    }
+
+    // 省略构造器与Getter Setter
+}
+</code></pre>
+
+<p><strong>equals方法</strong></p>
+
+<p><strong>方法摘要</strong></p>
+
+<ul>
+<li><code>public boolean equals(Object obj)</code>：指示其他某个对象是否与此对象“相等”。</li>
+</ul>
+
+<p>调用成员方法equals并指定参数为另一个对象，则可以判断这两个对象是否是相同的。这里的“相同”有默认和自定义两种方式。</p>
+
+<p><strong>默认地址比较</strong></p>
+
+<p>如果没有覆盖重写equals方法，那么Object类中默认进行<code>==</code>运算符的对象地址比较，只要不是同一个对象，结果必然为false。</p>
+
+<p><strong>对象内容比较</strong></p>
+
+<p>如果希望进行对象的内容比较，即所有或指定的部分成员变量相同就判定两个对象相同，则可以覆盖重写equals方法。例如：</p>
+
+<pre><code class="language-java">import java.util.Objects;
+
+public class Person {	
+	private String name;
+	private int age;
+	
+    @Override
+    public boolean equals(Object o) {
+        // 如果对象地址一样，则认为相同
+        if (this == o)
+            return true;
+        // 如果参数为空，或者类型信息不一样，则认为不同
+        if (o == null || getClass() != o.getClass())
+            return false;
+        // 转换为当前类型
+        Person person = (Person) o;
+        // 要求基本类型相等，并且将引用类型交给java.util.Objects类的equals静态方法取用结果
+        return age == person.age &amp;&amp; Objects.equals(name, person.name);
+    }
+}
+</code></pre>
+
+<h1 id="10-日期时间类">10.日期时间类 *</h1>
+
+<p><strong>Date类</strong></p>
+
+<p><code>java.util.Date</code>类 表示特定的瞬间，精确到毫秒。</p>
+
+<ul>
+<li>public Date()`：分配Date对象并初始化此对象，以表示分配它的时间（精确到毫秒）。</li>
+<li><code>public Date(long date)</code>：分配Date对象并初始化此对象，以表示自从标准基准时间（称为“历元（epoch）”，即1970年1月1日00:00:00 GMT）以来的指定毫秒数。</li>
+</ul>
+
+<p><strong>DateFormat类</strong></p>
+
+<p><code>java.text.DateFormat</code> 是日期/时间格式化子类的抽象类，我们通过这个类可以帮我们完成日期和文本之间的转换,<strong>也就是可以在Date对象与String对象之间进行来回转换。</strong></p>
+
+<ul>
+<li><strong>格式化</strong>：按照指定的格式，从Date对象转换为String对象。</li>
+<li><strong>解析</strong>：按照指定的格式，从String对象转换为Date对象。</li>
+</ul>
+
+<h3 id="构造方法">构造方法</h3>
+
+<p>由于DateFormat为抽象类，不能直接使用，所以需要常用的子类<code>java.text.SimpleDateFormat</code>。这个类需要一个模式（格式）来指定格式化或解析的标准。构造方法为：</p>
+
+<ul>
+<li><code>public SimpleDateFormat(String pattern)</code>：用给定的模式和默认语言环境的日期格式符号构造SimpleDateFormat。</li>
+</ul>
+
+<p>参数pattern是一个字符串，代表日期时间的自定义格式。</p>
+
+<h3 id="格式规则">格式规则</h3>
+
+<p>常用的格式规则为：</p>
+
+<table>
+<thead>
+<tr>
+<th>标识字母（区分大小写）</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>y</td>
+<td>年</td>
+</tr>
+
+<tr>
+<td>M</td>
+<td>月</td>
+</tr>
+
+<tr>
+<td>d</td>
+<td>日</td>
+</tr>
+
+<tr>
+<td>H</td>
+<td>时</td>
+</tr>
+
+<tr>
+<td>m</td>
+<td>分</td>
+</tr>
+
+<tr>
+<td>s</td>
+<td>秒</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="language-java">import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+public class Demo02SimpleDateFormat {
+    public static void main(String[] args) {
+        // 对应的日期格式如：2018-01-16 15:06:38
+        DateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+    }    
+}
+</code></pre>
+
+<h3 id="常用方法">常用方法</h3>
+
+<p>DateFormat类的常用方法有：</p>
+
+<ul>
+<li><p><code>public String format(Date date)</code>：将Date对象格式化为字符串。</p>
+
+<pre><code class="language-java">import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+/*
+把Date对象转换成String
+*/
+public class Demo03DateFormatMethod {
+  public static void main(String[] args) {
+      Date date = new Date();
+      // 创建日期格式化对象,在获取格式化对象时可以指定风格
+      DateFormat df = new SimpleDateFormat(&quot;yyyy年MM月dd日&quot;);
+      String str = df.format(date);
+      System.out.println(str); // 2008年1月23日
+  }
+}
+</code></pre></li>
+
+<li><p><code>public Date parse(String source)</code>：将字符串解析为Date对象。</p>
+
+<pre><code class="language-java">import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+/*
+把String转换成Date对象
+*/
+public class Demo04DateFormatMethod {
+  public static void main(String[] args) throws ParseException {
+      DateFormat df = new SimpleDateFormat(&quot;yyyy年MM月dd日&quot;);
+      String str = &quot;2018年12月11日&quot;;
+      Date date = df.parse(str);
+      System.out.println(date); // Tue Dec 11 00:00:00 CST 2018
+  }
+}
+</code></pre></li>
+</ul>
+
+<p><strong>Calendar类</strong></p>
+
+<p><code>java.util.Calendar</code>是日历类，在Date后出现，替换掉了许多Date的方法。<strong>该类将所有可能用到的时间信息封装为静态成员变量，方便获取。日历类就是方便获取各个时间属性的。</strong></p>
+
+<h3 id="获取方式">获取方式</h3>
+
+<p>Calendar为抽象类，由于语言敏感性，Calendar类在创建对象时并非直接创建，而是通过静态方法创建，返回子类对象，如下：</p>
+
+<p>Calendar静态方法</p>
+
+<ul>
+<li><code>public static Calendar getInstance()</code>：使用默认时区和语言环境获得一个日历</li>
+</ul>
+
+<p>常用方法:</p>
+
+<p>根据Calendar类的API文档，常用方法有：</p>
+
+<ul>
+<li><code>public int get(int field)</code>：返回给定日历字段的值。</li>
+<li><code>public void set(int field, int value)</code>：将给定的日历字段设置为给定值。</li>
+<li><code>public abstract void add(int field, int amount)</code>：根据日历的规则，为给定的日历字段添加或减去指定的时间量。</li>
+<li><code>public Date getTime()</code>：返回一个表示此Calendar时间值（从历元到现在的毫秒偏移量）的Date对象。</li>
+</ul>
+
+<p>Calendar类中提供很多成员常量，代表给定的日历字段：</p>
+
+<p>Calendar类中提供很多成员常量，代表给定的日历字段：</p>
+
+<table>
+<thead>
+<tr>
+<th>字段值</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>YEAR</td>
+<td>年</td>
+</tr>
+
+<tr>
+<td>MONTH</td>
+<td>月（从0开始，可以+1使用）</td>
+</tr>
+
+<tr>
+<td>DAY_OF_MONTH</td>
+<td>月中的天（几号）</td>
+</tr>
+
+<tr>
+<td>HOUR</td>
+<td>时（12小时制）</td>
+</tr>
+
+<tr>
+<td>HOUR_OF_DAY</td>
+<td>时（24小时制）</td>
+</tr>
+
+<tr>
+<td>MINUTE</td>
+<td>分</td>
+</tr>
+
+<tr>
+<td>SECOND</td>
+<td>秒</td>
+</tr>
+
+<tr>
+<td>DAY_OF_WEEK</td>
+<td>周中的天（周几，周日为1，可以-1使用）</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="get-set方法">get/set方法</h4>
+
+<p>get方法用来获取指定字段的值，set方法用来设置指定字段的值，代码使用演示：</p>
+
+<pre><code class="language-java">import java.util.Calendar;
+
+public class CalendarUtil {
+    public static void main(String[] args) {
+        // 创建Calendar对象
+        Calendar cal = Calendar.getInstance();
+        // 设置年 
+        int year = cal.get(Calendar.YEAR);
+        // 设置月
+        int month = cal.get(Calendar.MONTH) + 1;
+        // 设置日
+        int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        System.out.print(year + &quot;年&quot; + month + &quot;月&quot; + dayOfMonth + &quot;日&quot;);
+    }    
+}
+</code></pre>
+
+<pre><code class="language-java">import java.util.Calendar;
+
+public class Demo07CalendarMethod {
+    public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2020);
+        System.out.print(year + &quot;年&quot; + month + &quot;月&quot; + dayOfMonth + &quot;日&quot;); // 2020年1月17日
+    }
+}
+</code></pre>
+
+<h4 id="add方法">add方法</h4>
+
+<p>add方法可以对指定日历字段的值进行加减操作，如果第二个参数为正数则加上偏移量，如果为负数则减去偏移量。代码如：</p>
+
+<pre><code class="language-java">import java.util.Calendar;
+
+public class Demo08CalendarMethod {
+    public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+        System.out.print(year + &quot;年&quot; + month + &quot;月&quot; + dayOfMonth + &quot;日&quot;); // 2018年1月17日
+        // 使用add方法
+        cal.add(Calendar.DAY_OF_MONTH, 2); // 加2天
+        cal.add(Calendar.YEAR, -3); // 减3年
+        System.out.print(year + &quot;年&quot; + month + &quot;月&quot; + dayOfMonth + &quot;日&quot;); // 2015年1月18日; 
+    }
+}
+</code></pre>
+
+<h4 id="gettime方法">getTime方法</h4>
+
+<p>Calendar中的getTime方法并不是获取毫秒时刻，而是拿到对应的Date对象。</p>
+
+<pre><code class="language-java">import java.util.Calendar;
+import java.util.Date;
+
+public class Demo09CalendarMethod {
+    public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        System.out.println(date); // Tue Jan 16 16:03:09 CST 2018
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>小贴士：</p>
+
+<p>​     西方星期的开始为周日，中国为周一。</p>
+
+<p>​     在Calendar类中，月份的表示是以0-11代表1-12月。</p>
+
+<p>​     日期是有大小关系的，时间靠后，时间越大。</p>
+</blockquote>
+
+<h1 id="11-system类">11.System类</h1>
+
+<p><code>java.lang.System</code>类中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作，在System类的API文档中，常用的方法有：</p>
+
+<ul>
+<li><code>public static long currentTimeMillis()</code>：返回以毫秒为单位的当前时间。</li>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+
+<h3 id="练习-5">练习</h3>
+
+<p>验证for循环打印数字1-9999所需要使用的时间（毫秒）</p>
+
+<pre><code class="language-java">public class SystemTest1 {
+    public static void main(String[] args) {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i &lt; 10000; i++) {
+            System.out.println(i);
+        }
+        long end = System.currentTimeMillis();
+        System.out.println(&quot;共耗时毫秒：&quot; + (end - start));
+    }
+}
+</code></pre>
+
+<h2 id="3-2-arraycopy方法">3.2 arraycopy方法</h2>
+
+<ul>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+
+<p>数组的拷贝动作是系统级的，性能很高。System.arraycopy方法具有5个参数，含义分别为：</p>
+
+<table>
+<thead>
+<tr>
+<th>参数序号</th>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>参数含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>src</td>
+<td>Object</td>
+<td>源数组</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>srcPos</td>
+<td>int</td>
+<td>源数组索引起始位置</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>dest</td>
+<td>Object</td>
+<td>目标数组</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>destPos</td>
+<td>int</td>
+<td>目标数组索引起始位置</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>length</td>
+<td>int</td>
+<td>复制元素个数</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="练习-6">练习</h3>
+
+<p>将src数组中前3个元素，复制到dest数组的前3个位置上复制元素前：src数组元素[1,2,3,4,5]，dest数组元素[6,7,8,9,10]复制元素后：src数组元素[1,2,3,4,5]，dest数组元素[1,2,3,9,10]</p>
+
+<pre><code class="language-java">import java.util.Arrays;
+
+public class Demo11SystemArrayCopy {
+    public static void main(String[] args) {
+        int[] src = new int[]{1,2,3,4,5};
+        int[] dest = new int[]{6,7,8,9,10};
+        System.arraycopy( src, 0, dest, 0, 3);
+        /*代码运行后：两个数组中的元素发生了变化
+         src数组元素[1,2,3,4,5]
+         dest数组元素[1,2,3,9,10]
+        */
+    }
+}
+</code></pre>
+
+<h1 id="12-stringbuilder类">12.StringBuilder类</h1>
+
+<p><strong>字符串拼接问题</strong></p>
+
+<p>由于String类的对象内容不可改变，所以每当进行字符串拼接时，总是会在内存中创建一个新的对象。例如：</p>
+
+<pre><code class="language-java">public class StringDemo {
+    public static void main(String[] args) {
+        String s = &quot;Hello&quot;;
+        s += &quot;World&quot;;
+        System.out.println(s);
+    }
+}
+</code></pre>
+
+<p><strong>StringBuilder概述</strong></p>
+
+<p>查阅<code>java.lang.StringBuilder</code>的API，StringBuilder又称为可变字符序列，它是一个类似于 String 的字符串缓冲区，通过某些方法调用可以改变该序列的长度和内容。</p>
+
+<p><strong>原来StringBuilder是个字符串的缓冲区，即它是一个容器，容器中可以装很多字符串。并且能够对其中的字符串进行各种操作。</strong></p>
+
+<p>它的内部拥有一个数组用来存放字符串内容，进行字符串拼接时，直接在数组中加入新内容。StringBuilder会自动维护数组的扩容。原理如下图所示：(默认16字符空间，超过自动扩充)</p>
+
+<p><img src="\images\1569333279748.png" alt="1569333279748" /></p>
+
+<h2 id="4-3-构造方法">4.3 构造方法</h2>
+
+<p>根据StringBuilder的API文档，常用构造方法有2个：</p>
+
+<ul>
+<li><code>public StringBuilder()</code>：构造一个空的StringBuilder容器。</li>
+<li><code>public StringBuilder(String str)</code>：构造一个StringBuilder容器，并将字符串添加进去。</li>
+</ul>
+
+<h2 id="4-4-常用方法">4.4 常用方法</h2>
+
+<p>StringBuilder常用的方法有2个：</p>
+
+<ul>
+<li><code>public StringBuilder append(...)</code>：添加任意类型数据的字符串形式，并返回当前对象自身。</li>
+<li><code>public String toString()</code>：将当前StringBuilder对象转换为String对象。</li>
+<li><code>public String reverse(String str)</code> :将一个字符串反转</li>
+</ul>
+
+<h3 id="append方法">append方法</h3>
+
+<p>append方法具有多种重载形式，可以接收任意类型的参数。任何数据作为参数都会将对应的字符串内容添加到StringBuilder中。例如：</p>
+
+<pre><code class="language-java">public class Demo02StringBuilder {
+	public static void main(String[] args) {
+		//创建对象
+		StringBuilder builder = new StringBuilder();
+		//public StringBuilder append(任意类型)
+		StringBuilder builder2 = builder.append(&quot;hello&quot;);
+		//对比一下
+		System.out.println(&quot;builder:&quot;+builder);
+		System.out.println(&quot;builder2:&quot;+builder2);
+		System.out.println(builder == builder2); //true
+	    // 可以添加 任何类型
+		builder.append(&quot;hello&quot;);
+		builder.append(&quot;world&quot;);
+		builder.append(true);
+		builder.append(100);
+		// 在我们开发中，会遇到调用一个方法后，返回一个对象的情况。然后使用返回的对象继续调用方法。
+        // 这种时候，我们就可以把代码现在一起，如append方法一样，代码如下
+		//链式编程
+		builder.append(&quot;hello&quot;).append(&quot;world&quot;).append(true).append(100);
+		System.out.println(&quot;builder:&quot;+builder);
+	}
+}
+</code></pre>
+
+<p><code>备注：StringBuilder已经覆盖重写了Object当中的toString方法。</code></p>
+
+<h3 id="tostring方法">toString方法</h3>
+
+<p>通过toString方法，StringBuilder对象将会转换为不可变的String对象.</p>
+
+<h1 id="13-包装类">13.包装类</h1>
+
+<p>Java提供了两个类型系统，基本类型与引用类型，使用基本类型在于效率，然而很多情况，会创建对象使用，因为对象可以做更多的功能，如果想要我们的基本类型像对象一样操作，就可以使用基本类型对应的包装类，如下：</p>
+
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>对应的包装类（位于java.lang包中）</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+
+<tr>
+<td>int</td>
+<td><strong>Integer</strong></td>
+</tr>
+
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+
+<tr>
+<td>char</td>
+<td><strong>Character</strong></td>
+</tr>
+
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>装箱和拆箱</strong></p>
+
+<p>基本类型与对应的包装类对象之间，来回转换的过程称为”装箱“与”拆箱“：</p>
+
+<ul>
+<li><strong>装箱</strong>：从基本类型转换为对应的包装类对象。</li>
+<li><strong>拆箱</strong>：从包装类对象转换为对应的基本类型。</li>
+</ul>
+
+<p>用Integer与 int为例：（看懂代码即可）</p>
+
+<p>基本数值&mdash;-&gt;包装对象</p>
+
+<pre><code class="language-java">Integer i = new Integer(4);//使用构造函数函数
+Integer iii = Integer.valueOf(4);//使用包装类中的valueOf方法
+</code></pre>
+
+<h2 id="5-3自动装箱与自动拆箱">5.3自动装箱与自动拆箱</h2>
+
+<p>由于我们经常要做基本类型与包装类之间的转换，从Java 5（JDK 1.5）开始，基本类型与包装类的装箱、拆箱动作可以自动完成。例如：</p>
+
+<pre><code class="language-java">Integer i = 4;//自动装箱。相当于Integer i = Integer.valueOf(4);
+i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue() + 5;
+//加法运算完成后，再次装箱，把基本数值转成对象。
+</code></pre>
+
+<h2 id="5-3-基本类型与字符串之间的转换">5.3 基本类型与字符串之间的转换</h2>
+
+<h3 id="基本类型转换为string">基本类型转换为String</h3>
+
+<p>基本类型转换String总共有三种方式，查看课后资料可以得知，这里只讲最简单的一种方式：</p>
+
+<pre><code class="language-java">基本类型直接与””相连接即可；如：34+&quot;&quot;
+</code></pre>
+
+<p><strong>Sring转换成对应的基本类型</strong></p>
+
+<p>除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型：</p>
+
+<ul>
+<li><code>public static byte parseByte(String s)</code>：将字符串参数转换为对应的byte基本类型。</li>
+<li><code>public static short parseShort(String s)</code>：将字符串参数转换为对应的short基本类型。</li>
+<li><code>public static int parseInt(String s)</code>：将字符串参数转换为对应的int基本类型。</li>
+<li><code>public static long parseLong(String s)</code>：将字符串参数转换为对应的long基本类型。</li>
+<li><code>public static float parseFloat(String s)</code>：将字符串参数转换为对应的float基本类型。</li>
+<li><code>public static double parseDouble(String s)</code>：将字符串参数转换为对应的double基本类型。</li>
+<li><code>public static boolean parseBoolean(String s)</code>：将字符串参数转换为对应的boolean基本类型。</li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e5%b8%b8%e7%94%a8API1&nbsp;-&nbsp;%e5%96%9c%e6%ac%a2%e5%85%bb%e7%8b%97%2c%e4%b8%8d%e7%88%b1%e6%b4%97%e5%a4%b4%21&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f01%25E5%25B8%25B8%25E7%2594%25A8api%2f%25E5%25B8%25B8%25E7%2594%25A8api1%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f01%25E5%25B8%25B8%25E7%2594%25A8api%2f%25E5%25B8%25B8%25E7%2594%25A8api1%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f01%25E5%25B8%25B8%25E7%2594%25A8api%2f%25E5%25B8%25B8%25E7%2594%25A8api1%2f&amp;description=%e5%b8%b8%e7%94%a8API1"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f01%25E5%25B8%25B8%25E7%2594%25A8api%2f%25E5%25B8%25B8%25E7%2594%25A8api1%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/01%E5%B8%B8%E7%94%A8api\/%E5%B8%B8%E7%94%A8api1\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/01%E5%B8%B8%E7%94%A8api\/%E5%B8%B8%E7%94%A8api1\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+          <section class="post">
+              <h2>多线程</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/">
+          <section class="post">
+              <h2>消息队列与GridFS</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">喜欢养狗,不爱洗头!</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

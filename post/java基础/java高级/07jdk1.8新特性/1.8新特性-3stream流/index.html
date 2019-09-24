@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="1.8新特性-3Stream流"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="1.8新特性-3Stream流 &middot; 喜欢养狗,不爱洗头!" />
+  	<meta property="og:site_name" content="喜欢养狗,不爱洗头!" />
+  	<meta property="og:url" content="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="jc" />
+    
+    <meta property="article:tag" content="java高级" />
+    
+    <meta property="article:tag" content="jdk新特性" />
+    
+    
+
+    <title>1.8新特性-3Stream流 &middot; 喜欢养狗,不爱洗头!</title>
+
+    
+    <meta name="description" content="Stream流 说到Stream便容易想到I/O Stream，而实际上，谁规定“流”就一定是“IO流”呢？在Java 8中，得益于Lambda所带
+来的函数式编程，引入了一个全新的Stream概念，用于解决已有集合类库既有的弊端。
+引言 传统集合的多步遍历代码
+几乎所有的集合（如 Collection 接口或 Map" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="喜欢养狗,不爱洗头!" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "1.8新特性-3Stream流",
+    "name": "1.8新特性-3Stream流",
+    "wordCount":  1714 ,
+    "timeRequired": "PT9M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "jc, java高级, jdk新特性",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ms">ms</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/spring">Spring&amp;SpringMVC相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/mybatis">Mybatis相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/springcloud">SpringCloud微服务相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">1.8新特性-3Stream流</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/jc/">#jc</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/jdk%E6%96%B0%E7%89%B9%E6%80%A7/">#jdk新特性</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="stream-流"><strong>Stream</strong>流</h1>
+
+<p>说到Stream便容易想到I/O Stream，而实际上，谁规定“流”就一定是“IO流”呢？在Java 8中，得益于Lambda所带</p>
+
+<p>来的函数式编程，引入了一个<strong>全新的</strong><strong>Stream</strong><strong>概念</strong>，用于解决已有集合类库既有的弊端。</p>
+
+<h2 id="引言"><strong>引言</strong></h2>
+
+<p><strong>传统集合的多步遍历代码</strong></p>
+
+<p>几乎所有的集合（如 Collection 接口或 Map 接口等）都支持直接或间接的遍历操作。而当我们需要对集合中的元</p>
+
+<p>素进行操作的时候，除了必需的添加、删除、获取外，最典型的就是集合遍历。例如：</p>
+
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+public class Demo01ForEach {
+public static void main(String[] args) {
+List&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;张无忌&quot;);
+list.add(&quot;周芷若&quot;);
+list.add(&quot;赵敏&quot;);
+list.add(&quot;张强&quot;);
+list.add(&quot;张三丰&quot;);
+for (String name : list) {
+System.out.println(name);
+}
+}
+}
+</code></pre>
+
+<p>这是一段非常简单的集合遍历操作：对集合中的每一个字符串都进行打印输出操作。</p>
+
+<p><strong>循环遍历的弊端</strong></p>
+
+<p>Java 8的Lambda让我们可以更加专注于<strong>做什么</strong>（What），而不是<strong>怎么做</strong>（How），这点此前已经结合内部类进行</p>
+
+<p>了对比说明。现在，我们仔细体会一下上例代码，可以发现：</p>
+
+<ul>
+<li><p>for循环的语法就是“<strong>怎么做</strong>”</p></li>
+
+<li><p>for循环的循环体才是“<strong>做什么</strong>”</p></li>
+</ul>
+
+<p>为什么使用循环？因为要进行遍历。但循环是遍历的唯一方式吗？遍历是指每一个元素逐一进行处理，<strong>而并不是从</strong></p>
+
+<p><strong>第一个到最后一个顺次处理的循环</strong>。前者是目的，后者是方式。</p>
+
+<p>试想一下，如果希望对集合中的元素进行筛选过滤：</p>
+
+<ol>
+<li><p>将集合A根据条件一过滤为<strong>子集</strong><strong>B</strong>；</p></li>
+
+<li><p>然后再根据条件二过滤为<strong>子集</strong><strong>C</strong>。</p></li>
+</ol>
+
+<p>那怎么办？在Java 8之前的做法可能为：</p>
+
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+public class Demo02NormalFilter {
+public static void main(String[] args) {
+    List&lt;String&gt; list = new ArrayList&lt;&gt;();
+    list.add(&quot;张无忌&quot;);
+    list.add(&quot;周芷若&quot;);
+    list.add(&quot;赵敏&quot;);
+    list.add(&quot;张强&quot;);
+    list.add(&quot;张三丰&quot;);
+    List&lt;String&gt; zhangList = new ArrayList&lt;&gt;();
+    for (String name : list) {
+        if (name.startsWith(&quot;张&quot;)) {
+        zhangList.add(name);
+    }
+    }
+    List&lt;String&gt; shortList = new ArrayList&lt;&gt;();
+    for (String name : zhangList) {
+        if (name.length() == 3) {
+        shortList.add(name);
+    }
+    }
+    for (String name : shortList) {
+    	System.out.println(name);
+    }
+}
+}
+</code></pre>
+
+<p>这段代码中含有三个循环，每一个作用不同：</p>
+
+<ol>
+<li><p>首先筛选所有姓张的人；</p></li>
+
+<li><p>然后筛选名字有三个字的人；</p></li>
+
+<li><p>最后进行对结果进行打印输出。</p></li>
+</ol>
+
+<p>每当我们需要对集合中的元素进行操作的时候，总是需要进行循环、循环、再循环。这是理所当然的么？<strong>不是。</strong>循</p>
+
+<p>环是做事情的方式，而不是目的。另一方面，使用线性循环就意味着只能遍历一次。如果希望再次遍历，只能再使</p>
+
+<p>用另一个循环从头开始。</p>
+
+<p>那，Lambda的衍生物Stream能给我们带来怎样更加优雅的写法呢？</p>
+
+<p><strong>Stream的更优写法</strong></p>
+
+<p>下面来看一下借助Java 8的Stream API，什么才叫优雅：</p>
+
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+public class Demo03StreamFilter {
+public static void main(String[] args) {
+List&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;张无忌&quot;);
+list.add(&quot;周芷若&quot;);
+list.add(&quot;赵敏&quot;);
+list.add(&quot;张强&quot;);
+list.add(&quot;张三丰&quot;);
+list.stream()
+.filter(s ‐&gt; s.startsWith(&quot;张&quot;))
+.filter(s ‐&gt; s.length() == 3)
+.forEach(System.out::println);
+}
+}
+</code></pre>
+
+<p>直接阅读代码的字面意思即可完美展示无关逻辑方式的语义：<strong>获取流、过滤姓张、过滤长度为</strong><strong>3</strong><strong>、逐一打印</strong>。代码中并没有体现使用线性循环或是其他任何算法进行遍历，我们真正要做的事情内容被更好地体现在代码中。</p>
+
+<h2 id="流式思想概述"><strong>流式思想概述</strong></h2>
+
+<p><strong>注意：请暂时忘记对传统IO流的固有印象！</strong></p>
+
+<p>整体来看，流式思想类似于工厂车间的“<strong>生产流水线</strong>”。</p>
+
+<p>当需要对多个元素进行操作（特别是多步操作）的时候，考虑到性能及便利性，我们应该首先拼好一个“模型”步骤</p>
+
+<p>方案，然后再按照方案去执行它。</p>
+
+<p>这张图中展示了过滤、映射、跳过、计数等多步操作，这是一种集合元素的处理方案，而方案就是一种“函数模型”。图中的每一个方框都是一个“流”，调用指定的方法，可以从一个流模型转换为另一个流模型。而最右侧的数字 3是最终结果。</p>
+
+<p>这里的 filter 、 map 、 skip 都是在对函数模型进行操作，集合元素并没有真正被处理。只有当终结方法 count执行的时候，整个模型才会按照指定策略执行操作。而这得益于Lambda的延迟执行特性。</p>
+
+<p><code>备注：“Stream流”其实是一个集合元素的函数模型，它并不是集合，也不是数据结构，其本身并不存储任何 元素（或其地址值）。</code></p>
+
+<p>Stream（流）是一个来自数据源的元素队列</p>
+
+<ul>
+<li><p>元素是特定类型的对象，形成一个队列。 Java中的Stream并不会存储元素，而是按需计算。</p></li>
+
+<li><p><strong>数据源</strong> 流的来源。 可以是集合，数组 等。</p></li>
+</ul>
+
+<p>和以前的Collection操作不同， Stream操作还有两个基础的特征：</p>
+
+<ul>
+<li><p><strong>Pipelining</strong>: 中间操作都会返回流对象本身。 这样多个操作可以串联成一个管道， 如同流式风格（flfluent style）。 这样做可以对操作进行优化， 比如延迟执行(laziness)和短路( short-circuiting)。</p></li>
+
+<li><p><strong>内部迭代</strong>： 以前对集合遍历都是通过Iterator或者增强for的方式, 显式的在集合外部进行迭代， 这叫做外部迭 代。 Stream提供了内部迭代的方式，流可以直接调用遍历方法。</p></li>
+</ul>
+
+<p>当使用一个流的时候，通常包括三个基本步骤：获取一个数据源（source）→ 数据转换→执行操作获取想要的结</p>
+
+<p>果，<strong>每次转换原有 Stream 对象不改变，返回一个新的 Stream 对象（可以有多次转换），这就允许对其操作可以</strong></p>
+
+<p><strong>像链条一样排列，变成一个管道。</strong></p>
+
+<h2 id="获取流"><strong>获取流</strong></h2>
+
+<p><code>java.util.stream.Stream</code> 是Java 8新加入的最常用的流接口。（<strong>这并不是一个函数式接口</strong>。）</p>
+
+<p>获取一个流非常简单，有以下几种常用的方式：</p>
+
+<ul>
+<li><p>所有的 Collection 集合都可以通过 stream 默认方法获取流；</p></li>
+
+<li><p>Stream 接口的静态方法 of 可以获取数组对应的流。</p></li>
+</ul>
+
+<p><strong>根据Collection获取流</strong></p>
+
+<p>首先， <code>java.util.Collection</code> 接口中加入了<code>default</code>方法 stream 用来获取流，所以其所有实现类均可获取流。</p>
+
+<pre><code class="language-java">import java.util.*;
+import java.util.stream.Stream;
+public class Demo04GetStream {
+public static void main(String[] args) {
+    List&lt;String&gt; list = new ArrayList&lt;&gt;();
+    // ...
+    Stream&lt;String&gt; stream1 = list.stream();
+    Set&lt;String&gt; set = new HashSet&lt;&gt;();
+    // ...
+    Stream&lt;String&gt; stream2 = set.stream();
+    Vector&lt;String&gt; vector = new Vector&lt;&gt;();
+    // ...
+    Stream&lt;String&gt; stream3 = vector.stream();
+}
+}
+</code></pre>
+
+<p><strong>根据Map获取流</strong></p>
+
+<p><code>java.util.Map</code> 接口不是 Collection 的子接口，<strong>且其K-V数据结构不符合流元素的单一特征，所以获取对应的流</strong></p>
+
+<p><strong>需要分key、value或entry等情况：</strong></p>
+
+<pre><code class="language-java">import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
+public class Demo05GetStream {
+public static void main(String[] args) {
+        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+        // ...
+        Stream&lt;String&gt; keyStream = map.keySet().stream();
+        Stream&lt;String&gt; valueStream = map.values().stream();
+        Stream&lt;Map.Entry&lt;String, String&gt;&gt; entryStream = map.entrySet().stream();
+	}
+}
+</code></pre>
+
+<p><strong>根据数组获取流</strong></p>
+
+<p>如果使用的不是集合或映射而是数组，由于数组对象不可能添加默认方法，所以 Stream 接口中提供了**<strong>静态方法</strong>
+of** ，使用很简单：</p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo06GetStream {
+    public static void main(String[] args) {
+        String[] array = { &quot;张无忌&quot;, &quot;张翠山&quot;, &quot;张三丰&quot;, &quot;张一元&quot; };
+        Stream&lt;String&gt; stream = Stream.of(array);
+    }
+}
+</code></pre>
+
+<p><code>备注： of 方法的参数其实是一个可变参数，所以支持数组。</code></p>
+
+<h2 id="常用方法"><strong>常用方法</strong></h2>
+
+<p>流模型的操作很丰富，这里介绍一些常用的API。这些方法可以被分成两种：</p>
+
+<ul>
+<li><p><strong>延迟方法</strong>：返回值类型仍然是 Stream 接口自身类型的方法，因此支持链式调用。（除了终结方法外，其余方 法均为延迟方法。）</p></li>
+
+<li><p><strong>终结方法</strong>：返回值类型不再是 Stream 接口自身类型的方法，因此不再支持类似 StringBuilder 那样的链式调 用。本小节中，<strong>终结方法包括 count 和 forEach 方法。</strong></p></li>
+</ul>
+
+<h3 id="逐一处理-foreach"><strong>逐一处理：forEach</strong></h3>
+
+<p>虽然方法名字叫 forEach ，但是与for循环中的“for-each”昵称不同。</p>
+
+<pre><code class="language-java">void forEach(Consumer&lt;? super T&gt; action);
+</code></pre>
+
+<p>该方法接收一个 Consumer 接口函数，会将每一个流元素交给该函数进行处理。</p>
+
+<p><strong>复习Consumer接口</strong></p>
+
+<pre><code class="language-java">java.util.function.Consumer&lt;T&gt;接口是一个消费型接口。
+Consumer接口中包含抽象方法void accept(T t)，意为消费一个指定泛型的数据。
+</code></pre>
+
+<p><strong>基本使用：</strong></p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo12StreamForEach {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; stream = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);
+        stream.forEach(name‐&gt; System.out.println(name));
+    }
+}	
+</code></pre>
+
+<p><strong>过滤：fifilter</strong></p>
+
+<p>可以通过 filter 方法将一个流转换成另一个子集流。方法签名：</p>
+
+<pre><code class="language-java">Stream&lt;T&gt; filter(Predicate&lt;? super T&gt; predicate);
+</code></pre>
+
+<p>该接口接收一个 Predicate 函数式接口参数（可以是一个Lambda或方法引用）作为筛选条件。</p>
+
+<h3 id="复习predicate接口"><strong>复习Predicate接口</strong></h3>
+
+<p>此前我们已经学习过 java.util.stream.Predicate 函数式接口，其中唯一的抽象方法为：</p>
+
+<pre><code class="language-java">boolean test(T t);
+</code></pre>
+
+<p>该方法将会产生一个boolean值结果，代表指定的条件是否满足。如果结果为true，那么Stream流的 filter 方法将会留用元素；如果结果为false，那么 filter 方法将会舍弃元素。</p>
+
+<p><strong>基本使用</strong></p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo07StreamFilter {
+public static void main(String[] args) {
+Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);
+Stream&lt;String&gt; result = original.filter(s ‐&gt; s.startsWith(&quot;张&quot;));
+}
+}
+</code></pre>
+
+<h3 id="映射-map"><strong>映射：map</strong></h3>
+
+<p>如果需要将流中的元素映射到另一个流中，可以使用 map 方法。方法签名：</p>
+
+<pre><code class="language-java">&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);
+</code></pre>
+
+<p><strong>复习Function接口</strong></p>
+
+<p>此前我们已经学习过 java.util.stream.Function 函数式接口，其中唯一的抽象方法为：</p>
+
+<pre><code class="language-java">R apply(T t);
+</code></pre>
+
+<p>这可以将一种T类型转换成为R类型，而这种转换的动作，就称为“映射”。</p>
+
+<p><strong>基本使用</strong></p>
+
+<p>Stream流中的 map 方法基本使用的代码如：</p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo08StreamMap {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;10&quot;, &quot;12&quot;, &quot;18&quot;);
+        Stream&lt;Integer&gt; result = original.map(str‐&gt;Integer.parseInt(str));
+    }
+}
+</code></pre>
+
+<p>这段代码中， map 方法的参数通过方法引用，将字符串类型转换成为了int类型（并自动装箱为 Integer 类对象）。</p>
+
+<h3 id="统计个数-count">统计个数：count</h3>
+
+<p>正如旧集合 Collection 当中的 size 方法一样，流提供 count 方法来数一数其中的元素个数：</p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo09StreamCount {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);
+        Stream&lt;String&gt; result = original.filter(s ‐&gt; s.startsWith(&quot;张&quot;));
+        System.out.println(result.count()); // 2
+    }
+}
+</code></pre>
+
+<p><strong>取用前几个：limit</strong></p>
+
+<p>limit 方法可以对流进行截取，只取用前n个。方法签名：</p>
+
+<pre><code class="language-java">Stream&lt;T&gt; limit(long maxSize);
+</code></pre>
+
+<p>参数是一个long型，如果集合当前长度大于参数则进行截取；否则不进行操作。基本使用：</p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo10StreamLimit {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);
+        Stream&lt;String&gt; result = original.limit(2);
+        System.out.println(result.count()); // 2
+    }
+}
+</code></pre>
+
+<h3 id="跳过前几个-skip"><strong>跳过前几个：skip</strong></h3>
+
+<p>如果希望跳过前几个元素，可以使用 skip 方法获取一个截取之后的新流：</p>
+
+<pre><code class="language-java">Stream&lt;T&gt; skip(long n);
+</code></pre>
+
+<p>如果流的当前长度大于n，则跳过前n个；否则将会得到一个长度为0的空流。基本使用：</p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo11StreamSkip {
+public static void main(String[] args) {
+Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);
+Stream&lt;String&gt; result = original.skip(2);
+System.out.println(result.count()); // 1
+}
+}
+</code></pre>
+
+<h3 id="组合-concat"><strong>组合：concat</strong></h3>
+
+<p>如果有两个流，希望合并成为一个流，那么可以使用 Stream 接口的静态方法 concat ：</p>
+
+<pre><code class="language-java">static &lt;T&gt; Stream&lt;T&gt; concat(Stream&lt;? extends T&gt; a, Stream&lt;? extends T&gt; b)
+</code></pre>
+
+<p><code>备注：这是一个静态方法，与 java.lang.String 当中的 concat 方法是不同的</code></p>
+
+<p>该方法的基本使用代码如：</p>
+
+<pre><code class="language-java">import java.util.stream.Stream;
+public class Demo12StreamConcat {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; streamA = Stream.of(&quot;张无忌&quot;);
+        Stream&lt;String&gt; streamB = Stream.of(&quot;张翠山&quot;);
+        Stream&lt;String&gt; result = Stream.concat(streamA, streamB);
+    }
+}
+</code></pre>
+
+<h3 id="练习-集合元素处理-传统方式"><strong>练习：集合元素处理（传统方式）</strong></h3>
+
+<p>现在有两个 ArrayList 集合存储队伍当中的多个成员姓名，要求使用传统的for循环（或增强for循环）<strong>依次</strong>进行以</p>
+
+<p>下若干操作步骤：</p>
+
+<ol>
+<li><p>第一个队伍只要名字为3个字的成员姓名；存储到一个新集合中。</p></li>
+
+<li><p>第一个队伍筛选之后只要前3个人；存储到一个新集合中。</p></li>
+
+<li><p>第二个队伍只要姓张的成员姓名；存储到一个新集合中。</p></li>
+
+<li><p>第二个队伍筛选之后不要前2个人；存储到一个新集合中。</p></li>
+
+<li><p>将两个队伍合并为一个队伍；存储到一个新集合中。</p></li>
+
+<li><p>根据姓名创建 Person 对象；存储到一个新集合中。</p></li>
+
+<li><p>打印整个队伍的Person对象信息。</p></li>
+</ol>
+
+<p>两个队伍（集合）的代码如下：</p>
+
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+public class DemoArrayListNames {
+public static void main(String[] args) {
+//第一支队伍
+ArrayList&lt;String&gt; one = new ArrayList&lt;&gt;();
+one.add(&quot;迪丽热巴&quot;);
+one.add(&quot;宋远桥&quot;);
+one.add(&quot;苏星河&quot;);
+one.add(&quot;石破天&quot;);
+one.add(&quot;石中玉&quot;);
+one.add(&quot;老子&quot;);
+one.add(&quot;庄子&quot;);
+one.add(&quot;洪七公&quot;);
+//第二支队伍
+ArrayList&lt;String&gt; two = new ArrayList&lt;&gt;();
+two.add(&quot;古力娜扎&quot;);
+two.add(&quot;张无忌&quot;);
+two.add(&quot;赵丽颖&quot;);
+two.add(&quot;张三丰&quot;);
+two.add(&quot;尼古拉斯赵四&quot;);
+two.add(&quot;张天爱&quot;);
+two.add(&quot;张二狗&quot;);
+// ....
+}
+}
+</code></pre>
+
+<p>而 Person 类的代码为：</p>
+
+<pre><code class="language-java">public class Person {
+private String name;
+public Person() {}
+public Person(String name) {
+this.name = name;
+}
+@Override
+public String toString() {
+return &quot;Person{name='&quot; + name + &quot;'}&quot;;
+}
+public String getName() {
+return name;
+}
+public void setName(String name) {
+this.name = name;
+}
+    }
+</code></pre>
+
+<p><strong>解答</strong></p>
+
+<pre><code class="language-java">public class DemoArrayListNames {
+public static void main(String[] args) {
+List&lt;String&gt; one = new ArrayList&lt;&gt;();
+// ...
+List&lt;String&gt; two = new ArrayList&lt;&gt;();
+// ...
+// 第一个队伍只要名字为3个字的成员姓名；
+List&lt;String&gt; oneA = new ArrayList&lt;&gt;();
+for (String name : one) {
+if (name.length() == 3) {
+oneA.add(name);
+}
+}
+// 第一个队伍筛选之后只要前3个人；
+List&lt;String&gt; oneB = new ArrayList&lt;&gt;();
+for (int i = 0; i &lt; 3; i++) {
+oneB.add(oneA.get(i));
+}
+// 第二个队伍只要姓张的成员姓名；
+List&lt;String&gt; twoA = new ArrayList&lt;&gt;();
+for (String name : two) {
+if (name.startsWith(&quot;张&quot;)) {
+twoA.add(name);
+}
+}
+// 第二个队伍筛选之后不要前2个人；
+List&lt;String&gt; twoB = new ArrayList&lt;&gt;();
+for (int i = 2; i &lt; twoA.size(); i++) {
+twoB.add(twoA.get(i));
+}
+// 将两个队伍合并为一个队伍；
+List&lt;String&gt; totalNames = new ArrayList&lt;&gt;();
+totalNames.addAll(oneB);
+totalNames.addAll(twoB);
+// 根据姓名创建Person对象；
+List&lt;Person&gt; totalPersonList = new ArrayList&lt;&gt;();
+for (String name : totalNames) {
+totalPersonList.add(new Person(name));
+}
+    // 打印整个队伍的Person对象信息。
+for (Person person : totalPersonList) {
+System.out.println(person);
+}
+}
+}
+</code></pre>
+
+<p>运行结果为：</p>
+
+<pre><code class="language-a">Person{name='宋远桥'}
+Person{name='苏星河'}
+Person{name='石破天'}
+Person{name='张天爱'}
+Person{name='张二狗'}
+</code></pre>
+
+<h3 id="练习-集合元素处理-stream方式"><strong>练习：集合元素处理（</strong>Stream方式）</h3>
+
+<p>将上一题当中的传统for循环写法更换为Stream流式处理方式。两个集合的初始内容不变， Person 类的定义也不</p>
+
+<p>变。</p>
+
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+public class DemoStreamNames {
+public static void main(String[] args) {
+List&lt;String&gt; one = new ArrayList&lt;&gt;();
+// ...
+List&lt;String&gt; two = new ArrayList&lt;&gt;();
+// ...
+// 第一个队伍只要名字为3个字的成员姓名；
+// 第一个队伍筛选之后只要前3个人；
+Stream&lt;String&gt; streamOne = one.stream().filter(s ‐&gt; s.length() == 3).limit(3);
+// 第二个队伍只要姓张的成员姓名；
+// 第二个队伍筛选之后不要前2个人；
+Stream&lt;String&gt; streamTwo = two.stream().filter(s ‐&gt; s.startsWith(&quot;张&quot;)).skip(2);
+// 将两个队伍合并为一个队伍；
+// 根据姓名创建Person对象；
+// 打印整个队伍的Person对象信息。
+Stream.concat(streamOne, streamTwo).map(Person::new).forEach(System.out::println);
+}
+    }
+</code></pre>
+
+<h1 id="方法引用"><strong>方法引用</strong></h1>
+
+<p>在使用Lambda表达式的时候，我们实际上传递进去的代码就是一种解决方案：拿什么参数做什么操作。那么考虑
+一种情况：如果我们在Lambda中所指定的操作方案，已经有地方存在相同方案，那是否还有必要再写重复逻辑？</p>
+
+<h2 id="冗余的lambda场景"><strong>冗余的Lambda场景</strong></h2>
+
+<p>来看一个简单的函数式接口以应用Lambda表达式：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface Printable {
+void print(String str);
+}
+</code></pre>
+
+<p>在 Printable 接口当中唯一的抽象方法 print 接收一个字符串参数，目的就是为了打印显示它。那么通过Lambda</p>
+
+<p>来使用它的代码很简单：</p>
+
+<pre><code class="language-java">public class Demo01PrintSimple {
+    private static void printString(Printable data) {
+    	data.print(&quot;Hello, World!&quot;);
+    }
+    public static void main(String[] args) {
+    	printString(s ‐&gt; System.out.println(s));
+    }
+}
+</code></pre>
+
+<p>其中 printString 方法只管调用 Printable 接口的 print 方法，而并不管 print 方法的具体实现逻辑会将字符串</p>
+
+<p>打印到什么地方去。而 main 方法通过Lambda表达式指定了函数式接口 Printable 的具体操作方案为：<strong>拿到</strong></p>
+
+<p><strong>String</strong><strong>（类型可推导，所以可省略）数据后，在控制台中输出它</strong>。</p>
+
+<p><strong>问题分析</strong></p>
+
+<p>这段代码的问题在于，对字符串进行控制台打印输出的操作方案，明明已经有了现成的实现，那就是 System.out</p>
+
+<p>对象中的 println(String) 方法。既然Lambda希望做的事情就是调用 println(String) 方法，那何必自己手动调</p>
+
+<p>用呢？</p>
+
+<p><strong>用方法引用改进代码</strong></p>
+
+<p>能否省去Lambda的语法格式（尽管它已经相当简洁）呢？只要“引用”过去就好了：</p>
+
+<pre><code class="language-java">public class Demo02PrintRef {
+private static void printString(Printable data) {
+	data.print(&quot;Hello, World!&quot;);
+}
+public static void main(String[] args) {
+	printString(System.out::println);
+}
+}
+</code></pre>
+
+<p>请注意其中的双冒号 <code>::</code>写法，这被称为“<strong>方法引用</strong>”，而双冒号是一种新的语法。</p>
+
+<h2 id="方法引用符"><strong>方法引用符</strong></h2>
+
+<p>双冒号 :: 为引用运算符，而它所在的表达式被称为<strong>方法引用</strong>。如果Lambda要表达的函数方案已经存在于某个方</p>
+
+<p>法的实现中，那么则可以通过双冒号来引用该方法作为Lambda的替代者。</p>
+
+<p><strong>语义分析</strong></p>
+
+<p>例如上例中， <code>System.out</code> 对象中有一个重载的 <code>println(String)</code>方法恰好就是我们所需要的。那么对于</p>
+
+<p>printString 方法的函数式接口参数，对比下面两种写法，完全等效：</p>
+
+<ul>
+<li><p>Lambda表达式写法： <code>s -&gt; System.out.println(s)</code>;</p></li>
+
+<li><p>方法引用写法： <code>System.out::println</code></p></li>
+</ul>
+
+<p>第一种语义是指：拿到参数之后经Lambda之手，继而传递给 <code>System.out.println</code> 方法去处理。</p>
+
+<p>第二种等效写法的语义是指：直接让 <code>System.out</code> 中的 println 方法来取代Lambda。两种写法的执行效果完全一</p>
+
+<p>样，而第二种方法引用的写法复用了已有方案，更加简洁。</p>
+
+<p>注:Lambda 中 传递的参数 一定是方法引用中 的那个方法可以接收的类型,否则会抛出异常</p>
+
+<p><strong>推导与省略</strong></p>
+
+<p>如果使用Lambda，那么根据“<strong>可推导就是可省略</strong>”的原则，无需指定参数类型，也无需指定的重载形式——它们都</p>
+
+<p>将被自动推导。而如果使用方法引用，也是同样可以根据上下文进行推导。</p>
+
+<p>函数式接口是Lambda的基础，而方法引用是Lambda的孪生兄弟。</p>
+
+<p>下面这段代码将会调用 println 方法的不同重载形式，将函数式接口改为int类型的参数：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface PrintableInteger {
+	void print(int str);
+}
+</code></pre>
+
+<p>由于上下文变了之后可以自动推导出唯一对应的匹配重载，所以方法引用没有任何变化：</p>
+
+<pre><code class="language-java">public class Demo03PrintOverload {
+    private static void printInteger(PrintableInteger data) {
+    	data.print(1024);
+    }
+    public static void main(String[] args) {
+    	printInteger(System.out::println);
+    }
+}
+</code></pre>
+
+<p>这次方法引用将会自动匹配到 <code>println(int)</code> 的重载形式。</p>
+
+<h2 id="通过对象名引用成员方法"><strong>通过对象名引用成员方法</strong></h2>
+
+<p>这是最常见的一种用法，与上例相同。如果一个类中已经存在了一个成员方法：</p>
+
+<pre><code class="language-java">public class MethodRefObject {
+    public void printUpperCase(String str) {
+        System.out.println(str.toUpperCase());
+    }
+}
+</code></pre>
+
+<p>函数式接口仍然定义为：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface Printable {
+void print(String str);
+}
+</code></pre>
+
+<p>那么当需要使用这个 printUpperCase 成员方法来替代 Printable 接口的Lambda的时候，已经具有了</p>
+
+<p>MethodRefObject 类的对象实例，则可以通过对象名引用成员方法，代码为：</p>
+
+<pre><code class="language-java">public class Demo04MethodRef {
+    private static void printString(Printable lambda) {
+   		lambda.print(&quot;Hello&quot;);
+    }
+    public static void main(String[] args) {
+        MethodRefObject obj = new MethodRefObject();
+        printString(obj::printUpperCase);
+    }
+}	
+</code></pre>
+
+<h2 id="通过类名称引用静态方法"><strong>通过类名称引用静态方法</strong></h2>
+
+<p>由于在 java.lang.Math 类中已经存在了静态方法 abs ，所以当我们需要通过Lambda来调用该方法时，有两种写</p>
+
+<p>法。首先是函数式接口：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface Calcable {
+	int calc(int num);
+}
+</code></pre>
+
+<p>第一种写法是使用Lambda表达式：</p>
+
+<pre><code class="language-java">public class Demo05Lambda {
+    private static void method(int num, Calcable lambda) {
+    	System.out.println(lambda.calc(num));
+    }
+    public static void main(String[] args) {
+    	method(‐10, n ‐&gt; Math.abs(n));
+    }
+}
+</code></pre>
+
+<p>但是使用方法引用的更好写法是：</p>
+
+<pre><code class="language-java">public class Demo06MethodRef {
+    private static void method(int num, Calcable lambda) {
+    	System.out.println(lambda.calc(num));
+    }
+    public static void main(String[] args) {
+    	method(‐10, Math::abs);
+    }
+}	
+</code></pre>
+
+<p>在这个例子中，下面两种写法是等效的：</p>
+
+<ul>
+<li><p>Lambda表达式： n -&gt; Math.abs(n)</p></li>
+
+<li><p>方法引用： Math::abs</p></li>
+</ul>
+
+<h2 id="通过super引用成员方法"><strong>通过super引用成员方法</strong></h2>
+
+<p>如果存在继承关系，当Lambda中需要出现super调用时，也可以使用方法引用进行替代。首先是函数式接口：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface Greetable {
+	void greet();
+}
+</code></pre>
+
+<p>然后是父类 Human 的内容：</p>
+
+<pre><code class="language-java">public class Human {
+    public void sayHello() {
+        System.out.println(&quot;Hello!&quot;);
+    }
+}
+</code></pre>
+
+<p>最后是子类 Man 的内容，其中使用了Lambda的写法：</p>
+
+<pre><code class="language-java">public class Man extends Human {
+    @Override
+    public void sayHello() {
+    	System.out.println(&quot;大家好,我是Man!&quot;);
+    }
+    //定义方法method,参数传递Greetable接口
+    public void method(Greetable g){
+    	g.greet();
+    }
+    public void show(){
+        //调用method方法,使用Lambda表达式
+        method(()‐&gt;{
+            //创建Human对象,调用sayHello方法
+            new Human().sayHello();
+    	});
+        //简化Lambda
+        method(()‐&gt;new Human().sayHello());
+        //使用super关键字代替父类对象
+        method(()‐&gt;super.sayHello());
+    }
+}
+</code></pre>
+
+<p>但是如果使用方法引用来调用父类中的 sayHello 方法会更好，例如另一个子类 Woman ：</p>
+
+<pre><code class="language-java">public class Man extends Human {
+    @Override
+    public void sayHello() {
+    	System.out.println(&quot;大家好,我是Man!&quot;);
+    }
+    //定义方法method,参数传递Greetable接口
+    public void method(Greetable g){
+    	g.greet();
+    }
+    public void show(){
+    	method(super::sayHello);
+    }
+}
+</code></pre>
+
+<p>在这个例子中，下面两种写法是等效的：</p>
+
+<ul>
+<li><p>Lambda表达式： () -&gt; super.sayHello()</p></li>
+
+<li><p>方法引用： super::sayHello</p></li>
+</ul>
+
+<h2 id="通过this引用成员方法"><strong>通过this引用成员方法</strong></h2>
+
+<p>this代表当前对象，如果需要引用的方法就是当前类中的成员方法，那么可以使用“<strong>this::</strong><strong>成员方法</strong>”的格式来使用方</p>
+
+<p>法引用。首先是简单的函数式接口：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface Richable {
+	void buy();
+}
+</code></pre>
+
+<p>下面是一个丈夫 Husband 类：</p>
+
+<pre><code class="language-java">public class Husband {
+    private void marry(Richable lambda) {
+    	lambda.buy();
+    }
+    public void beHappy() {
+    	marry(() ‐&gt; System.out.println(&quot;买套房子&quot;));
+    }
+}
+</code></pre>
+
+<p>开心方法 beHappy 调用了结婚方法 marry ，后者的参数为函数式接口 Richable ，所以需要一个Lambda表达式。</p>
+
+<p>但是如果这个Lambda表达式的内容已经在本类当中存在了，则可以对 Husband 丈夫类进行修改：</p>
+
+<pre><code class="language-java">public class Husband {
+    private void buyHouse() {
+    	System.out.println(&quot;买套房子&quot;);
+    }
+    private void marry(Richable lambda) {
+    	lambda.buy();
+    }
+    public void beHappy() {
+    	marry(() ‐&gt; this.buyHouse());
+    }
+}
+</code></pre>
+
+<p>如果希望取消掉Lambda表达式，用方法引用进行替换，则更好的写法为：</p>
+
+<pre><code class="language-java">public class Husband {
+    private void buyHouse() {
+    	System.out.println(&quot;买套房子&quot;);
+    }
+    private void marry(Richable lambda) {
+    	lambda.buy();
+    }
+    public void beHappy() {
+    	marry(this::buyHouse);
+    }
+}
+</code></pre>
+
+<p>在这个例子中，下面两种写法是等效的：</p>
+
+<ul>
+<li><p>Lambda表达式： () -&gt; this.buyHouse()</p></li>
+
+<li><p>方法引用： this::buyHouse</p></li>
+</ul>
+
+<h2 id="类的构造器引用"><strong>类的构造器引用</strong></h2>
+
+<p>由于构造器的名称与类名完全一样，并不固定。所以构造器引用使用 类名称::new 的格式表示。首先是一个简单</p>
+
+<p>的 Person 类：</p>
+
+<pre><code class="language-java">public class Person {
+    private String name;
+    public Person(String name) {
+    	this.name = name;
+    }
+    public String getName() {
+    	return name;
+    }
+    public void setName(String name) {
+    	this.name = name;
+    }
+}
+</code></pre>
+
+<p>然后是用来创建 Person 对象的函数式接口：</p>
+
+<pre><code class="language-java">public interface PersonBuilder {
+	Person buildPerson(String name);
+}	
+</code></pre>
+
+<p>要使用这个函数式接口，可以通过Lambda表达式：</p>
+
+<pre><code class="language-java">public class Demo09Lambda {
+    public static void printName(String name, PersonBuilder builder) {
+    	System.out.println(builder.buildPerson(name).getName());
+    }
+    public static void main(String[] args) {
+    	printName(&quot;赵丽颖&quot;, name ‐&gt; new Person(name));
+    }
+}
+</code></pre>
+
+<p>但是通过构造器引用，有更好的写法：</p>
+
+<pre><code class="language-java">public class Demo10ConstructorRef {
+	public static void printName(String name, PersonBuilder builder) {
+    	System.out.println(builder.buildPerson(name).getName());
+    }
+    public static void main(String[] args) {
+    	printName(&quot;赵丽颖&quot;, Person::new);
+    }
+}
+</code></pre>
+
+<p>在这个例子中，下面两种写法是等效的：</p>
+
+<ul>
+<li><p>Lambda表达式： <code>name -&gt; new Person(name)</code></p></li>
+
+<li><p>方法引用： <code>Person::new</code></p></li>
+</ul>
+
+<h2 id="数组的构造器引用"><strong>数组的构造器引用</strong></h2>
+
+<p>数组也是 Object 的子类对象，所以同样具有构造器，只是语法稍有不同。如果对应到Lambda的使用场景中时，</p>
+
+<p>需要一个函数式接口：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface ArrayBuilder {
+	int[] buildArray(int length);
+}
+</code></pre>
+
+<p>在应用该接口的时候，可以通过Lambda表达式：</p>
+
+<pre><code class="language-java">public class Demo11ArrayInitRef {
+    private static int[] initArray(int length, ArrayBuilder builder) {
+    	return builder.buildArray(length);
+    }
+    public static void main(String[] args) {
+    	int[] array = initArray(10, length ‐&gt; new int[length]);
+    }
+}
+</code></pre>
+
+<p>但是更好的写法是使用数组的构造器引用：</p>
+
+<pre><code class="language-java">public class Demo12ArrayInitRef {
+    private static int[] initArray(int length, ArrayBuilder builder) {
+    	return builder.buildArray(length);
+    }
+    public static void main(String[] args) {
+    	int[] array = initArray(10, int[]::new);
+    }
+}
+</code></pre>
+
+<p>在这个例子中，下面两种写法是等效的：</p>
+
+<ul>
+<li><p>Lambda表达式： length -&gt; new int[length]</p></li>
+
+<li><p>方法引用： int[]::new</p></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=1.8%e6%96%b0%e7%89%b9%e6%80%a7-3Stream%e6%b5%81&nbsp;-&nbsp;%e5%96%9c%e6%ac%a2%e5%85%bb%e7%8b%97%2c%e4%b8%8d%e7%88%b1%e6%b4%97%e5%a4%b4%21&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-3stream%25E6%25B5%2581%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-3stream%25E6%25B5%2581%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-3stream%25E6%25B5%2581%2f&amp;description=1.8%e6%96%b0%e7%89%b9%e6%80%a7-3Stream%e6%b5%81"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-3stream%25E6%25B5%2581%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7\/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7\/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-2lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+          <section class="post">
+              <h2>1.8新特性-2Lambda表达式</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/">
+          <section class="post">
+              <h2>FastDFS入门安装与nginx整合</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">喜欢养狗,不爱洗头!</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

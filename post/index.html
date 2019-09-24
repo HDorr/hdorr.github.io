@@ -324,6 +324,116 @@ public class Demo01Logger { private static void log(int level, String msg) { if 
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-2lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">1.8新特性-2Lambda表达式</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>第三章 Lambda表达式 1.1 函数式编程思想概述 在数学中，函数就是有输入量、输出量的一套计算方案，也就是“拿什么东西做什么事情”。相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——强调做什么，而不是以什么形式做。
+面向对象的思想:
+做一件事情,找一个能解决这个事情的对象,调用对象的方法,完成事情.
+函数式编程思想:
+只要能获取到结果,谁去做的,怎么做的都不重要,重视的是结果,不重视过程
+1.2 冗余的Runnable代码 传统写法
+当需要启动一个线程去完成任务时，通常会通过 java.lang.Runnable 接口来定义任务内容，并使用
+java.lang.Thread 类来启动该线程。代码如下：
+public class Demo01Runnable { public static void main(String[] args) { // 匿名内部类 Runnable task = new Runnable() { @Override public void run() { // 覆盖重写抽象方法 System.out.println(&quot;多线程任务执行！&quot;); } }; new Thread(task).start(); // 启动线程 } }  本着“一切皆对象”的思想，这种做法是无可厚非的：首先创建一个 Runnable 接口的匿名内部类对象来指定任务内容，再将其交给一个线程来启动。
+代码分析
+对于 Runnable 的匿名内部类用法，可以分析出几点内容：
+ Thread 类需要 Runnable 接口作为参数，其中的抽象 run 方法是用来指定线程任务内容的核心；
+ 为了指定 run 的方法体，不得不需要 Runnable 接口的实现类； <a class="read-more" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-2lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/jc/">#jc</a>,
+            
+                <a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a>,
+            
+                <a href="https://hdorr.github.io//tags/jdk%E6%96%B0%E7%89%B9%E6%80%A7/">#jdk新特性</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/">1.8新特性-3Stream流</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>Stream流 说到Stream便容易想到I/O Stream，而实际上，谁规定“流”就一定是“IO流”呢？在Java 8中，得益于Lambda所带
+来的函数式编程，引入了一个全新的Stream概念，用于解决已有集合类库既有的弊端。
+引言 传统集合的多步遍历代码
+几乎所有的集合（如 Collection 接口或 Map 接口等）都支持直接或间接的遍历操作。而当我们需要对集合中的元
+素进行操作的时候，除了必需的添加、删除、获取外，最典型的就是集合遍历。例如：
+import java.util.ArrayList; import java.util.List; public class Demo01ForEach { public static void main(String[] args) { List&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&quot;张无忌&quot;); list.add(&quot;周芷若&quot;); list.add(&quot;赵敏&quot;); list.add(&quot;张强&quot;); list.add(&quot;张三丰&quot;); for (String name : list) { System.out.println(name); } } }  这是一段非常简单的集合遍历操作：对集合中的每一个字符串都进行打印输出操作。
+循环遍历的弊端
+Java 8的Lambda让我们可以更加专注于做什么（What），而不是怎么做（How），这点此前已经结合内部类进行
+了对比说明。现在，我们仔细体会一下上例代码，可以发现：
+ for循环的语法就是“怎么做”
+ for循环的循环体才是“做什么”
+  为什么使用循环？因为要进行遍历。但循环是遍历的唯一方式吗？遍历是指每一个元素逐一进行处理，而并不是从
+第一个到最后一个顺次处理的循环。前者是目的，后者是方式。
+试想一下，如果希望对集合中的元素进行筛选过滤：
+ 将集合A根据条件一过滤为子集B；
+ 然后再根据条件二过滤为子集C。
+  那怎么办？在Java 8之前的做法可能为： <a class="read-more" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/jc/">#jc</a>,
+            
+                <a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a>,
+            
+                <a href="https://hdorr.github.io//tags/jdk%E6%96%B0%E7%89%B9%E6%80%A7/">#jdk新特性</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/">FastDFS入门安装与nginx整合</a></h2>
     </header>
     <section class="post-excerpt">
@@ -740,105 +850,6 @@ CMS页面管理需求 1、这些页面的管理流程是什么？
 模板，最终拿到页面的数据再结合模板就拼装成一个完整的页面。
 3）创建页面：
 创建页面是指填写页面的基本信息，如：页面的名称、页面的url地址等。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">cms-开发准备</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>1.CMS概述 学成在线借鉴了MOOC（大型开放式网络课程，即MOOC（massive open online courses））的设计思想，是一个提供IT职业课程在线学习的平台
-当前市场的在线教育模式多种多样，包括：B2C、C2C、B2B2C等业务模式，学成在线采用B2B2C业务模式，即向 企业或个人提供在线教育平台提供教学服务，老师和学生通过平台完成整个教学和学习的过程，市场上类似的平台 有：网易云课堂、腾讯课堂等，学成在线的特点是IT职业课程在线教学。
-功能模块 学成在线包括门户、学习中心、教学管理中、社交系统、系统管理等功能模块。
-技术架构 技术栈 开发步骤 项目是基于前后端分离的架构进行开发，前后端分离架构总体上包括前端和服务端，通常是多人协作并行开发，开
-发步骤如下：
-1、需求分析
-梳理用户的需求，分析业务流程
-2、接口定义
-根据需求分析定义接口
-3、服务端和前端并行开发
-依据接口进行服务端接口开发。
-前端开发用户操作界面，并请求服务端接口完成业务处理。
-4、前后端集成测试
-最终前端调用服务端接口完成业务。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">cms-接口请求规范</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p> Api请求及响应规范 为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。
-1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。
-2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded）和Json数据（Content
-Type=application/json），文件等多部件类型（multipart/form-data）三种数据格式，SpringMVC接收Json数据
-使用@RequestBody注解解析请求的json数据。
-4、响应结果统一信息为：是否成功、操作代码、提示信息及自定义数据。
-​ 本项目,统一采用成功信息,相应代码,相应结果组成,并且最终返回结果为QueryResponseResult类型
-5、响应结果统一格式为json。
-Api定义约束 Api定义使用SpringMVC来完成，由于此接口后期将作为微服务远程调用使用，在定义接口时有如下限制：
-1、@PathVariable 统一指定参数名称，如：@PathVariable(&ldquo;id&rdquo;)
-​ 方法内参数要使用@PathVariable来映射路径上的参数
-2、@RequestParam统一指定参数名称，如： @RequestParam（&rdquo;id&rdquo;）
-public String getDetails( @RequestParam(value=&quot;param1&quot;, required=true) String param1, @RequestParam(value=&quot;param2&quot;, required=false) String param2){ ... }   <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E8%AF%B7%E6%B1%82%E8%A7%84%E8%8C%83/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
