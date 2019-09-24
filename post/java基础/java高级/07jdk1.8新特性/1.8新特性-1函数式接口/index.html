@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="1.8新特性-1函数式接口"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="1.8新特性-1函数式接口 &middot; 喜欢养狗,不爱洗头!" />
+  	<meta property="og:site_name" content="喜欢养狗,不爱洗头!" />
+  	<meta property="og:url" content="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="jc" />
+    
+    <meta property="article:tag" content="java高级" />
+    
+    <meta property="article:tag" content="jdk新特性" />
+    
+    
+
+    <title>1.8新特性-1函数式接口 &middot; 喜欢养狗,不爱洗头!</title>
+
+    
+    <meta name="description" content="主要内容
+ 自定义函数式接口
+ 函数式编程
+ 常用函数式接口
+  1.函数式接口 概念 函数式接口在Java中是指：有且仅有一个抽象方法的接口。
+函数式接口，即适用于函数式编程场景的接口。而Java中的函数式编程体现就是Lambda，所以函数式接口就是可
+以适用于Lambda使用的接口。只有确保接口中有且仅有一个抽象方" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="喜欢养狗,不爱洗头!" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "1.8新特性-1函数式接口",
+    "name": "1.8新特性-1函数式接口",
+    "wordCount":  1058 ,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "jc, java高级, jdk新特性",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ms">ms</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/spring">Spring&amp;SpringMVC相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/mybatis">Mybatis相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/springcloud">SpringCloud微服务相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">1.8新特性-1函数式接口</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/jc/">#jc</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/jdk%E6%96%B0%E7%89%B9%E6%80%A7/">#jdk新特性</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p><strong>主要内容</strong></p>
+
+<ul>
+<li><p>自定义函数式接口</p></li>
+
+<li><p>函数式编程</p></li>
+
+<li><p>常用函数式接口</p></li>
+</ul>
+
+<h1 id="1-函数式接口"><strong>1.函数式接口</strong></h1>
+
+<h2 id="概念"><strong>概念</strong></h2>
+
+<p>函数式接口在Java中是指：<strong>有且仅有一个抽象方法的接口</strong>。</p>
+
+<p>函数式接口，即适用于函数式编程场景的接口。而Java中的函数式编程体现就是Lambda，所以函数式接口就是可</p>
+
+<p>以适用于Lambda使用的接口。只有确保接口中有且仅有一个抽象方法，Java中的Lambda才能顺利地进行推导。</p>
+
+<p><code>备注：“**语法糖**”是指使用更加方便，但是原理不变的代码语法。例如在遍历集合时使用的for-each语法，其实底层的实现原理仍然是迭代器，这便是“语法糖”。从应用层面来讲，Java中的Lambda可以被当做是匿名内部 类的“语法糖”，但是二者在原理上是不同的。</code></p>
+
+<h2 id="格式"><strong>格式</strong></h2>
+
+<p>只要确保接口中有且仅有一个抽象方法即可：</p>
+
+<pre><code class="language-java">修饰符 interface 接口名称 {
+public abstract 返回值类型 方法名称(可选参数信息);
+// 其他非抽象方法内容
+}
+</code></pre>
+
+<p>由于接口当中抽象方法的 public abstract 是可以省略的，所以定义一个函数式接口很简单：</p>
+
+<pre><code class="language-java">public interface MyFunctionalInterface {
+void myMethod();
+}
+</code></pre>
+
+<h2 id="functionalinterface"><strong>@FunctionalInterface</strong></h2>
+
+<p>与 @Override 注解的作用类似，Java 8中专门为函数式接口引入了一个新的注解： @FunctionalInterface 。该注</p>
+
+<p>解可用于一个接口的定义上：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface MyFunctionalInterface {
+void myMethod();
+}
+</code></pre>
+
+<p><code>@Override检查方法是否为重写的方法,是:编译成功,否:编译失败</code></p>
+
+<p>一旦使用该注解来定义接口，<strong>编译器将会强制检查该接口是否确实有且仅有一个抽象方法，否则将会报错</strong>。需要<strong>注</strong></p>
+
+<p><strong>意</strong>的是，即使不使用该注解，只要满足函数式接口的定义，这仍然是一个函数式接口，使用起来都一样。</p>
+
+<h1 id="2-函数式编程"><strong>2.函数式编程</strong></h1>
+
+<p>在兼顾面向对象特性的基础上，Java语言通过Lambda表达式与方法引用等，为开发者打开了函数式编程的大门。</p>
+
+<p>下面我们做一个初探。</p>
+
+<h2 id="lambda的延迟执行"><strong>Lambda的延迟执行</strong></h2>
+
+<p>有些场景的代码执行后，结果不一定会被使用，从而造成性能浪费。而Lambda表达式是延迟执行的，这正好可以</p>
+
+<p>作为解决方案，提升性能。</p>
+
+<pre><code class="language-java">public class Demo01Logger {
+private static void log(int level, String msg) {
+if (level == 1) {
+System.out.println(msg);
+}
+}
+public static void main(String[] args) {
+String msgA = &quot;Hello&quot;;
+String msgB = &quot;World&quot;;
+String msgC = &quot;Java&quot;;
+log(1, msgA + msgB + msgC);
+}
+}
+</code></pre>
+
+<p>这段代码存在问题：无论级别是否满足要求，作为 log 方法的第二个参数，三个字符串一定会首先被拼接并传入方</p>
+
+<p>法内，然后才会进行级别判断。如果级别不符合要求，那么字符串的拼接操作就白做了，存在性能浪费。</p>
+
+<p><code>备注：SLF4J是应用非常广泛的日志框架，它在记录日志时为了解决这种性能浪费的问题，并不推荐首先进行字符串的拼接，而是将字符串的若干部分作为可变参数传入方法中，仅在日志级别满足要求的情况下才会进行字符串拼接。例如： LOGGER.debug(&quot;变量{}的取值为{}。&quot;, &quot;os&quot;, &quot;macOS&quot;) ，其中的大括号 {} 为占位符。如果满足日志级别要求，则会将“os”和“macOS”两个字符串依次拼接到大括号的位置；否则不会进行字符串拼接。这也是一种可行解决方案，但Lambda可以做到更好。</code></p>
+
+<h2 id="体验lambda的更优写法"><strong>体验Lambda的更优写法</strong></h2>
+
+<p>使用Lambda必然需要一个函数式接口：</p>
+
+<pre><code class="language-java">@FunctionalInterface
+public interface MessageBuilder {
+String buildMessage();
+}
+</code></pre>
+
+<p>然后对 log 方法进行改造：</p>
+
+<pre><code class="language-java">public class Demo02LoggerLambda {
+    private static void log(int level, MessageBuilder builder) {
+    if (level == 1) {
+    System.out.println(builder.buildMessage());
+    }
+}
+ public static void main(String[] args) {
+        String msgA = &quot;Hello&quot;;
+        String msgB = &quot;World&quot;;
+        String msgC = &quot;Java&quot;;
+        log(1, () ‐&gt; msgA + msgB + msgC );
+        }
+}
+</code></pre>
+
+<p>这样一来，只有当级别满足要求的时候，才会进行三个字符串的拼接；否则三个字符串将不会进行拼接。</p>
+
+<h2 id="使用lambda作为参数和返回值"><strong>使用Lambda作为参数和返回值</strong></h2>
+
+<p>如果抛开实现原理不说，Java中的Lambda表达式可以被当作是匿名内部类的替代品。如果方法的参数是一个函数</p>
+
+<p>式接口类型，那么就可以使用Lambda表达式进行替代。<strong>使用Lambda表达式作为方法参数，其实就是使用函数式</strong></p>
+
+<p><strong>接口作为方法参数。</strong></p>
+
+<p>例如 java.lang.Runnable 接口就是一个函数式接口，假设有一个 startThread 方法使用该接口作为参数，那么就</p>
+
+<p>可以使用Lambda进行传参。这种情况其实和 Thread 类的构造方法参数为 Runnable 没有本质区别。</p>
+
+<pre><code class="language-java">public class Demo04Runnable {
+private static void startThread(Runnable task) {
+new Thread(task).start();
+}
+public static void main(String[] args) {
+startThread(() ‐&gt; System.out.println(&quot;线程任务执行！&quot;));
+}
+}
+</code></pre>
+
+<p>类似地，如果一个方法的返回值类型是一个函数式接口，那么就可以直接返回一个Lambda表达式。当需要通过一</p>
+
+<p>个方法来获取一个 java.util.Comparator 接口类型的对象作为排序器时,就可以调该方法获取。</p>
+
+<pre><code class="language-java">import java.util.Arrays;
+import java.util.Comparator;
+public class Demo06Comparator {
+private static Comparator&lt;String&gt; newComparator() {
+	return (a, b) ‐&gt; b.length() ‐ a.length();
+}
+public static void main(String[] args) {
+    String[] array = { &quot;abc&quot;, &quot;ab&quot;, &quot;abcd&quot; };
+    System.out.println(Arrays.toString(array));
+    Arrays.sort(array, newComparator());
+    System.out.println(Arrays.toString(array));
+    }
+}
+</code></pre>
+
+<p>其中直接return一个Lambda表达式即可</p>
+
+<h1 id="常用函数式接口"><strong>常用函数式接口</strong></h1>
+
+<p>JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在 java.util.function 包中被提供。</p>
+
+<p>下面是最简单的几个接口及使用示例。</p>
+
+<h2 id="supplier-接口"><strong>Supplier</strong>接口</h2>
+
+<p><code>java.util.function.Supplier</code> 接口仅包含一个无参的方法： <code>T get()</code> 。用来获取一个泛型参数指定类型的对</p>
+
+<p>象数据。由于这是一个函数式接口，这也就意味着对应的Lambda表达式需要“<strong>对外提供</strong>”一个符合泛型类型的对象</p>
+
+<p>数据。</p>
+
+<pre><code class="language-java">import java.util.function.Supplier;
+public class Demo08Supplier {
+private static String getString(Supplier&lt;String&gt; function) {
+    return function.get();
+}
+    
+public static void main(String[] args) {
+    String msgA = &quot;Hello&quot;;
+    String msgB = &quot;World&quot;;
+    System.out.println(getString(() ‐&gt; msgA + msgB));
+}
+}
+</code></pre>
+
+<p><strong>练习：求数组元素最大值</strong></p>
+
+<p>使用 Supplier 接口作为方法参数类型，通过Lambda表达式求出int数组中的最大值。提示：接口的泛型请使用</p>
+
+<p>java.lang.Integer 类。</p>
+
+<pre><code class="language-java">public class Demo02Test {
+//定一个方法,方法的参数传递Supplier,泛型使用Integer
+public static int getMax(Supplier&lt;Integer&gt; sup){
+	return sup.get();
+}
+public static void main(String[] args) {
+    int arr[] = {2,3,4,52,333,23};
+    //调用getMax方法,参数传递Lambda
+    int maxNum = getMax(()‐&gt;{
+    //计算数组的最大值
+    int max = arr[0];
+    for(int i : arr){
+        if(i&gt;max){
+            max = i;
+        }
+    }
+    return max;
+});
+	System.out.println(maxNum);
+}
+}
+</code></pre>
+
+<h2 id="consumer-接口"><strong>Consumer</strong>接口</h2>
+
+<p>java.util.function.Consumer 接口则正好与Supplier接口相反，它不是生产一个数据，而是<strong>消费</strong>一个数据，</p>
+
+<p>其数据类型由泛型决定。</p>
+
+<p><strong>抽象方法：accept</strong></p>
+
+<p>Consumer 接口中包含抽象方法 <code>void accept(T t)</code> ，意为消费一个指定泛型的数据。基本使用如：</p>
+
+<pre><code class="language-java">import java.util.function.Consumer;
+public class Demo09Consumer {
+    private static void consumeString(Consumer&lt;String&gt; function) {
+        function.accept(&quot;Hello&quot;);	
+    }
+    public static void main(String[] args) {
+    	consumeString(s ‐&gt; System.out.println(s));
+    }
+}
+</code></pre>
+
+<p><strong>默认方法：andThen</strong></p>
+
+<p>如果一个方法的参数和返回值全都是 Consumer 类型，那么就可以实现效果：消费数据的时候，首先做一个操作，</p>
+
+<p>然后再做一个操作，实现组合。而这个方法就是 Consumer 接口中的default方法 andThen 。下面是JDK的源代码：</p>
+
+<pre><code class="language-java">default Consumer&lt;T&gt; andThen(Consumer&lt;? super T&gt; after) {
+Objects.requireNonNull(after);
+return (T t) ‐&gt; { accept(t); after.accept(t); };
+}
+</code></pre>
+
+<p><code>备注： java.util.Objects 的 requireNonNull 静态方法将会在参数为null时主动抛出 NullPointerException 异常。这省去了重复编写if语句和抛出空指针异常的麻烦。</code></p>
+
+<p>要想实现组合，需要两个或多个Lambda表达式即可，而 andThen 的语义正是“一步接一步”操作。例如两个步骤组</p>
+
+<p>合的情况：</p>
+
+<pre><code class="language-java">import java.util.function.Consumer;
+public class Demo10ConsumerAndThen {
+    private static void consumeString(Consumer&lt;String&gt; one, Consumer&lt;String&gt; two) {
+    	one.andThen(two).accept(&quot;Hello&quot;);
+    }
+    public static void main(String[] args) {
+        consumeString(
+        s ‐&gt; System.out.println(s.toUpperCase()),
+        s ‐&gt; System.out.println(s.toLowerCase()));
+        }
+ }	
+</code></pre>
+
+<p>运行结果将会首先打印完全大写的HELLO，然后打印完全小写的hello。当然，通过链式写法可以实现更多步骤的</p>
+
+<p>组合。</p>
+
+<p><strong>练习：格式化打印信息</strong></p>
+
+<p>下面的字符串数组当中存有多条信息，请按照格式“ 姓名：XX。性别：XX。 ”的格式将信息打印出来。要求将打印姓</p>
+
+<p>名的动作作为第一个 Consumer 接口的Lambda实例，将打印性别的动作作为第二个 Consumer 接口的Lambda实</p>
+
+<p>例，将两个 Consumer 接口按照顺序“拼接”到一起。</p>
+
+<pre><code class="language-java">public static void main(String[] args) {
+String[] array = { &quot;迪丽热巴,女&quot;, &quot;古力娜扎,女&quot;, &quot;马尔扎哈,男&quot; };
+}
+</code></pre>
+
+<p><strong>解答</strong></p>
+
+<pre><code class="language-java">import java.util.function.Consumer;
+public class DemoConsumer {
+public static void main(String[] args) {
+String[] array = { &quot;迪丽热巴,女&quot;, &quot;古力娜扎,女&quot;, &quot;马尔扎哈,男&quot; };
+printInfo(s ‐&gt; System.out.print(&quot;姓名：&quot; + s.split(&quot;,&quot;)[0]),
+s ‐&gt; System.out.println(&quot;。性别：&quot; + s.split(&quot;,&quot;)[1] + &quot;。&quot;),
+array);
+}
+private static void printInfo(Consumer&lt;String&gt; one, Consumer&lt;String&gt; two, String[] array) {
+for (String info : array) {
+one.andThen(two).accept(info); // 姓名：迪丽热巴。性别：女。
+}
+}
+}
+</code></pre>
+
+<h2 id="predicate接口"><strong>Predicate接口</strong></h2>
+
+<p>有时候我们需要对某种类型的数据进行判断，从而得到一个boolean值结果。这时可以使用</p>
+
+<p>java.util.function.Predicate 接口。</p>
+
+<p><strong>抽象方法：test</strong></p>
+
+<p>Predicate 接口中包含一个抽象方法： boolean test(T t) 。用于条件判断的场景：</p>
+
+<pre><code class="language-java">import java.util.function.Predicate;
+public class Demo15PredicateTest {
+    private static void method(Predicate&lt;String&gt; predicate) {
+        boolean veryLong = predicate.test(&quot;HelloWorld&quot;);
+        System.out.println(&quot;字符串很长吗：&quot; + veryLong);
+    }
+    public static void main(String[] args) {
+    	method(s ‐&gt; s.length() &gt; 5);
+    }
+}
+</code></pre>
+
+<p>条件判断的标准是传入的Lambda表达式逻辑，只要字符串长度大于5则认为很长。</p>
+
+<p><strong>默认方法：and</strong></p>
+
+<p>既然是条件判断，就会存在与、或、非三种常见的逻辑关系。其中将两个 Predicate 条件使用“与”逻辑连接起来实</p>
+
+<p>现“<strong>并且</strong>”的效果时，可以使用default方法 and 。其JDK源码为：</p>
+
+<pre><code class="language-java">default Predicate&lt;T&gt; and(Predicate&lt;? super T&gt; other) {
+Objects.requireNonNull(other);
+return (t) ‐&gt; test(t) &amp;&amp; other.test(t);
+}
+</code></pre>
+
+<p>如果要判断一个字符串既要包含大写“H”，又要包含大写“W”，那么：</p>
+
+<pre><code class="language-java">import java.util.function.Predicate;
+public class Demo16PredicateAnd {
+    private static void method(Predicate&lt;String&gt; one, Predicate&lt;String&gt; two) {
+        boolean isValid = one.and(two).test(&quot;Helloworld&quot;);
+        System.out.println(&quot;字符串符合要求吗：&quot; + isValid);
+    }
+    public static void main(String[] args) {
+    	method(s ‐&gt; s.contains(&quot;H&quot;), s ‐&gt; s.contains(&quot;W&quot;));
+    }
+}
+</code></pre>
+
+<p><strong>默认方法：or</strong></p>
+
+<p>与 and 的“与”类似，默认方法 or 实现逻辑关系中的“<strong>或</strong>”。JDK源码为：</p>
+
+<pre><code class="language-java">default Predicate&lt;T&gt; or(Predicate&lt;? super T&gt; other) {
+Objects.requireNonNull(other);
+return (t) ‐&gt; test(t) || other.test(t);
+}
+</code></pre>
+
+<p>如果希望实现逻辑“字符串包含大写H或者包含大写W”，那么代码只需要将“and”修改为“or”名称即可，其他都不</p>
+
+<p>变：</p>
+
+<pre><code class="language-java">import java.util.function.Predicate;
+public class Demo16PredicateAnd {
+private static void method(Predicate&lt;String&gt; one, Predicate&lt;String&gt; two) {
+boolean isValid = one.or(two).test(&quot;Helloworld&quot;);
+System.out.println(&quot;字符串符合要求吗：&quot; + isValid);
+}
+public static void main(String[] args) {
+method(s ‐&gt; s.contains(&quot;H&quot;), s ‐&gt; s.contains(&quot;W&quot;));
+}
+}
+</code></pre>
+
+<p><strong>默认方法：negate</strong></p>
+
+<p>“与”、“或”已经了解了，剩下的“非”（取反）也会简单。默认方法 negate 的JDK源代码为：</p>
+
+<pre><code class="language-java">default Predicate&lt;T&gt; negate() {
+return (t) ‐&gt; !test(t);
+}
+</code></pre>
+
+<p>从实现中很容易看出，它是执行了test方法之后，对结果boolean值进行“!”取反而已。一定要在 test 方法调用之前</p>
+
+<p>调用 negate 方法，正如 and 和 or 方法一样：</p>
+
+<pre><code class="language-java">import java.util.function.Predicate;
+public class Demo17PredicateNegate {
+private static void method(Predicate&lt;String&gt; predicate) {
+boolean veryLong = predicate.negate().test(&quot;HelloWorld&quot;);
+System.out.println(&quot;字符串很长吗：&quot; + veryLong);
+}
+public static void main(String[] args) {
+method(s ‐&gt; s.length() &lt; 5);
+}
+}
+</code></pre>
+
+<p><strong>练习：集合信息筛选</strong></p>
+
+<p>数组当中有多条“姓名+性别”的信息如下，请通过 Predicate 接口的拼装将符合要求的字符串筛选到集合ArrayList 中，需要同时满足两个条件：</p>
+
+<ol>
+<li><p>必须为女生；</p></li>
+
+<li><p>姓名为4个字。</p>
+
+<pre><code class="language-java">public class DemoPredicate {
+public static void main(String[] args) {
+String[] array = { &quot;迪丽热巴,女&quot;, &quot;古力娜扎,女&quot;, &quot;马尔扎哈,男&quot;, &quot;赵丽颖,女&quot; };
+}
+}
+</code></pre></li>
+</ol>
+
+<p><strong>解答</strong></p>
+
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+public class DemoPredicate {
+    public static void main(String[] args) {
+        String[] array = { &quot;迪丽热巴,女&quot;, &quot;古力娜扎,女&quot;, &quot;马尔扎哈,男&quot;, &quot;赵丽颖,女&quot; };
+        List&lt;String&gt; list = filter(array,
+        s ‐&gt; &quot;女&quot;.equals(s.split(&quot;,&quot;)[1]),
+        s ‐&gt; s.split(&quot;,&quot;)[0].length() == 4);
+        System.out.println(list);
+    }
+    private static List&lt;String&gt; filter(String[] array, Predicate&lt;String&gt; one,
+    Predicate&lt;String&gt; two) {
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        for (String info : array) {
+        if (one.and(two).test(info)) {
+        list.add(info);
+        }
+        }
+        return list;
+    }	
+}
+</code></pre>
+
+<h2 id="function接口"><strong>Function接口</strong></h2>
+
+<p>java.util.function.Function 接口用来根据一个类型的数据得到另一个类型的数据，前者称为前置条件，</p>
+
+<p>后者称为后置条件。</p>
+
+<p><strong>抽象方法：apply</strong></p>
+
+<p>Function 接口中最主要的抽象方法为： R apply(T t) ，根据类型T的参数获取类型R的结果。</p>
+
+<p>使用的场景例如：将 String 类型转换为 Integer 类型。</p>
+
+<pre><code class="language-java">import java.util.function.Function;
+public class Demo11FunctionApply {
+    private static void method(Function&lt;String, Integer&gt; function) {
+        int num = function.apply(&quot;10&quot;);
+        System.out.println(num + 20);
+    }
+    public static void main(String[] args) {
+   		method(s ‐&gt; Integer.parseInt(s));
+    }
+}
+</code></pre>
+
+<p><strong>默认方法：</strong><strong>andThen</strong></p>
+
+<p>Function 接口中有一个默认的 andThen 方法，用来进行组合操作。JDK源代码如：</p>
+
+<pre><code class="language-java">default &lt;V&gt; Function&lt;T, V&gt; andThen(Function&lt;? super R, ? extends V&gt; after) {
+Objects.requireNonNull(after);
+return (T t) ‐&gt; after.apply(apply(t));
+}
+</code></pre>
+
+<p>该方法同样用于“先做什么，再做什么”的场景，和 Consumer 中的 andThen 差不多：</p>
+
+<pre><code class="language-java">import java.util.function.Function;
+public class Demo12FunctionAndThen {
+private static void method(Function&lt;String, Integer&gt; one, Function&lt;Integer, Integer&gt; two) {
+int num = one.andThen(two).apply(&quot;10&quot;);
+System.out.println(num + 20);
+}
+public static void main(String[] args) {
+method(str‐&gt;Integer.parseInt(str)+10, i ‐&gt; i *= 10);
+}
+}
+</code></pre>
+
+<p>第一个操作是将字符串解析成为int数字，第二个操作是乘以10。两个操作通过 andThen 按照前后顺序组合到了一</p>
+
+<p>起。</p>
+
+<p><code>请注意，Function的前置条件泛型和后置条件泛型可以相同。</code></p>
+
+<p><strong>练习：自定义函数模型拼接</strong></p>
+
+<p>请使用 Function 进行函数模型的拼接，按照顺序需要执行的多个函数操作为：</p>
+
+<p>String str = &ldquo;赵丽颖,20&rdquo;;</p>
+
+<ol>
+<li><p>将字符串截取数字年龄部分，得到字符串；</p></li>
+
+<li><p>将上一步的字符串转换成为int类型的数字；</p></li>
+
+<li><p>将上一步的int数字累加100，得到结果int数字。</p>
+
+<pre><code class="language-java">import java.util.function.Function;
+public class DemoFunction {
+public static void main(String[] args) {
+    String str = &quot;赵丽颖,20&quot;;
+    int age = getAgeNum(str, s ‐&gt; s.split(&quot;,&quot;)[1],
+    s ‐&gt;Integer.parseInt(s),
+    n ‐&gt; n += 100);
+    System.out.println(age);
+}
+private static int getAgeNum(String str, Function&lt;String, String&gt; one,
+Function&lt;String, Integer&gt; two,
+Function&lt;Integer, Integer&gt; three) {
+	return one.andThen(two).andThen(three).apply(str);
+}
+}
+</code></pre></li>
+</ol>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=1.8%e6%96%b0%e7%89%b9%e6%80%a7-1%e5%87%bd%e6%95%b0%e5%bc%8f%e6%8e%a5%e5%8f%a3&nbsp;-&nbsp;%e5%96%9c%e6%ac%a2%e5%85%bb%e7%8b%97%2c%e4%b8%8d%e7%88%b1%e6%b4%97%e5%a4%b4%21&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-1%25E5%2587%25BD%25E6%2595%25B0%25E5%25BC%258F%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-1%25E5%2587%25BD%25E6%2595%25B0%25E5%25BC%258F%25E6%258E%25A5%25E5%258F%25A3%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-1%25E5%2587%25BD%25E6%2595%25B0%25E5%25BC%258F%25E6%258E%25A5%25E5%258F%25A3%2f&amp;description=1.8%e6%96%b0%e7%89%b9%e6%80%a7-1%e5%87%bd%e6%95%b0%e5%bc%8f%e6%8e%a5%e5%8f%a3"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f07jdk1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%2f1.8%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7-1%25E5%2587%25BD%25E6%2595%25B0%25E5%25BC%258F%25E6%258E%25A5%25E5%258F%25A3%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7\/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7\/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/">
+          <section class="post">
+              <h2>FastDFS入门安装与nginx整合</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">喜欢养狗,不爱洗头!</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

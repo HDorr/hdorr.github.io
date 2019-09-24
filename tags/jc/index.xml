@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jc on 喜欢养狗,不爱洗头!</title>
+    <link>https://hdorr.github.io/tags/jc/</link>
+    <description>Recent content in jc on 喜欢养狗,不爱洗头!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>All rights reserved - 2018</copyright>
+    <lastBuildDate>Sat, 27 Jul 2019 17:02:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://hdorr.github.io/tags/jc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1.8新特性-1函数式接口</title>
+      <link>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-1%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
+      <description>主要内容
+ 自定义函数式接口
+ 函数式编程
+ 常用函数式接口
+  1.函数式接口 概念 函数式接口在Java中是指：有且仅有一个抽象方法的接口。
+函数式接口，即适用于函数式编程场景的接口。而Java中的函数式编程体现就是Lambda，所以函数式接口就是可
+以适用于Lambda使用的接口。只有确保接口中有且仅有一个抽象方法，Java中的Lambda才能顺利地进行推导。
+备注：“**语法糖**”是指使用更加方便，但是原理不变的代码语法。例如在遍历集合时使用的for-each语法，其实底层的实现原理仍然是迭代器，这便是“语法糖”。从应用层面来讲，Java中的Lambda可以被当做是匿名内部 类的“语法糖”，但是二者在原理上是不同的。
+格式 只要确保接口中有且仅有一个抽象方法即可：
+修饰符 interface 接口名称 { public abstract 返回值类型 方法名称(可选参数信息); // 其他非抽象方法内容 }  由于接口当中抽象方法的 public abstract 是可以省略的，所以定义一个函数式接口很简单：
+public interface MyFunctionalInterface { void myMethod(); }  @FunctionalInterface 与 @Override 注解的作用类似，Java 8中专门为函数式接口引入了一个新的注解： @FunctionalInterface 。该注
+解可用于一个接口的定义上：
+@FunctionalInterface public interface MyFunctionalInterface { void myMethod(); }  @Override检查方法是否为重写的方法,是:编译成功,否:编译失败
+一旦使用该注解来定义接口，编译器将会强制检查该接口是否确实有且仅有一个抽象方法，否则将会报错。需要注
+意的是，即使不使用该注解，只要满足函数式接口的定义，这仍然是一个函数式接口，使用起来都一样。
+2.函数式编程 在兼顾面向对象特性的基础上，Java语言通过Lambda表达式与方法引用等，为开发者打开了函数式编程的大门。
+下面我们做一个初探。
+Lambda的延迟执行 有些场景的代码执行后，结果不一定会被使用，从而造成性能浪费。而Lambda表达式是延迟执行的，这正好可以
+作为解决方案，提升性能。
+public class Demo01Logger { private static void log(int level, String msg) { if (level == 1) { System.</description>
+    </item>
+    
+    <item>
+      <title>多线程</title>
+      <link>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Sat, 27 Jul 2019 17:02:37 +0800</pubDate>
+      
+      <guid>https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+      <description>多线程 1.并行与并发概念 ​ 并发是指cpu在一段之间内交替执行多个任务.
+​ 并行是指cpu在一个时刻同时执行多个任务
+2.进程与线程概念 进程:是指在内存中运行的应用程序,每一个进程都有一个独立的内存空间,一个应用程序可以同时运行多个进程.
+线程:是指进程中的一个执行单元,负责当前线程中程序的执行,一个进程至少有一个线程.
+cpu:中央处理器,对数据进行计算,只会电脑中软件和硬件干活.例如:电脑管家点击运行就会进入内存中,就是一个进程.点击不同的功能,就会开启一条应用程序到cpu的执行路径中,就叫线程.
+线程是属于进程的,是进程中的一个执行单元,负责程序的执行.
+线程调度:
+​ 分时调度:轮流使用cpu,平均分配使用时间.
+​ 抢占式调度:优先让优先级高的线程使用cpu,优先级相同则随机选择一个.java用的就是抢占式的方式.
+3.单线程演示 主线程:执行(main)方法的线程 单线程程序:java程序中只有一个线程,从main方法开始,从上到下依次执行  public class demoThread01 { public static void main(String[] args) { Person person = new Person(&amp;quot;小强&amp;quot;); person.run(); Person person2 = new Person(&amp;quot;小哥&amp;quot;); person2.run(); } }  public class Person { private String name; public void run() { for (int i = 0; i &amp;lt; 20; i++) { System.out.println(name+i); } } public String getName() { return name; } public void setName(String name) { this.</description>
+    </item>
+    
+  </channel>
+</rss>

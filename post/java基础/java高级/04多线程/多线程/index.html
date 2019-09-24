@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="多线程"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="多线程 &middot; 喜欢养狗,不爱洗头!" />
+  	<meta property="og:site_name" content="喜欢养狗,不爱洗头!" />
+  	<meta property="og:url" content="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="jc" />
+    
+    <meta property="article:tag" content="java高级" />
+    
+    <meta property="article:tag" content="多线程" />
+    
+    
+
+    <title>多线程 &middot; 喜欢养狗,不爱洗头!</title>
+
+    
+    <meta name="description" content="多线程 1.并行与并发概念 ​ 并发是指cpu在一段之间内交替执行多个任务.
+​ 并行是指cpu在一个时刻同时执行多个任务
+2.进程与线程概念 进程:是指在内存中运行的应用程序,每一个进程都有一个独立的内存空间,一个应用程序可以同时运行多个进程.
+线程:是指进程中的一个执行单元,负责当前线程中程序的执行,一个进程至少有" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="喜欢养狗,不爱洗头!" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "多线程",
+    "name": "多线程",
+    "wordCount":  1102 ,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "jc, java高级, 多线程",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/04%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ms">ms</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/spring">Spring&amp;SpringMVC相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/mybatis">Mybatis相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/springcloud">SpringCloud微服务相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">多线程</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/jc/">#jc</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#多线程</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="多线程"><strong>多线程</strong></h1>
+
+<h1 id="1-并行与并发概念">1.并行与并发概念</h1>
+
+<p>​   并发是指cpu在一段之间内交替执行多个任务.</p>
+
+<p>​   并行是指cpu在一个时刻同时执行多个任务</p>
+
+<h1 id="2-进程与线程概念">2.进程与线程概念</h1>
+
+<p><strong>进程:</strong>是指在内存中运行的应用程序,每一个进程都有一个独立的内存空间,一个应用程序可以同时运行多个进程.</p>
+
+<p><strong>线程:</strong>是指进程中的一个执行单元,负责当前线程中程序的执行,一个进程至少有一个线程.</p>
+
+<p>cpu:中央处理器,对数据进行计算,只会电脑中软件和硬件干活.例如:<strong>电脑管家点击运行就会进入内存中,就是一个进程.点击不同的功能,就会开启一条应用程序到cpu的执行路径中,就叫线程.</strong></p>
+
+<p><strong>线程是属于进程的,是进程中的一个执行单元,负责程序的执行.</strong></p>
+
+<p><strong>线程调度:</strong></p>
+
+<p>​       分时调度:轮流使用cpu,平均分配使用时间.</p>
+
+<p>​       <strong>抢占式调度</strong>:优先让优先级高的线程使用cpu,优先级相同则随机选择一个<strong>.java用的就是抢占式的方式.</strong></p>
+
+<h1 id="3-单线程演示">3.单线程演示</h1>
+
+<pre><code>主线程:执行(main)方法的线程  
+单线程程序:java程序中只有一个线程,从main方法开始,从上到下依次执行
+</code></pre>
+
+<pre><code class="language-java">public class demoThread01 { 
+    public static void main(String[] args) {   
+        Person person = new Person(&quot;小强&quot;);    
+        person.run();       
+        Person person2 = new Person(&quot;小哥&quot;);    
+        person2.run();   
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">public class Person {   
+    private String name;  
+    public void run() {  
+        for (int i = 0; i &lt; 20; i++) { 
+            System.out.println(name+i);  
+        }  
+    }    
+    public String getName() {  
+        return name; 
+    }   
+    public void setName(String name) {
+        this.name = name;  
+    }    
+    public Person() {
+    }  
+    public Person(String name) { 
+        this.name = name;
+    }
+}
+</code></pre>
+
+<p>单线程弊端,一旦抛出异常后续任务就不会再执行了.</p>
+
+<h1 id="4-创建多线程程序">4.创建多线程程序</h1>
+
+<h2 id="4-1-实现thread类">4.1 实现Thread类</h2>
+
+<pre><code class="language-java"> /**
+ * 创建多线程程序的第一种方式:
+ *      创建实现java.lang.Thread类的子类
+ */
+public class demoThread02 extends Thread{
+    //1.继承Thread类
+    //2.重写run()的执行方法
+    //3.创建对象
+    //4.调用start()方法开启新的线程,执行run的代码
+    public void run() {
+        for (int i = 0; i &lt; 20; i++) {
+            System.out.println(i);
+        }
+    }
+
+    public static void main(String[] args) {
+        demoThread02 demoThread02 = new demoThread02();
+        demoThread02.start();
+        for (int i = 0; i &lt; 20; i++) {
+            System.out.println(&quot;main&quot;+i);
+        }
+    }
+}
+</code></pre>
+
+<h2 id="4-2-实现runable接口-重写run方法">4.2 实现Runable接口,重写run方法</h2>
+
+<pre><code class="language-java">public class demoThread04 implements Runnable{
+
+    @Override
+    public void run() {
+        for (int i = 0; i &lt; 10; i++) {
+            System.out.println(i);
+        }
+    }
+
+    public static void main(String[] args) {
+        demoThread04 thread04 = new demoThread04();
+        new Thread(thread04).start();
+    }
+}
+
+</code></pre>
+
+<p>步骤: 1.实现runable接口,重写run方法</p>
+
+<p>​        2.创建类对象,再创建Thread对象将runable对象传入,再调用start()开启.</p>
+
+<h2 id="4-3-匿名内部类方式创建">4.3 匿名内部类方式创建</h2>
+
+<pre><code class="language-java">/**
+ * 匿名内部类方式创建多线程
+ */
+public class demoThread05 {
+    public static void main(String[] args) {
+        //方式1
+        new Thread(){
+            @Override
+            public void run() {
+                System.out.println(&quot;哈哈&quot;);
+            }
+        }.start();
+		//方式2
+        new Thread( new Runnable(){
+            @Override
+            public void run() {
+                System.out.println(&quot;嘿嘿&quot;);
+            }
+        }).start();
+    }
+}
+</code></pre>
+
+<h2 id="区别">区别:</h2>
+
+<p>​       实现runable接口创建的好处,避免了单继承的局限性(一个类只能继承一个类),实现了runable之后还可以继承或者实现其他类.</p>
+
+<p>​       降低了耦合性,将设置线程和开启线程进行分离.<strong>传递不同的实现类,实现不同的任务.</strong></p>
+
+<h1 id="5-多线程内存原理">5.多线程内存原理</h1>
+
+<p>主方法和run方法都会压栈执行,但是调用start()方法则不同,会开辟一个新的栈空间,这样就可以让cpu自己选择执行的线程.</p>
+
+<h1 id="6-thread类api">6.Thread类API</h1>
+
+<h2 id="6-1-getname">6.1 getName()</h2>
+
+<p>​   返回该线程的名称</p>
+
+<h2 id="6-2-currentthread">6.2 currentThread()</h2>
+
+<p>​   获取当前正在执行的线程</p>
+
+<h2 id="6-3-设置线程名称">6.3 设置线程名称</h2>
+
+<h3 id="6-3-1-setname">6.3.1 setName()</h3>
+
+<h3 id="6-3-2-创建一个带参的构造方法-调用父类的构造方法-将参数传递过去">6.3.2 创建一个带参的构造方法,调用父类的构造方法,将参数传递过去</h3>
+
+<h2 id="6-4-sleep">6.4 sleep()</h2>
+
+<pre><code class="language-java">public static void main(String[] args) throws InterruptedException { 
+    for (int i = 0; i &lt;=60; i++) { 
+        System.out.println(i); 
+        Thread.sleep(1000L);
+    }
+}
+</code></pre>
+
+<p>设置线程休眠时间.静态方法,可直接类名.调用</p>
+
+<h1 id="7-线程安全">7.线程安全</h1>
+
+<p>​</p>
+
+<p><strong>安全问题:</strong> 多线程<strong>访问了共享的数据</strong>,会产生线程安全问题.</p>
+
+<h3 id="7-1解决问题"><strong>7.1解决问题:</strong></h3>
+
+<h3 id="方式一-同步代码块">方式一:同步代码块</h3>
+
+<pre><code class="language-java">synchronized(同步锁){
+    需要同步操作的代码
+}
+</code></pre>
+
+<p>同步锁: 只是一个概念,可以认为在对象上标记了一个锁,<strong>锁对象可以是任何类型</strong></p>
+
+<p><strong>任何时候最多允许一个线程拥有同步锁进入代码块,其他的线程只能等待.</strong></p>
+
+<pre><code class="language-java">/**
+ * 卖票安全问题
+ *  同步代码块解决
+ */
+public class demoThread06 implements Runnable{
+        Object obj =new Object();
+        private int ticket = 100;
+        @Override
+        public void run () {
+        while (true) {
+           synchronized (obj){
+               if (ticket &gt; 0) {
+                   try {
+                       Thread.sleep(10);
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
+                   }
+                   System.out.println(Thread.currentThread().getName() + &quot;--&gt;正在卖第&quot; + ticket + &quot;张票&quot;);
+                   ticket--;
+               }
+           }
+        }
+    }
+}
+</code></pre>
+
+<p>程序频繁的判断锁和调用锁,执行效率会变低.</p>
+
+<h3 id="方式二-同步方法">方式二:同步方法</h3>
+
+<pre><code class="language-txt">1.把访问了共享数据的代码抽取出来,放到一个方法中*  
+2.在方法上增加synchronized修饰符
+</code></pre>
+
+<pre><code class="language-java">public class demoThread07 implements Runnable{
+    private int ticket = 100;
+    @Override
+    public void run () {
+        while (true) {
+                payTicked();
+            }
+    }
+
+    /*
+    定义同步方法
+     */
+    public synchronized void payTicked() {
+        if (ticket &gt; 0) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + &quot;--&gt;正在卖第&quot; + ticket + &quot;张票&quot;);
+            ticket--;
+        }
+    }
+}
+
+</code></pre>
+
+<p>同步方法的锁对象其实就是runable也就是this.</p>
+
+<h3 id="方式三-lock锁">方式三:LOCK锁</h3>
+
+<p>jdk1.5之后有了LOCK接口,提供了比synchronized方法和语句更广泛的锁定操作.</p>
+
+<p>API:</p>
+
+<p>​       lock() 获取锁</p>
+
+<p>​       unlock() 释放锁</p>
+
+<p><strong>使用步骤</strong>:</p>
+
+<p>​   1.在成员位置创建一个lock接口的的实现类reentrantLock类对象</p>
+
+<p>​   2.在可能出现安全问题的代码钱调用lock()方法,获取锁</p>
+
+<p>​   3.在代码后调用unlock()方法释放锁</p>
+
+<pre><code class="language-java">public class demoThread08 implements Runnable{
+    private int ticket = 100;
+
+   Lock l= new ReentrantLock();
+    @Override
+    public void run () {
+        while (true) {
+            l.lock();
+                if (ticket &gt; 0) {
+                    try {
+                        Thread.sleep(10);
+                        System.out.println(Thread.currentThread().getName() + &quot;--&gt;正在卖第&quot; + ticket + &quot;张票&quot;);
+                        ticket--;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }finally {
+                        //无论怎样都会蒋锁释放
+                        l.unlock();
+                    }
+                }
+
+            }
+    }
+}
+</code></pre>
+
+<h1 id="8-线程状态">8.线程状态</h1>
+
+<p><img src="\images\1569333446887.png" alt="1569333446887" /></p>
+
+<h2 id="8-1-线程状态概述"><strong>8.1</strong> <strong>线程状态概述</strong></h2>
+
+<p>当线程被创建并启动以后，它既不是一启动就进入了执行状态，也不是一直处于执行状态。在线程的生命周期中，</p>
+
+<p>有几种状态呢？在API中 java.lang.Thread.State 这个枚举中给出了六种线程状态：</p>
+
+<p>这里先列出各个线程状态发生的条件，下面将会对每种状态进行详细解析</p>
+
+<p><img src="\images\1569333470606.png" alt="1569333470606" /></p>
+
+<p>我们不需要去研究这几种状态的实现原理，我们只需知道在做线程操作中存在这样的状态。那我们怎么去理解这几个状态呢，新建与被终止还是很容易理解的，我们就研究一下线程从Runnable（可运行）状态与非运行状态之间 的转换问题。</p>
+
+<h2 id="8-2-timed-waiting-计时等待"><strong>8.2 Timed Waiting</strong>（计时等待）</h2>
+
+<p>Timed Waiting在API中的描述为：一个正在限时等待另一个线程执行一个（唤醒）动作的线程处于这一状态。单独的去理解这句话，真是玄之又玄，其实我们在之前的操作中已经接触过这个状态了，在哪里呢？</p>
+
+<p>在我们写卖票的案例中，为了减少线程执行太快，现象不明显等问题，我们在run方法中添加了sleep语句，这样就 强制当前正在执行的线程休眠（<strong>暂停执行</strong>），以“减慢线程”。</p>
+
+<p>其实当我们调用了sleep方法之后，当前执行的线程就进入到“休眠状态”，其实就是所谓的Timed Waiting(计时等 待)，那么我们通过一个案例加深对该状态的一个理解。</p>
+
+<p><strong>实现一个计数器，计数到</strong><strong>100</strong><strong>，在每个数字之间暂停</strong><strong>1</strong><strong>秒，每隔</strong><strong>10</strong><strong>个数字输出一个字符串</strong></p>
+
+<p>代码：</p>
+
+<pre><code class="language-java">public class MyThread extends Thread {
+public void run() {
+for (int i = 0; i &lt; 100; i++) {
+if ((i) % 10 == 0) {
+System.out.println(&quot;‐‐‐‐‐‐‐&quot; + i);
+    }
+System.out.print(i);
+try {
+Thread.sleep(1000);
+System.out.print(&quot; 线程睡眠1秒！\n&quot;);
+} catch (InterruptedException e) {
+e.printStackTrace();
+}
+}
+}
+public static void main(String[] args) {
+new MyThread().start();
+}
+}
+</code></pre>
+
+<p>通过案例可以发现，sleep方法的使用还是很简单的。我们需要记住下面几点：</p>
+
+<ol>
+<li><p>进入 TIMED_WAITING 状态的一种常见情形是调用的 sleep 方法，单独的线程也可以调用，不一定非要有协作关系。</p></li>
+
+<li><p>为了让其他线程有机会执行，可以将Thread.sleep()的调用<strong>放线程</strong><strong>run()</strong><strong>之内</strong>。这样才能保证该线程执行过程 中会睡眠</p></li>
+
+<li><p>sleep与锁无关，线程睡眠到期自动苏醒，并返回到Runnable（可运行）状态。</p></li>
+</ol>
+
+<p>小提示：sleep()中指定的时间是线程不会运行的最短时间。因此，sleep()方法不能保证该线程睡眠到期后就开始立刻执行。</p>
+
+<h2 id="8-3-blocked-锁阻塞"><strong>8.3 BLOCKED</strong><strong>（锁阻塞）</strong></h2>
+
+<p>Blocked状态在API中的介绍为：一个正在阻塞等待一个监视器锁（锁对象）的线程处于这一状态。</p>
+
+<p>我们已经学完同步机制，那么这个状态是非常好理解的了。比如，线程A与线程B代码中使用同一锁，如果线程A获取到锁，线程A进入到Runnable状态，那么线程B就进入到Blocked锁阻塞状态。</p>
+
+<p>这是由Runnable状态进入Blocked状态。除此Waiting以及Time Waiting状态也会在某种情况下进入阻塞状态，而这部分内容作为扩充知识点带领大家了解一下。</p>
+
+<h2 id="8-4-waiting-无限等待"><strong>8.4 Waiting</strong><strong>（无限等待）</strong></h2>
+
+<p>Wating状态在API中介绍为：一个正在无限期等待另一个线程执行一个特别的（唤醒）动作的线程处于这一状态。
+那么我们之前遇到过这种状态吗？答案是并没有，但并不妨碍我们进行一个简单深入的了解。我们通过一段代码来
+学习一下：</p>
+
+<pre><code class="language-java">/**
+ * 等待唤醒案例,
+ *  创建一个顾客线程(消费者),告知老板要的的包子的种类和数量,调用wait方法,fangqicpu
+ *  执行,进入无线等待状态,
+ *  创建老板进程(生产者):花了5秒做包子,做好之后调用notify方法,唤醒顾客吃包子
+ *
+ *  注意:顾客和老板 要用同步代码块包裹,保证等待和唤醒只能有一个再执行
+ *  同步使用的所对象必须保证唯一
+ *  只有锁对象才能调用wait和notify方法
+ */
+public class demoThread09 {
+    public static void main(String[] args) {
+        //创建锁对象
+        Object obj=new Object();
+        new Thread(){
+            @Override
+            public void run() {
+                synchronized (obj){
+                    try {
+                    System.out.println(&quot;告知老板要的的包子的种类和数量&quot;);
+                        obj.wait();
+                        System.out.println(&quot;包子已经做好了&quot;);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
+
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                synchronized (obj) {
+                    System.out.println(&quot;老板5秒之后做好包子,告知顾客可以吃包子了&quot;);
+                    obj.notify();
+                }
+            }
+        }.start();
+    }
+}
+</code></pre>
+
+<p>通过上述案例我们会发现，一个调用了某个对象的 Object.wait 方法的线程会等待另一个线程调用此对象的Object.notify()方法 或 Object.notifyAll()方法。</p>
+
+<p>其实waiting状态并不是一个线程的操作，它体现的是多个线程间的通信，可以理解为多个线程之间的协作关系，</p>
+
+<p>多个线程会争取锁，同时相互之间又存在协作关系。就好比在公司里你和你的同事们，你们可能存在晋升时的竞争，但更多时候你们更多是一起合作以完成某些任务。</p>
+
+<p>当多个线程协作时，比如A，B线程，如果A线程在Runnable（可运行）状态中调用了wait()方法那么A线程就进入 了Waiting（无限等待）状态，同时失去了同步锁。假如这个时候B线程获取到了同步锁，在运行状态中调用了notify()方法，那么就会将无限等待的A线程唤醒。注意是唤醒，如果获取到锁对象，那么A线程唤醒后就进入</p>
+
+<p>Runnable（可运行）状态；如果没有获取锁对象，那么就进入到Blocked（锁阻塞状态）。</p>
+
+<h1 id="9-等待唤醒机制">9.<strong>等待唤醒机制</strong></h1>
+
+<h2 id="9-1-线程间通信"><strong>9.1</strong> <strong>线程间通信</strong></h2>
+
+<p><strong>概念：</strong>多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同。</p>
+
+<p>比如：线程A用来生成包子的，线程B用来吃包子的，包子可以理解为同一资源，线程A与线程B处理的动作，一个是生产，一个是消费，那么线程A与线程B之间就存在线程通信问题。</p>
+
+<p><strong>为什么要处理线程间通信：</strong></p>
+
+<p>多个线程并发执行时, 在默认情况下CPU是随机切换线程的，当我们需要多个线程来共同完成一件任务，并且我们希望他们有规律的执行, 那么多线程之间需要一些协调通信，以此来帮我们达到多线程共同操作一份数据。</p>
+
+<p><strong>如何保证线程间通信有效利用资源：</strong></p>
+
+<p>多个线程在处理同一个资源，并且任务不同时，需要线程通信来帮助解决线程之间对同一个变量的使用或操作。 就是多个线程在操作同一份数据时， 避免对同一共享变量的争夺。也就是我们需要通过一定的手段使各个线程能有效的利用资源。而这种手段即—— <strong>等待唤醒机制。</strong></p>
+
+<h2 id="9-2-等待唤醒机制"><strong>9.2</strong> <strong>等待唤醒机制</strong></h2>
+
+<p><strong>什么是等待唤醒机制</strong></p>
+
+<p>这是多个线程间的一种<strong>协作</strong>机制。谈到线程我们经常想到的是线程间的<strong>竞争（</strong><strong>race</strong><strong>）</strong>，比如去争夺锁，但这并不是 故事的全部，线程间也会有协作机制。就好比在公司里你和你的同事们，你们可能存在在晋升时的竞争，但更多时 候你们更多是一起合作以完成某些任务。</p>
+
+<p>就是在一个线程进行了规定操作后，就进入等待状态（<strong>wait()</strong>）， 等待其他线程执行完他们的指定代码过后 再将其唤醒（<strong>notify()</strong>）;在有多个线程进行等待时， 如果需要，可以使用 notifyAll()来唤醒所有的等待线程。</p>
+
+<p>wait/notify 就是线程间的一种协作机制。</p>
+
+<p><strong>等待唤醒中的方法</strong></p>
+
+<p>等待唤醒机制就是用于解决线程间通信的问题的，使用到的3个方法的含义如下：</p>
+
+<ol>
+<li><p>wait：<strong>线程不再活动，不再参与调度，进入 wait set 中，因此不会浪费 CPU 资源，也不会去竞争锁了，这时的线程状态即是 WAITING。它还要等着别的线程执行一个特别的动作</strong>，也即是“<strong>通知（</strong><strong>notify</strong><strong>）</strong>”在这个对象上等待的线程从wait set 中释放出来，重新进入到调度队列（ready queue）中</p></li>
+
+<li><p>notify：<strong>则选取所通知对象的 wait set 中的一个线程释放</strong>；例如，餐馆有空位置后，等候就餐最久的顾客最先入座。</p></li>
+
+<li><p>notifyAll：则释放所通知对象的 wait set 上的全部线程。</p></li>
+</ol>
+
+<p>注意：</p>
+
+<p><strong>哪怕只通知了一个等待的线程，被通知线程也不能立即恢复执行，因为它当初中断的地方是在同步块内，而 此刻它已经不持有锁，所以她需要再次尝试去获取锁（很可能面临其它线程的竞争），成功后才能在当初调用 wait 方法之后的地方恢复执行。</strong></p>
+
+<p>总结如下：</p>
+
+<p>如果能获取锁，线程就从 WAITING 状态变成 RUNNABLE 状态；</p>
+
+<p>否则，从 wait set 出来，又进入 entry set，线程就从 WAITING 状态又变成 BLOCKED 状态</p>
+
+<p><strong>调用wait和notify方法需要注意的细节</strong></p>
+
+<ol>
+<li><p><strong>wait方法与notify方法必须要由同一个锁对象调用。</strong>因为：对应的锁对象可以通过notify唤醒使用同一个锁对象调用的wait方法后的线程。</p></li>
+
+<li><p><strong>wait方法与notify方法是属于Object类的方法的。</strong>因为：锁对象可以是任意对象，而任意对象的所属类都是继承了Object类的。</p></li>
+
+<li><p>wait方法与notify方法必须要在同步代码块或者是同步函数中使用。因为：必须要通过锁对象调用这2个方法。</p></li>
+</ol>
+
+<h2 id="案例">案例:</h2>
+
+<pre><code class="language-java">package com.hr.demo01.Thread;
+//包子类
+public class Baozi {
+        String pi;
+        String xian;
+        Boolean status=false;
+
+}
+
+</code></pre>
+
+<pre><code class="language-java">package com.hr.demo01.Thread;
+
+/**
+ * 包子铺类
+ */
+public class BaoZiShop extends Thread{
+    private Baozi bz;
+
+    public BaoZiShop(Baozi bz) {
+        this.bz = bz;
+    }
+    public void run() {
+        int count = 0;
+        while (true) {
+            //包子铺线程
+            synchronized (bz) {
+                if (bz.status == true) {
+                    try {
+                        bz.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (count % 2 == 0) {
+                    //生产薄皮三鲜馅包子
+                    bz.pi = &quot;薄皮&quot;;
+                    bz.xian = &quot;三鲜馅&quot;;
+                } else {
+                    //生产冰皮牛肉馅包子
+                    bz.pi = &quot;冰皮&quot;;
+                    bz.xian = &quot;牛肉馅&quot;;
+                }
+                count++;
+                System.out.println(&quot;包子铺正在生产:&quot; + bz.pi + bz.xian + &quot;包子&quot;);
+                //生产包子需要3秒
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                bz.status = true;
+                //唤醒吃包子
+                bz.notify();
+                System.out.println(&quot;包子铺已经生产好了:&quot; + bz.pi + bz.xian + &quot;包子,可以开吃了&quot;);
+            }
+        }
+    }
+}
+
+</code></pre>
+
+<pre><code class="language-java">package com.hr.demo01.Thread;
+
+/**
+ * 消费者
+ * 吃包子类
+ */
+public class Chibaozi extends Thread {
+    private Baozi bz;
+
+    public Chibaozi(Baozi bz) {
+        this.bz = bz;
+    }
+
+    @Override
+    public void run() {
+        //吃线程
+        while (true){
+            synchronized (bz) {
+                if (bz.status==false){
+                    try {
+                        bz.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                //被唤醒之后
+                System.out.println(&quot;吃货正在吃:&quot;+bz.pi+bz.xian+&quot;包子&quot;);
+                bz.status=false;
+                bz.notify();
+                System.out.println(&quot;吃货已经把:&quot;+bz.pi+bz.xian+&quot;的包子吃完了,包子铺开始生产包子&quot;);
+                System.out.println(&quot;---------------------------------------------------------------------&quot;);
+            }
+        }
+    }
+}
+
+</code></pre>
+
+<pre><code class="language-java">package com.hr.demo01.Thread;
+
+/**
+ * 包子案例测试类
+ */
+public class BaoziMain {
+    public static void main(String[] args) {
+        Baozi bz =new Baozi();
+        new BaoZiShop(bz).start();
+        new Chibaozi(bz).start();
+
+    }
+}
+
+</code></pre>
+
+<h1 id="10-线程池">10.<strong>线程池</strong></h1>
+
+<h2 id="10-1-线程池思想概述"><strong>10.1</strong> <strong>线程池思想概述</strong></h2>
+
+<p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：
+如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低
+系统的效率，因为频繁创建线程和销毁线程需要时间。
+那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？
+在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
+
+<h2 id="10-2-线程池概念"><strong>10.2</strong> <strong>线程池概念</strong></h2>
+
+<p><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作， 无需反复创建线程而消耗过多资源。</p>
+
+<p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原 理：</p>
+
+<p><img src="\images\1569333495593.png" alt="1569333495593" /></p>
+
+<p>合理利用线程池能够带来三个好处：</p>
+
+<ol>
+<li><p>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</p></li>
+
+<li><p>提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</p></li>
+
+<li><p>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</p></li>
+</ol>
+
+<h2 id="10-3-线程池的使用"><strong>10.3</strong> <strong>线程池的使用</strong></h2>
+
+<p>Java里面线程池的顶级接口是 java.util.concurrent.Executor ，但是严格意义上讲 Executor 并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是 java.util.concurrent.ExecutorService。</p>
+
+<p><strong>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在 java.util.concurrent.Executors 线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。</strong></p>
+
+<p>Executors类中有个创建线程池的方法如下：</p>
+
+<ul>
+<li>public static ExecutorService newFixedThreadPool(int  Threads) ：返回线程池对象。(创建的是有界线程池,也就是<strong>池中的线程个数可以指定最大数量</strong>)</li>
+</ul>
+
+<p>获取到了一个线程池ExecutorService 对象，那么怎么使用呢，在这里定义了一个使用线程池对象的方法如下：</p>
+
+<ul>
+<li>public Future submit(Runnable task) :获取线程池中的某一个线程对象，并执行</li>
+</ul>
+
+<p>​       Future接口：用来记录线程任务执行完毕后产生的结果。线程池创建与使用。</p>
+
+<p>使用线程池中线程对象的步骤：</p>
+
+<ol>
+<li><p>创建线程池对象。</p></li>
+
+<li><p>创建Runnable接口子类对象。(task)</p></li>
+
+<li><p>提交Runnable接口子类对象。(take task)</p></li>
+
+<li><p>关闭线程池(一般不做)。</p></li>
+</ol>
+
+<p>Runnable实现类代码：</p>
+
+<pre><code class="language-java">public class MyRunnable implements Runnable {
+@Override
+public void run() {
+System.out.println(&quot;我要一个教练&quot;);
+try {
+Thread.sleep(2000);
+} catch (InterruptedException e) {
+e.printStackTrace();
+}
+System.out.println(&quot;教练来了： &quot; + Thread.currentThread().getName());
+System.out.println(&quot;教我游泳,交完后，教练回到了游泳池&quot;);
+}
+}
+</code></pre>
+
+<p>线程池测试类：</p>
+
+<pre><code class="language-java">public class ThreadPoolDemo {
+public static void main(String[] args) {
+// 创建线程池对象
+ExecutorService service = Executors.newFixedThreadPool(2);//包含2个线程对象
+// 创建Runnable实例对象
+MyRunnable r = new MyRunnable();
+//自己创建线程对象的方式
+// Thread t = new Thread(r);
+// t.start(); ‐‐‐&gt; 调用MyRunnable中的run()
+// 从线程池中获取线程对象,然后调用MyRunnable中的run()
+service.submit(r);
+// 再获取个线程对象，调用MyRunnable中的run()
+service.submit(r);
+service.submit(r);
+// 注意：submit方法调用结束后，程序并不终止，是因为线程池控制了线程的关闭。
+// 将使用完的线程又归还到了线程池中
+// 关闭线程池
+//service.shutdown();
+}
+}
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e5%a4%9a%e7%ba%bf%e7%a8%8b&nbsp;-&nbsp;%e5%96%9c%e6%ac%a2%e5%85%bb%e7%8b%97%2c%e4%b8%8d%e7%88%b1%e6%b4%97%e5%a4%b4%21&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f04%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f04%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f04%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f&amp;description=%e5%a4%9a%e7%ba%bf%e7%a8%8b"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2fjava%25E5%259F%25BA%25E7%25A1%2580%2fjava%25E9%25AB%2598%25E7%25BA%25A7%2f04%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f%25E5%25A4%259A%25E7%25BA%25BF%25E7%25A8%258B%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/04%E5%A4%9A%E7%BA%BF%E7%A8%8B\/%E5%A4%9A%E7%BA%BF%E7%A8%8B\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/java%E5%9F%BA%E7%A1%80\/java%E9%AB%98%E7%BA%A7\/04%E5%A4%9A%E7%BA%BF%E7%A8%8B\/%E5%A4%9A%E7%BA%BF%E7%A8%8B\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+          <section class="post">
+              <h2>博客书写说明</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/3.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8Egridfs/">
+          <section class="post">
+              <h2>消息队列与GridFS</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">喜欢养狗,不爱洗头!</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
