@@ -266,6 +266,76 @@
 	
 	   <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">cms-后端-cms介绍及nginx后端门户静态搭建</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>CMS 什么是CMS 1、CMS是什么 ？
+CMS （Content Management System）即内容管理系统，不同的项目对CMS的定位不同，比如：一个在线教育网
+站，有些公司认为CMS系统是对所有的课程资源进行管理，而在早期网站刚开始盛行时很多公司的业务是网站制
+作，当时对CMS的定位是创建网站，即对网站的页面、图片等静态资源进行管理。
+2、CMS有哪些类型？
+上边也谈到每个公司对每个项目的CMS定位不同，CMS基本上分为：针对后台数据内容的管理、针对前端页面的
+管理、针对样式风格的管理等 。比如：一个给企业做网站的公司，其CMS系统主要是网站页面管理及样式风格的
+管理。
+3、本项目CMS的定位是什么？
+本项目作为一个大型的在线教育平台，对CMS系统的定位是对各各网站（子站点）页面的管理，主要管理由于运营
+需要而经常变动的页面，从而实现根据运营需要快速进行页面开发、上线的需求。
+静态工程搭建 1、安装Nginx
+下载nginx：http://nginx.org/en/download.html
+本教程下载nginx-1.14.0.zip(http://nginx.org/download/nginx-1.14.0.zip)
+解压nginx-1.14.0.zip到自己的计算机，双击nginx.exe即可运行。
+访问 ：http://localhost
+2、导入门户工程
+将课程资料中的门户工程拷贝到代码目录。
+使用WebStorm打开门户工程目录，目录的结构如下，后期会根据开发的推进进行扩充。
+配置虚拟主机 server{ listen 80; server_name www.xuecheng.com; //要映射的域名 ssi on; ssi_silent_errors on; location / { alias F:/teach/xcEdu/xcEduUI/xc‐ui‐pc‐static‐portal/; //自己的静态工程目录 index index.html; } }  F:/teach/xcEdu/xcEduUI/xc-ui-pc-static-portal/ 本目录即为门户的主目录。
+5、配置hosts文件
+本教程的开发环境使用Windows 7，修改C:\Windows\System32\drivers\etc\hosts文件
+127.0.0.1 www.xuecheng.com
+进入浏览器，输入http://www.xuecheng.com
+CMS页面管理需求 1、这些页面的管理流程是什么？
+1）创建站点：
+一个网站有很多子站点，比如：学成在线有主门户、学习中心、问答系统等子站点。具体的哪个页面是归属于具体
+的站点，所以要管理页面，先要管理页面所属的站点。
+2）创建模板：
+页面如何创建呢？比如电商网站的商品详情页面，每个页面的内容布局、板式是相同的，不同的只是内容，这个页
+面的布局、板式就是页面模板，模板+数据就组成一个完整的页面，最终要创建一个页面文件需要先定义此页面的
+模板，最终拿到页面的数据再结合模板就拼装成一个完整的页面。
+3）创建页面：
+创建页面是指填写页面的基本信息，如：页面的名称、页面的url地址等。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87/">cms-开发准备</a></h2>
     </header>
     <section class="post-excerpt">
@@ -686,51 +756,6 @@ export const page_get=(id) =&gt; { //定义方法,请求服务端站点根据id�
                 <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
             
                 <a href="https://hdorr.github.io//tags/cms-%E5%89%8D%E7%AB%AF/">#cms-前端</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">cms04--后端-网站管理修改页面接口 </a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>修改页面 修改页面用户操作流程：
-1、用户进入修改页面，在页面上显示了修改页面的信息
-2、用户修改页面的内容，点击“提交”，提示“修改成功”或“修改失败”
-修改页面接口定义 /** * 根据页面id查询页面信息 */ @ApiOperation(&quot;根据id查询页面接口&quot;) public CmsPage findPageById(String pageId); /** * 修改页面 */ @ApiOperation(&quot;修改页面接口&quot;) public CmsPageResult editPage(String pageId,CmsPage cmsPage);  说明：提交数据使用post、put都可以，只是根据http方法的规范，put方法是对服务器指定资源进行修改，所以这里使用put方法对页面修改进行修改。
-修改页面服务端开发 Dao 使用 Spring Data提供的fifindById方法完成根据主键查询 。
-使用 Spring Data提供的save方法完成数据保存 。
-Service /** * 根据id查询页面 * @param pageId * @return */ public CmsPage findPageById(String pageId) { Optional&lt;CmsPage&gt; optional = cmsPageRepository.findById(pageId); if (optional.isPresent()) { CmsPage cmsPage = optional.get(); return cmsPage; } return null; } /** * 修改页面 * @param pageId * @param cmsPage * @return */ public CmsPageResult editPage(String pageId, CmsPage cmsPage) { // 调用方法查询是否存在 CmsPage pageById = this. <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/1.cms%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD/cms04-%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3-/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-                <a href="https://hdorr.github.io//tags/cms-%E5%90%8E%E7%AB%AF/">#cms-后端</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">

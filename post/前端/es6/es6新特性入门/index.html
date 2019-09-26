@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="ES6新特性"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="ES6新特性 &middot; 喜欢养狗,不爱洗头!" />
+  	<meta property="og:site_name" content="喜欢养狗,不爱洗头!" />
+  	<meta property="og:url" content="https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8/" />
+
+    
+        
+            <meta property="og:image" content="/images/hr1.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-07-27T17:02:37&#43;08:00" />
+
+    
+    <meta property="article:tag" content="qd" />
+    
+    <meta property="article:tag" content="es6" />
+    
+    
+
+    <title>ES6新特性 &middot; 喜欢养狗,不爱洗头!</title>
+
+    
+    <meta name="description" content="ES6新特性 1.1 什么是ES6 编程语言JavaScript是ECMAScript的实现和扩展 。ECMAScript是由ECMA（一个类似W3C的标准组织）参与进行标准化的语法规范。ECMAScript定义了：
+语言语法 – 语法解析规则、关键字、语句、声明、运算符等。
+类型 – 布尔型、数字、字符串、对象等。
+" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://hdorr.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://hdorr.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://hdorr.github.io/css/nav.css" />
+
+    
+
+    
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        
+        <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+      
+          <link href="https://hdorr.github.io/index.xml" rel="alternate" type="application/rss+xml" title="喜欢养狗,不爱洗头!" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.56.0" />
+
+    <link rel="canonical" href="https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null ,
+        "logo": "https://hdorr.github.io/images/h1.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hdorr.github.io/images/h1.png",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "suixinblog.cn",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "Every man dies, not every man really lives."
+        
+    },
+    "headline": "ES6新特性",
+    "name": "ES6新特性",
+    "wordCount":  365 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8/",
+    "datePublished": "2019-07-27T17:02Z",
+    "dateModified": "2019-07-27T17:02Z",
+    
+    "keywords": "qd, es6",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/sm">说明</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/">主页</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/jc">Java基础</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/qd">前端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/hd">后端</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ms">ms</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/spring">Spring&amp;SpringMVC相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/mybatis">Mybatis相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/vue">vue</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/springcloud">SpringCloud微服务相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/ext">异常处理</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/freemarker">Freemarker相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/rabbitmq">RabbitMQ相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/elasticsearch">ElasticSearch相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/fastdfs">FastDFS相关</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://hdorr.github.io/tags/xm">微服务教育网项目</a>
+            </li>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="https://hdorr.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="https://hdorr.github.io/"><img src="https://hdorr.github.io/images/h1.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">ES6新特性</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            Jul 27, 2019
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/qd/">#qd</a></span>
+         
+          <span class="post-tag small"><a href="https://hdorr.github.io//tags/es6/">#es6</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h1 id="es6新特性"><strong>ES6新特性</strong></h1>
+
+<h2 id="1-1-什么是es6">1.1 什么是ES6</h2>
+
+<p>编程语言JavaScript是ECMAScript的实现和扩展 。ECMAScript是由ECMA（一个类似W3C的标准组织）参与进行标准化的语法规范。ECMAScript定义了：</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar">语言语法</a> – 语法解析规则、关键字、语句、声明、运算符等。</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">类型</a> – 布尔型、数字、字符串、对象等。</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">原型和继承</a></p>
+
+<p>内建对象和函数的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">标准库</a> – <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">数组方法</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">对象自省方法</a>等。</p>
+
+<p>ECMAScript标准不定义HTML或CSS的相关功能，也不定义类似DOM（文档对象模型）的<a href="https://developer.mozilla.org/en-US/docs/Web/API">Web API</a>，这些都在独立的标准中进行定义。ECMAScript涵盖了各种环境中JS的使用场景，无论是浏览器环境还是类似<a href="http://nodejs.org/">node.js</a>的非浏览器环境。</p>
+
+<p>ECMAScript标准的历史版本分别是1、2、3、5。</p>
+
+<p>那么为什么没有第4版？其实，在过去确实曾计划发布提出巨量新特性的第4版，但最终却因想法太过激进而惨遭废除（这一版标准中曾经有一个极其复杂的支持泛型和类型推断的内建静态类型系统）。</p>
+
+<p>ES4饱受争议，当标准委员会最终停止开发ES4时，其成员同意发布一个相对谦和的ES5版本，随后继续制定一些更具实质性的新特性。这一明确的协商协议最终命名为“Harmony”，因此，ES5规范中包含这样两句话</p>
+
+<blockquote>
+<p>ECMAScript是一门充满活力的语言，并在不断进化中。</p>
+
+<p>未来版本的规范中将持续进行重要的技术改进</p>
+</blockquote>
+
+<p>2009年发布的改进版本ES5，引入了<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create()</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty()</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get">getters</a>和<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set">setters</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">严格模式</a>以及<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a>对象。</p>
+
+<p>ECMAScript 6.0（以下简称ES6）是JavaScript语言的下一代标准，2015年6月正式发布。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+
+<h2 id="1-2-node-js中使用es6">1.2 Node.js中使用ES6</h2>
+
+<p>ES6+ 太棒了,但是很多高级功能node是不支持的,就需要使用babel转换成ES5</p>
+
+<p>（1）babel转换配置,项目根目录添加.babelrc 文件</p>
+
+<pre><code class="language-json">{
+  &quot;presets&quot; : ['es2015']
+}
+</code></pre>
+
+<p>（2）安装es6转换模块</p>
+
+<pre><code>cnpm install babel-preset-es2015 --save-dev
+</code></pre>
+
+<p>（3）全局安装命令行工具</p>
+
+<pre><code>cnpm install  babel-cli -g
+</code></pre>
+
+<p>（4）使用</p>
+
+<pre><code>babel-node js文件名
+</code></pre>
+
+<h2 id="1-3-语法新特性">1.3 语法新特性</h2>
+
+<h3 id="1-3-1-变量声明let">1.3.1 变量声明let</h3>
+
+<p>我们都是知道在ES6以前，var关键字声明变量。无论声明在何处，都会被视为声明在函数的最顶部(不在函数内即在全局作用域的最顶部)。这就是函数变量提升例如</p>
+
+<pre><code class="language-js">  function aa() {
+    if(bool) {
+        var test = 'hello man'
+    } else {
+        console.log(test)
+    }
+  }
+</code></pre>
+
+<p>以上的代码实际上是:</p>
+
+<pre><code class="language-js">function aa() {
+    var test // 变量提升
+    if(bool) {
+        test = 'hello man'
+    } else {
+        //此处访问test 值为undefined
+        console.log(test)
+    }
+    //此处访问test 值为undefined
+  }
+</code></pre>
+
+<p>所以不用关心bool是否为true or false。实际上，无论如何test都会被创建声明。</p>
+
+<p>接下来ES6主角登场：</p>
+
+<p>我们通常用let和const来声明，let表示变量、const表示常量。let和const都是块级作用域。怎么理解这个块级作用域？在一个函数内部 ，在一个代码块内部。看以下代码</p>
+
+<pre><code class="language-js"> function aa() {
+    if(bool) {
+       let test = 'hello man'
+    } else {
+        //test 在此处访问不到
+        console.log(test)
+    }
+  }
+</code></pre>
+
+<h3 id="1-3-2-常量声明">1.3.2 常量声明</h3>
+
+<p>const 用于声明常量，看以下代码</p>
+
+<pre><code class="language-js">const name = 'lux'
+name = 'joe' //再次赋值此时会报错
+</code></pre>
+
+<h3 id="1-3-3-模板字符串">1.3.3 模板字符串</h3>
+
+<p>es6模板字符简直是开发者的福音啊，解决了ES5在字符串功能上的痛点。</p>
+
+<p>第一个用途，基本的字符串格式化。将表达式嵌入字符串中进行拼接。用${}来界定。</p>
+
+<pre><code class="language-js">    //es5 
+    var name = 'lux'
+    console.log('hello' + name)
+    //es6
+    const name = 'lux'
+    console.log(`hello ${name}`) //hello lux
+</code></pre>
+
+<p>第二个用途，在ES5时我们通过反斜杠()来做多行字符串或者字符串一行行拼接。ES6反引号(``)直接搞定。</p>
+
+<pre><code class="language-js">    // es5
+    var msg = &quot;Hi \
+    man!&quot;
+    // es6
+    const template = `&lt;div&gt;
+        &lt;span&gt;hello world&lt;/span&gt;
+    &lt;/div&gt;`
+</code></pre>
+
+<h3 id="1-3-4-函数默认参数">1.3.4 函数默认参数</h3>
+
+<p>ES6为参数提供了默认值。在定义函数时便初始化了这个参数，以便在参数没有被传递进去时使用。</p>
+
+<p>看例子代码</p>
+
+<pre><code class="language-js">    function action(num = 200) {
+        console.log(num)
+    }
+    action() //200
+    action(300) //300
+</code></pre>
+
+<h3 id="1-3-5-箭头函数">1.3.5 箭头函数</h3>
+
+<p>ES6很有意思的一部分就是函数的快捷写法。也就是箭头函数。</p>
+
+<p>箭头函数最直观的三个特点。</p>
+
+<p>1不需要function关键字来创建函数</p>
+
+<p>2省略return关键字</p>
+
+<p>3继承当前上下文的 this 关键字</p>
+
+<p>看下面代码（ES6）</p>
+
+<pre><code class="language-js"> (response,message) =&gt; {
+    .......
+ }
+</code></pre>
+
+<p>相当于ES5代码</p>
+
+<pre><code class="language-js">function(response,message){
+    ......
+}
+</code></pre>
+
+<h3 id="1-3-6-对象初始化简写">1.3.6 对象初始化简写</h3>
+
+<p>ES5我们对于对象都是以键值对的形式书写，是有可能出现键值对重名的。例如</p>
+
+<pre><code class="language-js">function people(name, age) {
+        return {
+            name: name,
+            age: age
+        };
+    }
+</code></pre>
+
+<p>以上代码可以简写为</p>
+
+<pre><code>  function people(name, age) {
+        return {
+            name,
+            age
+        };
+    }
+</code></pre>
+
+<h3 id="1-3-7-解构">1.3.7 解构</h3>
+
+<p>数组和对象是JS中最常用也是最重要表示形式。为了简化提取信息，ES6新增了解构，这是将一个数据结构分解为更小的部分的过程</p>
+
+<p>ES5我们提取对象中的信息形式如下</p>
+
+<pre><code class="language-js">    const people = {
+        name: 'lux',
+        age: 20
+    }
+    const name = people.name
+    const age = people.age
+    console.log(name + ' --- ' + age)
+</code></pre>
+
+<p>是不是觉得很熟悉，没错，在ES6之前我们就是这样获取对象信息的，一个一个获取。现在，ES6的解构能让我们从对象或者数组里取出数据存为变量，例如</p>
+
+<pre><code class="language-js">//对象
+    const people = {
+        name: 'lux',
+        age: 20
+    }
+    const { name, age } = people
+    console.log(`${name} --- ${age}`)
+    //数组
+    const color = ['red', 'blue']
+    const [first, second] = color
+    console.log(first) //'red'
+    console.log(second) //'blue'
+</code></pre>
+
+<h3 id="1-3-8-spread-operator">1.3.8 Spread Operator</h3>
+
+<p>ES6中另外一个好玩的特性就是Spread Operator 也是三个点儿&hellip;接下来就展示一下它的用途。 组装对象或者数组</p>
+
+<pre><code class="language-js">    //数组
+    const color = ['red', 'yellow']
+    const colorful = [...color, 'green', 'pink']
+    console.log(colorful) //[red, yellow, green, pink]
+    
+    //对象
+    const alp = { fist: 'a', second: 'b'}
+    const alphabets = { ...alp, third: 'c' }
+    console.log(alphabets) //{ &quot;fist&quot;: &quot;a&quot;, &quot;second&quot;: &quot;b&quot;, &quot;third&quot;: &quot;c&quot;
+</code></pre>
+
+<h3 id="1-3-9-import-和-export">1.3.9 import 和 export</h3>
+
+<p>import导入模块、export导出模块</p>
+
+<p>lib.js</p>
+
+<pre><code class="language-js">let fn0=function(){
+    console.log('fn0...');
+}
+export {fn0}
+</code></pre>
+
+<p>demo9.js</p>
+
+<pre><code class="language-js">import {fn0} from './lib'
+fn0();
+</code></pre>
+
+<p>注意：node(v8.x)本身并不支持import关键字，所以我们需要使用babel的命令行工具来执行（配置详见6.2小节内容）</p>
+
+<pre><code>babel-node demo9
+</code></pre>
+
+<h3 id="1-3-10-promise-参看promise章节">1.3.10  Promise(参看Promise章节)</h3>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+
+
+
+
+<figure class="author-image">
+    <a class="img" href="https://hdorr.github.io/" style="background-image: url(/images/h1.png)"><span class="hidden">HuangRui's Picture</span></a>
+</figure>
+
+
+<section class="author">
+  <h4><a href="https://hdorr.github.io/">HuangRui</a></h4>
+  
+  <p>Every man dies, not every man really lives.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">HaungRui, China</span>
+    <span class="author-link icon-link"><a href="suixinblog.cn">suixinblog.cn</a></span>
+  </div>
+</section>
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=ES6%e6%96%b0%e7%89%b9%e6%80%a7&nbsp;-&nbsp;%e5%96%9c%e6%ac%a2%e5%85%bb%e7%8b%97%2c%e4%b8%8d%e7%88%b1%e6%b4%97%e5%a4%b4%21&amp;url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fes6%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%25E5%2585%25A5%25E9%2597%25A8%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fes6%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%25E5%2585%25A5%25E9%2597%25A8%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fes6%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%25E5%2585%25A5%25E9%2597%25A8%2f&amp;description=ES6%e6%96%b0%e7%89%b9%e6%80%a7"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fhdorr.github.io%2fpost%2f%25E5%2589%258D%25E7%25AB%25AF%2fes6%2fes6%25E6%2596%25B0%25E7%2589%25B9%25E6%2580%25A7%25E5%2585%25A5%25E9%2597%25A8%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "https:\/\/hdorr.github.io\/post\/%E5%89%8D%E7%AB%AF\/es6\/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8\/";  
+this.page.identifier = "https:\/\/hdorr.github.io\/post\/%E5%89%8D%E7%AB%AF\/es6\/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://HuangRui-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="https://hdorr.github.io/post/java%E5%9F%BA%E7%A1%80/java%E9%AB%98%E7%BA%A7/07jdk1.8%E6%96%B0%E7%89%B9%E6%80%A7/1.8%E6%96%B0%E7%89%B9%E6%80%A7-3stream%E6%B5%81/">
+          <section class="post">
+              <h2>1.8新特性-3Stream流</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/%E5%90%8E%E7%AB%AF/fastdfs/fastdfs%E5%85%A5%E9%97%A8%E5%AE%89%E8%A3%85%E4%B8%8Enginx%E6%95%B4%E5%90%88/">
+          <section class="post">
+              <h2>FastDFS入门安装与nginx整合</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">喜欢养狗,不爱洗头!</a> All rights reserved - 2018</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://hdorr.github.io/js/index.js"></script>
+    
+</body>
+</html>
+

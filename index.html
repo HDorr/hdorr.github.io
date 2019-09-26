@@ -354,6 +354,8 @@
     
         
     
+        
+    
 
     
         
@@ -538,6 +540,64 @@ Java 8的Lambda让我们可以更加专注于做什么（What），而不是怎�
                 <a href="https://hdorr.github.io//tags/java%E9%AB%98%E7%BA%A7/">#java高级</a>,
             
                 <a href="https://hdorr.github.io//tags/jdk%E6%96%B0%E7%89%B9%E6%80%A7/">#jdk新特性</a>,
+            
+        
+        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
+            27 Jul 2019
+        </time>
+    </footer>
+</article>
+
+    
+        <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8/">ES6新特性</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p>ES6新特性 1.1 什么是ES6 编程语言JavaScript是ECMAScript的实现和扩展 。ECMAScript是由ECMA（一个类似W3C的标准组织）参与进行标准化的语法规范。ECMAScript定义了：
+语言语法 – 语法解析规则、关键字、语句、声明、运算符等。
+类型 – 布尔型、数字、字符串、对象等。
+原型和继承
+内建对象和函数的标准库 – JSON、Math、数组方法、对象自省方法等。
+ECMAScript标准不定义HTML或CSS的相关功能，也不定义类似DOM（文档对象模型）的Web API，这些都在独立的标准中进行定义。ECMAScript涵盖了各种环境中JS的使用场景，无论是浏览器环境还是类似node.js的非浏览器环境。
+ECMAScript标准的历史版本分别是1、2、3、5。
+那么为什么没有第4版？其实，在过去确实曾计划发布提出巨量新特性的第4版，但最终却因想法太过激进而惨遭废除（这一版标准中曾经有一个极其复杂的支持泛型和类型推断的内建静态类型系统）。
+ES4饱受争议，当标准委员会最终停止开发ES4时，其成员同意发布一个相对谦和的ES5版本，随后继续制定一些更具实质性的新特性。这一明确的协商协议最终命名为“Harmony”，因此，ES5规范中包含这样两句话
+ ECMAScript是一门充满活力的语言，并在不断进化中。
+未来版本的规范中将持续进行重要的技术改进
+ 2009年发布的改进版本ES5，引入了Object.create()、Object.defineProperty()、getters和setters、严格模式以及JSON对象。
+ECMAScript 6.0（以下简称ES6）是JavaScript语言的下一代标准，2015年6月正式发布。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。
+1.2 Node.js中使用ES6 ES6+ 太棒了,但是很多高级功能node是不支持的,就需要使用babel转换成ES5
+（1）babel转换配置,项目根目录添加.babelrc 文件
+{ &quot;presets&quot; : ['es2015'] }  （2）安装es6转换模块
+cnpm install babel-preset-es2015 --save-dev  （3）全局安装命令行工具
+cnpm install babel-cli -g  （4）使用
+babel-node js文件名  1.3 语法新特性 1.3.1 变量声明let 我们都是知道在ES6以前，var关键字声明变量。无论声明在何处，都会被视为声明在函数的最顶部(不在函数内即在全局作用域的最顶部)。这就是函数变量提升例如
+function aa() { if(bool) { var test = 'hello man' } else { console. <a class="read-more" href="https://hdorr.github.io/post/%E5%89%8D%E7%AB%AF/es6/es6%E6%96%B0%E7%89%B9%E6%80%A7%E5%85%A5%E9%97%A8/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+            
+            
+
+            
+            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
+            
+            
+            
+            HuangRui
+                 
+        
+
+        on
+            
+                <a href="https://hdorr.github.io//tags/qd/">#qd</a>,
+            
+                <a href="https://hdorr.github.io//tags/es6/">#es6</a>,
             
         
         <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
@@ -895,76 +955,6 @@ static：与src的平级目录，此目录存放静态资源
 注意：dev就是在package.json中配置的webpack dev server命令。
 发现启动成功自动打开浏览器。
 修改src中的任意文件内容，自动加载并刷新浏览器。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-            
-            
-
-            
-            <img class="author-thumb" src="https://hdorr.github.io/images/h1.png" alt="Author image" nopin="nopin" />
-            
-            
-            
-            HuangRui
-                 
-        
-
-        on
-            
-                <a href="https://hdorr.github.io//tags/xm/">#xm</a>,
-            
-        
-        <time class="post-date" datetime="2019-07-27T17:02:37&#43;08:00">
-            27 Jul 2019
-        </time>
-    </footer>
-</article>
-
-    
-        <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">cms-后端-cms介绍及nginx后端门户静态搭建</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>CMS 什么是CMS 1、CMS是什么 ？
-CMS （Content Management System）即内容管理系统，不同的项目对CMS的定位不同，比如：一个在线教育网
-站，有些公司认为CMS系统是对所有的课程资源进行管理，而在早期网站刚开始盛行时很多公司的业务是网站制
-作，当时对CMS的定位是创建网站，即对网站的页面、图片等静态资源进行管理。
-2、CMS有哪些类型？
-上边也谈到每个公司对每个项目的CMS定位不同，CMS基本上分为：针对后台数据内容的管理、针对前端页面的
-管理、针对样式风格的管理等 。比如：一个给企业做网站的公司，其CMS系统主要是网站页面管理及样式风格的
-管理。
-3、本项目CMS的定位是什么？
-本项目作为一个大型的在线教育平台，对CMS系统的定位是对各各网站（子站点）页面的管理，主要管理由于运营
-需要而经常变动的页面，从而实现根据运营需要快速进行页面开发、上线的需求。
-静态工程搭建 1、安装Nginx
-下载nginx：http://nginx.org/en/download.html
-本教程下载nginx-1.14.0.zip(http://nginx.org/download/nginx-1.14.0.zip)
-解压nginx-1.14.0.zip到自己的计算机，双击nginx.exe即可运行。
-访问 ：http://localhost
-2、导入门户工程
-将课程资料中的门户工程拷贝到代码目录。
-使用WebStorm打开门户工程目录，目录的结构如下，后期会根据开发的推进进行扩充。
-配置虚拟主机 server{ listen 80; server_name www.xuecheng.com; //要映射的域名 ssi on; ssi_silent_errors on; location / { alias F:/teach/xcEdu/xcEduUI/xc‐ui‐pc‐static‐portal/; //自己的静态工程目录 index index.html; } }  F:/teach/xcEdu/xcEduUI/xc-ui-pc-static-portal/ 本目录即为门户的主目录。
-5、配置hosts文件
-本教程的开发环境使用Windows 7，修改C:\Windows\System32\drivers\etc\hosts文件
-127.0.0.1 www.xuecheng.com
-进入浏览器，输入http://www.xuecheng.com
-CMS页面管理需求 1、这些页面的管理流程是什么？
-1）创建站点：
-一个网站有很多子站点，比如：学成在线有主门户、学习中心、问答系统等子站点。具体的哪个页面是归属于具体
-的站点，所以要管理页面，先要管理页面所属的站点。
-2）创建模板：
-页面如何创建呢？比如电商网站的商品详情页面，每个页面的内容布局、板式是相同的，不同的只是内容，这个页
-面的布局、板式就是页面模板，模板+数据就组成一个完整的页面，最终要创建一个页面文件需要先定义此页面的
-模板，最终拿到页面的数据再结合模板就拼装成一个完整的页面。
-3）创建页面：
-创建页面是指填写页面的基本信息，如：页面的名称、页面的url地址等。 <a class="read-more" href="https://hdorr.github.io/post/%E9%A1%B9%E7%9B%AE/cms/cms-%E5%90%8E%E7%AB%AF-cms%E4%BB%8B%E7%BB%8D%E5%8F%8Anginx%E5%90%8E%E7%AB%AF%E9%97%A8%E6%88%B7%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
